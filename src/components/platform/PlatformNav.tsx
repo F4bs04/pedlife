@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -85,8 +84,8 @@ export const PlatformNav: React.FC = () => {
             </DropdownMenuContent>
           </DropdownMenu>
            <Button variant="outline" size="sm" asChild className="md:hidden">
-             <Link to="/">Menu</Link> {/* Placeholder for mobile menu toggle */}
-           </Button>
+             <Link to="/">Menu</Link>
+           </Button> {/* Placeholder for mobile menu toggle */}
         </div>
       </div>
     </header>
