@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button'; // Import Button
 
 export const Hero: React.FC = () => {
   return (
@@ -18,18 +19,16 @@ export const Hero: React.FC = () => {
                 </p>
               </div>
               <div className="bg-[rgba(0,0,0,0)] flex items-stretch justify-center gap-4 text-base font-normal text-center flex-wrap mt-[41px] pl-[15px] pr-20 pt-[5px] pb-[25px] max-md:mt-10 max-md:pr-5">
-                <Link
-                  to="/register"
-                  className="bg-[rgba(58,48,231,1)] shadow-[0px_4px_6px_rgba(0,0,0,0.1)] text-white pt-[13px] pb-[25px] px-8 rounded-full max-md:px-5"
-                >
-                  Acesse Gratuitamente
-                </Link>
-                <Link
-                  to="#saiba-mais"
-                  className="bg-[rgba(0,0,0,0)] border-indigo-600 border text-[rgba(58,48,231,1)] pt-[13px] pb-[25px] px-[34px] rounded-full border-solid max-md:px-5"
-                >
-                  Saiba Mais
-                </Link>
+                <Button asChild size="lg" className="rounded-full shadow-[0px_4px_6px_rgba(0,0,0,0.1)]">
+                  <Link to="/register">
+                    Acesse Gratuitamente
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="rounded-full">
+                  <Link to="#saiba-mais">
+                    Saiba Mais
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>

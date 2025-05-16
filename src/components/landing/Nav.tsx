@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button'; // Import Button
 
 export const Nav: React.FC = () => {
   return (
@@ -23,15 +24,13 @@ export const Nav: React.FC = () => {
           <Link to="#depoimentos" className="leading-none basis-auto self-center">
             Depoimentos
           </Link>
-          <Link
-            to="/register"
-            className="bg-[rgba(58,48,231,1)] text-white text-center py-3 px-[25px] rounded-full max-md:px-5"
-          >
-            Acesse Grátis
-          </Link>
+          <Button asChild size="default" className="rounded-full px-6">
+            <Link to="/register">
+              Acesse Grátis
+            </Link>
+          </Button>
         </div>
       </div>
     </nav>
   );
 };
-
