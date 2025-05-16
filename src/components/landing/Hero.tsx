@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -6,7 +7,8 @@ export const Hero: React.FC = () => {
     <section className="bg-[rgba(0,0,0,0)] self-center w-full max-w-[1322px] ml-[21px] px-px max-md:max-w-full">
       <div className="bg-[rgba(0,0,0,0)] pr-[50px] pt-[25px] pb-[75px] max-md:max-w-full max-md:pr-5">
         <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
-          <div className="w-6/12 max-md:w-full max-md:ml-0">
+          {/* Alteração aqui: adicionado flex items-center para centralizar verticalmente o conteúdo da coluna de texto */}
+          <div className="w-6/12 flex items-center max-md:w-full max-md:ml-0">
             <div className="bg-[rgba(0,0,0,0)] w-full self-stretch m-auto max-md:max-w-full max-md:mt-10">
               <div className="z-10 flex flex-col items-stretch pl-[15px] pr-[34px] max-md:max-w-full max-md:pr-5">
                 <h1 className="text-gray-800 text-5xl font-bold leading-[48px] max-md:max-w-full max-md:text-[40px] max-md:leading-[45px]">
@@ -44,3 +46,4 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
+
