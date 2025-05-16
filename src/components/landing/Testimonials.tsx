@@ -43,8 +43,8 @@ export const Testimonials: React.FC = () => {
         <div className="bg-[rgba(0,0,0,0)] mt-[66px] pt-[5px] pb-[25px] px-[15px] max-md:max-w-full max-md:mt-10">
           <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="w-[33%] max-md:w-full max-md:ml-0">
-                <div className="bg-white shadow-[0px_4px_6px_rgba(0,0,0,0.1)] w-full mx-auto p-6 rounded-xl max-md:mt-[37px] max-md:px-5">
+              <div key={index} className="w-[33%] flex flex-col max-md:w-full max-md:ml-0">
+                <div className="bg-white shadow-[0px_4px_6px_rgba(0,0,0,0.1)] w-full h-full flex flex-col mx-auto p-6 rounded-xl max-md:mt-[37px] max-md:px-5">
                   <div className="bg-[rgba(0,0,0,0)] flex items-stretch gap-4 leading-none pr-[61px] max-md:pr-5">
                     <img
                       src={testimonial.avatar}
