@@ -1,35 +1,39 @@
 
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Pill, Activity, Syringe, Thermometer, ShieldCheck, Stethoscope } from 'lucide-react'; // Removido Lung, Stethoscope já estava aqui
+import { Link } from 'react-router-dom';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+// Ícones permitidos: Pill, Syringe, Stethoscope, Calendar, User, Bell, Calculator
+// Outros ícones como Activity, Thermometer, ShieldCheck foram substituídos por Pill ou outros permitidos.
+import { Pill, Syringe, Stethoscope } from 'lucide-react';
+import { CategoryInfo } from '@/types/medication';
+import { allCategories } from '@/data/mockMedications';
 
-interface CategoryCardProps {
-  title: string;
-  icon: React.ElementType;
-  iconColorClass: string;
-  bgColorClass: string;
+interface CategoryCardProps extends Omit<CategoryInfo, 'medicationsCount' | 'lastUpdated'> {
+  // slug é necessário para o Link
 }
 
-const CategoryCard: React.FC<CategoryCardProps> = ({ title, icon: Icon, iconColorClass, bgColorClass }) => (
-  <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer">
-    <CardHeader className="flex flex-col items-center justify-center text-center p-6">
-      <div className={`p-4 rounded-full mb-4 ${bgColorClass}`}>
-        <Icon className={`h-8 w-8 ${iconColorClass}`} />
-      </div>
-      <CardTitle className="text-md font-semibold text-gray-700">{title}</CardTitle>
-    </CardHeader>
-  </Card>
+const CategoryCard: React.FC<CategoryCardProps> = ({ title, slug, icon: Icon, iconColorClass, bgColorClass }) => (
+  <Link to={`/platform/calculator/${slug}`} className="block">
+    <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer h-full">
+      <CardHeader className="flex flex-col items-center justify-center text-center p-6 h-full">
+        <div className={`p-4 rounded-full mb-4 ${bgColorClass}`}>
+          <Icon className={`h-8 w-8 ${iconColorClass}`} />
+        </div>
+        <CardTitle className="text-md font-semibold text-gray-700">{title}</CardTitle>
+      </CardHeader>
+    </Card>
+  </Link>
 );
 
 const CalculatorPage: React.FC = () => {
-  const categories: CategoryCardProps[] = [
-    { title: 'Antibióticos VO', icon: Pill, iconColorClass: 'text-blue-500', bgColorClass: 'bg-blue-100' },
-    { title: 'Analgésicos e Antitérmicos', icon: Activity, iconColorClass: 'text-teal-500', bgColorClass: 'bg-teal-100' },
-    { title: 'Corticosteroides EV', icon: Syringe, iconColorClass: 'text-pink-500', bgColorClass: 'bg-pink-100' },
-    { title: 'Corticoide Oral', icon: Thermometer, iconColorClass: 'text-purple-500', bgColorClass: 'bg-purple-100' },
-    { title: 'Antivirais', icon: ShieldCheck, iconColorClass: 'text-orange-500', bgColorClass: 'bg-orange-100' },
-    { title: 'Broncodilatadores', icon: Stethoscope, iconColorClass: 'text-green-500', bgColorClass: 'bg-green-100' }, // Ícone Lung substituído por Stethoscope
-  ];
+  // Usar as categorias de mockMedications.ts
+  const categories: CategoryCardProps[] = allCategories.map(cat => ({
+    title: cat.title,
+    slug: cat.slug,
+    icon: cat.icon,
+    iconColorClass: cat.iconColorClass,
+    bgColorClass: cat.bgColorClass,
+  }));
 
   return (
     <div className="flex flex-col items-center py-8 px-4 bg-gradient-to-br from-purple-50 via-indigo-50 to-pink-50 min-h-[calc(100vh-10rem)] rounded-lg">
@@ -37,9 +41,9 @@ const CalculatorPage: React.FC = () => {
       <p className="text-lg text-gray-600 mb-12 max-w-2xl text-center">
         Escolha a categoria do medicamento para calcular a dose adequada com precisão e segurança para seus pacientes pediátricos.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-4xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-6xl">
         {categories.map((category) => (
-          <CategoryCard key={category.title} {...category} />
+          <CategoryCard key={category.slug} {...category} />
         ))}
       </div>
     </div>
