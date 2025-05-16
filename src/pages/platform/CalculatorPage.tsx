@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Pill, Activity, Syringe, Thermometer, ShieldCheck, Lung, Stethoscope } from 'lucide-react'; // Stethoscope como fallback
+import { Pill, Activity, Syringe, Thermometer, ShieldCheck, Stethoscope } from 'lucide-react'; // Removido Lung, Stethoscope já estava aqui
 
 interface CategoryCardProps {
   title: string;
@@ -28,7 +28,7 @@ const CalculatorPage: React.FC = () => {
     { title: 'Corticosteroides EV', icon: Syringe, iconColorClass: 'text-pink-500', bgColorClass: 'bg-pink-100' },
     { title: 'Corticoide Oral', icon: Thermometer, iconColorClass: 'text-purple-500', bgColorClass: 'bg-purple-100' },
     { title: 'Antivirais', icon: ShieldCheck, iconColorClass: 'text-orange-500', bgColorClass: 'bg-orange-100' },
-    { title: 'Broncodilatadores', icon: Lung, iconColorClass: 'text-green-500', bgColorClass: 'bg-green-100' },
+    { title: 'Broncodilatadores', icon: Stethoscope, iconColorClass: 'text-green-500', bgColorClass: 'bg-green-100' }, // Ícone Lung substituído por Stethoscope
   ];
 
   return (
