@@ -1,10 +1,11 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button'; // Import Button
+import { Button } from '@/components/ui/button';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="bg-[rgba(0,0,0,0)] self-center w-full max-w-[1322px] ml-[21px] px-px max-md:max-w-full">
+    <section className="bg-[rgba(0,0,0,0)] w-full max-w-[1322px] mx-auto px-px max-md:max-w-full">
       <div className="bg-[rgba(0,0,0,0)] pr-[50px] pt-[25px] pb-[75px] max-md:max-w-full max-md:pr-5">
         <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
           {/* Alteração aqui: adicionado flex items-center para centralizar verticalmente o conteúdo da coluna de texto */}
@@ -44,3 +45,4 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
+
