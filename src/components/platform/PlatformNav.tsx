@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Bell, UserCircle, Settings } from 'lucide-react';
+import { Bell, UserCircle, Settings, Menu } from 'lucide-react'; // Added Menu icon
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -11,36 +12,49 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet"; // Added Sheet components
+import { useIsMobile } from '@/hooks/use-mobile'; // Import the hook
 
 export const PlatformNav: React.FC = () => {
+  const isMobile = useIsMobile(); // Use the hook
+
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
     `text-sm font-medium transition-colors hover:text-primary ${
       isActive ? 'text-primary' : 'text-muted-foreground'
     }`;
 
+  const navItems = [
+    { to: "/platform/calculator", label: "Calculadora de Medicamentos" },
+    { to: "/platform/insulin", label: "Referencial para Insulina" },
+    { to: "/platform/tips", label: "Fluxos e Dicas" },
+  ];
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
-          <Link to="/" className="flex items-center gap-2">
+          <Link to="/platform" className="flex items-center gap-2"> {/* Changed Link to /platform */}
             <img
               src="https://cdn.builder.io/api/v1/image/assets/78ab2fde8e3747148b556fefd3eab937/db1b55d583e7aa08091a7b6d97e205ac58334204?placeholderIfAbsent=true"
               alt="Pedlife Logo"
               className="h-8 w-auto"
             />
-            <span className="font-bold text-lg text-primary">PedLife</span>
+            {/* Removido: <span className="font-bold text-lg text-primary">PedLife</span> */}
           </Link>
-          <nav className="hidden md:flex items-center gap-4">
-            <NavLink to="/platform/calculator" className={navLinkClasses}>
-              Calculadora de Medicamentos
-            </NavLink>
-            <NavLink to="/platform/insulin" className={navLinkClasses}>
-              Referencial para Insulina
-            </NavLink>
-            <NavLink to="/platform/tips" className={navLinkClasses}>
-              Fluxos e Dicas
-            </NavLink>
-          </nav>
+          {!isMobile && (
+            <nav className="flex items-center gap-4">
+              {navItems.map((item) => (
+                <NavLink key={item.to} to={item.to} className={navLinkClasses}>
+                  {item.label}
+                </NavLink>
+              ))}
+            </nav>
+          )}
         </div>
 
         <div className="flex items-center gap-4">
@@ -70,24 +84,57 @@ export const PlatformNav: React.FC = () => {
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                <Link to="/platform/edit-profile" className="flex items-center">
+                <Link to="/platform/edit-profile" className="flex items-center w-full">
                   <Settings className="mr-2 h-4 w-4" />
                   <span>Configurações</span>
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                <Link to="/" className="w-full"> {/* Link para Sair, volta para a landing page */}
+                <Link to="/" className="w-full">
                   Sair
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-           <Button variant="outline" size="sm" asChild className="md:hidden">
-             <Link to="/">Menu</Link>
-           </Button> {/* Placeholder for mobile menu toggle */}
+          {isMobile && (
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Abrir menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right">
+                <nav className="grid gap-6 text-lg font-medium mt-8">
+                  <Link to="/platform" className="flex items-center gap-2 mb-4">
+                     <img
+                       src="https://cdn.builder.io/api/v1/image/assets/78ab2fde8e3747148b556fefd3eab937/db1b55d583e7aa08091a7b6d97e205ac58334204?placeholderIfAbsent=true"
+                       alt="Pedlife Logo"
+                       className="h-8 w-auto"
+                     />
+                   </Link>
+                  {navItems.map((item) => (
+                    <SheetClose key={item.to} asChild>
+                      <NavLink
+                        to={item.to}
+                        className={({ isActive }) =>
+                          `flex items-center gap-4 px-2.5 ${
+                            isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+                          }`
+                        }
+                      >
+                        {item.label}
+                      </NavLink>
+                    </SheetClose>
+                  ))}
+                </nav>
+              </SheetContent>
+            </Sheet>
+          )}
         </div>
       </div>
     </header>
   );
 };
+
