@@ -1,14 +1,30 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from 'react';
+import { Nav } from '@/components/landing/Nav';
+import { Hero } from '@/components/landing/Hero';
+import { Features } from '@/components/landing/Features';
+import { Audience } from '@/components/landing/Audience';
+import { Benefits } from '@/components/landing/Benefits';
+import { Testimonials } from '@/components/landing/Testimonials';
+import { CTA } from '@/components/landing/CTA';
+import { Footer } from '@/components/landing/Footer';
 
-const Index = () => {
+export default function Index() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="bg-white overflow-hidden rounded-lg border-[rgba(206,212,218,1)] border-solid border-2">
+      <div className="bg-[rgba(0,0,0,0)] w-full max-md:max-w-full">
+        <div className="flex w-full flex-col items-stretch max-md:max-w-full">
+          <Nav />
+          <main>
+            <Hero />
+            <Features />
+            <Audience />
+            <Benefits />
+            <Testimonials />
+            <CTA />
+          </main>
+          <Footer />
+        </div>
       </div>
     </div>
   );
-};
-
-export default Index;
+}
