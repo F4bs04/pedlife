@@ -32,7 +32,7 @@ export const Hero: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="w-6/12 ml-5 max-md:w-full max-md:ml-0">
+          <div className="w-6/12 ml-5 flex justify-center items-center max-md:w-full max-md:ml-0">
             <img
               src="https://cdn.builder.io/api/v1/image/assets/78ab2fde8e3747148b556fefd3eab937/9d77224975ffcc8cbbf4b754d53fc6b455f157bb?placeholderIfAbsent=true"
               alt="Pedlife Interface"
