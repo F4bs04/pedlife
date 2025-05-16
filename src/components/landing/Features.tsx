@@ -38,8 +38,8 @@ export const Features: React.FC = () => {
         <div className="bg-[rgba(0,0,0,0)] mt-[59px] pt-[5px] pb-[25px] px-[15px] max-md:max-w-full max-md:mt-10">
           <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
             {features.map((feature, index) => (
-              <div key={index} className="w-3/12 max-md:w-full max-md:ml-0">
-                <div className="bg-white shadow-[0px_4px_6px_rgba(0,0,0,0.1)] grow w-full p-6 rounded-xl max-md:mt-[37px] max-md:px-5">
+              <div key={index} className="flex w-3/12 max-md:w-full max-md:ml-0">
+                <div className="bg-white shadow-[0px_4px_6px_rgba(0,0,0,0.1)] w-full p-6 rounded-xl max-md:mt-[37px] max-md:px-5">
                   <img
                     src={feature.icon}
                     alt={feature.title}
