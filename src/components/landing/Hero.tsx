@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -18,7 +17,7 @@ export const Hero: React.FC = () => {
                   Sua ferramenta completa para cálculos de doses, protocolos e condutas pediátricas
                 </p>
               </div>
-              <div className="bg-[rgba(0,0,0,0)] flex items-stretch gap-4 text-base font-normal text-center flex-wrap mt-[41px] pl-[15px] pr-20 pt-[5px] pb-[25px] max-md:mt-10 max-md:pr-5">
+              <div className="bg-[rgba(0,0,0,0)] flex items-stretch justify-center gap-4 text-base font-normal text-center flex-wrap mt-[41px] pl-[15px] pr-20 pt-[5px] pb-[25px] max-md:mt-10 max-md:pr-5">
                 <Link
                   to="/register"
                   className="bg-[rgba(58,48,231,1)] shadow-[0px_4px_6px_rgba(0,0,0,0.1)] text-white pt-[13px] pb-[25px] px-8 rounded-full max-md:px-5"
@@ -46,4 +45,3 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
-
