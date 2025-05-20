@@ -1,9 +1,10 @@
-
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { format } from 'date-fns'; // Importar date-fns
+import { ptBR } from 'date-fns/locale'; // Importar locale pt-BR
 
 import { mockMedicationsData, allCategories } from '@/data/mockMedications';
 import { Medication, CategoryInfo } from '@/types/medication';
@@ -29,7 +30,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { ArrowLeft, AlertTriangle, Pill, Bot, Info, Syringe } from 'lucide-react'; // Adicionado Bot, Info, Syringe
+import { ArrowLeft, AlertTriangle, Pill, Bot, Info, Syringe, Bookmark, Copy } from 'lucide-react'; // Adicionado Bot, Info, Syringe, Bookmark, Copy
 
 const formSchema = z.object({
   weight: z.coerce.number().positive({ message: "Peso deve ser um número positivo." }),
@@ -37,6 +38,14 @@ const formSchema = z.object({
 });
 
 type FormValues = z.infer<typeof formSchema>;
+
+interface CalculationData {
+  weight: number;
+  age: number;
+  calculatedDoseText: string;
+  calculationTime: string;
+  calculationDate: string;
+}
 
 const MedicationCalculatorPage: React.FC = () => {
   const { categorySlug, medicationSlug } = useParams<{ categorySlug: string; medicationSlug: string }>();
@@ -54,7 +63,7 @@ const MedicationCalculatorPage: React.FC = () => {
     },
   });
 
-  const [calculatedDose, setCalculatedDose] = useState<string | null>(null);
+  const [calculationData, setCalculationData] = useState<CalculationData | null>(null);
 
   if (!categoryData || !medication || !categoryDisplayInfo) {
     return (
@@ -73,17 +82,166 @@ const MedicationCalculatorPage: React.FC = () => {
     );
   }
 
-  const CategoryIcon = categoryDisplayInfo.icon || Pill;
-  const MedicationIcon = categoryData.icon === Syringe ? Syringe : Pill; // Usar Syringe se for da categoria EV
+  const CategoryIcon = categoryDisplayInfo.icon || Pill; // This might not be used in results view
+  const MedicationIcon = Pill; // Using Pill for results view as per image
 
   const onSubmit = (values: FormValues) => {
-    // Placeholder para lógica de cálculo de dose
     console.log("Valores do formulário:", values);
-    setCalculatedDose(`Dose calculada para ${values.weight}kg e ${values.age} anos: (Lógica de cálculo pendente)`);
-    // Idealmente, aqui você chamaria uma função que usa os dados do medicamento
-    // e os valores do formulário para calcular a dose.
+    // Placeholder para lógica de cálculo de dose
+    const doseResult = `Resultado para ${medication.name}: ${values.weight}kg, ${values.age} anos. (Lógica de cálculo real pendente)`;
+    
+    setCalculationData({
+      weight: values.weight,
+      age: values.age,
+      calculatedDoseText: doseResult,
+      calculationDate: format(new Date(), "dd/MM/yyyy"),
+      calculationTime: format(new Date(), "HH:mm"),
+    });
   };
 
+  const handleReturnToForm = () => {
+    setCalculationData(null);
+    form.reset();
+  };
+
+  if (calculationData) {
+    return (
+      <div className="max-w-6xl mx-auto py-8 px-4 bg-[#F1F0FB] min-h-full rounded-lg">
+        <Breadcrumb className="mb-6">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/platform/calculator">Calculadora</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to={`/platform/calculator/${categorySlug}`}>{categoryData.title}</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+               <BreadcrumbLink asChild>
+                <Link to={`/platform/calculator/${categorySlug}/${medicationSlug}`}>Calc: {medication.name}</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Resultado</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
+        <div className="mb-6 flex justify-between items-center">
+          <h1 className="text-3xl font-bold text-gray-800">Resultado do Cálculo</h1>
+          <Button variant="outline" onClick={handleReturnToForm}>
+            <ArrowLeft className="mr-2 h-4 w-4" /> Retornar
+          </Button>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+          {/* Dose Calculada Card */}
+          <Card className="lg:col-span-2 bg-pink-50 border-pink-200 relative">
+            <Button variant="ghost" size="icon" className="absolute top-2 right-2 text-primary/70 hover:text-primary">
+              <Copy className="h-4 w-4" />
+            </Button>
+            <CardHeader className="pb-2">
+              <div className="flex items-center text-pink-600">
+                <Pill className="h-5 w-5 mr-2" />
+                <CardTitle className="text-lg font-semibold">Dose Calculada</CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <h2 className="text-2xl font-bold text-gray-700 mb-3">
+                {medication.name} {medication.form ? `(${medication.form})` : ''}
+              </h2>
+              <div className="text-sm text-gray-600 space-y-1 mb-3">
+                <p><span className="font-semibold">Posologia:</span></p>
+                <p>Duração: <span className="italic">{medication.dosageInformation?.treatmentDuration || "Conforme orientação médica"}</span></p>
+                <p>Intervalo: <span className="italic">{medication.dosageInformation?.doseInterval || "Conforme orientação médica"}</span></p>
+                <p>Dose usual: <span className="italic">{medication.dosageInformation?.usualDose || "Conforme orientação médica"}</span></p>
+              </div>
+              <Alert variant="default" className="bg-white">
+                <AlertTitle className="font-semibold">Cálculo Específico:</AlertTitle>
+                <AlertDescription>{calculationData.calculatedDoseText}</AlertDescription>
+              </Alert>
+            </CardContent>
+          </Card>
+
+          {/* Dados do Paciente Card */}
+          <Card className="relative">
+             <Button variant="ghost" size="icon" className="absolute top-2 right-2 text-primary/70 hover:text-primary">
+              <Copy className="h-4 w-4" />
+            </Button>
+            <CardHeader>
+              <CardTitle className="text-lg font-semibold text-gray-700">Dados do Paciente</CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm text-gray-600 space-y-1">
+              <p>Peso: <span className="font-medium">{calculationData.weight} kg</span></p>
+              <p>Idade: <span className="font-medium">{calculationData.age} anos</span></p>
+              <p>Data do cálculo: <span className="font-medium">{calculationData.calculationDate}</span></p>
+              <p>Horário: <span className="font-medium">{calculationData.calculationTime}</span></p>
+            </CardContent>
+          </Card>
+        </div>
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Informações do Medicamento</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <Card className="lg:col-span-2 relative">
+             <Button variant="ghost" size="icon" className="absolute top-2 right-2 text-primary/70 hover:text-primary">
+              <Copy className="h-4 w-4" />
+            </Button>
+            <CardHeader>
+              <CardTitle className="text-xl text-gray-700">{medication.name}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground mb-4">
+                {medication.description || "Descrição não disponível."}
+              </p>
+              {medication.alerts && medication.alerts.length > 0 && (
+                <div className="mb-4">
+                  <h4 className="font-semibold text-red-600 mb-1">Alertas:</h4>
+                  <ul className="list-disc list-inside text-sm text-red-500">
+                    {medication.alerts.map((alert, index) => <li key={index}>{alert}</li>)}
+                  </ul>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+          
+          <Card className="relative">
+            <Button variant="ghost" size="icon" className="absolute top-2 right-2 text-primary/70 hover:text-primary">
+              <Copy className="h-4 w-4" />
+            </Button>
+            <CardHeader>
+              <CardTitle className="text-lg font-semibold text-gray-700">Observações</CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm text-gray-600 space-y-1">
+              {medication.dosageInformation?.administrationNotes ? (
+                <p>{medication.dosageInformation.administrationNotes}</p>
+              ) : (
+                <>
+                  <p>Tomar com ou sem alimentos, conforme orientação.</p>
+                  <p>Completar todo o tratamento prescrito.</p>
+                  <p>Manter em temperatura ambiente, salvo indicação contrária.</p>
+                  {/* Exemplo de informação específica, se disponível */}
+                  {/* <p>Validade após reconstituição: 14 dias</p> */}
+                </>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+        <div className="mt-8 flex justify-end">
+            <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
+                <Bookmark className="mr-2 h-4 w-4" /> Favoritar Medicamento
+            </Button>
+        </div>
+      </div>
+    );
+  }
+
+  // Formulário de Cálculo (quando calculationData é null)
   return (
     <div className="max-w-6xl mx-auto py-8 px-4 bg-slate-50 min-h-full rounded-lg">
       <Breadcrumb className="mb-6">
@@ -106,13 +264,13 @@ const MedicationCalculatorPage: React.FC = () => {
         </BreadcrumbList>
       </Breadcrumb>
 
-      {/* Informações Resumidas */}
+      {/* Informações Resumidas (como estava antes) */}
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4 text-gray-700">Informações resumidas</h2>
         <div className="grid md:grid-cols-3 gap-4">
           <Card className={`border-l-4 ${categoryDisplayInfo.iconColorClass?.replace('text-', 'border-') || 'border-pink-500'}`}>
             <CardHeader className="flex flex-row items-center gap-3 pb-2">
-              <MedicationIcon className={`h-6 w-6 ${categoryDisplayInfo.iconColorClass || 'text-pink-500'}`} />
+              <CategoryIcon className={`h-6 w-6 ${categoryDisplayInfo.iconColorClass || 'text-pink-500'}`} />
               <CardTitle className="text-xl">{medication.name}</CardTitle>
             </CardHeader>
             <CardContent>
@@ -149,7 +307,7 @@ const MedicationCalculatorPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Calculadora de Dose e Informações do Medicamento */}
+      {/* Calculadora de Dose e Informações do Medicamento (Formulário) */}
       <section className="grid md:grid-cols-3 gap-8">
         <div className="md:col-span-2">
           <Card>
@@ -195,12 +353,7 @@ const MedicationCalculatorPage: React.FC = () => {
                   </div>
                 </form>
               </Form>
-              {calculatedDose && (
-                <Alert className="mt-6">
-                  <AlertTitle>Dose Calculada</AlertTitle>
-                  <AlertDescription>{calculatedDose}</AlertDescription>
-                </Alert>
-              )}
+              {/* Removido o Alert de dose calculada daqui, pois agora temos uma view separada */}
             </CardContent>
           </Card>
         </div>
