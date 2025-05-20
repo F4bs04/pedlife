@@ -1,3 +1,4 @@
+
 import React from 'react'; // Added explicit React import
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -14,7 +15,7 @@ import UserEditPage from "./pages/platform/UserEditPage";
 import MedicationCategoryPage from "./pages/platform/MedicationCategoryPage";
 import MedicationCalculatorPage from "./pages/platform/MedicationCalculatorPage";
 import InsulinCalculatorPage from "./pages/platform/InsulinCalculatorPage";
-import FlowsAndTipsPage from "./pages/platform/FlowsAndTipsPage"; // Nova importação
+import FlowsAndTipsPage from "./pages/platform/FlowsAndTipsPage";
 
 const queryClient = new QueryClient();
 
@@ -33,12 +34,14 @@ const App = () => (
             <Route index element={<CalculatorPage />} />
             <Route path="calculator" element={<Outlet />}>
               <Route index element={<CalculatorPage />} />
-              <Route path="insulina" element={<InsulinCalculatorPage />} />
+              {/* A rota da insulina foi movida para fora de /calculator */}
               <Route path=":categorySlug" element={<MedicationCategoryPage />} />
               <Route path=":categorySlug/:medicationSlug" element={<MedicationCalculatorPage />} />
             </Route>
+            {/* Nova rota para a calculadora de insulina */}
+            <Route path="insulin" element={<InsulinCalculatorPage />} />
             <Route path="edit-profile" element={<UserEditPage />} />
-            <Route path="tips" element={<FlowsAndTipsPage />} /> {/* Nova rota */}
+            <Route path="tips" element={<FlowsAndTipsPage />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />
@@ -49,3 +52,4 @@ const App = () => (
 );
 
 export default App;
+
