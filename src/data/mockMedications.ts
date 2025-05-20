@@ -1,5 +1,4 @@
-
-import { Pill, Syringe, Stethoscope, AlertTriangle, Info } from 'lucide-react'; // Adicionado AlertTriangle, Info
+import { Pill, Syringe, Stethoscope, Plus, AlertTriangle, Info } from 'lucide-react'; // Adicionado Plus
 import { MockMedicationData, CategoryInfo, Medication } from '@/types/medication';
 import { slugify } from '@/lib/utils';
 
@@ -26,6 +25,13 @@ export const allCategories: Omit<CategoryInfo, 'medicationsCount' | 'lastUpdated
   { title: 'Oftalmológicos', slug: slugify('Oftalmológicos'), icon: Pill, iconColorClass: 'text-blue-400', bgColorClass: 'bg-blue-50' }, 
   { title: 'Otológicas', slug: slugify('Otológicas'), icon: Pill, iconColorClass: 'text-teal-400', bgColorClass: 'bg-teal-50' }, 
   { title: 'Uso Tópico - Externo', slug: slugify('Uso Tópico - Externo'), icon: Pill, iconColorClass: 'text-pink-400', bgColorClass: 'bg-pink-50' },
+  { 
+    title: 'Cálculo de Insulina', 
+    slug: 'insulina', // Rota: /platform/calculator/insulina
+    icon: Plus, // Usando um ícone permitido
+    iconColorClass: 'text-orange-500', 
+    bgColorClass: 'bg-orange-100' 
+  },
 ];
 
 export const mockMedicationsData: MockMedicationData = {
@@ -54,7 +60,7 @@ export const mockMedicationsData: MockMedicationData = {
           administrationNotes: 'Reconstituir com água para injetáveis. Administrar lentamente por via EV ou IM profunda.'
         }
       },
-      { name: 'Dexametasona', slug: slugify('Dexametasona'), form: 'Solução injetável', application: 'EV / IM' }, // Exemplo, adicionar detalhes se necessário
+      { name: 'Dexametasona', slug: slugify('Dexametasona'), form: 'Solução injetável', application: 'EV / IM' },
     ],
   },
   [slugify('Antibióticos VO')]: {
@@ -91,15 +97,29 @@ allCategories.forEach(cat => {
   if (!mockMedicationsData[cat.slug]) {
     mockMedicationsData[cat.slug] = {
       ...cat,
-      medicationsCount: mockMedicationsData[cat.slug]?.medications?.length || 0, // Garante que a contagem é baseada nos medicamentos reais se já existirem
-      lastUpdated: 'Dez/2024', // Default date
+      // Para categorias como 'insulina' que não são de medicação, medications pode ser vazio.
+      medicationsCount: mockMedicationsData[cat.slug]?.medications?.length || 0, 
+      lastUpdated: 'Dez/2024', 
       medications: mockMedicationsData[cat.slug]?.medications?.map(m => ({...m, slug: slugify(m.name)})) || [],
     };
-  } else { // Se a categoria já existe, apenas garante que os medicamentos tenham slug
+  } else { 
     mockMedicationsData[cat.slug].medications = mockMedicationsData[cat.slug].medications.map(m => ({
       ...m,
       slug: m.slug || slugify(m.name),
     }));
     mockMedicationsData[cat.slug].medicationsCount = mockMedicationsData[cat.slug].medications.length;
+  }
+  // Garante que a categoria base (sem medicamentos) seja adicionada se não existir
+   if (cat.slug === 'insulina' && !mockMedicationsData['insulina']) {
+    mockMedicationsData['insulina'] = {
+        title: cat.title,
+        slug: cat.slug,
+        icon: cat.icon,
+        iconColorClass: cat.iconColorClass,
+        bgColorClass: cat.bgColorClass,
+        medicationsCount: 0,
+        lastUpdated: 'Mai/2025', // Data atual
+        medications: []
+    };
   }
 });
