@@ -11,7 +11,8 @@ import RegisterPage from "./pages/RegisterPage";
 import PlatformLayout from "./layouts/PlatformLayout";
 import CalculatorPage from "./pages/platform/CalculatorPage";
 import UserEditPage from "./pages/platform/UserEditPage";
-import MedicationCategoryPage from "./pages/platform/MedicationCategoryPage"; // Nova importação
+import MedicationCategoryPage from "./pages/platform/MedicationCategoryPage";
+import MedicationCalculatorPage from "./pages/platform/MedicationCalculatorPage"; // Nova importação
 
 const queryClient = new QueryClient();
 
@@ -28,8 +29,11 @@ const App = () => (
           
           <Route path="/platform" element={<PlatformLayout />}>
             <Route index element={<CalculatorPage />} />
-            <Route path="calculator" element={<CalculatorPage />} />
-            <Route path="calculator/:categorySlug" element={<MedicationCategoryPage />} /> {/* Nova rota */}
+            <Route path="calculator" element={<Outlet />}>
+              <Route index element={<CalculatorPage />} />
+              <Route path=":categorySlug" element={<MedicationCategoryPage />} />
+              <Route path=":categorySlug/:medicationSlug" element={<MedicationCalculatorPage />} /> {/* Nova rota */}
+            </Route>
             <Route path="edit-profile" element={<UserEditPage />} />
             {/* Adicione outras rotas da plataforma aqui, por exemplo: */}
             {/* <Route path="insulin" element={<div>Página Insulina</div>} /> */}

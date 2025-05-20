@@ -3,9 +3,9 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { mockMedicationsData } from '@/data/mockMedications';
 import MedicationListItem from '@/components/platform/MedicationListItem';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Pill, BookOpen, CalendarDays } from 'lucide-react'; // Usando Pill como ícone genérico para categoria
+import { ArrowLeft, Pill, BookOpen, CalendarDays } from 'lucide-react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,8 +13,8 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-
+} from "@/components/ui/breadcrumb";
+import { slugify } from '@/lib/utils'; // Importar slugify
 
 const MedicationCategoryPage: React.FC = () => {
   const { categorySlug } = useParams<{ categorySlug: string }>();
@@ -72,9 +72,19 @@ const MedicationCategoryPage: React.FC = () => {
       
       <div>
         {categoryData.medications.length > 0 ? (
-          categoryData.medications.map((med) => (
-            <MedicationListItem key={med.name} medication={med} />
-          ))
+          categoryData.medications.map((med) => {
+            // Certifique-se que categorySlug está definido antes de usá-lo no Link
+            const medSlug = med.slug || slugify(med.name); // Usa slug existente ou gera um novo
+            return (
+              <Link 
+                key={medSlug} 
+                to={`/platform/calculator/${categorySlug}/${medSlug}`} 
+                className="block mb-3 hover:bg-gray-50 rounded-lg transition-colors"
+              >
+                <MedicationListItem medication={med} />
+              </Link>
+            );
+          })
         ) : (
           <Card>
             <CardContent className="p-10 text-center">

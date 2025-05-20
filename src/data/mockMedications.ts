@@ -1,6 +1,6 @@
 
-import { Pill, Syringe, Stethoscope, Calendar, HelpCircle } from 'lucide-react'; // HelpCircle como fallback
-import { MockMedicationData, CategoryInfo } from '@/types/medication';
+import { Pill, Syringe, Stethoscope, AlertTriangle, Info } from 'lucide-react'; // Adicionado AlertTriangle, Info
+import { MockMedicationData, CategoryInfo, Medication } from '@/types/medication';
 import { slugify } from '@/lib/utils';
 
 // Helper para criar informações de categoria, para evitar repetição na CalculatorPage
@@ -23,9 +23,9 @@ export const allCategories: Omit<CategoryInfo, 'medicationsCount' | 'lastUpdated
   { title: 'Laxantes', slug: slugify('Laxantes'), icon: Pill, iconColorClass: 'text-fuchsia-500', bgColorClass: 'bg-fuchsia-100' },
   { title: 'Controle e Prevenção de Sangramentos', slug: slugify('Controle e Prevenção de Sangramentos'), icon: Pill, iconColorClass: 'text-orange-500', bgColorClass: 'bg-orange-100' },
   { title: 'Minerais e Vitaminas', slug: slugify('Minerais e Vitaminas'), icon: Pill, iconColorClass: 'text-violet-500', bgColorClass: 'bg-violet-100' },
-  { title: 'Oftalmológicos', slug: slugify('Oftalmológicos'), icon: Pill, iconColorClass: 'text-blue-400', bgColorClass: 'bg-blue-50' }, // Example, Eye not available
-  { title: 'Otológicas', slug: slugify('Otológicas'), icon: Pill, iconColorClass: 'text-teal-400', bgColorClass: 'bg-teal-50' }, // Example, Ear not available
-  { title: 'Uso Tópico - Externo', slug: slugify('Uso Tópico - Externo'), icon: Pill, iconColorClass: 'text-pink-400', bgColorClass: 'bg-pink-50' }, // Example, Hand/Layers not available
+  { title: 'Oftalmológicos', slug: slugify('Oftalmológicos'), icon: Pill, iconColorClass: 'text-blue-400', bgColorClass: 'bg-blue-50' }, 
+  { title: 'Otológicas', slug: slugify('Otológicas'), icon: Pill, iconColorClass: 'text-teal-400', bgColorClass: 'bg-teal-50' }, 
+  { title: 'Uso Tópico - Externo', slug: slugify('Uso Tópico - Externo'), icon: Pill, iconColorClass: 'text-pink-400', bgColorClass: 'bg-pink-50' },
 ];
 
 export const mockMedicationsData: MockMedicationData = {
@@ -38,8 +38,23 @@ export const mockMedicationsData: MockMedicationData = {
     medicationsCount: 2,
     lastUpdated: 'Jan/2025',
     medications: [
-      { name: 'Hidrocortisona', form: 'em Pó / Pomada', application: 'EV / IM' },
-      { name: 'Noradrenalina', form: 'Hypnor®', application: 'EV / IM' },
+      { 
+        name: 'Hidrocortisona', 
+        slug: slugify('Hidrocortisona'),
+        form: 'Pó para solução injetável', 
+        application: 'EV / IM',
+        description: 'A hidrocortisona é um corticoide com potente ação anti-inflamatória, antialérgica e antirreumática.',
+        alerts: ['Usar com cautela em pacientes com infecções ativas.', 'Pode mascarar sinais de infecção.'],
+        commonBrandNames: 'Solu-Cortef®, Hidrocor®, Cortisonal®',
+        dosageInformation: {
+          concentration: '100mg, 250mg, 500mg (frasco-ampola)',
+          usualDose: 'Anti-inflamatório/imunossupressor: 0.5-2mg/kg/dose a cada 6h. Crise asmática: 2mg/kg/dose EV (max 250mg).',
+          doseInterval: 'A cada 6 horas',
+          treatmentDuration: 'Variável conforme indicação',
+          administrationNotes: 'Reconstituir com água para injetáveis. Administrar lentamente por via EV ou IM profunda.'
+        }
+      },
+      { name: 'Dexametasona', slug: slugify('Dexametasona'), form: 'Solução injetável', application: 'EV / IM' }, // Exemplo, adicionar detalhes se necessário
     ],
   },
   [slugify('Antibióticos VO')]: {
@@ -51,13 +66,11 @@ export const mockMedicationsData: MockMedicationData = {
     medicationsCount: 3,
     lastUpdated: 'Fev/2025',
     medications: [
-      { name: 'Amoxicilina', form: 'Suspensão Oral', application: 'VO' },
-      { name: 'Azitromicina', form: 'Comprimido', application: 'VO' },
-      { name: 'Cefalexina', form: 'Suspensão Oral', application: 'VO' },
+      { name: 'Amoxicilina', slug: slugify('Amoxicilina'), form: 'Suspensão Oral', application: 'VO' },
+      { name: 'Azitromicina', slug: slugify('Azitromicina'), form: 'Comprimido', application: 'VO' },
+      { name: 'Cefalexina', slug: slugify('Cefalexina'), form: 'Suspensão Oral', application: 'VO' },
     ],
   },
-  // Adicione mock data para outras categorias conforme necessário
-  // Exemplo para Analgésicos:
    [slugify('Analgésicos e Antitérmicos')]: {
     title: 'Analgésicos e Antitérmicos',
     slug: slugify('Analgésicos e Antitérmicos'),
@@ -67,8 +80,8 @@ export const mockMedicationsData: MockMedicationData = {
     medicationsCount: 2,
     lastUpdated: 'Mar/2025',
     medications: [
-      { name: 'Paracetamol', form: 'Gotas / Comprimido', application: 'VO' },
-      { name: 'Dipirona', form: 'Gotas / Supositório', application: 'VO / Retal' },
+      { name: 'Paracetamol', slug: slugify('Paracetamol'), form: 'Gotas / Comprimido', application: 'VO' },
+      { name: 'Dipirona', slug: slugify('Dipirona'), form: 'Gotas / Supositório', application: 'VO / Retal' },
     ],
   },
 };
@@ -78,9 +91,15 @@ allCategories.forEach(cat => {
   if (!mockMedicationsData[cat.slug]) {
     mockMedicationsData[cat.slug] = {
       ...cat,
-      medicationsCount: 0,
+      medicationsCount: mockMedicationsData[cat.slug]?.medications?.length || 0, // Garante que a contagem é baseada nos medicamentos reais se já existirem
       lastUpdated: 'Dez/2024', // Default date
-      medications: [],
+      medications: mockMedicationsData[cat.slug]?.medications?.map(m => ({...m, slug: slugify(m.name)})) || [],
     };
+  } else { // Se a categoria já existe, apenas garante que os medicamentos tenham slug
+    mockMedicationsData[cat.slug].medications = mockMedicationsData[cat.slug].medications.map(m => ({
+      ...m,
+      slug: m.slug || slugify(m.name),
+    }));
+    mockMedicationsData[cat.slug].medicationsCount = mockMedicationsData[cat.slug].medications.length;
   }
 });
