@@ -1,4 +1,5 @@
 
+import React from 'react'; // Added explicit React import
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -12,7 +13,7 @@ import PlatformLayout from "./layouts/PlatformLayout";
 import CalculatorPage from "./pages/platform/CalculatorPage";
 import UserEditPage from "./pages/platform/UserEditPage";
 import MedicationCategoryPage from "./pages/platform/MedicationCategoryPage";
-import MedicationCalculatorPage from "./pages/platform/MedicationCalculatorPage"; // Nova importação
+import MedicationCalculatorPage from "./pages/platform/MedicationCalculatorPage";
 
 const queryClient = new QueryClient();
 
@@ -32,7 +33,7 @@ const App = () => (
             <Route path="calculator" element={<Outlet />}>
               <Route index element={<CalculatorPage />} />
               <Route path=":categorySlug" element={<MedicationCategoryPage />} />
-              <Route path=":categorySlug/:medicationSlug" element={<MedicationCalculatorPage />} /> {/* Nova rota */}
+              <Route path=":categorySlug/:medicationSlug" element={<MedicationCalculatorPage />} />
             </Route>
             <Route path="edit-profile" element={<UserEditPage />} />
             {/* Adicione outras rotas da plataforma aqui, por exemplo: */}
