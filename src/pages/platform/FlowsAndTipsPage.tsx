@@ -3,7 +3,8 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { BookOpenText, Route, MessageSquareQuestion, Lightbulb, Search } from 'lucide-react';
+// Abaixo, MessageSquareQuestion foi substituído por MessageSquareQuoteIcon
+import { BookOpenText, Route, MessageSquareQuoteIcon, Lightbulb, Search } from 'lucide-react';
 
 interface TipCardProps {
   title: string;
@@ -64,7 +65,8 @@ const FlowsAndTipsPage: React.FC = () => {
     {
       title: "Alergia à Proteína do Leite de Vaca (APLV)",
       description: "Principais pontos no diagnóstico e manejo da APLV.",
-      icon: MessageSquareQuestion,
+      // Abaixo, MessageSquareQuestion foi substituído por MessageSquareQuoteIcon
+      icon: MessageSquareQuoteIcon,
       category: "Guia Prático",
       iconColorClass: "text-blue-500",
       link: "#"
@@ -83,9 +85,9 @@ const FlowsAndTipsPage: React.FC = () => {
 
       <div className="mb-8 max-w-xl mx-auto">
         <div className="relative">
-          <Input 
-            type="search" 
-            placeholder="Buscar fluxos ou dicas..." 
+          <Input
+            type="search"
+            placeholder="Buscar fluxos ou dicas..."
             className="pl-10 text-base py-3"
           />
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
@@ -112,4 +114,3 @@ const FlowsAndTipsPage: React.FC = () => {
 };
 
 export default FlowsAndTipsPage;
-
