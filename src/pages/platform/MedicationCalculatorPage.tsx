@@ -30,7 +30,17 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { ArrowLeft, AlertTriangle, Pill, Bot, Info, Syringe, Bookmark, Copy } from 'lucide-react'; // Adicionado Bot, Info, Syringe, Bookmark, Copy
+import { ArrowLeft, AlertTriangle, Pill, Bot, Info, Syringe, Bookmark, Copy } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog";
 
 const formSchema = z.object({
   weight: z.coerce.number().positive({ message: "Peso deve ser um número positivo." }),
@@ -400,9 +410,49 @@ const MedicationCalculatorPage: React.FC = () => {
               )}
               <div className="pt-4">
                 <p className="text-xs text-center text-muted-foreground mb-2">Paciente alérgico?</p>
-                <Button variant="outline" className="w-full">
-                  <Bot className="mr-2 h-4 w-4" /> Auxílio do Lifebot
-                </Button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="outline" className="w-full">
+                      <Bot className="mr-2 h-4 w-4" /> Auxílio do Lifebot
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                      <DialogTitle className="flex items-center">
+                        <Bot className="mr-2 h-5 w-5 text-primary" /> Lifebot Assistente
+                      </DialogTitle>
+                      <DialogDescription>
+                        Informações sobre {medication.name} e possíveis interações alérgicas.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="py-4 space-y-2">
+                      <p className="text-sm font-semibold">Medicamento: {medication.name}</p>
+                      {medication.description && (
+                        <p className="text-sm text-muted-foreground">
+                          <strong>Descrição:</strong> {medication.description}
+                        </p>
+                      )}
+                      <p className="text-sm text-muted-foreground pt-2">
+                        Aqui o Lifebot forneceria informações detalhadas sobre alergias, interações medicamentosas comuns e outras considerações importantes para o medicamento {medication.name}.
+                      </p>
+                       {medication.alerts && medication.alerts.length > 0 && (
+                        <div className="mt-2">
+                          <p className="text-sm font-semibold text-red-600">Alertas Importantes:</p>
+                          <ul className="list-disc list-inside text-sm text-red-500 pl-4">
+                            {medication.alerts.map((alert, index) => (
+                              <li key={index}>{alert}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                    <DialogFooter>
+                      <DialogClose asChild>
+                        <Button type="button" variant="outline">Fechar</Button>
+                      </DialogClose>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
               </div>
             </CardContent>
           </Card>
