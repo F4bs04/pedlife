@@ -69,7 +69,7 @@ export const mockMedicationsData: MockMedicationData = {
     icon: Pill,
     iconColorClass: 'text-blue-500',
     bgColorClass: 'bg-blue-100',
-    medicationsCount: 5, 
+    medicationsCount: 3, // Atualizado de 5 para 3
     lastUpdated: 'Mai/2025', 
     medications: [
       { 
@@ -142,14 +142,12 @@ export const mockMedicationsData: MockMedicationData = {
         calculationParams: {
           type: 'azitromicina_suspensao_200_5',
           mgPerKg: 10,
-          maxDailyDoseMg: 1000, // This is total daily dose, which for 1x/day is also dose per take
-          dosesPerDay: 1, // Not strictly used in calculation formula for this specific med as dose is once a day
+          maxDailyDoseMg: 1000, 
+          dosesPerDay: 1, 
           concentrationNumeratorMg: 200,
           concentrationDenominatorMl: 5,
         } as DosageCalculationParams
       },
-      { name: 'Azitromicina', slug: slugify('Azitromicina'), form: 'Comprimido', application: 'VO' },
-      { name: 'Cefalexina', slug: slugify('Cefalexina'), form: 'Suspensão Oral', application: 'VO' },
     ],
   },
   [slugify('Analgésicos e Antitérmicos')]: {
