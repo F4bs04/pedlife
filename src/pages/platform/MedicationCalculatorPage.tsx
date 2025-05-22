@@ -64,7 +64,7 @@ const MedicationCalculatorPage: React.FC = () => {
   const onSubmit = (values: FormValues) => {
     console.log("Valores do formulário:", values);
     let doseResultText: string;
-    const params = medication.calculationParams as DosageCalculationParams | undefined; // Add undefined for safety
+    const params = medication.calculationParams as DosageCalculationParams | undefined;
 
     // Existing Amoxicilina 250mg/5mL logic
     if (medication.slug === slugify('Amoxicilina') && params?.type === 'amoxicilina_suspension_250_5') {
@@ -150,6 +150,33 @@ const MedicationCalculatorPage: React.FC = () => {
         const roundedVolumePerTakeMl = parseFloat(volumePerTakeMlUncapped.toFixed(2));
 
         doseResultText = `Tomar ${roundedVolumePerTakeMl} mL por via oral uma vez ao dia por 3 a 5 dias.`;
+      } else {
+        doseResultText = `Erro: Parâmetros de cálculo para ${medication.name} estão incompletos. Verifique os dados do medicamento.`;
+        console.error(`Parâmetros de cálculo incompletos para ${medication.name}:`, params);
+      }
+    }
+    // Dipirona 500 mg / mL (gotas) logic
+    else if (medication.slug === slugify('Dipirona') && params?.type === 'dipirona_gotas_500_ml') {
+      const weight = values.weight;
+
+      if (
+        params.mgPerKg !== undefined &&
+        params.maxDosePerTakeMg !== undefined &&
+        params.mgInStandardVolume !== undefined &&
+        params.dropsInStandardVolume !== undefined
+      ) {
+        let dosePerTakeMg = weight * params.mgPerKg;
+        dosePerTakeMg = Math.min(dosePerTakeMg, params.maxDosePerTakeMg);
+
+        // Calculate drops: dose_total_mg / (mgPerDropNumerator / mgPerDropDenominator)
+        // (mgPerDropNumerator / mgPerDropDenominator) is mg per gota.
+        // Example: 500mg / 25 gotas = 20 mg/gota
+        const mgPerDrop = params.mgInStandardVolume / params.dropsInStandardVolume;
+        const calculatedDrops = dosePerTakeMg / mgPerDrop;
+        
+        const roundedDrops = Math.round(calculatedDrops);
+
+        doseResultText = `Tomar ${roundedDrops} gotas por via oral de 6/6 horas.`;
       } else {
         doseResultText = `Erro: Parâmetros de cálculo para ${medication.name} estão incompletos. Verifique os dados do medicamento.`;
         console.error(`Parâmetros de cálculo incompletos para ${medication.name}:`, params);
