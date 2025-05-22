@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { UseFormReturn, FieldValues } from 'react-hook-form';
+import { UseFormReturn, FieldValues, Path } from 'react-hook-form';
 import { NavigateFunction } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,13 +20,17 @@ interface MedicationCalculatorInputFormProps<T extends FieldValues> {
   navigate: NavigateFunction;
 }
 
-const MedicationCalculatorInputForm = <T extends FieldValues>({ form, onSubmit, navigate }: MedicationCalculatorInputFormProps<T>) => {
+const MedicationCalculatorInputForm = <T extends { weight: number; age: number }>({ 
+  form, 
+  onSubmit, 
+  navigate 
+}: MedicationCalculatorInputFormProps<T>) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
-          name="weight"
+          name={"weight" as Path<T>}
           render={({ field }) => (
             <FormItem>
               <FormLabel htmlFor="weight">Peso (kg)</FormLabel>
@@ -39,7 +43,7 @@ const MedicationCalculatorInputForm = <T extends FieldValues>({ form, onSubmit, 
         />
         <FormField
           control={form.control}
-          name="age"
+          name={"age" as Path<T>}
           render={({ field }) => (
             <FormItem>
               <FormLabel htmlFor="age">Idade (anos)</FormLabel>
