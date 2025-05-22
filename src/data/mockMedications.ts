@@ -7,18 +7,16 @@ import {
   FlaskConical,
   Bone,
   Brain,
-  Lungs,
+  Activity, // Used instead of Lungs
   LucideIcon,
   Baby,
-  ShieldAlert,
+  ShieldAlert, // Used instead of Virus
   Thermometer,
   Ear,
   Eye,
   Package,
-  Activity,
   Droplets,
   TestTube2,
-  Virus
 } from 'lucide-react';
 import { slugify } from '@/lib/utils';
 import { MockMedicationData, CategoryInfo, MedicationCategoryData, Medication, DosageCalculationParams } from '@/types/medication';
@@ -28,11 +26,11 @@ export const allCategories: Omit<CategoryInfo, 'medicationsCount' | 'lastUpdated
   { title: 'Analgésicos e Antitérmicos', slug: slugify('Analgésicos e Antitérmicos'), icon: Thermometer, iconColorClass: 'text-teal-500', bgColorClass: 'bg-teal-100' },
   { title: 'Corticoides EV', slug: slugify('Corticoides EV'), icon: Syringe, iconColorClass: 'text-red-500', bgColorClass: 'bg-red-100' },
   { title: 'Antieméticos', slug: slugify('Antieméticos'), icon: Package, iconColorClass: 'text-purple-500', bgColorClass: 'bg-purple-100' },
-  { title: 'Broncodilatadores', slug: slugify('Broncodilatadores'), icon: Lungs, iconColorClass: 'text-green-500', bgColorClass: 'bg-green-100' },
+  { title: 'Broncodilatadores', slug: slugify('Broncodilatadores'), icon: Activity, iconColorClass: 'text-green-500', bgColorClass: 'bg-green-100' }, // Icon changed
   { title: 'Outras Classes', slug: slugify('Outras Classes'), icon: Activity, iconColorClass: 'text-yellow-500', bgColorClass: 'bg-yellow-100' },
   { title: 'Fluidos e Eletrólitos', slug: slugify('Fluidos e Eletrólitos'), icon: Droplets, iconColorClass: 'text-cyan-500', bgColorClass: 'bg-cyan-100' },
   { title: 'Vitaminas e Suplementos', slug: slugify('Vitaminas e Suplementos'), icon: TestTube2, iconColorClass: 'text-orange-500', bgColorClass: 'bg-orange-100' },
-  { title: 'Antivirais', slug: slugify('Antivirais'), icon: Virus, iconColorClass: 'text-pink-500', bgColorClass: 'bg-pink-100' },
+  { title: 'Antivirais', slug: slugify('Antivirais'), icon: ShieldAlert, iconColorClass: 'text-pink-500', bgColorClass: 'bg-pink-100' }, // Icon changed
 ];
 
 export const mockMedicationsData: MockMedicationData = {
@@ -148,8 +146,8 @@ export const mockMedicationsData: MockMedicationData = {
           type: 'paracetamol_gotas_200_ml',
           mgPerKg: 10,
           maxDosePerTakeMg: 350,
-          mgInStandardVolume: 200,
-          dropsInStandardVolume: 10,
+          mgInStandardVolume: 200, // 200mg
+          dropsInStandardVolume: 10, // em 10 gotas
         } as DosageCalculationParams
       },
       {
@@ -200,7 +198,7 @@ export const mockMedicationsData: MockMedicationData = {
   [slugify('Broncodilatadores')]: {
     title: 'Broncodilatadores',
     slug: slugify('Broncodilatadores'),
-    icon: Lungs,
+    icon: Activity, // Icon changed
     iconColorClass: 'text-green-500',
     bgColorClass: 'bg-green-100',
     medicationsCount: 0,
@@ -240,7 +238,7 @@ export const mockMedicationsData: MockMedicationData = {
   [slugify('Antivirais')]: {
     title: 'Antivirais',
     slug: slugify('Antivirais'),
-    icon: Virus,
+    icon: ShieldAlert, // Icon changed
     iconColorClass: 'text-pink-500',
     bgColorClass: 'bg-pink-100',
     medicationsCount: 0,
@@ -254,6 +252,12 @@ allCategories.forEach(category => {
   if (categoryData) {
     (category as CategoryInfo).medicationsCount = categoryData.medications.length;
     (category as CategoryInfo).lastUpdated = categoryData.lastUpdated || 'N/A';
+    // Ensure the icon from mockMedicationsData is also updated if it was derived, though allCategories is primary for display list
+     if (allCategories.find(c => c.slug === category.slug)) {
+        const catInfo = allCategories.find(c => c.slug === category.slug);
+        if(catInfo) categoryData.icon = catInfo.icon;
+     }
+
   } else {
     (category as CategoryInfo).medicationsCount = 0;
     (category as CategoryInfo).lastUpdated = 'N/A';
