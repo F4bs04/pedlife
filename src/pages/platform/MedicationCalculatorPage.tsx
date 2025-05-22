@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,19 +8,24 @@ import { format } from 'date-fns';
 import { slugify } from '@/lib/utils';
 
 import { mockMedicationsData, allCategories } from '@/data/mockMedications';
-import { MedicationCategoryData, DosageCalculationParams, Medication } from '@/types/medication'; // Medication import was missing, CategoryInfo not directly used
+import { MedicationCategoryData, DosageCalculationParams, Medication } from '@/types/medication';
 
 // New component imports
 import MedicationNotFound from '@/components/platform/calculator/MedicationNotFound';
 import MedicationFormView from '@/components/platform/calculator/MedicationFormView';
 import MedicationResultsView from '@/components/platform/calculator/MedicationResultsView';
 
+// Define the form schema with required fields
 const formSchema = z.object({
   weight: z.coerce.number().positive({ message: "Peso deve ser um número positivo." }),
   age: z.coerce.number().int().positive({ message: "Idade deve ser um número inteiro positivo." }),
 });
 
-type FormValues = z.infer<typeof formSchema>;
+// Define the form values type explicitly from the schema
+type FormValues = {
+  weight: number;
+  age: number;
+};
 
 interface CalculationData {
   weight: number;
@@ -39,12 +43,16 @@ const MedicationCalculatorPage: React.FC = () => {
   const medication = categoryData?.medications.find(m => m.slug === medicationSlug);
   const categoryDisplayInfo = allCategories.find(c => c.slug === categorySlug);
   
+  // Use the explicit FormValues type to ensure type consistency
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
+    // Use non-zero defaults to ensure they're valid according to the schema
     defaultValues: {
-      weight: 0,
-      age: 0,
+      weight: 10,
+      age: 5,
     },
+    // This is important - it tells React Hook Form that all fields are required
+    mode: "onSubmit"
   });
 
   const [calculationData, setCalculationData] = useState<CalculationData | null>(null);
@@ -135,14 +143,17 @@ const MedicationCalculatorPage: React.FC = () => {
 
   const handleReturnToForm = () => {
     setCalculationData(null);
-    form.reset(); // This will reset to defaultValues: { weight: 0, age: 0 }
+    form.reset({
+      weight: 10,
+      age: 5,
+    }); // Reset to non-zero defaults instead of zeros
   };
 
   if (calculationData) {
     return (
       <MedicationResultsView
         categorySlug={categorySlug}
-        categoryData={categoryData as MedicationCategoryData} // Cast since we checked categoryData
+        categoryData={categoryData as MedicationCategoryData}
         medication={medication}
         calculationData={calculationData}
         handleReturnToForm={handleReturnToForm}
@@ -153,9 +164,9 @@ const MedicationCalculatorPage: React.FC = () => {
   return (
     <MedicationFormView
       categorySlug={categorySlug}
-      categoryData={categoryData as MedicationCategoryData} // Cast since we checked categoryData
+      categoryData={categoryData as MedicationCategoryData}
       medication={medication}
-      categoryDisplayInfo={categoryDisplayInfo} // categoryDisplayInfo is checked for undefined earlier
+      categoryDisplayInfo={categoryDisplayInfo}
       form={form}
       onSubmit={onSubmit}
       navigate={navigate}

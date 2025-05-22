@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import MedicationCalculatorInputForm from './MedicationCalculatorInputForm';
 import MedicationDetailsSideCard from './MedicationDetailsSideCard';
 
+// Define the form values type consistently across components
 type FormValues = {
   weight: number;
   age: number;
