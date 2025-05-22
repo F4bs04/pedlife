@@ -1,5 +1,19 @@
 import { LucideIcon } from "lucide-react";
 
+// Adicionada interface para parâmetros de cálculo de dose
+export interface DosageCalculationParams {
+  type: string; // Identificador do tipo de cálculo, ex: 'amoxicilina_suspension_250_5'
+  mgPerKg?: number;
+  maxDailyDoseMg?: number;
+  dosesPerDay?: number;
+  concentrationNumeratorMg?: number;
+  concentrationDenominatorMl?: number;
+  maxVolumePerDoseBeforeCapMl?: number;
+  cappedVolumeAtMaxMl?: number;
+  // Outros parâmetros conforme necessário para diferentes lógicas
+  [key: string]: any; // Permite propriedades adicionais
+}
+
 export interface Medication {
   name: string;
   slug: string; // Adicionado para navegação
@@ -15,7 +29,7 @@ export interface Medication {
     treatmentDuration?: string; // e.g., "7 dias"
     administrationNotes?: string; // e.g., "Administrar com alimentos"
   };
-  // Futuramente: dose, alertas, cuidados, recomendações, etc.
+  calculationParams?: DosageCalculationParams; // Adicionado para lógica de cálculo
 }
 
 export interface CategoryInfo {

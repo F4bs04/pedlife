@@ -1,5 +1,6 @@
-import { Pill, Syringe, Stethoscope, Plus, AlertTriangle, Info } from 'lucide-react'; // Adicionado Plus
-import { MockMedicationData, CategoryInfo, Medication } from '@/types/medication';
+
+import { Pill, Syringe, Stethoscope, Plus, AlertTriangle, Info } from 'lucide-react';
+import { MockMedicationData, CategoryInfo, Medication, DosageCalculationParams } from '@/types/medication'; // Adicionado DosageCalculationParams
 import { slugify } from '@/lib/utils';
 
 // Helper para criar informações de categoria, para evitar repetição na CalculatorPage
@@ -70,9 +71,34 @@ export const mockMedicationsData: MockMedicationData = {
     iconColorClass: 'text-blue-500',
     bgColorClass: 'bg-blue-100',
     medicationsCount: 3,
-    lastUpdated: 'Fev/2025',
+    lastUpdated: 'Mai/2025', // Atualizado
     medications: [
-      { name: 'Amoxicilina', slug: slugify('Amoxicilina'), form: 'Suspensão Oral', application: 'VO' },
+      { 
+        name: 'Amoxicilina', 
+        slug: slugify('Amoxicilina'), 
+        form: 'Xarope (suspensão oral)', // Atualizado
+        application: 'VO',
+        description: 'A amoxicilina é um antibiótico beta-lactâmico usado para tratar uma variedade de infecções bacterianas.',
+        alerts: ['Alergia a penicilinas é uma contraindicação.', 'Pode causar distúrbios gastrointestinais.'],
+        commonBrandNames: 'Amoxil®, Novocilin®, Velamox®',
+        dosageInformation: {
+          concentration: '250 mg / 5 mL',
+          usualDose: 'Pediátrico: 25-50 mg/kg/dia divididos a cada 8 horas. Adultos: 250-500 mg a cada 8 horas.',
+          doseInterval: 'A cada 8 horas (3 vezes ao dia)',
+          treatmentDuration: 'De 7 a 10 dias',
+          administrationNotes: 'Pode ser administrado com ou sem alimentos. Agitar bem a suspensão antes de usar.'
+        },
+        calculationParams: { // Adicionada lógica de cálculo específica
+          type: 'amoxicilina_suspension_250_5',
+          mgPerKg: 50,
+          maxDailyDoseMg: 1750,
+          dosesPerDay: 3,
+          concentrationNumeratorMg: 250, // 250mg
+          concentrationDenominatorMl: 5,   // por 5mL
+          maxVolumePerDoseBeforeCapMl: 12, // Limite antes de aplicar o cap de 10mL
+          cappedVolumeAtMaxMl: 10          // Volume a ser usado se > 12mL
+        } as DosageCalculationParams // Type assertion for clarity
+      },
       { name: 'Azitromicina', slug: slugify('Azitromicina'), form: 'Comprimido', application: 'VO' },
       { name: 'Cefalexina', slug: slugify('Cefalexina'), form: 'Suspensão Oral', application: 'VO' },
     ],

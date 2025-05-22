@@ -3,11 +3,12 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { format } from 'date-fns'; // Importar date-fns
-import { ptBR } from 'date-fns/locale'; // Importar locale pt-BR
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+import { slugify } from '@/lib/utils'; // Adicionado slugify
 
 import { mockMedicationsData, allCategories } from '@/data/mockMedications';
-import { Medication, CategoryInfo } from '@/types/medication';
+import { Medication, CategoryInfo, DosageCalculationParams } from '@/types/medication'; // Adicionado DosageCalculationParams
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -44,7 +45,7 @@ import {
 
 const formSchema = z.object({
   weight: z.coerce.number().positive({ message: "Peso deve ser um número positivo." }),
-  age: z.coerce.number().int().positive({ message: "Idade deve ser um número inteiro positivo." }),
+  age: z.coerce.number().int().positive({ message: "Idade deve ser um número inteiro positivo." }), // Idade ainda é coletada
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -97,13 +98,44 @@ const MedicationCalculatorPage: React.FC = () => {
 
   const onSubmit = (values: FormValues) => {
     console.log("Valores do formulário:", values);
-    // Placeholder para lógica de cálculo de dose
-    const doseResult = `Resultado para ${medication.name}: ${values.weight}kg, ${values.age} anos. (Lógica de cálculo real pendente)`;
+    let doseResultText: string;
+
+    // Lógica de cálculo específica para Amoxicilina
+    if (medication.slug === slugify('Amoxicilina') && medication.calculationParams?.type === 'amoxicilina_suspension_250_5') {
+      const params = medication.calculationParams as DosageCalculationParams; // Confia nos tipos
+      const weight = values.weight;
+
+      if (params.mgPerKg && params.maxDailyDoseMg && params.dosesPerDay && params.concentrationNumeratorMg && params.concentrationDenominatorMl && params.maxVolumePerDoseBeforeCapMl !== undefined && params.cappedVolumeAtMaxMl !== undefined) {
+        let totalDailyDoseMg = weight * params.mgPerKg;
+        totalDailyDoseMg = Math.min(totalDailyDoseMg, params.maxDailyDoseMg);
+
+        const dosePerTakeMg = totalDailyDoseMg / params.dosesPerDay;
+        
+        const concentrationRatio = params.concentrationNumeratorMg / params.concentrationDenominatorMl; // mg por mL
+        const volumePerTakeMlUncapped = dosePerTakeMg / concentrationRatio;
+
+        let finalVolumePerTakeMlAdjusted = volumePerTakeMlUncapped;
+        if (volumePerTakeMlUncapped > params.maxVolumePerDoseBeforeCapMl) {
+          finalVolumePerTakeMlAdjusted = params.cappedVolumeAtMaxMl;
+        }
+        
+        const roundedVolumePerTakeMl = Math.round(finalVolumePerTakeMlAdjusted);
+
+        doseResultText = `Tomar ${roundedVolumePerTakeMl} mL do xarope por via oral de 8/8 horas por 7 a 10 dias.`;
+      } else {
+        // Fallback se os parâmetros estiverem incompletos para Amoxicilina
+        doseResultText = `Erro: Parâmetros de cálculo para ${medication.name} estão incompletos. Verifique os dados do medicamento.`;
+        console.error("Parâmetros de cálculo incompletos para Amoxicilina:", params);
+      }
+    } else {
+      // Placeholder para lógica de cálculo de dose para outros medicamentos
+      doseResultText = `Cálculo para ${medication.name} (${medication.form || 'forma não especificada'}): Para peso ${values.weight}kg e idade ${values.age} anos. Dose: (Lógica de cálculo detalhada ainda não implementada para este medicamento). Verifique a bula e informações adicionais.`;
+    }
     
     setCalculationData({
       weight: values.weight,
-      age: values.age,
-      calculatedDoseText: doseResult,
+      age: values.age, // Idade é mantida nos dados, mesmo que não usada no cálculo específico da Amoxicilina
+      calculatedDoseText: doseResultText,
       calculationDate: format(new Date(), "dd/MM/yyyy"),
       calculationTime: format(new Date(), "HH:mm"),
     });
@@ -363,7 +395,6 @@ const MedicationCalculatorPage: React.FC = () => {
                   </div>
                 </form>
               </Form>
-              {/* Removido o Alert de dose calculada daqui, pois agora temos uma view separada */}
             </CardContent>
           </Card>
         </div>
