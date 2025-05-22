@@ -64,10 +64,10 @@ const MedicationCalculatorPage: React.FC = () => {
   const onSubmit = (values: FormValues) => {
     console.log("Valores do formulário:", values);
     let doseResultText: string;
+    const params = medication.calculationParams as DosageCalculationParams | undefined; // Add undefined for safety
 
     // Existing Amoxicilina 250mg/5mL logic
-    if (medication.slug === slugify('Amoxicilina') && medication.calculationParams?.type === 'amoxicilina_suspension_250_5') {
-      const params = medication.calculationParams as DosageCalculationParams;
+    if (medication.slug === slugify('Amoxicilina') && params?.type === 'amoxicilina_suspension_250_5') {
       const weight = values.weight;
 
       if (params.mgPerKg && params.maxDailyDoseMg && params.dosesPerDay && params.concentrationNumeratorMg && params.concentrationDenominatorMl && params.maxVolumePerDoseBeforeCapMl !== undefined && params.cappedVolumeAtMaxMl !== undefined) {
@@ -93,8 +93,7 @@ const MedicationCalculatorPage: React.FC = () => {
       }
     } 
     // Amoxicilina Tri-hidratada 400mg/5mL logic
-    else if (medication.slug === slugify('Amoxicilina Tri-hidratada') && medication.calculationParams?.type === 'amoxicilina_suspension_400_5') {
-      const params = medication.calculationParams as DosageCalculationParams;
+    else if (medication.slug === slugify('Amoxicilina Tri-hidratada') && params?.type === 'amoxicilina_suspension_400_5') {
       const weight = values.weight;
 
       if (
@@ -127,6 +126,35 @@ const MedicationCalculatorPage: React.FC = () => {
         console.error(`Parâmetros de cálculo incompletos para ${medication.name}:`, params);
       }
     }
+    // Azitromicina Di-hidratada 200mg/5mL logic
+    else if (medication.slug === slugify('Azitromicina Di-hidratada') && params?.type === 'azitromicina_suspensao_200_5') {
+      const weight = values.weight;
+
+      if (
+        params.mgPerKg !== undefined &&
+        params.maxDailyDoseMg !== undefined &&
+        params.dosesPerDay !== undefined && // Though dosesPerDay is 1, it's good practice to have it for consistency
+        params.concentrationNumeratorMg !== undefined &&
+        params.concentrationDenominatorMl !== undefined
+      ) {
+        let totalDailyDoseMg = weight * params.mgPerKg;
+        totalDailyDoseMg = Math.min(totalDailyDoseMg, params.maxDailyDoseMg);
+        
+        // For Azitromicina, dosePerTakeMg is the same as totalDailyDoseMg because it's once a day
+        // const dosePerTakeMg = totalDailyDoseMg / params.dosesPerDay; 
+        
+        const concentrationRatio = params.concentrationNumeratorMg / params.concentrationDenominatorMl;
+        const volumePerTakeMlUncapped = totalDailyDoseMg / concentrationRatio; // Using totalDailyDoseMg directly
+
+        // Arredondar para no máximo 2 casas decimais
+        const roundedVolumePerTakeMl = parseFloat(volumePerTakeMlUncapped.toFixed(2));
+
+        doseResultText = `Tomar ${roundedVolumePerTakeMl} mL por via oral uma vez ao dia por 3 a 5 dias.`;
+      } else {
+        doseResultText = `Erro: Parâmetros de cálculo para ${medication.name} estão incompletos. Verifique os dados do medicamento.`;
+        console.error(`Parâmetros de cálculo incompletos para ${medication.name}:`, params);
+      }
+    }
     // Fallback for other medications
     else {
       doseResultText = `Cálculo para ${medication.name} (${medication.form || 'forma não especificada'}): Para peso ${values.weight}kg e idade ${values.age} anos. Dose: (Lógica de cálculo detalhada ainda não implementada para este medicamento). Verifique a bula e informações adicionais.`;
@@ -146,7 +174,7 @@ const MedicationCalculatorPage: React.FC = () => {
     form.reset({
       weight: 10,
       age: 5,
-    }); // Reset to non-zero defaults instead of zeros
+    });
   };
 
   if (calculationData) {

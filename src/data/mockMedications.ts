@@ -69,7 +69,7 @@ export const mockMedicationsData: MockMedicationData = {
     icon: Pill,
     iconColorClass: 'text-blue-500',
     bgColorClass: 'bg-blue-100',
-    medicationsCount: 4, // Incremented from 3 to 4
+    medicationsCount: 5, // Incremented from 4 to 5
     lastUpdated: 'Mai/2025', 
     medications: [
       { 
@@ -116,19 +116,43 @@ export const mockMedicationsData: MockMedicationData = {
         calculationParams: {
           type: 'amoxicilina_suspension_400_5',
           mgPerKg: 50,
-          maxDailyDoseMg: 1750, // Mantido o mesmo limite diário, verificar se é o desejado para esta concentração
+          maxDailyDoseMg: 1750,
           dosesPerDay: 3,
           concentrationNumeratorMg: 400,
           concentrationDenominatorMl: 5,
-          maxVolumePerDoseBeforeCapMl: 12, // mL
-          cappedVolumeAtMaxMl: 10           // mL
+          maxVolumePerDoseBeforeCapMl: 12,
+          cappedVolumeAtMaxMl: 10
         } as DosageCalculationParams
       },
-      { name: 'Azitromicina', slug: slugify('Azitromicina'), form: 'Comprimido', application: 'VO' },
+      { 
+        name: 'Azitromicina Di-hidratada',
+        slug: slugify('Azitromicina Di-hidratada'),
+        form: 'Xarope (suspensão oral)',
+        application: 'VO',
+        description: 'Antibiótico macrolídeo utilizado para tratar diversas infecções bacterianas (apresentação 200mg/5mL).',
+        alerts: ['Alergia a macrolídeos é uma contraindicação.', 'Pode causar distúrbios gastrointestinais.', 'Monitorar função hepática em tratamentos prolongados.'],
+        commonBrandNames: 'Astro®, Zitromax®, Azitromicina Genérico',
+        dosageInformation: {
+          concentration: '200 mg / 5 mL',
+          usualDose: '10 mg/kg/dia, máximo de 1000 mg/dia.',
+          doseInterval: 'Uma vez ao dia (1x/dia)',
+          treatmentDuration: 'De 3 a 5 dias',
+          administrationNotes: 'Pode ser administrado com ou sem alimentos. Agitar bem a suspensão antes de usar. Administrar pelo menos 1 hora antes ou 2 horas após antiácidos.'
+        },
+        calculationParams: {
+          type: 'azitromicina_suspensao_200_5',
+          mgPerKg: 10,
+          maxDailyDoseMg: 1000,
+          dosesPerDay: 1,
+          concentrationNumeratorMg: 200,
+          concentrationDenominatorMl: 5,
+        } as DosageCalculationParams
+      },
+      { name: 'Azitromicina', slug: slugify('Azitromicina'), form: 'Comprimido', application: 'VO' }, // Placeholder, pode ser atualizado/removido depois
       { name: 'Cefalexina', slug: slugify('Cefalexina'), form: 'Suspensão Oral', application: 'VO' },
     ],
   },
-   [slugify('Analgésicos e Antitérmicos')]: {
+  [slugify('Analgésicos e Antitérmicos')]: {
     title: 'Analgésicos e Antitérmicos',
     slug: slugify('Analgésicos e Antitérmicos'),
     icon: Pill,
@@ -154,10 +178,12 @@ allCategories.forEach(cat => {
       medications: mockMedicationsData[cat.slug]?.medications?.map(m => ({...m, slug: slugify(m.name)})) || [],
     };
   } else { 
+    // Certifique-se de que o slug exista para todos os medicamentos e atualize a contagem
     mockMedicationsData[cat.slug].medications = mockMedicationsData[cat.slug].medications.map(m => ({
       ...m,
       slug: m.slug || slugify(m.name), // Ensure slug exists
     }));
+    // Atualiza a contagem de medicamentos para refletir quaisquer adições ou remoções
     mockMedicationsData[cat.slug].medicationsCount = mockMedicationsData[cat.slug].medications.length;
   }
   // Garante que a categoria base (sem medicamentos) seja adicionada se não existir
