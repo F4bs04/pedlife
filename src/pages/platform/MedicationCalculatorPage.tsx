@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -9,7 +8,7 @@ import { format } from 'date-fns';
 import { slugify } from '@/lib/utils';
 
 import { mockMedicationsData, allCategories } from '@/data/mockMedications';
-import { MedicationCategoryData, DosageCalculationParams } from '@/types/medication'; // Medication and CategoryInfo are now indirectly used via new components
+import { MedicationCategoryData, DosageCalculationParams, Medication } from '@/types/medication'; // Medication import was missing, CategoryInfo not directly used
 
 // New component imports
 import MedicationNotFound from '@/components/platform/calculator/MedicationNotFound';
@@ -42,8 +41,8 @@ const MedicationCalculatorPage: React.FC = () => {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      weight: undefined,
-      age: undefined,
+      weight: 0, // Changed from undefined
+      age: 0,    // Changed from undefined
     },
   });
 
@@ -57,6 +56,7 @@ const MedicationCalculatorPage: React.FC = () => {
     console.log("Valores do formulário:", values);
     let doseResultText: string;
 
+    // Existing Amoxicilina 250mg/5mL logic
     if (medication.slug === slugify('Amoxicilina') && medication.calculationParams?.type === 'amoxicilina_suspension_250_5') {
       const params = medication.calculationParams as DosageCalculationParams;
       const weight = values.weight;
@@ -80,9 +80,46 @@ const MedicationCalculatorPage: React.FC = () => {
         doseResultText = `Tomar ${roundedVolumePerTakeMl} mL do xarope por via oral de 8/8 horas por 7 a 10 dias.`;
       } else {
         doseResultText = `Erro: Parâmetros de cálculo para ${medication.name} estão incompletos. Verifique os dados do medicamento.`;
-        console.error("Parâmetros de cálculo incompletos para Amoxicilina:", params);
+        console.error(`Parâmetros de cálculo incompletos para ${medication.name}:`, params);
       }
-    } else {
+    } 
+    // New Amoxicilina Tri-hidratada 400mg/5mL logic
+    else if (medication.slug === slugify('Amoxicilina Tri-hidratada') && medication.calculationParams?.type === 'amoxicilina_suspension_400_5') {
+      const params = medication.calculationParams as DosageCalculationParams;
+      const weight = values.weight;
+
+      if (
+        params.mgPerKg !== undefined &&
+        params.maxDailyDoseMg !== undefined &&
+        params.dosesPerDay !== undefined &&
+        params.concentrationNumeratorMg !== undefined &&
+        params.concentrationDenominatorMl !== undefined &&
+        params.maxVolumePerDoseBeforeCapMl !== undefined &&
+        params.cappedVolumeAtMaxMl !== undefined
+      ) {
+        let totalDailyDoseMg = weight * params.mgPerKg;
+        totalDailyDoseMg = Math.min(totalDailyDoseMg, params.maxDailyDoseMg);
+
+        const dosePerTakeMg = totalDailyDoseMg / params.dosesPerDay;
+        
+        const concentrationRatio = params.concentrationNumeratorMg / params.concentrationDenominatorMl;
+        const volumePerTakeMlUncapped = dosePerTakeMg / concentrationRatio;
+
+        let finalVolumePerTakeMlAdjusted = volumePerTakeMlUncapped;
+        if (volumePerTakeMlUncapped > params.maxVolumePerDoseBeforeCapMl) {
+          finalVolumePerTakeMlAdjusted = params.cappedVolumeAtMaxMl;
+        }
+        
+        const roundedVolumePerTakeMl = Math.round(finalVolumePerTakeMlAdjusted);
+
+        doseResultText = `Tomar ${roundedVolumePerTakeMl} mL por via oral de 8/8 horas por 7 a 10 dias.`;
+      } else {
+        doseResultText = `Erro: Parâmetros de cálculo para ${medication.name} estão incompletos. Verifique os dados do medicamento.`;
+        console.error(`Parâmetros de cálculo incompletos para ${medication.name}:`, params);
+      }
+    }
+    // Fallback for other medications
+    else {
       doseResultText = `Cálculo para ${medication.name} (${medication.form || 'forma não especificada'}): Para peso ${values.weight}kg e idade ${values.age} anos. Dose: (Lógica de cálculo detalhada ainda não implementada para este medicamento). Verifique a bula e informações adicionais.`;
     }
     
@@ -97,7 +134,7 @@ const MedicationCalculatorPage: React.FC = () => {
 
   const handleReturnToForm = () => {
     setCalculationData(null);
-    form.reset();
+    form.reset(); // This will reset to defaultValues: { weight: 0, age: 0 }
   };
 
   if (calculationData) {
@@ -117,7 +154,7 @@ const MedicationCalculatorPage: React.FC = () => {
       categorySlug={categorySlug}
       categoryData={categoryData as MedicationCategoryData} // Cast since we checked categoryData
       medication={medication}
-      categoryDisplayInfo={categoryDisplayInfo}
+      categoryDisplayInfo={categoryDisplayInfo} // categoryDisplayInfo is checked for undefined earlier
       form={form}
       onSubmit={onSubmit}
       navigate={navigate}
