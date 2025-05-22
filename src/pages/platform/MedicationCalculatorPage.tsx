@@ -182,6 +182,34 @@ const MedicationCalculatorPage: React.FC = () => {
         console.error(`Parâmetros de cálculo incompletos para ${medication.name}:`, params);
       }
     }
+    // Paracetamol 200 mg / mL (gotas) logic
+    else if (medication.slug === slugify('Paracetamol') && params?.type === 'paracetamol_gotas_200_ml') {
+      const weight = values.weight;
+
+      if (
+        params.mgPerKg !== undefined &&
+        params.maxDosePerTakeMg !== undefined &&
+        params.mgInStandardVolume !== undefined &&
+        params.dropsInStandardVolume !== undefined
+      ) {
+        let dosePerTakeMg = weight * params.mgPerKg;
+        dosePerTakeMg = Math.min(dosePerTakeMg, params.maxDosePerTakeMg);
+
+        // Calculate drops:
+        // mgPerDrop = mgInStandardVolume / dropsInStandardVolume
+        // Example: 200mg / 10 gotas = 20 mg/gota
+        const mgPerDrop = params.mgInStandardVolume / params.dropsInStandardVolume;
+        const calculatedDrops = dosePerTakeMg / mgPerDrop;
+        
+        // Arredondar para duas casas decimais
+        const roundedDrops = parseFloat(calculatedDrops.toFixed(2));
+
+        doseResultText = `Tomar ${roundedDrops} gotas por via oral de 4/4 horas. (Não exceder 5 administrações por dia)`;
+      } else {
+        doseResultText = `Erro: Parâmetros de cálculo para ${medication.name} estão incompletos. Verifique os dados do medicamento.`;
+        console.error(`Parâmetros de cálculo incompletos para ${medication.name}:`, params);
+      }
+    }
     // Fallback for other medications
     else {
       doseResultText = `Cálculo para ${medication.name} (${medication.form || 'forma não especificada'}): Para peso ${values.weight}kg e idade ${values.age} anos. Dose: (Lógica de cálculo detalhada ainda não implementada para este medicamento). Verifique a bula e informações adicionais.`;
