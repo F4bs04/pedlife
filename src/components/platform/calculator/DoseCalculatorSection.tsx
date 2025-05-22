@@ -7,14 +7,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import MedicationCalculatorInputForm from './MedicationCalculatorInputForm';
 import MedicationDetailsSideCard from './MedicationDetailsSideCard';
 
-interface DoseCalculatorSectionProps<T extends FieldValues> {
+interface DoseCalculatorSectionProps<T extends { weight: number; age: number }> {
   medication: Medication;
   form: UseFormReturn<T>;
   onSubmit: (values: T) => void;
   navigate: NavigateFunction;
 }
 
-const DoseCalculatorSection = <T extends FieldValues>({ medication, form, onSubmit, navigate }: DoseCalculatorSectionProps<T>) => {
+const DoseCalculatorSection = <T extends { weight: number; age: number }>({ medication, form, onSubmit, navigate }: DoseCalculatorSectionProps<T>) => {
   return (
     <section className="grid md:grid-cols-3 gap-8">
       <div className="md:col-span-2">

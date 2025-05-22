@@ -7,7 +7,7 @@ import CalculatorBreadcrumb from './CalculatorBreadcrumb';
 import MedicationInfoSummarySection from './MedicationInfoSummarySection';
 import DoseCalculatorSection from './DoseCalculatorSection';
 
-interface MedicationFormViewProps<T extends FieldValues> {
+interface MedicationFormViewProps<T extends { weight: number; age: number }> {
   categorySlug: string;
   categoryData: MedicationCategoryData;
   medication: Medication;
@@ -17,7 +17,7 @@ interface MedicationFormViewProps<T extends FieldValues> {
   navigate: NavigateFunction;
 }
 
-const MedicationFormView = <T extends FieldValues>({
+const MedicationFormView = <T extends { weight: number; age: number }>({
   categorySlug,
   categoryData,
   medication,
