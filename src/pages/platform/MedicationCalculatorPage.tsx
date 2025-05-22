@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -41,8 +42,8 @@ const MedicationCalculatorPage: React.FC = () => {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      weight: 0, // Changed from undefined
-      age: 0,    // Changed from undefined
+      weight: 0,
+      age: 0,
     },
   });
 
@@ -83,7 +84,7 @@ const MedicationCalculatorPage: React.FC = () => {
         console.error(`Parâmetros de cálculo incompletos para ${medication.name}:`, params);
       }
     } 
-    // New Amoxicilina Tri-hidratada 400mg/5mL logic
+    // Amoxicilina Tri-hidratada 400mg/5mL logic
     else if (medication.slug === slugify('Amoxicilina Tri-hidratada') && medication.calculationParams?.type === 'amoxicilina_suspension_400_5') {
       const params = medication.calculationParams as DosageCalculationParams;
       const weight = values.weight;

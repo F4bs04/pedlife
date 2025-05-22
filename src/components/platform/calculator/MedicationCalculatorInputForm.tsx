@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { UseFormReturn, FieldValues, Path } from 'react-hook-form';
+import { UseFormReturn } from 'react-hook-form';
 import { NavigateFunction } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,23 +14,28 @@ import {
 } from "@/components/ui/form";
 import { ArrowLeft } from 'lucide-react';
 
-interface MedicationCalculatorInputFormProps<T extends FieldValues> {
-  form: UseFormReturn<T>;
-  onSubmit: (values: T) => void;
+type FormValues = {
+  weight: number;
+  age: number;
+};
+
+interface MedicationCalculatorInputFormProps {
+  form: UseFormReturn<FormValues>;
+  onSubmit: (values: FormValues) => void;
   navigate: NavigateFunction;
 }
 
-const MedicationCalculatorInputForm = <T extends { weight: number; age: number }>({ 
+const MedicationCalculatorInputForm = ({ 
   form, 
   onSubmit, 
   navigate 
-}: MedicationCalculatorInputFormProps<T>) => {
+}: MedicationCalculatorInputFormProps) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
-          name={"weight" as Path<T>}
+          name="weight"
           render={({ field }) => (
             <FormItem>
               <FormLabel htmlFor="weight">Peso (kg)</FormLabel>
@@ -43,7 +48,7 @@ const MedicationCalculatorInputForm = <T extends { weight: number; age: number }
         />
         <FormField
           control={form.control}
-          name={"age" as Path<T>}
+          name="age"
           render={({ field }) => (
             <FormItem>
               <FormLabel htmlFor="age">Idade (anos)</FormLabel>

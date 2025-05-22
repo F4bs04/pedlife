@@ -1,23 +1,28 @@
 
 import React from 'react';
-import { UseFormReturn, FieldValues } from 'react-hook-form';
+import { UseFormReturn } from 'react-hook-form';
 import { NavigateFunction } from 'react-router-dom';
 import { Medication, CategoryInfo, MedicationCategoryData } from '@/types/medication';
 import CalculatorBreadcrumb from './CalculatorBreadcrumb';
 import MedicationInfoSummarySection from './MedicationInfoSummarySection';
 import DoseCalculatorSection from './DoseCalculatorSection';
 
-interface MedicationFormViewProps<T extends { weight: number; age: number }> {
+type FormValues = {
+  weight: number;
+  age: number;
+};
+
+interface MedicationFormViewProps {
   categorySlug: string;
   categoryData: MedicationCategoryData;
   medication: Medication;
   categoryDisplayInfo: Omit<CategoryInfo, 'medicationsCount' | 'lastUpdated'>;
-  form: UseFormReturn<T>;
-  onSubmit: (values: T) => void;
+  form: UseFormReturn<FormValues>;
+  onSubmit: (values: FormValues) => void;
   navigate: NavigateFunction;
 }
 
-const MedicationFormView = <T extends { weight: number; age: number }>({
+const MedicationFormView = ({
   categorySlug,
   categoryData,
   medication,
@@ -25,7 +30,7 @@ const MedicationFormView = <T extends { weight: number; age: number }>({
   form,
   onSubmit,
   navigate,
-}: MedicationFormViewProps<T>) => {
+}: MedicationFormViewProps) => {
   return (
     <div className="max-w-6xl mx-auto py-8 px-4 bg-slate-50 min-h-full rounded-lg">
       <CalculatorBreadcrumb

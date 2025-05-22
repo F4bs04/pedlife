@@ -1,20 +1,25 @@
 
 import React from 'react';
-import { UseFormReturn, FieldValues } from 'react-hook-form';
+import { UseFormReturn } from 'react-hook-form';
 import { NavigateFunction } from 'react-router-dom';
 import { Medication } from '@/types/medication';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import MedicationCalculatorInputForm from './MedicationCalculatorInputForm';
 import MedicationDetailsSideCard from './MedicationDetailsSideCard';
 
-interface DoseCalculatorSectionProps<T extends { weight: number; age: number }> {
+type FormValues = {
+  weight: number;
+  age: number;
+};
+
+interface DoseCalculatorSectionProps {
   medication: Medication;
-  form: UseFormReturn<T>;
-  onSubmit: (values: T) => void;
+  form: UseFormReturn<FormValues>;
+  onSubmit: (values: FormValues) => void;
   navigate: NavigateFunction;
 }
 
-const DoseCalculatorSection = <T extends { weight: number; age: number }>({ medication, form, onSubmit, navigate }: DoseCalculatorSectionProps<T>) => {
+const DoseCalculatorSection = ({ medication, form, onSubmit, navigate }: DoseCalculatorSectionProps) => {
   return (
     <section className="grid md:grid-cols-3 gap-8">
       <div className="md:col-span-2">
