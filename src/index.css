@@ -37,63 +37,57 @@
 
     --radius: 0.5rem;
 
-    /* ... keep existing code (sidebar and other variables) */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Melhorando o contraste do modo escuro */
+    --background: 240 10% 3.9%; /* Fundo muito escuro com leve tom azulado */
+    --foreground: 0 0% 98%; /* Texto quase branco */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 240 8% 8%; /* Cards com fundo escuro mas não preto */
+    --card-foreground: 0 0% 95%; /* Texto claro nos cards */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 8% 6%; /* Popovers com fundo bem escuro */
+    --popover-foreground: 0 0% 95%; /* Texto claro nos popovers */
 
-    /* Updated primary colors for dark mode */
-    --primary: 244 87% 65%; /* Lighter purple for dark mode */
-    --primary-foreground: 0 0% 100%; /* White text */
+    /* Cores primárias ajustadas para modo escuro */
+    --primary: 244 87% 65%; /* Purple mais claro para melhor contraste */
+    --primary-foreground: 0 0% 100%; /* Texto branco */
 
-    /* Updated secondary colors for dark mode */
-    --secondary: 222.2 84% 10%; /* Darker background for secondary buttons */
-    --secondary-foreground: 244 87% 75%; /* Lighter purple text for secondary */
+    /* Cores secundárias para modo escuro */
+    --secondary: 240 6% 15%; /* Fundo escuro para botões secundários */
+    --secondary-foreground: 244 87% 75%; /* Texto purple claro */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 240 6% 12%; /* Elementos silenciados com fundo escuro */
+    --muted-foreground: 240 5% 65%; /* Texto acinzentado claro */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 240 6% 15%; /* Cor de destaque escura */
+    --accent-foreground: 0 0% 95%; /* Texto claro para destaque */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 55%; /* Vermelho para destrutivo */
+    --destructive-foreground: 0 0% 98%; /* Texto claro */
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 244 87% 65%; /* Updated ring for dark mode */
-    /* ... keep existing code (sidebar and other dark mode variables) */
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 240 6% 20%; /* Bordas com tom escuro mas visível */
+    --input: 240 6% 15%; /* Inputs com fundo escuro */
+    --ring: 244 87% 65%; /* Ring com purple claro */
+
+    /* Sidebar ajustada para modo escuro */
+    --sidebar-background: 240 8% 6%; /* Sidebar bem escura */
+    --sidebar-foreground: 240 4.8% 85%; /* Texto claro na sidebar */
+    --sidebar-primary: 244 87% 65%; /* Primary purple na sidebar */
+    --sidebar-primary-foreground: 0 0% 100%; /* Texto branco */
+    --sidebar-accent: 240 6% 12%; /* Accent escuro na sidebar */
+    --sidebar-accent-foreground: 240 4.8% 85%; /* Texto claro */
+    --sidebar-border: 240 6% 20%; /* Bordas visíveis na sidebar */
+    --sidebar-ring: 244 87% 65%; /* Ring purple na sidebar */
   }
 }
 

@@ -32,7 +32,7 @@ const MedicationFormView = ({
   navigate,
 }: MedicationFormViewProps) => {
   return (
-    <div className="max-w-6xl mx-auto py-8 px-4 bg-slate-50 min-h-full rounded-lg">
+    <div className="max-w-6xl mx-auto py-8 px-4 bg-slate-50 dark:bg-background min-h-full rounded-lg">
       <CalculatorBreadcrumb
         categorySlug={categorySlug}
         categoryTitle={categoryData.title}
