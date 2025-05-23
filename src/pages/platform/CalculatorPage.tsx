@@ -36,7 +36,7 @@ const CalculatorPage: React.FC = () => {
   }));
 
   return (
-    <div className="flex flex-col items-center py-8 px-4 bg-gradient-to-br from-purple-50 via-indigo-50 to-pink-50 dark:bg-gray-900 min-h-[calc(100vh-10rem)] rounded-lg">
+    <div className="flex flex-col items-center py-8 px-4 bg-gradient-to-br from-purple-50 via-indigo-50 to-pink-50 dark:bg-gray-900 dark:from-transparent dark:via-transparent dark:to-transparent min-h-[calc(100vh-10rem)] rounded-lg">
       <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4 text-center">Cálculo de Doses Pediátricas</h1>
       <p className="text-lg text-gray-600 dark:text-gray-300 mb-12 max-w-2xl text-center">
         Escolha a categoria do medicamento para calcular a dose adequada com precisão e segurança para seus pacientes pediátricos.

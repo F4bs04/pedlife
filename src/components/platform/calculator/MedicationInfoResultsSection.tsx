@@ -37,9 +37,9 @@ Manter em temperatura ambiente, salvo indicação contrária.`}
 
   return (
     <>
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Informações do Medicamento</h2>
+      <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">Informações do Medicamento</h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <Card className="lg:col-span-2 relative">
+        <Card className="lg:col-span-2 relative dark:bg-gray-800 dark:border-gray-700">
            <Button 
             variant="ghost" 
             size="icon" 
@@ -50,10 +50,10 @@ Manter em temperatura ambiente, salvo indicação contrária.`}
             <Copy className="h-4 w-4" />
           </Button>
           <CardHeader>
-            <CardTitle className="text-xl text-gray-700">{medication.name}</CardTitle>
+            <CardTitle className="text-xl text-gray-700 dark:text-gray-100">{medication.name}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground mb-4">
+            <p className="text-sm text-muted-foreground mb-4 dark:text-gray-300">
               {medication.description || "Descrição não disponível."}
             </p>
             {medication.alerts && medication.alerts.length > 0 && (
@@ -67,7 +67,7 @@ Manter em temperatura ambiente, salvo indicação contrária.`}
           </CardContent>
         </Card>
         
-        <Card className="relative">
+        <Card className="relative dark:bg-gray-800 dark:border-gray-700">
           <Button 
             variant="ghost" 
             size="icon" 
@@ -78,9 +78,9 @@ Manter em temperatura ambiente, salvo indicação contrária.`}
             <Copy className="h-4 w-4" />
           </Button>
           <CardHeader>
-            <CardTitle className="text-lg font-semibold text-gray-700">Observações</CardTitle>
+            <CardTitle className="text-lg font-semibold text-gray-700 dark:text-gray-100">Observações</CardTitle>
           </CardHeader>
-          <CardContent className="text-sm text-gray-600 space-y-1">
+          <CardContent className="text-sm text-gray-600 dark:text-gray-300 space-y-1">
             {medication.dosageInformation?.administrationNotes ? (
               <p>{medication.dosageInformation.administrationNotes}</p>
             ) : (
