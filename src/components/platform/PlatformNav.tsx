@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Bell, UserCircle, Settings, Menu } from 'lucide-react'; // Added Menu icon
+import { Bell, UserCircle, Settings, Menu, Moon, Sun } from 'lucide-react'; // Added Moon and Sun icons
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -17,11 +17,13 @@ import {
   SheetContent,
   SheetTrigger,
   SheetClose,
-} from "@/components/ui/sheet"; // Added Sheet components
-import { useIsMobile } from '@/hooks/use-mobile'; // Import the hook
+} from "@/components/ui/sheet";
+import { useIsMobile } from '@/hooks/use-mobile';
+import { useTheme } from 'next-themes'; // Added theme hook
 
 export const PlatformNav: React.FC = () => {
-  const isMobile = useIsMobile(); // Use the hook
+  const isMobile = useIsMobile();
+  const { theme, setTheme } = useTheme(); // Added theme state
 
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
     `text-sm font-medium transition-colors hover:text-primary ${
@@ -34,17 +36,20 @@ export const PlatformNav: React.FC = () => {
     { to: "/platform/tips", label: "Fluxos e Dicas" },
   ];
 
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
-          <Link to="/platform" className="flex items-center gap-2"> {/* Changed Link to /platform */}
+          <Link to="/platform" className="flex items-center gap-2">
             <img
               src="https://cdn.builder.io/api/v1/image/assets/78ab2fde8e3747148b556fefd3eab937/db1b55d583e7aa08091a7b6d97e205ac58334204?placeholderIfAbsent=true"
               alt="Pedlife Logo"
               className="h-8 w-auto"
             />
-            {/* Removido: <span className="font-bold text-lg text-primary">PedLife</span> */}
           </Link>
           {!isMobile && (
             <nav className="flex items-center gap-4">
@@ -58,10 +63,25 @@ export const PlatformNav: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-4">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={toggleTheme}
+            className="text-muted-foreground hover:text-primary"
+          >
+            {theme === 'dark' ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
+            <span className="sr-only">Alternar tema</span>
+          </Button>
+          
           <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
             <Bell className="h-5 w-5" />
             <span className="sr-only">Notificações</span>
           </Button>
+          
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="relative h-8 w-8 rounded-full">
@@ -97,6 +117,7 @@ export const PlatformNav: React.FC = () => {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+          
           {isMobile && (
             <Sheet>
               <SheetTrigger asChild>
@@ -137,4 +158,3 @@ export const PlatformNav: React.FC = () => {
     </header>
   );
 };
-
