@@ -67,7 +67,7 @@
     --secondary-foreground: 244 87% 75%; /* Texto purple claro */
 
     --muted: 240 6% 12%; /* Elementos silenciados com fundo escuro */
-    --muted-foreground: 240 5% 65%; /* Texto acinzentado claro */
+    --muted-foreground: 240 5% 75%; /* Texto acinzentado MUITO mais claro (era 65%, agora 75%) */
 
     --accent: 240 6% 15%; /* Cor de destaque escura */
     --accent-foreground: 0 0% 95%; /* Texto claro para destaque */
