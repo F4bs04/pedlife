@@ -48,14 +48,14 @@
   }
 
   .dark {
-    /* Melhorando o contraste do modo escuro */
-    --background: 240 10% 3.9%; /* Fundo muito escuro com leve tom azulado */
-    --foreground: 0 0% 98%; /* Texto quase branco */
+    /* Fundo muito escuro para melhor contraste */
+    --background: 222 10% 4%; /* Fundo muito escuro com leve tom azulado */
+    --foreground: 0 0% 98%; /* Texto quase branco para máximo contraste */
 
-    --card: 240 8% 8%; /* Cards com fundo escuro mas não preto */
+    --card: 222 8% 8%; /* Cards com fundo escuro mas não preto */
     --card-foreground: 0 0% 95%; /* Texto claro nos cards */
 
-    --popover: 240 8% 6%; /* Popovers com fundo bem escuro */
+    --popover: 222 8% 6%; /* Popovers com fundo bem escuro */
     --popover-foreground: 0 0% 95%; /* Texto claro nos popovers */
 
     /* Cores primárias ajustadas para modo escuro */
@@ -63,30 +63,30 @@
     --primary-foreground: 0 0% 100%; /* Texto branco */
 
     /* Cores secundárias para modo escuro */
-    --secondary: 240 6% 15%; /* Fundo escuro para botões secundários */
+    --secondary: 222 6% 15%; /* Fundo escuro para botões secundários */
     --secondary-foreground: 244 87% 75%; /* Texto purple claro */
 
-    --muted: 240 6% 12%; /* Elementos silenciados com fundo escuro */
-    --muted-foreground: 240 5% 75%; /* Texto acinzentado MUITO mais claro (era 65%, agora 75%) */
+    --muted: 222 6% 12%; /* Elementos silenciados com fundo escuro */
+    --muted-foreground: 222 5% 85%; /* Texto acinzentado MUITO mais claro */
 
-    --accent: 240 6% 15%; /* Cor de destaque escura */
+    --accent: 222 6% 15%; /* Cor de destaque escura */
     --accent-foreground: 0 0% 95%; /* Texto claro para destaque */
 
     --destructive: 0 75% 55%; /* Vermelho para destrutivo */
     --destructive-foreground: 0 0% 98%; /* Texto claro */
 
-    --border: 240 6% 20%; /* Bordas com tom escuro mas visível */
-    --input: 240 6% 15%; /* Inputs com fundo escuro */
+    --border: 222 6% 20%; /* Bordas com tom escuro mas visível */
+    --input: 222 6% 15%; /* Inputs com fundo escuro */
     --ring: 244 87% 65%; /* Ring com purple claro */
 
     /* Sidebar ajustada para modo escuro */
-    --sidebar-background: 240 8% 6%; /* Sidebar bem escura */
-    --sidebar-foreground: 240 4.8% 85%; /* Texto claro na sidebar */
+    --sidebar-background: 222 8% 6%; /* Sidebar bem escura */
+    --sidebar-foreground: 222 4.8% 85%; /* Texto claro na sidebar */
     --sidebar-primary: 244 87% 65%; /* Primary purple na sidebar */
     --sidebar-primary-foreground: 0 0% 100%; /* Texto branco */
-    --sidebar-accent: 240 6% 12%; /* Accent escuro na sidebar */
-    --sidebar-accent-foreground: 240 4.8% 85%; /* Texto claro */
-    --sidebar-border: 240 6% 20%; /* Bordas visíveis na sidebar */
+    --sidebar-accent: 222 6% 12%; /* Accent escuro na sidebar */
+    --sidebar-accent-foreground: 222 4.8% 85%; /* Texto claro */
+    --sidebar-border: 222 6% 20%; /* Bordas visíveis na sidebar */
     --sidebar-ring: 244 87% 65%; /* Ring purple na sidebar */
   }
 }

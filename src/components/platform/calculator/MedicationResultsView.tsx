@@ -32,7 +32,7 @@ const MedicationResultsView: React.FC<MedicationResultsViewProps> = ({
   handleReturnToForm,
 }) => {
   return (
-    <div className="max-w-6xl mx-auto py-8 px-4 bg-[#F1F0FB] min-h-full rounded-lg">
+    <div className="max-w-6xl mx-auto py-8 px-4 bg-[#F1F0FB] dark:bg-background min-h-full rounded-lg">
       <CalculatorBreadcrumb
         categorySlug={categorySlug}
         categoryTitle={categoryData.title}
@@ -42,7 +42,7 @@ const MedicationResultsView: React.FC<MedicationResultsViewProps> = ({
       />
 
       <div className="mb-6 flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-gray-800">Resultado do Cálculo</h1>
+        <h1 className="text-3xl font-bold text-gray-800 dark:text-foreground">Resultado do Cálculo</h1>
         <Button variant="outline" onClick={handleReturnToForm}>
           <ArrowLeft className="mr-2 h-4 w-4" /> Retornar
         </Button>

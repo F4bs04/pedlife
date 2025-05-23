@@ -35,7 +35,7 @@ Cálculo Específico: ${calculatedDoseText}
   `.trim();
 
   return (
-    <Card className="lg:col-span-2 bg-pink-50 border-pink-200 relative">
+    <Card className="lg:col-span-2 bg-pink-50 dark:bg-pink-950/20 border-pink-200 dark:border-pink-800/30 relative">
       <Button 
         variant="ghost" 
         size="icon" 
@@ -46,24 +46,24 @@ Cálculo Específico: ${calculatedDoseText}
         <Copy className="h-4 w-4" />
       </Button>
       <CardHeader className="pb-2">
-        <div className="flex items-center text-pink-600">
+        <div className="flex items-center text-pink-600 dark:text-pink-400">
           <Pill className="h-5 w-5 mr-2" />
           <CardTitle className="text-lg font-semibold">Dose Calculada</CardTitle>
         </div>
       </CardHeader>
       <CardContent>
-        <h2 className="text-2xl font-bold text-gray-700 mb-3">
+        <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200 mb-3">
           {medication.name} {medication.form ? `(${medication.form})` : ''}
         </h2>
-        <div className="text-sm text-gray-600 space-y-1 mb-3">
+        <div className="text-sm text-gray-600 dark:text-gray-300 space-y-1 mb-3">
           <p><span className="font-semibold">Posologia:</span></p>
           <p>Duração: <span className="italic">{medication.dosageInformation?.treatmentDuration || "Conforme orientação médica"}</span></p>
           <p>Intervalo: <span className="italic">{medication.dosageInformation?.doseInterval || "Conforme orientação médica"}</span></p>
           <p>Dose usual: <span className="italic">{medication.dosageInformation?.usualDose || "Conforme orientação médica"}</span></p>
         </div>
-        <Alert variant="default" className="bg-white">
-          <AlertTitle className="font-semibold">Cálculo Específico:</AlertTitle>
-          <AlertDescription>{calculatedDoseText}</AlertDescription>
+        <Alert variant="default" className="bg-white dark:bg-gray-800/50 border-gray-200 dark:border-gray-700">
+          <AlertTitle className="font-semibold text-gray-900 dark:text-gray-100">Cálculo Específico:</AlertTitle>
+          <AlertDescription className="text-gray-700 dark:text-gray-200">{calculatedDoseText}</AlertDescription>
         </Alert>
       </CardContent>
     </Card>
