@@ -14,9 +14,9 @@ interface CategoryCardProps extends Omit<CategoryInfo, 'medicationsCount' | 'las
 
 const CategoryCard: React.FC<CategoryCardProps> = ({ title, slug, icon: Icon, iconColorClass, bgColorClass }) => (
   <Link to={`/platform/calculator/${slug}`} className="block">
-    <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer h-full bg-white dark:bg-gray-800/80 border-gray-200 dark:border-gray-700">
+    <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer h-full bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
       <CardHeader className="flex flex-col items-center justify-center text-center p-6 h-full">
-        <div className={`p-4 rounded-full mb-4 ${bgColorClass} dark:opacity-80`}>
+        <div className={`p-4 rounded-full mb-4 ${bgColorClass} dark:opacity-70`}>
           <Icon className={`h-8 w-8 ${iconColorClass}`} />
         </div>
         <CardTitle className="text-md font-semibold text-gray-700 dark:text-gray-100">{title}</CardTitle>
