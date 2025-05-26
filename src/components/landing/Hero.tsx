@@ -8,8 +8,8 @@ export const Hero: React.FC = () => {
     <section className="bg-[rgba(0,0,0,0)] w-full max-w-[1322px] mx-auto px-4 md:px-px">
       {/* Alterado para py-12 e pr-0 para mobile, padding original para md e acima */}
       <div className="bg-[rgba(0,0,0,0)] md:pr-[50px] pt-12 md:pt-[25px] pb-12 md:pb-[75px] max-md:max-w-full">
-        {/* Adicionado max-md:flex-col-reverse para inverter a ordem no mobile */}
-        <div className="gap-10 flex max-md:flex-col-reverse max-md:items-center">
+        {/* Alterado max-md:flex-col-reverse para max-md:flex-col para imagem antes do texto no mobile */}
+        <div className="gap-10 flex max-md:flex-col max-md:items-center">
           {/* Coluna da Imagem */}
           <div className="w-full md:w-6/12 flex justify-center items-center max-md:px-4">
             <img
@@ -51,3 +51,4 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
+
