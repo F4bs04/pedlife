@@ -9,7 +9,7 @@ export const Nav: React.FC = () => {
       <div className="bg-[rgba(0,0,0,0)] flex w-[1280px] max-w-full items-center gap-5 flex-wrap justify-between pr-4">
         <Link to="/">
           <img
-            src="https://cdn.builder.io/api/v1/image/assets/78ab2fde8e3747148b556fefd3eab937/db1b55d583e7aa08091a7b6d97e205ac58334204?placeholderIfAbsent=true"
+            src="/lovable-uploads/f28a1d9a-65e7-40b0-9280-dd734d727520.png"
             alt="Pedlife Logo"
             className="aspect-[4.27] object-contain w-[145px] shrink-0 max-w-full"
           />
@@ -34,3 +34,4 @@ export const Nav: React.FC = () => {
     </nav>
   );
 };
+

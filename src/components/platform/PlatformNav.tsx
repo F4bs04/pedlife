@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Bell, UserCircle, Settings, Menu, Moon, Sun } from 'lucide-react'; // Added Moon and Sun icons
+import { Bell, UserCircle, Settings, Menu, Moon, Sun } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -19,11 +19,11 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { useIsMobile } from '@/hooks/use-mobile';
-import { useTheme } from 'next-themes'; // Added theme hook
+import { useTheme } from 'next-themes';
 
 export const PlatformNav: React.FC = () => {
   const isMobile = useIsMobile();
-  const { theme, setTheme } = useTheme(); // Added theme state
+  const { theme, setTheme } = useTheme();
 
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
     `text-sm font-medium transition-colors hover:text-primary ${
@@ -46,9 +46,9 @@ export const PlatformNav: React.FC = () => {
         <div className="flex items-center gap-6">
           <Link to="/platform" className="flex items-center gap-2">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets/78ab2fde8e3747148b556fefd3eab937/db1b55d583e7aa08091a7b6d97e205ac58334204?placeholderIfAbsent=true"
+              src="/lovable-uploads/f28a1d9a-65e7-40b0-9280-dd734d727520.png"
               alt="Pedlife Logo"
-              className="h-8 w-auto"
+              className="h-8 w-auto" // Ajustei para h-8 para manter consistência, pode ser ajustado se necessário
             />
           </Link>
           {!isMobile && (
@@ -130,9 +130,9 @@ export const PlatformNav: React.FC = () => {
                 <nav className="grid gap-6 text-lg font-medium mt-8">
                   <Link to="/platform" className="flex items-center gap-2 mb-4">
                      <img
-                       src="https://cdn.builder.io/api/v1/image/assets/78ab2fde8e3747148b556fefd3eab937/db1b55d583e7aa08091a7b6d97e205ac58334204?placeholderIfAbsent=true"
+                       src="/lovable-uploads/f28a1d9a-65e7-40b0-9280-dd734d727520.png"
                        alt="Pedlife Logo"
-                       className="h-8 w-auto"
+                       className="h-8 w-auto" // Ajustei para h-8 para manter consistência
                      />
                    </Link>
                   {navItems.map((item) => (
