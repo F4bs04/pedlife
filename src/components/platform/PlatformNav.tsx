@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -46,7 +45,7 @@ export const PlatformNav: React.FC = () => {
         <div className="flex items-center gap-6">
           <Link to="/platform" className="flex items-center gap-2">
             <img
-              src="/lovable-uploads/f28a1d9a-65e7-40b0-9280-dd734d727520.png"
+              src="/lovable-uploads/b16ed0cb-3142-4d88-85ea-a5a2deccbba2.png"
               alt="Pedlife Logo"
               className="h-8 w-auto" // Ajustei para h-8 para manter consistência, pode ser ajustado se necessário
             />
@@ -130,7 +129,7 @@ export const PlatformNav: React.FC = () => {
                 <nav className="grid gap-6 text-lg font-medium mt-8">
                   <Link to="/platform" className="flex items-center gap-2 mb-4">
                      <img
-                       src="/lovable-uploads/f28a1d9a-65e7-40b0-9280-dd734d727520.png"
+                       src="/lovable-uploads/b16ed0cb-3142-4d88-85ea-a5a2deccbba2.png"
                        alt="Pedlife Logo"
                        className="h-8 w-auto" // Ajustei para h-8 para manter consistência
                      />

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button'; // Import Button
@@ -9,7 +8,7 @@ export const Nav: React.FC = () => {
       <div className="bg-[rgba(0,0,0,0)] flex w-[1280px] max-w-full items-center gap-5 flex-wrap justify-between pr-4">
         <Link to="/">
           <img
-            src="/lovable-uploads/f28a1d9a-65e7-40b0-9280-dd734d727520.png"
+            src="/lovable-uploads/b16ed0cb-3142-4d88-85ea-a5a2deccbba2.png"
             alt="Pedlife Logo"
             className="aspect-[4.27] object-contain w-[145px] shrink-0 max-w-full"
           />
@@ -34,4 +33,3 @@ export const Nav: React.FC = () => {
     </nav>
   );
 };
-
