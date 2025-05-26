@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -39,16 +40,16 @@ Dados do Paciente:
        <Button 
         variant="ghost" 
         size="icon" 
-        className="absolute top-2 right-2 text-primary/70 hover:text-primary"
+        className="absolute top-2 right-2 text-primary/70 hover:text-primary dark:text-primary-foreground/70 dark:hover:text-primary-foreground"
         onClick={() => copyToClipboard(textToCopy, "Dados do paciente copiados!")}
         title="Copiar dados do paciente"
       >
         <Copy className="h-4 w-4" />
       </Button>
       <CardHeader>
-        <CardTitle className="text-lg font-semibold text-gray-700">Dados do Paciente</CardTitle>
+        <CardTitle className="text-lg font-semibold text-gray-700 dark:text-gray-100">Dados do Paciente</CardTitle>
       </CardHeader>
-      <CardContent className="text-sm text-gray-600 space-y-1">
+      <CardContent className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
         <p>Peso: <span className="font-medium">{calculationData.weight} kg</span></p>
         <p>Idade: <span className="font-medium">{calculationData.age} anos</span></p>
         <p>Data do cálculo: <span className="font-medium">{calculationData.calculationDate}</span></p>
