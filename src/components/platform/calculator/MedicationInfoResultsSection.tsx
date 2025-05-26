@@ -1,22 +1,21 @@
-
 import React from 'react';
 import { Medication } from '@/types/medication';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Copy } from 'lucide-react';
+import { toast } from "@/components/ui/sonner";
 
 interface MedicationInfoResultsSectionProps {
   medication: Medication;
 }
 
-// Adicionando a função de cópia (pode ser movida para utils se usada em mais lugares)
-const copyToClipboard = (text: string) => {
+// Adicionando a função de cópia com toast
+const copyToClipboard = (text: string, successMessage: string = "Texto copiado para a área de transferência!") => {
   navigator.clipboard.writeText(text).then(() => {
-    // Opcional: Adicionar toast de sucesso
-    console.log("Texto copiado para a área de transferência!");
+    toast.success(successMessage);
   }).catch(err => {
     console.error("Falha ao copiar texto: ", err);
-    // Opcional: Adicionar toast de erro
+    toast.error("Falha ao copiar texto.");
   });
 };
 
@@ -44,7 +43,7 @@ Manter em temperatura ambiente, salvo indicação contrária.`}
             variant="ghost" 
             size="icon" 
             className="absolute top-2 right-2 text-primary/70 hover:text-primary"
-            onClick={() => copyToClipboard(medicationInfoToCopy)}
+            onClick={() => copyToClipboard(medicationInfoToCopy, "Informações do medicamento copiadas!")}
             title="Copiar informações do medicamento"
           >
             <Copy className="h-4 w-4" />
@@ -72,7 +71,7 @@ Manter em temperatura ambiente, salvo indicação contrária.`}
             variant="ghost" 
             size="icon" 
             className="absolute top-2 right-2 text-primary/70 hover:text-primary"
-            onClick={() => copyToClipboard(observationsToCopy)}
+            onClick={() => copyToClipboard(observationsToCopy, "Observações copiadas!")}
             title="Copiar observações"
           >
             <Copy className="h-4 w-4" />

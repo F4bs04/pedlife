@@ -1,8 +1,8 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Copy } from 'lucide-react';
+import { toast } from "@/components/ui/sonner";
 
 interface CalculationDataForCard {
   weight: number;
@@ -15,14 +15,13 @@ interface PatientDataCardProps {
   calculationData: CalculationDataForCard;
 }
 
-// Adicionando a função de cópia (pode ser movida para utils se usada em mais lugares)
-const copyToClipboard = (text: string) => {
+// Adicionando a função de cópia com toast
+const copyToClipboard = (text: string, successMessage: string = "Texto copiado para a área de transferência!") => {
   navigator.clipboard.writeText(text).then(() => {
-    // Opcional: Adicionar toast de sucesso
-    console.log("Texto copiado para a área de transferência!");
+    toast.success(successMessage);
   }).catch(err => {
     console.error("Falha ao copiar texto: ", err);
-    // Opcional: Adicionar toast de erro
+    toast.error("Falha ao copiar texto.");
   });
 };
 
@@ -41,7 +40,7 @@ Dados do Paciente:
         variant="ghost" 
         size="icon" 
         className="absolute top-2 right-2 text-primary/70 hover:text-primary"
-        onClick={() => copyToClipboard(textToCopy)}
+        onClick={() => copyToClipboard(textToCopy, "Dados do paciente copiados!")}
         title="Copiar dados do paciente"
       >
         <Copy className="h-4 w-4" />
