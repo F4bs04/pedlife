@@ -43,7 +43,7 @@ export const Nav: React.FC = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] pt-10 bg-white">
-              <div className="flex flex-col items-start gap-6 p-4">
+              <div className="flex flex-col items-start gap-6 p-4 text-gray-600"> {/* Adicionado text-gray-600 aqui */}
                 {React.Children.toArray(navLinks).map((link, index) => (
                   <SheetClose asChild key={index}>
                     {link}
@@ -73,3 +73,4 @@ export const Nav: React.FC = () => {
     </nav>
   );
 };
+
