@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Pill, Copy } from 'lucide-react';
+import { toast } from "@/components/ui/sonner"; // Importando o toast do sonner
 
 interface CalculatedDoseCardProps {
   medication: Medication;
@@ -12,20 +13,19 @@ interface CalculatedDoseCardProps {
 }
 
 // Adicionando a função de cópia (pode ser movida para utils se usada em mais lugares)
-const copyToClipboard = (text: string) => {
+const copyToClipboard = (text: string, successMessage: string = "Texto copiado para a área de transferência!") => {
   navigator.clipboard.writeText(text).then(() => {
-    // Opcional: Adicionar toast de sucesso
-    console.log("Texto copiado para a área de transferência!");
+    toast.success(successMessage);
   }).catch(err => {
     console.error("Falha ao copiar texto: ", err);
-    // Opcional: Adicionar toast de erro
+    toast.error("Falha ao copiar texto.");
   });
 };
 
 
 const CalculatedDoseCard: React.FC<CalculatedDoseCardProps> = ({ medication, calculatedDoseText }) => {
   
-  const textToCopy = `
+  const textToCopyAll = `
 Medicamento: ${medication.name} ${medication.form ? `(${medication.form})` : ''}
 Posologia:
 - Duração: ${medication.dosageInformation?.treatmentDuration || "Conforme orientação médica"}
@@ -40,8 +40,8 @@ Cálculo Específico: ${calculatedDoseText}
         variant="ghost" 
         size="icon" 
         className="absolute top-2 right-2 text-primary/70 hover:text-primary"
-        onClick={() => copyToClipboard(textToCopy)}
-        title="Copiar dose calculada"
+        onClick={() => copyToClipboard(textToCopyAll, "Dose calculada copiada!")}
+        title="Copiar dose calculada completa"
       >
         <Copy className="h-4 w-4" />
       </Button>
@@ -61,9 +61,20 @@ Cálculo Específico: ${calculatedDoseText}
           <p>Intervalo: <span className="italic">{medication.dosageInformation?.doseInterval || "Conforme orientação médica"}</span></p>
           <p>Dose usual: <span className="italic">{medication.dosageInformation?.usualDose || "Conforme orientação médica"}</span></p>
         </div>
-        <Alert variant="default" className="bg-white dark:bg-gray-800/50 border-gray-200 dark:border-gray-700">
-          <AlertTitle className="font-semibold text-gray-900 dark:text-gray-100">Cálculo Específico:</AlertTitle>
-          <AlertDescription className="text-gray-700 dark:text-gray-200">{calculatedDoseText}</AlertDescription>
+        <Alert variant="default" className="bg-white dark:bg-gray-800/50 border-gray-200 dark:border-gray-700 relative">
+          <div className="flex justify-between items-start">
+            <AlertTitle className="font-semibold text-gray-900 dark:text-gray-100">Cálculo Específico:</AlertTitle>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-6 w-6 text-primary/70 hover:text-primary -mt-1 -mr-1" // Ajuste de posicionamento
+              onClick={() => copyToClipboard(calculatedDoseText, "Cálculo específico copiado!")}
+              title="Copiar cálculo específico"
+            >
+              <Copy className="h-3 w-3" />
+            </Button>
+          </div>
+          <AlertDescription className="text-gray-700 dark:text-gray-100 mt-1">{calculatedDoseText}</AlertDescription> {/* Melhoria de contraste */}
         </Alert>
       </CardContent>
     </Card>
@@ -71,3 +82,4 @@ Cálculo Específico: ${calculatedDoseText}
 };
 
 export default CalculatedDoseCard;
+
