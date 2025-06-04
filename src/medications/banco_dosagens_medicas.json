@@ -2,7 +2,7 @@
     {
       "name": "Amoxicilina 250mg/5ml (Xarope)",
       "slug": "antibiotico-vo",
-      "form": "Ver descrição",
+      "form": "",
       "application": "VO",
       "description": "Medicamento da categoria Antibiótico Vo.",
       "alerts": [],
@@ -22,7 +22,7 @@
     {
       "name": "Amoxicilina Tri-hidratada 400mg/5ml (Xarope)",
       "slug": "antibiotico-vo",
-      "form": "Ver descrição",
+      "form": "",
       "application": "VO",
       "description": "Medicamento da categoria Antibiótico Vo.",
       "alerts": [],
@@ -42,7 +42,7 @@
     {
       "name": "Amoxicilina/Clavulanato 250mg + 62,5mg/5ml (Xarope)",
       "slug": "antibiotico-vo",
-      "form": "Ver descrição",
+      "form": "",
       "application": "VO",
       "description": "Medicamento da categoria Antibiótico Vo.",
       "alerts": [],
@@ -62,7 +62,7 @@
     {
       "name": "Amoxicilina/Clavulanato 400mg + 57mg/5ml (Xarope)",
       "slug": "antibiotico-vo",
-      "form": "Ver descrição",
+      "form": "",
       "application": "VO",
       "description": "Medicamento da categoria Antibiótico Vo.",
       "alerts": [],
@@ -82,7 +82,7 @@
     {
         "name": "Amoxicilina/Clavulanato 600mg + 42,9mg/5ml (Xarope)",
         "slug": "antibiotico-vo",
-        "form": "Ver descrição",
+        "form": "",
         "application": "VO",
         "description": "Medicamento da categoria Antibiótico Vo.",
         "alerts": [],
@@ -103,7 +103,7 @@
       {
         "name": "Amoxicilina/Sulbactam 200 mg + 50 mg / 5 mL (xarope)",
         "slug": "antibiotico-vo",
-        "form": "Ver descrição",
+        "form": "",
         "application": "VO",
         "description": "Medicamento da categoria Antibiótico Vo.",
         "alerts": [],
@@ -123,7 +123,7 @@
       {
         "name": "Sulfametoxazol/Trimetoprima 200mg + 40mg/5ml (Xarope)",
         "slug": "antibiotico-vo",
-        "form": "Ver descrição",
+        "form": "",
         "application": "VO",
         "description": "Medicamento da categoria Antibiótico Vo.",
         "alerts": [],
@@ -143,7 +143,7 @@
       {
         "name": "Sulfametoxazol/Trimetoprima 400mg + 80mg/5ml (Xarope)",
         "slug": "antibiotico-vo",
-        "form": "Ver descrição",
+        "form": "",
         "application": "VO",
         "description": "Medicamento da categoria Antibiótico Vo.",
         "alerts": [],
@@ -163,7 +163,7 @@
   {
     "name": "Cefadroxila 250mg/5ml (xarope)",
     "slug": "antibiotico-vo",
-    "form": "Ver descrição",
+    "form": "",
     "application": "VO",
     "description": "Medicamento da categoria Antibiótico Vo.",
     "alerts": [],
@@ -183,7 +183,7 @@
   {
     "name": "Cefadroxila 500mg/5ml (xarope)",
     "slug": "antibiotico-vo",
-    "form": "Ver descrição",
+    "form": "",
     "application": "VO",
     "description": "Medicamento da categoria Antibiótico Vo.",
     "alerts": [],
@@ -203,7 +203,7 @@
   {
     "name": "Nalidíxico (Wintomylon®) 50 mg/mL - VO",
     "slug": "antibiotico-vo",
-    "form": "Ver descrição",
+    "form": "",
     "application": "VO",
     "description": "Medicamento da categoria Antibiótico Vo.",
     "alerts": [],
@@ -223,7 +223,7 @@
   {
     "name": "Dipirona 500mg/ml (Gotas)",
     "slug": "analgesicos-e-antitermicos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "VO",
     "description": "Medicamento da categoria Analgésicos E Antitérmicos",
     "alerts": [],
@@ -243,7 +243,7 @@
   {
     "name": "Dipirona 50mg/ml (Xarope) > 3 Meses",
     "slug": "analgesicos-e-antitermicos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "VO",
     "description": "Medicamento da categoria Analgésicos E Antitérmicos",
     "alerts": [],
@@ -263,7 +263,7 @@
   {
     "name": "Dipirona 500mg/ml (EV/IM) > 3 Meses",
     "slug": "analgesicos-e-antitermicos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Analgésicos E Antitérmicos",
     "alerts": [],
@@ -283,7 +283,7 @@
   {
     "name": "Tramadol 50mg/mL (IM/EV)",
     "slug": "analgesicos-e-antitermicos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Analgésicos E Antitérmicos",
     "alerts": [],
@@ -303,7 +303,7 @@
   {
     "name": "Tramadol 50mg/mL (Gotas)",
     "slug": "analgesicos-e-antitermicos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "VO",
     "description": "Medicamento da categoria Analgésicos E Antitérmicos",
     "alerts": [],
@@ -323,7 +323,7 @@
   {
     "name": "Escopolamina + Dipirona 10mg/mL + 500mg/mL (Gotas)",
     "slug": "analgesicos-e-antitermicos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "VO",
     "description": "Medicamento da categoria Analgésicos E Antitérmicos",
     "alerts": [],
@@ -343,7 +343,7 @@
   {
     "name": "Escopolamina + Dipirona 10mg/mL + 500mg/mL (EV)",
     "slug": "analgesicos-e-antitermicos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Analgésicos E Antitérmicos",
     "alerts": [],
@@ -363,7 +363,7 @@
   {
     "name": "Paracetamol 200mg/mL (Gotas)",
     "slug": "analgesicos-e-antitermicos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "VO",
     "description": "Medicamento da categoria Analgésicos E Antitérmicos",
     "alerts": [],
@@ -383,7 +383,7 @@
   {
     "name": "Ibuprofeno 50mg/mL (Gotas)",
     "slug": "analgesicos-e-antitermicos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "VO",
     "description": "Medicamento da categoria Analgésicos E Antitérmicos",
     "alerts": [],
@@ -403,7 +403,7 @@
   {
     "name": "Ibuprofeno 100mg/mL (Gotas)",
     "slug": "analgesicos-e-antitermicos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "VO",
     "description": "Medicamento da categoria Analgésicos E Antitérmicos",
     "alerts": [],
@@ -423,7 +423,7 @@
   {
     "name": "Cetoprofeno 100mg/2mL (IM/EV)",
     "slug": "analgesicos-e-antitermicos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Analgésicos E Antitérmicos",
     "alerts": [],
@@ -443,7 +443,7 @@
   {
     "name": "Cetoprofeno 20mg/mL (Gotas)",
     "slug": "analgesicos-e-antitermicos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "VO",
     "description": "Medicamento da categoria Analgésicos E Antitérmicos",
     "alerts": [],
@@ -463,7 +463,7 @@
   {
     "name": "Diclofenaco 15mg/mL (Gotas)",
     "slug": "analgesicos-e-antitermicos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "VO",
     "description": "Medicamento da categoria Analgésicos E Antitérmicos",
     "alerts": [],
@@ -483,7 +483,7 @@
   {
     "name": "Nimesulida 50mg/mL (Gotas)",
     "slug": "analgesicos-e-antitermicos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "VO",
     "description": "Medicamento da categoria Analgésicos E Antitérmicos",
     "alerts": [],
@@ -503,7 +503,7 @@
   {
     "name": "Prednisolona 3mg/ml (Xarope)",
     "slug": "corticoide-oral",
-    "form": "Ver descrição",
+    "form": "",
     "application": "VO",
     "description": "Medicamento da categoria Corticoide Oral",
     "alerts": [],
@@ -523,7 +523,7 @@
   {
     "name": "Dexametasona 0,5mg/5ml (Xarope)",
     "slug": "corticoide-oral",
-    "form": "Ver descrição",
+    "form": "",
     "application": "VO",
     "description": "Medicamento da categoria Corticoide Oral",
     "alerts": [],
@@ -543,7 +543,7 @@
   {
     "name": "Hidrocortisona 100mg/Pó (EV/IM) - Reconstituir em 2 ml de AD",
     "slug": "corticoides-ev",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Corticoides EV",
         "alerts": [],
@@ -563,7 +563,7 @@
       {
         "name": "Hidrocortisona 500mg/Pó (EV/IM) - Reconstituir em 5 ml de AD",
         "slug": "corticoides-ev",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria Corticoides EV",
         "alerts": [],
@@ -583,7 +583,7 @@
       {
         "name": "Metilprednisolona 125mg/Pó (EV/IM) - Reconstituir em 2ml de AD",
         "slug": "corticoides-ev",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria Corticoides EV",
         "alerts": [],
@@ -603,7 +603,7 @@
       {
         "name": "Metilprednisolona 40 mg/mL (EV)",
         "slug": "corticoides-ev",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria Corticoides EV",
         "alerts": [],
@@ -623,7 +623,7 @@
       {
         "name": "Sulfato de Magnésio 50% Asma/Bronquite 1mL/500mg (EV)",
         "slug": "corticoides-ev",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria Corticoides EV",
         "alerts": [],
@@ -643,7 +643,7 @@
       {
         "name": "Sulfato de Magnésio 10% Asma/Bronquite 1mL/100 mg (EV)",
         "slug": "corticoides-ev",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria Corticoides EV",
         "alerts": [],
@@ -663,7 +663,7 @@
       {
         "name": "Dexametasona 4mg/ml (EV/IM)",
         "slug": "corticoides-ev",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria Corticoides EV",
         "alerts": [],
@@ -683,7 +683,7 @@
       {
         "name": "Dexametasona 2mg/ml (EV/IM)",
         "slug": "corticoides-ev",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria Corticoides EV",
         "alerts": [],
@@ -703,7 +703,7 @@
       {
         "name": "Adrenalina 1mg/ml (IM)",
         "slug": "anfilaxia",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria Anafilaxia",
         "alerts": [],
@@ -723,7 +723,7 @@
       {
         "name": "Furosemida - 20 mg/2mL",
         "slug": "diureticos",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria Diuréticos",
         "alerts": [],
@@ -743,7 +743,7 @@
       {
         "name": "Adrenalina 1mg/ml (EV em Bolus)",
         "slug": "pcr",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria PCR",
         "alerts": [],
@@ -763,7 +763,7 @@
       {
     "name": "Amiodarona 50mg/ml (EV em Bolus)",
     "slug": "pcr",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria PCR",
     "alerts": [],
@@ -783,7 +783,7 @@
   {
     "name": "Cálcio injetável 10% (100mg/ml)",
     "slug": "pcr",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria PCR",
     "alerts": [],
@@ -803,7 +803,7 @@
   {
     "name": "Lidocaína 20mg/ml (Sem vasoconstritor)",
     "slug": "pcr",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria PCR",
     "alerts": [],
@@ -823,7 +823,7 @@
   {
     "name": "Bicarbonato de sódio injetável 8,4% (84mg/ml = 1 mEq/ml)",
     "slug": "pcr",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria PCR",
     "alerts": [],
@@ -843,7 +843,7 @@
   {
     "name": "Glicose 10% - 0,1g/ml (Ampola com 10 mL)",
     "slug": "pcr",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria PCR",
     "alerts": [],
@@ -863,7 +863,7 @@
   {
     "name": "Glicose 25% - 0,25g/ml (Ampola com 10 mL)",
     "slug": "pcr",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria PCR",
     "alerts": [],
@@ -883,7 +883,7 @@
   {
     "name": "Glicose 50% - 0,5g/ml (Ampola com 10 mL)",
     "slug": "pcr",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria PCR",
     "alerts": [],
@@ -921,7 +921,7 @@
   {
     "name": "Adrenalina 1mg/ml (EV em Bolus)",
     "slug": "pcr",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria PCR",
     "alerts": [],
@@ -941,7 +941,7 @@
     {
         "name": "Cálcio injetável 10% (100mg/ml)",
         "slug": "pcr",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria PCR",
         "alerts": [],
@@ -961,7 +961,7 @@
     {
         "name": "Lidocaína 20mg/ml (Sem vasoconstritor)",
         "slug": "pcr",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria PCR",
         "alerts": [],
@@ -981,7 +981,7 @@
     {
         "name": "Bicarbonato de sódio injetável 8,4% (84mg/ml = 1 mEq/ml)",
         "slug": "pcr",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria PCR",
         "alerts": [],
@@ -1001,7 +1001,7 @@
     {
         "name": "Glicose 10% - 0,1g/ml (Ampola com 10 mL)",
         "slug": "pcr",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria PCR",
         "alerts": [],
@@ -1021,7 +1021,7 @@
     {
         "name": "Glicose 25% - 0,25g/ml (Ampola com 10 mL)",
         "slug": "pcr",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria PCR",
         "alerts": [],
@@ -1041,7 +1041,7 @@
     {
         "name": "Glicose 50% - 0,5g/ml (Ampola com 10 mL)",
         "slug": "pcr",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria PCR",
         "alerts": [],
@@ -1061,7 +1061,7 @@
     {
         "name": "Aciclovir 250 mg/Pó (EV) - Reconstituir com 10mL de AD.",
         "slug": "antivirais",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria Antivirais",
         "alerts": [],
@@ -1081,7 +1081,7 @@
     {
         "name": "Aciclovir 250 mg/Pó (EV) - Reconstituir com 10mL de AD.",
         "slug": "antivirais",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria Antivirais",
         "alerts": [],
@@ -1101,7 +1101,7 @@
     {
         "name": "Ceftriaxona 1000mg/Pó (EV) - Reconstituir em 5 ml de AD",
         "slug": "antibioticos-ev",
-        "form": "Ver descrição",
+        "form": "",
         "application": "Desconhecida",
         "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
         "alerts": [],
@@ -1121,7 +1121,7 @@
         {
             "name": "Ceftriaxona 1000mg/Pó (EV) - Reconstituir em 5 ml de AD",
             "slug": "antibioticos-ev",
-            "form": "Ver descrição",
+            "form": "",
             "application": "Desconhecida",
             "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
             "alerts": [],
@@ -1141,7 +1141,7 @@
         {
             "name": "Amicacina 100mg/2ml (EV)",
             "slug": "antibioticos-ev",
-            "form": "Ver descrição",
+            "form": "",
             "application": "Desconhecida",
             "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
             "alerts": [],
@@ -1161,7 +1161,7 @@
         {
             "name": "Amicacina 250mg/2ml (EV)",
             "slug": "antibioticos-ev",
-            "form": "Ver descrição",
+            "form": "",
             "application": "Desconhecida",
             "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
             "alerts": [],
@@ -1181,7 +1181,7 @@
         {
             "name": "Amoxicilina + Clavulanato 1000 mg + 200 mg (EV) - Reconstituir em 20ml de AD",
             "slug": "antibioticos-ev",
-            "form": "Ver descrição",
+            "form": "",
             "application": "Desconhecida",
             "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
             "alerts": [],
@@ -1201,7 +1201,7 @@
         {
             "name": "Amoxicilina + Clavulanato 500 mg + 100 mg (EV) - Reconstituir em 20ml de AD",
             "slug": "antibioticos-ev",
-            "form": "Ver descrição",
+            "form": "",
             "application": "Desconhecida",
             "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
             "alerts": [],
@@ -1221,7 +1221,7 @@
         {
             "name": "Ampicilina 1000mg/Pó (EV) - Reconstituir em 3ml de AD",
             "slug": "antibioticos-ev",
-            "form": "Ver descrição",
+            "form": "",
             "application": "Desconhecida",
             "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
             "alerts": [],
@@ -1241,7 +1241,7 @@
         {
             "name": "Cefalotina 1000mg/Pó (EV) - Reconstituir em 10ml de AD",
             "slug": "antibioticos-ev",
-            "form": "Ver descrição",
+            "form": "",
             "application": "Desconhecida",
             "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
             "alerts": [],
@@ -1261,7 +1261,7 @@
         {
             "name": "Oxacilina 500mg/Pó (EV) - Reconstituir em 5ml de SF ou AD",
             "slug": "antibioticos-ev",
-            "form": "Ver descrição",
+            "form": "",
             "application": "Desconhecida",
             "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
             "alerts": [],
@@ -1281,7 +1281,7 @@
         {
             "name": "Gentamicina 40mg/ml (EV) - Ampola 1,5 ou 2ml",
             "slug": "antibioticos-ev",
-            "form": "Ver descrição",
+            "form": "",
             "application": "Desconhecida",
             "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
             "alerts": [],
@@ -1301,7 +1301,7 @@
         {
             "name": "Penicilina cristalina (benzilpenicilina potássica) 5.000.000 UI - Reconstituir em 10 mL de AD",
             "slug": "antibioticos-im",
-            "form": "Ver descrição",
+            "form": "",
             "application": "Desconhecida",
             "description": "Medicamento da categoria Antibióticos IM",
             "alerts": [],
@@ -1321,7 +1321,7 @@
 {
   "name": "Sulfato de polimixina B - 500.000 UI/Pó - Reconstituir em 10 mL de AD",
   "slug": "antibioticos-im",
-  "form": "Ver descrição",
+  "form": "",
   "application": "Desconhecida",
   "description": "Medicamento da categoria Antibióticos IM",
   "alerts": [],
@@ -1341,7 +1341,7 @@
 {
   "name": "Ketamina 50 mg/ml (EV)",
   "slug": "sedativos",
-  "form": "Ver descrição",
+  "form": "",
   "application": "Desconhecida",
   "description": "Medicamento da categoria Sedativos",
   "alerts": [],
@@ -1361,7 +1361,7 @@
 {
   "name": "Midazolan 15 mg/3ml (IM ou EV)",
   "slug": "sedativos",
-  "form": "Ver descrição",
+  "form": "",
   "application": "Desconhecida",
   "description": "Medicamento da categoria Sedativos",
   "alerts": [],
@@ -1381,7 +1381,7 @@
 {
   "name": "Propofol 10 mg/ml (EV)",
   "slug": "sedativos",
-  "form": "Ver descrição",
+  "form": "",
   "application": "Desconhecida",
   "description": "Medicamento da categoria Sedativos",
   "alerts": [],
@@ -1401,7 +1401,7 @@
 {
   "name": "Etomidate 2 mg/ml (EV)",
   "slug": "sedativos",
-  "form": "Ver descrição",
+  "form": "",
   "application": "Desconhecida",
   "description": "Medicamento da categoria Sedativos",
   "alerts": [],
@@ -1421,7 +1421,7 @@
 {
   "name": "Fentanil 50 mcg/ml (EV)",
   "slug": "sedativos",
-  "form": "Ver descrição",
+  "form": "",
   "application": "Desconhecida",
   "description": "Medicamento da categoria Sedativos",
   "alerts": [],
@@ -1441,7 +1441,7 @@
 {
   "name": "Brometo de Rocurônio 10mg/ml (EV)",
   "slug": "bloqueador-neuromuscular",
-  "form": "Ver descrição",
+  "form": "",
   "application": "Desconhecida",
   "description": "Medicamento da categoria Bloqueador Neuromuscular",
   "alerts": [],
@@ -1461,7 +1461,7 @@
 {
   "name": "Succinil Colin 10mg/Po (EV) - Reconstituir em 10 ml de AD",
   "slug": "bloqueador-neuromuscular",
-  "form": "Ver descrição",
+  "form": "",
   "application": "Desconhecida",
   "description": "Medicamento da categoria Bloqueador Neuromuscular",
   "alerts": [],
@@ -1481,7 +1481,7 @@
 {
   "name": "Atropina 0,25mg/ml (EV)",
   "slug": "medicacao-para-bradicardia",
-  "form": "Ver descrição",
+  "form": "",
   "application": "Desconhecida",
   "description": "Medicamento da categoria Medicação Para Bradicardia",
   "alerts": [],
@@ -1501,7 +1501,7 @@
 {
   "name": "Midazolam 5mg/ml (EV ou IM)",
   "slug": "anticonvulsivantes",
-  "form": "Ver descrição",
+  "form": "",
   "application": "Desconhecida",
   "description": "Medicamento da categoria Anticonvulsivantes",
   "alerts": [],
@@ -1521,7 +1521,7 @@
 {
   "name": "Diazepam 5mg/ml (EV)",
   "slug": "anticonvulsivantes",
-  "form": "Ver descrição",
+  "form": "",
   "application": "Desconhecida",
   "description": "Medicamento da categoria Anticonvulsivantes",
   "alerts": [],
@@ -1541,7 +1541,7 @@
 {
   "name": "Fenitoína 50mg/ml - Ampola 5ml (EV)",
   "slug": "anticonvulsivantes",
-  "form": "Ver descrição",
+  "form": "",
   "application": "Desconhecida",
   "description": "Medicamento da categoria Anticonvulsivantes",
   "alerts": [],
@@ -1561,7 +1561,7 @@
 {
   "name": "Fenobarbital 100mg/ml - Ampola 2ml (EV)",
   "slug": "anticonvulsivantes",
-  "form": "Ver descrição",
+  "form": "",
   "application": "Desconhecida",
   "description": "Medicamento da categoria Anticonvulsivantes",
   "alerts": [],
@@ -1581,7 +1581,7 @@
 {
     "name": "Fenobarbital 40mg/ml (Gotas) - VO",
     "slug": "anticonvulsivantes",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Anticonvulsivantes",
     "alerts": [],
@@ -1601,7 +1601,7 @@
   {
     "name": "Fenobarbital 40mg/ml (Gotas) - VO",
     "slug": "anticonvulsivantes",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Anticonvulsivantes",
     "alerts": [],
@@ -1621,7 +1621,7 @@
   {
     "name": "Ácido Valpróico 200mg/ml (Gotas) - VO",
     "slug": "anticonvulsivantes",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Anticonvulsivantes",
     "alerts": [],
@@ -1641,7 +1641,7 @@
   {
     "name": "Levetiracetam 100mg/ml (Xarope) - VO",
     "slug": "anticonvulsivantes",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Anticonvulsivantes",
     "alerts": [],
@@ -1661,7 +1661,7 @@
   {
     "name": "Carbamazepina 20mg/ml (Xarope) - VO",
     "slug": "anticonvulsivantes",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Anticonvulsivantes",
     "alerts": [],
@@ -1681,7 +1681,7 @@
   {
     "name": "Topiramato 25mg/ml (Xarope) - VO",
     "slug": "anticonvulsivantes",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Anticonvulsivantes",
     "alerts": [],
@@ -1701,7 +1701,7 @@
   {
     "name": "Lorazepam 2mg/ml (EV)",
     "slug": "anticonvulsivantes",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Anticonvulsivantes",
     "alerts": [],
@@ -1721,7 +1721,7 @@
   {
     "name": "Penicilina cristalina (benzilpenicilina potássica) 5.000.000 UI - Reconstituir em 10 mL de AD",
     "slug": "antibioticos-im",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Antibióticos IM",
     "alerts": [],
@@ -1741,7 +1741,7 @@
   {
     "name": "Sulfato de polimixina B - 500.000 UI/Pó - Reconstituir em 10 mL de AD",
     "slug": "antibioticos-im",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Antibióticos IM",
     "alerts": [],
@@ -1761,7 +1761,7 @@
   {
     "name": "Ketamina 50 mg/ml (EV)",
     "slug": "sedativos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Sedativos",
     "alerts": [],
@@ -1781,7 +1781,7 @@
   {
     "name": "Midazolan 15 mg/3ml (IM ou EV)",
     "slug": "sedativos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Sedativos",
     "alerts": [],
@@ -1801,7 +1801,7 @@
   {
     "name": "Propofol 10 mg/ml (EV)",
     "slug": "sedativos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Sedativos",
     "alerts": [],
@@ -1821,7 +1821,7 @@
   {
     "name": "Etomidate 2 mg/ml (EV)",
     "slug": "sedativos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Sedativos",
     "alerts": [],
@@ -1841,7 +1841,7 @@
   {
     "name": "Fentanil 50 mcg/ml (EV)",
     "slug": "sedativos",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Sedativos",
     "alerts": [],
@@ -1861,7 +1861,7 @@
   {
     "name": "Brometo de Rocurônio 10mg/ml (EV)",
     "slug": "bloqueador-neuromuscular",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Bloqueador Neuromuscular",
     "alerts": [],
@@ -1881,7 +1881,7 @@
   {
     "name": "Succinil Colin 10mg/Po (EV) - Reconstituir em 10 ml de AD",
     "slug": "bloqueador-neuromuscular",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Bloqueador Neuromuscular",
     "alerts": [],
@@ -1901,7 +1901,7 @@
   {
     "name": "Atropina 0,25mg/ml (EV)",
     "slug": "medicacao-para-bradicardia",
-    "form": "Ver descrição",
+    "form": "",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Medicação Para Bradicardia",
     "alerts": [],
