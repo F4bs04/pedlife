@@ -10,6 +10,7 @@ import { toast } from "@/components/ui/sonner"; // Importando o toast do sonner
 interface CalculatedDoseCardProps {
   medication: Medication;
   calculatedDoseText: string;
+  detailedCalculation?: string;
 }
 
 // Adicionando a função de cópia (pode ser movida para utils se usada em mais lugares)
@@ -23,7 +24,7 @@ const copyToClipboard = (text: string, successMessage: string = "Texto copiado p
 };
 
 
-const CalculatedDoseCard: React.FC<CalculatedDoseCardProps> = ({ medication, calculatedDoseText }) => {
+const CalculatedDoseCard: React.FC<CalculatedDoseCardProps> = ({ medication, calculatedDoseText, detailedCalculation }) => {
   
   const textToCopyAll = `
 Medicamento: ${medication.name} ${medication.form ? `(${medication.form})` : ''}
@@ -74,7 +75,27 @@ Cálculo Específico: ${calculatedDoseText}
               <Copy className="h-3 w-3" />
             </Button>
           </div>
-          <AlertDescription className="text-gray-700 dark:text-gray-100 mt-1">{calculatedDoseText}</AlertDescription> {/* Melhoria de contraste */}
+          <AlertDescription className="text-gray-700 dark:text-gray-100 mt-1">{calculatedDoseText}</AlertDescription>
+          
+          {detailedCalculation && (
+            <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+              <div className="flex justify-between items-start">
+                <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-sm">Lógica de cálculo detalhada:</h4>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-6 w-6 text-primary/70 hover:text-primary -mt-1 -mr-1"
+                  onClick={() => copyToClipboard(detailedCalculation, "Lógica de cálculo copiada!")}
+                  title="Copiar lógica de cálculo"
+                >
+                  <Copy className="h-3 w-3" />
+                </Button>
+              </div>
+              <pre className="text-xs whitespace-pre-wrap bg-gray-50 dark:bg-gray-800/70 p-3 rounded-md mt-2 text-gray-700 dark:text-gray-200 overflow-auto max-h-60">
+                {detailedCalculation}
+              </pre>
+            </div>
+          )}
         </Alert>
       </CardContent>
     </Card>

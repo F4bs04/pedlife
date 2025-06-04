@@ -20,9 +20,12 @@ import {
 } from 'lucide-react';
 import { slugify } from '@/lib/utils';
 import { MockMedicationData, CategoryInfo, MedicationCategoryData, Medication, DosageCalculationParams } from '@/types/medication';
+// Removido import do mathjs pois estamos usando Function para avaliação segura
 
 // Importando o JSON do banco de dosagens
-import jsonData from '@/medications/banco_dosagens_medicas_formatado.json';
+import jsonDataFormatado from '@/medications/banco_dosagens_medicas_formatado.json';
+// Importando o arquivo banco_dosagens_medicas.json que criamos
+import medicationsData from '@/medications/banco_dosagens_medicas.json';
 
 // Mapeamento de categorias para ícones e cores
 const categoryIconMap: Record<string, { icon: LucideIcon; iconColorClass: string; bgColorClass: string }> = {
@@ -98,9 +101,9 @@ function extractDoseInterval(logicaJs: string): string {
 
 // Função para extrair duração do tratamento
 function extractTreatmentDuration(logicaJs: string): string {
-  const durationMatch = logicaJs.match(/por (\d+(?:-\d+)? dias?)/i);
+  const durationMatch = logicaJs.match(/por (\d+(?:-\d+)?\s*dias?)/i);
   if (durationMatch) {
-    return durationMatch[1];
+    return durationMatch[1].trim();
   }
   
   if (logicaJs.includes('dose única')) {
@@ -108,6 +111,137 @@ function extractTreatmentDuration(logicaJs: string): string {
   }
   
   return 'Conforme prescrição médica';
+}
+
+// Função para extrair parâmetros de cálculo da lógica JavaScript
+function extractCalculationParams(medicamento: string, logicaJs: string): DosageCalculationParams {
+  const params: DosageCalculationParams = {
+    type: slugify(medicamento),
+    originalLogic: logicaJs,
+    jsLogic: logicaJs, // Armazenando a lógica JavaScript original
+    mgPerKg: 0,
+    maxDailyDoseMg: 0,
+    dosesPerDay: 1,
+    concentrationNumeratorMg: 0,
+    concentrationDenominatorMl: 1
+  };
+
+  // Extrair concentração (ex: 250mg/5ml)
+  const concentrationMatch = logicaJs.match(/(\d+(?:\.\d+)?)\s*mg\s*\/\s*(\d+(?:\.\d+)?)\s*ml/i);
+  if (concentrationMatch) {
+    params.concentrationNumeratorMg = parseFloat(concentrationMatch[1]);
+    params.concentrationDenominatorMl = parseFloat(concentrationMatch[2]);
+  }
+
+  // Extrair dose por kg (ex: peso*10)
+  const dosePerKgMatch = logicaJs.match(/peso\s*\*\s*(\d+(?:\.\d+)?)/i);
+  if (dosePerKgMatch) {
+    params.mgPerKg = parseFloat(dosePerKgMatch[1]);
+  }
+
+  // Extrair número de doses por dia
+  if (logicaJs.includes('8/8 horas')) {
+    params.dosesPerDay = 3;
+  } else if (logicaJs.includes('12/12 horas')) {
+    params.dosesPerDay = 2;
+  } else if (logicaJs.includes('6/6 horas')) {
+    params.dosesPerDay = 4;
+  } else if (logicaJs.includes('4/4 horas')) {
+    params.dosesPerDay = 6;
+  }
+
+  // Extrair dose máxima diária (se disponível)
+  const maxDoseMatch = logicaJs.match(/Math\.min\([^,]+,\s*(\d+)\)/i) || 
+                       logicaJs.match(/MIN\([^,]+,\s*(\d+)\)/i);
+  if (maxDoseMatch) {
+    params.maxDailyDoseMg = parseFloat(maxDoseMatch[1]);
+  }
+
+  return params;
+}
+
+// Função para avaliar com segurança a lógica JavaScript do JSON
+function safeEvaluateLogic(logic: string, weight: number, age: number): number {
+  try {
+    // Substituir variáveis comuns usadas nas expressões
+    let sanitizedLogic = logic
+      .replace(/\bpeso\b/gi, weight.toString())
+      .replace(/\bidade\b/gi, age.toString())
+      .replace(/\bMIN\b/g, 'Math.min')
+      .replace(/\bMAX\b/g, 'Math.max')
+      .replace(/\bROUND\b/g, 'Math.round')
+      .replace(/\bFLOOR\b/g, 'Math.floor')
+      .replace(/\bCEIL\b/g, 'Math.ceil');
+    
+    // Extrair apenas a parte da expressão matemática
+    const mathExpression = sanitizedLogic.match(/[\d\s\*\/\+\-\(\)\.\,\<\>\=\?\:\&\|\!Math\s\.min\s\.max\s\.round\s\.floor\s\.ceil]+/);
+    if (!mathExpression) {
+      throw new Error('Expressão matemática não encontrada');
+    }
+    
+    // Avaliar a expressão usando Function (mais seguro que eval)
+    // eslint-disable-next-line no-new-func
+    const result = Function('Math', `"use strict"; return (${mathExpression[0]});`)(Math);
+    return typeof result === 'number' ? result : 0;
+  } catch (error) {
+    console.error('Erro ao avaliar lógica:', error, logic);
+    return 0;
+  }
+}
+
+// Função para calcular a dose com base na lógica do JSON
+export function calculateDosage(weight: number, params: DosageCalculationParams, age: number = 5): { dose: number; volume: number; doseText: string } {
+  try {
+    if (!params.originalLogic) {
+      throw new Error('Lógica de cálculo não definida');
+    }
+
+    // Tentar usar a lógica JavaScript diretamente do JSON
+    let doseMg = 0;
+    if (params.originalLogic) {
+      // Extrair a parte da lógica que calcula a dose
+      doseMg = safeEvaluateLogic(params.originalLogic, weight, age);
+    } else if (params.mgPerKg) {
+      // Fallback para o cálculo baseado em parâmetros extraídos
+      doseMg = weight * params.mgPerKg;
+      
+      // Aplicar dose máxima diária se definida
+      if (params.maxDailyDoseMg && doseMg > params.maxDailyDoseMg) {
+        doseMg = params.maxDailyDoseMg;
+      }
+    }
+
+    // Calcular volume em mL
+    let volumeMl = 0;
+    if (params.concentrationNumeratorMg && params.concentrationDenominatorMl) {
+      const concentration = params.concentrationNumeratorMg / params.concentrationDenominatorMl; // mg/mL
+      volumeMl = doseMg / concentration;
+    }
+
+    // Gerar texto descritivo da dose
+    let doseText = '';
+    const doseInterval = extractDoseInterval(params.originalLogic);
+    const treatmentDuration = extractTreatmentDuration(params.originalLogic);
+    
+    if (volumeMl > 0) {
+      doseText = `Tomar ${volumeMl.toFixed(1)} mL por via oral ${doseInterval.toLowerCase()} por ${treatmentDuration}.`;
+    } else {
+      doseText = `Dose: ${doseMg.toFixed(1)} mg ${doseInterval.toLowerCase()} por ${treatmentDuration}.`;
+    }
+
+    return {
+      dose: parseFloat(doseMg.toFixed(2)),
+      volume: parseFloat(volumeMl.toFixed(2)),
+      doseText: doseText
+    };
+  } catch (error) {
+    console.error('Erro ao calcular dosagem:', error);
+    return { 
+      dose: 0, 
+      volume: 0, 
+      doseText: 'Erro no cálculo da dose. Consulte um profissional de saúde.' 
+    };
+  }
 }
 
 // Função para determinar via de administração
@@ -156,86 +290,101 @@ function determineForm(medicamento: string, logicaJs: string): string {
   return 'Suspensão Oral';
 }
 
-// Função para converter medicamentos do JSON
-function convertMedications(jsonData: any): MockMedicationData {
+// Função para organizar medicamentos por categoria
+function organizeMedicationsByCategory(medications: any[]): MockMedicationData {
   const convertedData: MockMedicationData = {};
+  const categoriesMap: Record<string, Medication[]> = {};
 
-  // Iterar sobre cada categoria no JSON
-  for (const category in jsonData) {
-    if (category === 'Outros') continue; // Pular categoria "Outros" que contém apenas variáveis
+  // Agrupar medicamentos por categoria (slug)
+  medications.forEach((med: any) => {
+    const categorySlug = med.slug;
+    if (!categoriesMap[categorySlug]) {
+      categoriesMap[categorySlug] = [];
+    }
+    
+    // Converter o medicamento para o formato esperado
+    const medication: Medication = {
+      name: med.name,
+      slug: slugify(med.name),
+      form: med.form || 'Não especificado',
+      application: med.application || 'VO',
+      description: med.description || 'Consulte um profissional de saúde antes do uso.',
+      alerts: med.alerts || ['Verificar alergias antes da administração.', 'Respeitar doses máximas recomendadas.'],
+      commonBrandNames: med.commonBrandNames || 'Consultar bula para nomes comerciais',
+      dosageInformation: med.dosageInformation || {
+        concentration: 'Não especificado',
+        usualDose: 'Conforme cálculo baseado em peso/idade',
+        doseInterval: 'Conforme prescrição médica',
+        treatmentDuration: 'Conforme prescrição médica',
+        administrationNotes: 'Seguir orientações médicas específicas'
+      },
+      calculationParams: {
+        type: slugify(med.name),
+        originalLogic: med.calculationParams?.logica_js || '',
+        jsLogic: med.calculationParams?.logica_js || '',
+        logica_js: med.calculationParams?.logica_js || '',
+        mgPerKg: 0,
+        maxDailyDoseMg: 0,
+        dosesPerDay: 1
+      }
+    };
+    
+    categoriesMap[categorySlug].push(medication);
+  });
 
-    const categoryInfo = categoryIconMap[category] || {
+  // Mapear categorias para o formato final
+  for (const categorySlug in categoriesMap) {
+    // Encontrar um nome de categoria mais amigável baseado no slug
+    let categoryTitle = categorySlug.replace(/-/g, ' ');
+    categoryTitle = categoryTitle.charAt(0).toUpperCase() + categoryTitle.slice(1);
+    
+    // Obter informações de ícone e cores para a categoria
+    const categoryInfo = Object.entries(categoryIconMap).find(([key]) => 
+      slugify(key) === categorySlug
+    );
+    
+    const iconInfo = categoryInfo ? categoryInfo[1] : {
       icon: Package,
       iconColorClass: 'text-gray-500',
       bgColorClass: 'bg-gray-100'
     };
 
-    const medications: Medication[] = jsonData[category].map((med: any) => {
-      const medicationName = med.medicamento;
-      const logicaJs = med.logica_js;
-      
-      return {
-        name: medicationName,
-        slug: slugify(medicationName),
-        form: determineForm(medicationName, logicaJs),
-        application: determineApplication(medicationName, logicaJs),
-        description: `Medicamento da categoria ${category}. Consulte sempre um profissional de saúde antes do uso.`,
-        alerts: ['Verificar alergias antes da administração.', 'Respeitar doses máximas recomendadas.'],
-        commonBrandNames: 'Consultar bula para nomes comerciais',
-        dosageInformation: {
-          concentration: extractConcentration(logicaJs),
-          usualDose: 'Conforme cálculo baseado em peso/idade',
-          doseInterval: extractDoseInterval(logicaJs),
-          treatmentDuration: extractTreatmentDuration(logicaJs),
-          administrationNotes: 'Seguir orientações médicas específicas'
-        },
-        calculationParams: {
-          type: slugify(medicationName),
-          originalLogic: logicaJs, // Mantendo a lógica original para referência
-          mgPerKg: 10, // Valor padrão - deve ser extraído da lógica específica
-          maxDailyDoseMg: 1000, // Valor padrão - deve ser extraído da lógica específica
-          dosesPerDay: 1, // Valor padrão - deve ser extraído da lógica específica
-        } as DosageCalculationParams,
-      };
-    });
-
-    convertedData[slugify(category)] = {
-      title: category,
-      slug: slugify(category),
-      icon: categoryInfo.icon,
-      iconColorClass: categoryInfo.iconColorClass,
-      bgColorClass: categoryInfo.bgColorClass,
-      medicationsCount: medications.length,
-      lastUpdated: 'Dez/2024',
-      medications: medications,
+    convertedData[categorySlug] = {
+      title: categoryTitle,
+      slug: categorySlug,
+      icon: iconInfo.icon,
+      iconColorClass: iconInfo.iconColorClass,
+      bgColorClass: iconInfo.bgColorClass,
+      medicationsCount: categoriesMap[categorySlug].length,
+      lastUpdated: 'Jun/2025',
+      medications: categoriesMap[categorySlug],
     };
   }
 
   return convertedData;
 }
 
-// Gerando as categorias dinamicamente baseadas no JSON
-export const allCategories: Omit<CategoryInfo, 'medicationsCount' | 'lastUpdated'>[] = 
-  Object.keys(jsonData)
-    .filter(category => category !== 'Outros') // Excluir categoria "Outros"
-    .map(category => {
-      const categoryInfo = categoryIconMap[category] || {
-        icon: Package,
-        iconColorClass: 'text-gray-500',
-        bgColorClass: 'bg-gray-100'
-      };
-      
-      return {
-        title: category,
-        slug: slugify(category),
-        icon: categoryInfo.icon,
-        iconColorClass: categoryInfo.iconColorClass,
-        bgColorClass: categoryInfo.bgColorClass,
-      };
-    });
+// Convertendo os dados do banco_dosagens_medicas
+const mockMedicationsData: MockMedicationData = organizeMedicationsByCategory(medicationsData);
 
-// Convertendo os dados do JSON
-export const mockMedicationsData: MockMedicationData = convertMedications(jsonData);
+// Exportando os dados de medicamentos
+export { mockMedicationsData };
+
+// Gerando as categorias dinamicamente baseadas nos medicamentos
+const allCategories: Omit<CategoryInfo, 'medicationsCount' | 'lastUpdated'>[] = 
+  Object.keys(mockMedicationsData).map(categorySlug => {
+    const category = mockMedicationsData[categorySlug];
+    return {
+      title: category.title,
+      slug: category.slug,
+      icon: category.icon,
+      iconColorClass: category.iconColorClass,
+      bgColorClass: category.bgColorClass,
+    };
+  });
+  
+// Exportando as categorias
+export { allCategories };
 
 // Atualizando as categorias com os dados convertidos
 allCategories.forEach(category => {

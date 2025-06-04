@@ -1,0 +1,1921 @@
+[
+    {
+      "name": "Amoxicilina 250mg/5ml (Xarope)",
+      "slug": "antibiotico-vo",
+      "form": "Ver descrição",
+      "application": "VO",
+      "description": "Medicamento da categoria Antibiótico Vo.",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Tomar 3,3 mL por via oral de 8/8 horas por 7 a 10 dias.",
+        "doseInterval": "8/8 horas",
+        "treatmentDuration": "7-10 dias",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "amoxicilina-250mg5ml-xarope",
+        "logica_js": "\"Tomar \" + Math.round((((peso*50)<=1750) ? (((peso*50)/3)/(250/5)) : ((1750/3)/(250/5))), 1) + \" mL por via oral de 8/8 horas por 7 a 10 dias.\""
+      }
+    },
+    {
+      "name": "Amoxicilina Tri-hidratada 400mg/5ml (Xarope)",
+      "slug": "antibiotico-vo",
+      "form": "Ver descrição",
+      "application": "VO",
+      "description": "Medicamento da categoria Antibiótico Vo.",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Tomar 2,1 mL por via oral de 8/8 horas por 7 a 10 dias.",
+        "doseInterval": "8/8 horas",
+        "treatmentDuration": "7-10 dias",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "amoxicilina-tri-hidratada-400mg5ml-xarope",
+        "logica_js": "\"Tomar \" + Math.round((((peso*50)<=1750) ? (((peso*50)/3)/(400/5)) : ((1750/3)/(400/5))), 1) + \" mL por via oral de 8/8 horas por 7 a 10 dias.\""
+      }
+    },
+    {
+      "name": "Amoxicilina/Clavulanato 250mg + 62,5mg/5ml (Xarope)",
+      "slug": "antibiotico-vo",
+      "form": "Ver descrição",
+      "application": "VO",
+      "description": "Medicamento da categoria Antibiótico Vo.",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Tomar 1,3 mL por via oral de 8/8 horas por 7 a 10 dias.",
+        "doseInterval": "8/8 horas",
+        "treatmentDuration": "7-10 dias",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "amoxicilinaclavulanato-250mg-625mg5ml-xarope",
+        "logica_js": "\"Tomar \" + Math.round((((peso*20)<=1500) ? (((peso*20)/3)/(250/5)) : ((1500/3)/(250/5))), 1) + \" mL por via oral de 8/8 horas por 7 a 10 dias.\""
+      }
+    },
+    {
+      "name": "Amoxicilina/Clavulanato 400mg + 57mg/5ml (Xarope)",
+      "slug": "antibiotico-vo",
+      "form": "Ver descrição",
+      "application": "VO",
+      "description": "Medicamento da categoria Antibiótico Vo.",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Tomar 1,6 mL por via oral de 12/12 horas por 7 a 10 dias.",
+        "doseInterval": "12/12 horas",
+        "treatmentDuration": "7-10 dias",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "amoxicilinaclavulanato-400mg-57mg5ml-xarope",
+        "logica_js": "\"Tomar \" + Math.round((((peso*25)<=1750) ? (((peso*25)/2)/(400/5)) : ((1750/2)/(400/5))), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\""
+      }
+    },
+    {
+        "name": "Amoxicilina/Clavulanato 600mg + 42,9mg/5ml (Xarope)",
+        "slug": "antibiotico-vo",
+        "form": "Ver descrição",
+        "application": "VO",
+        "description": "Medicamento da categoria Antibiótico Vo.",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Tomar 3,8 mL por via oral de 12/12 horas por 7 a 10 dias.",
+          "doseInterval": "12/12 horas",
+          "treatmentDuration": "7-10 dias",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "amoxicilinaclavulanato-600mg-429mg5ml-xarope",
+          "logica_js": "\"Tomar \" + Math.round((((peso*90)<=4000) ? (((peso*90)/2)/(600/5)) : ((4000/2)/(600/5))), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\""
+        }
+      },
+
+      {
+        "name": "Amoxicilina/Sulbactam 200 mg + 50 mg / 5 mL (xarope)",
+        "slug": "antibiotico-vo",
+        "form": "Ver descrição",
+        "application": "VO",
+        "description": "Medicamento da categoria Antibiótico Vo.",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Tomar 2,5 mL por via oral de 12/12 horas por 7 a 10 dias.",
+          "doseInterval": "12/12 horas",
+          "treatmentDuration": "7-10 dias",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "amoxicilinasulbactam-200-mg-50-mg-5-ml-xarope",
+          "logica_js": "\"Tomar \" + Math.round((((peso*20)<=1750) ? (((peso*20)/2)/(200/5)) : ((1750/2)/(200/5))), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\""
+        }
+      },
+      {
+        "name": "Sulfametoxazol/Trimetoprima 200mg + 40mg/5ml (Xarope)",
+        "slug": "antibiotico-vo",
+        "form": "Ver descrição",
+        "application": "VO",
+        "description": "Medicamento da categoria Antibiótico Vo.",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Tomar 2,5 mL por via oral de 12/12 horas por 7 a 10 dias.",
+          "doseInterval": "12/12 horas",
+          "treatmentDuration": "7-10 dias",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "sulfametoxazoltrimetoprima-200mg-40mg5ml-xarope",
+          "logica_js": "\"Tomar \" + Math.round((((peso*20)<=1750) ? (((peso*20)/2)/(200/5)) : ((1750/2)/(200/5))), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\""
+        }
+      },
+      {
+        "name": "Sulfametoxazol/Trimetoprima 400mg + 80mg/5ml (Xarope)",
+        "slug": "antibiotico-vo",
+        "form": "Ver descrição",
+        "application": "VO",
+        "description": "Medicamento da categoria Antibiótico Vo.",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+         "concentration": "Ver fórmula",
+         "usualDose": "Tomar 1,3 mL por via oral de 12/12 horas por 7 a 10 dias.",
+         "doseInterval": "12/12 horas",
+         "treatmentDuration": "7-10 dias",
+         "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "sulfametoxazoltrimetoprima-400mg-80mg5ml-xarope",
+      "logica_js": "\"Tomar \" + Math.round((((peso*20)<=1750) ? (((peso*20)/2)/(400/5)) : ((1750/2)/(400/5))), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\""
+    }
+  },
+  {
+    "name": "Cefadroxila 250mg/5ml (xarope)",
+    "slug": "antibiotico-vo",
+    "form": "Ver descrição",
+    "application": "VO",
+    "description": "Medicamento da categoria Antibiótico Vo.",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 3 mL por via oral de 12/12 horas por 7 a 10 dias.",
+      "doseInterval": "12/12 horas",
+      "treatmentDuration": "7-10 dias",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "cefadroxila-250mg5ml-xarope",
+      "logica_js": "\"Tomar \" + Math.round((((peso*30)<=1000) ? ( ((peso*30)/2)/(250/5)) : ( (1000/2))/(250/5)), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\""
+    }
+  },
+  {
+    "name": "Cefadroxila 500mg/5ml (xarope)",
+    "slug": "antibiotico-vo",
+    "form": "Ver descrição",
+    "application": "VO",
+    "description": "Medicamento da categoria Antibiótico Vo.",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 1,5 mL por via oral de 12/12 horas por 7 a 10 dias.",
+      "doseInterval": "12/12 horas",
+      "treatmentDuration": "7-10 dias",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "cefadroxila-500mg5ml-xarope",
+      "logica_js": "\"Tomar \" + Math.round((((peso*30)<=1000) ? ( ((peso*30)/2)/(500/5)) : ( (1000/2))/(500/5)), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\""
+    }
+  },
+  {
+    "name": "Nalidíxico (Wintomylon®) 50 mg/mL - VO",
+    "slug": "antibiotico-vo",
+    "form": "Ver descrição",
+    "application": "VO",
+    "description": "Medicamento da categoria Antibiótico Vo.",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 2,75 mL por via oral de 6/6 horas. Por 7 a 14 dias.",
+      "doseInterval": "6/6 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "nalidixico-wintomylon-50-mgml-vo",
+      "logica_js": "=((idade<0.4) ? (\"Contraindicado \") : ( \"Tomar \"+Math.ceil((peso*13.75))/50,2)+\" mL por via oral de 6/6 horas. Por 7 a 14 dias.\")"
+    }
+  },
+  {
+    "name": "Dipirona 500mg/ml (Gotas)",
+    "slug": "analgesicos-e-antitermicos",
+    "form": "Ver descrição",
+    "application": "VO",
+    "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 6 gotas por via oral de 6/6 horas.",
+      "doseInterval": "6/6 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "dipirona-500mgml-gotas",
+      "logica_js": "\"Tomar \" + Math.round((((peso*15)<=500) ? ((peso*15)/25) : (20)),0) + \" gotas por via oral de 6/6 horas.\""
+    }
+  },
+  {
+    "name": "Dipirona 50mg/ml (Xarope) > 3 Meses",
+    "slug": "analgesicos-e-antitermicos",
+    "form": "Ver descrição",
+    "application": "VO",
+    "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 3 mL por via oral de 6/6 horas.",
+      "doseInterval": "6/6 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "dipirona-50mgml-xarope-3-meses",
+      "logica_js": "\"Tomar \" + Math.round((((peso*15)<=500) ? ( (peso*15)/50) : ( 500/50)), 1) + \" mL por via oral de 6/6 horas.\""
+    }
+  },
+  {
+    "name": "Dipirona 500mg/ml (EV/IM) > 3 Meses",
+    "slug": "analgesicos-e-antitermicos",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,3 mL por via EV ou IM a cada 6 horas.",
+      "doseInterval": "6 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "dipirona-500mgml-evim-3-meses",
+      "logica_js": "\"Administrar \" + Math.round((((peso*15)<=1000) ? ( (peso*15)/500) : ( 1000/500)), 1) + \" mL por via EV ou IM a cada 6 horas.\""
+    }
+  },
+  {
+    "name": "Tramadol 50mg/mL (IM/EV)",
+    "slug": "analgesicos-e-antitermicos",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,2 mL por via EV diluído em 50 mL de SF 0,9% (Administrar bem lentamente), a cada 8 horas.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "tramadol-50mgml-imev",
+      "logica_js": "\"Administrar \" + Math.round((((peso*1)<=100) ? ( (peso*1)/50) : ( 100/50)), 1) + \" mL por via EV diluído em 50 mL de SF 0,9% (Administrar bem lentamente), a cada 8 horas.\""
+    }
+  },
+  {
+    "name": "Tramadol 50mg/mL (Gotas)",
+    "slug": "analgesicos-e-antitermicos",
+    "form": "Ver descrição",
+    "application": "VO",
+    "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 4 gotas por via oral de 8/8 horas. (Se dor muito forte)",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "tramadol-50mgml-gotas",
+      "logica_js": "\"Tomar \" + Math.round((((peso*1)<=50) ? ((peso*1)/2.5) : (20)), 0) + \" gotas por via oral de 8/8 horas. (Se dor muito forte)\""
+    }
+  },
+  {
+    "name": "Escopolamina + Dipirona 10mg/mL + 500mg/mL (Gotas)",
+    "slug": "analgesicos-e-antitermicos",
+    "form": "Ver descrição",
+    "application": "VO",
+    "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 6 gotas por via oral de 6/6 horas.",
+      "doseInterval": "6 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "escopolamina-dipirona-10mgml-500mgml-gotas",
+      "logica_js": "\"Tomar \" + Math.round((((peso*15)<=1000) ? ( (peso*15)/25) : ( 1000/25)), 0) + \" gotas por via oral de 6/6 horas.\""
+    }
+  },
+  {
+    "name": "Escopolamina + Dipirona 10mg/mL + 500mg/mL (EV)",
+    "slug": "analgesicos-e-antitermicos",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,3 mL por via EV diluído em 50 mL de SF 0,9% a cada 6 horas.",
+      "doseInterval": "6 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "escopolamina-dipirona-10mgml-500mgml-ev",
+      "logica_js": "\"Administrar \" + Math.round((((peso*15)<=1000) ? ( (peso*15)/500) : ( 1000/500)), 1) + \" mL por via EV diluído em 50 mL de SF 0,9% a cada 6 horas.\""
+    }
+  },
+  {
+    "name": "Paracetamol 200mg/mL (Gotas)",
+    "slug": "analgesicos-e-antitermicos",
+    "form": "Ver descrição",
+    "application": "VO",
+    "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 10 gotas por via oral de 4/4 horas. (Não exceder 5 administrações por dia)",
+      "doseInterval": "4 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "paracetamol-200mgml-gotas",
+      "logica_js": "\"Tomar \" + Math.round((((peso*10)<=350) ? ( (peso*10)/10) : ( 350/10)), 0) + \" gotas por via oral de 4/4 horas. (Não exceder 5 administrações por dia)\""
+    }
+  },
+  {
+    "name": "Ibuprofeno 50mg/mL (Gotas)",
+    "slug": "analgesicos-e-antitermicos",
+    "form": "Ver descrição",
+    "application": "VO",
+    "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 20 gotas por via oral de 6/6 horas. Por 3 a 5 dias.",
+      "doseInterval": "6 horas",
+      "treatmentDuration": "3-5 dias",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "ibuprofeno-50mgml-gotas",
+      "logica_js": "\"Tomar \" + Math.round((((peso*10)<=200) ? ((peso*10)/5) : (200/5)), 0) + \" gotas por via oral de 6/6 horas. Por 3 a 5 dias.\""
+    }
+  },
+  {
+    "name": "Ibuprofeno 100mg/mL (Gotas)",
+    "slug": "analgesicos-e-antitermicos",
+    "form": "Ver descrição",
+    "application": "VO",
+    "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 10 gotas por via oral de 6/6 horas. Por 3 a 5 dias.",
+      "doseInterval": "6 horas",
+      "treatmentDuration": "3-5 dias",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "ibuprofeno-100mgml-gotas",
+      "logica_js": "\"Tomar \" + Math.round((((peso*10)<=200) ? ((peso*10)/10) : (200/10)), 0) + \" gotas por via oral de 6/6 horas. Por 3 a 5 dias.\""
+    }
+  },
+  {
+    "name": "Cetoprofeno 100mg/2mL (IM/EV)",
+    "slug": "analgesicos-e-antitermicos",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,2 mL por via IM ou (EV diluído em 50 mL de SF 0,9%), a cada 12 horas.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "cetoprofeno-100mg2ml-imev",
+      "logica_js": "\"Administrar \" + Math.round((((peso*1)<=100) ? ( (peso*1)/50) : ( 100/50)), 1) + \" mL por via IM ou (EV diluído em 50 mL de SF 0,9%), a cada 12 horas.\""
+    }
+  },
+  {
+    "name": "Cetoprofeno 20mg/mL (Gotas)",
+    "slug": "analgesicos-e-antitermicos",
+    "form": "Ver descrição",
+    "application": "VO",
+    "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 10 gotas por via oral de 12/12 horas. Por 3 a 5 dias.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "3-5 dias",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "cetoprofeno-20mgml-gotas",
+      "logica_js": "\"Tomar \" + Math.round(((peso<=40) ? ( cond((peso*1)<=((peso*2)/2)) : ( (peso*1)), (peso*2)/2), (((90/3)<=((peso*1))) ? ( (90/3)) : ( (peso*1)))),1) + \" gotas por via oral \" + ((peso<=40) ? (\" de 12/12 horas. Por 3 a 5 dias.\") : (\" de 8/8 horas. Por 3 a 5 dias.\"))"
+    }
+  },
+  {
+    "name": "Diclofenaco 15mg/mL (Gotas)",
+    "slug": "analgesicos-e-antitermicos",
+    "form": "Ver descrição",
+    "application": "VO",
+    "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 10 gotas por via oral de 8/8 horas. Por 3 a 5 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "3-5 dias",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "diclofenaco-15mgml-gotas",
+      "logica_js": "\"Tomar \" + Math.round((((peso*0.75)<=30) ? ((peso*0.75)/0.75) : (40)),0) + \" gotas por via oral de 8/8 horas. Por 3 a 5 dias.\""
+    }
+  },
+  {
+    "name": "Nimesulida 50mg/mL (Gotas)",
+    "slug": "analgesicos-e-antitermicos",
+    "form": "Ver descrição",
+    "application": "VO",
+    "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 8 gotas por via oral de 12/12 horas. Por 3 a 5 dias.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "3-5 dias",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "nimesulida-50mgml-gotas",
+      "logica_js": "\"Tomar \" + Math.round((((peso*2)<=100) ? ((peso*2)/2.5) : (40)),0) + \" gotas por via oral de 12/12 horas. Por 3 a 5 dias.\""
+    }
+  },
+  {
+    "name": "Prednisolona 3mg/ml (Xarope)",
+    "slug": "corticoide-oral",
+    "form": "Ver descrição",
+    "application": "VO",
+    "description": "Medicamento da categoria Corticoide Oral",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 3,3 mL por via oral de 24/24 horas. Por 5 dias.",
+      "doseInterval": "24 horas",
+      "treatmentDuration": "5 dias",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "prednisolona-3mgml-xarope",
+      "logica_js": "\"Tomar \" + Math.round((((peso*1)<=40) ? ( cond(((peso*1)/1)/(3/1)<=14) : ( ((peso*1))/1)/(3/1), 14), (((40/1)/(3/1)<=14) ? ( (40/1)/(3/1)) : ( 14))), 1) + \" mL por via oral de 24/24 horas. Por 5 dias.\""
+    }
+  },
+  {
+    "name": "Dexametasona 0,5mg/5ml (Xarope)",
+    "slug": "corticoide-oral",
+    "form": "Ver descrição",
+    "application": "VO",
+    "description": "Medicamento da categoria Corticoide Oral",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 2,5 mL por via oral de 24/24 horas. Por 5 dias.",
+      "doseInterval": "24 horas",
+      "treatmentDuration": "5 dias",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "dexametasona-0-5mg5ml-xarope",
+      "logica_js": "\"Tomar \" + Math.round((((peso*0.025)<=12) ? ( cond(((peso*0.025)/1)/(0.5/5)<=15) : ( ((peso*0.025))/1)/(0.5/5), 15), (((12/3)/(0.5/5)<=15) ? ( (12/3)/(0.5/5)) : ( 15))), 1) + \" mL por via oral de 24/24 horas. Por 5 dias.\""
+    }
+  },
+  {
+    "name": "Hidrocortisona 100mg/Pó (EV/IM) - Reconstituir em 2 ml de AD",
+    "slug": "corticoides-ev",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Corticoides EV",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Reconstituir 1 frasco(s) com 2 mL de AD. Administrar 0,8 mL por via IM ou EV diluído em 50 mL de SF 0,9% a cada 6 horas.",
+          "doseInterval": "6 horas",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "hidrocortisona-100mg-po-evim-reconstituir-em-2-ml-de-ad",
+          "logica_js": "\"Reconstituir \"+Math.ceil((((peso*4)/100<1) ? (1) : ((peso*4))/100),0)+\" frasco(s) com \"+Math.round((((peso*4)/100<1) ? (1) : ((peso*4))/100),0)*2+\" mL de AD. Administrar \"+Math.round((((peso*4)<=8*peso) ? ((peso*4)/50) : ((8*peso))/50),1)+\" mL por via IM ou EV diluído em 50 mL de SF 0,9% a cada 6 horas.\""
+        }
+      },
+      {
+        "name": "Hidrocortisona 500mg/Pó (EV/IM) - Reconstituir em 5 ml de AD",
+        "slug": "corticoides-ev",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria Corticoides EV",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Reconstituir 1 frasco(s) com 5 mL de AD. Administrar 0,4 mL por via IM ou (EV diluído em 50 mL de SF 0,9% ou SG 5%), a cada 6 horas.",
+          "doseInterval": "6 horas",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "hidrocortisona-500mg-po-evim-reconstituir-em-5-ml-de-ad",
+          "logica_js": "\"Reconstituir \"+Math.round((((peso*4)/500<1) ? (1) : ((peso*4))/500),0)+\" frasco(s) com \"+Math.round((((peso*4)/500<1) ? (1) : ((peso*4))/500),0)*5+\" mL de AD. Administrar \"+Math.ceil((((peso*4)<=8*peso) ? ((peso*4)/100) : ((8*peso))/100),1)+\" mL por via IM ou (EV diluído em 50 mL de SF 0,9% ou SG 5%), a cada 6 horas.\""
+        }
+      },
+      {
+        "name": "Metilprednisolona 125mg/Pó (EV/IM) - Reconstituir em 2ml de AD",
+        "slug": "corticoides-ev",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria Corticoides EV",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Reconstituir 1 frasco(s) com 2 mL de AD. Administrar 0,2 mL por via IM ou (EV diluído em 50 mL de SF 0,9% ou SG 5%), a cada 6 horas. (Correr em 30 minutos).",
+          "doseInterval": "6 horas",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "metilprednisolona-125mg-po-evim-reconstituir-em-2ml-de-ad",
+          "logica_js": "\"Reconstituir \"+Math.round((((peso*1)/125<1) ? (1) : ((peso*1))/125),0)+\" frasco(s) com \"+Math.round((((peso*1)/125<1) ? (1) : ((peso*1))/125),0)*2+\" mL de AD. Administrar \"+Math.ceil((((peso*1)<=125) ? ((peso*1)/62.5) : (125/62.5)),1)+\" mL por via IM ou (EV diluído em 50 mL de SF 0,9% ou SG 5%), a cada 6 horas. (Correr em 30 minutos).\""
+        }
+      },
+      {
+        "name": "Metilprednisolona 40 mg/mL (EV)",
+        "slug": "corticoides-ev",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria Corticoides EV",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Dose de ataque: 0,38 ML + 9,63 mL de SF 0,9%, Administrar por via EV em infusão lenta | Dose de manutenção: 0,19 ML + 9,81 mL de SF 0,9%, Administrar por via EV em infusão lenta. A cada 6/6 horas.",
+          "doseInterval": "6 horas",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "metilprednisolona-40-mgml-ev",
+          "logica_js": "\"Dose de ataque:  \" + Math.round(((peso * 1.5 / 40 <= 1) ? ( peso * 1.5 / 40) : ( 1)), 2) + \" ML + \" + Math.round(10 - ((peso * 1.5 / 40 <= 1) ? ( peso * 1.5 / 40) : ( 1)), 2) + \" mL de SF 0,9%, Administrar por via EV em infusão lenta | Dose de manutençao: \" + Math.round(((peso * 0.75 / 40 <= 1) ? ( peso * 0.75 / 40) : ( 1)), 2) + \" ML + \" + Math.round(10 - ((peso * 0.75 / 40 <= 1) ? ( peso * 0.75 / 40) : ( 1)), 2) + \" mL de SF 0,9%, Administrar por via EV em infusão lenta. A cada 6/6 horas.\""
+        }
+      },
+      {
+        "name": "Sulfato de Magnésio 50% Asma/Bronquite 1mL/500mg (EV)",
+        "slug": "corticoides-ev",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria Corticoides EV",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Administrar 0,5 mL diluído em 60 mL de SF 0,9%. Administrar por via EV em infusão lenta por 30 minutos. (Necessita de internação para realização deste medicamento).",
+          "doseInterval": "",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "sulfato-de-magnesio-50-asma-bronquite-1ml-500mg-ev",
+          "logica_js": "\"Administrar \" + Math.ceil(((peso*25<=2000) ? (peso*25) : (2000))/500,1) + \" mL diluído em \" + ((peso*25<=2000) ? (\"60\") : (\"100\")) + \" mL de SF 0,9%. Administrar por via EV em infusão lenta por 30 minutos. (Necessita de internação para realização deste medicamento).\""
+        }
+      },
+      {
+        "name": "Sulfato de Magnésio 10% Asma/Bronquite 1mL/100 mg (EV)",
+        "slug": "corticoides-ev",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria Corticoides EV",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Administrar 2,5 mL diluído em 60 mL de SF 0,9%. Administrar por via EV em infusão lenta por 30 minutos. (Necessita de internação para realização deste medicamento).",
+          "doseInterval": "",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "sulfato-de-magnesio-10-asma-bronquite-1ml-100-mg-ev",
+          "logica_js": "\"Administrar \" + Math.ceil(((peso*25<=2000) ? (peso*25) : (2000))/100,1) + \" mL diluído em \" + ((peso*25<=2000) ? (\"60\") : (\"100\")) + \" mL de SF 0,9%. Administrar por via EV em infusão lenta por 30 minutos. (Necessita de internação para realização deste medicamento).\""
+        }
+      },
+      {
+        "name": "Dexametasona 4mg/ml (EV/IM)",
+        "slug": "corticoides-ev",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria Corticoides EV",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Dose de ataque: 1,5 mL por via IM, uma vez por dia ou (EV Diluir em 50 mL de SF 0,9%. Administrar em 30 minutos) | Dose de manutenção: 0,4 mL por via IM ou (EV Diluir em 50 mL de SF 0,9%).",
+          "doseInterval": "",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "dexametasona-4mgml-evim",
+          "logica_js": "\"Dose de ataque: \" + Math.round((((peso*0.6)<=12) ? (peso*0.6) : (12))/4,1) + \" mL por via IM, uma vez por dia ou (EV Diluir em 50 mL de SF 0,9%. Administrar em 30 minutos) | Dose de manutenção: \" + Math.round((((peso*0.15)<=10) ? (peso*0.15) : (10))/4,1) + \" mL por via IM ou (EV Diluir em 50 mL de SF 0,9%).\""
+        }
+      },
+      {
+        "name": "Dexametasona 2mg/ml (EV/IM)",
+        "slug": "corticoides-ev",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria Corticoides EV",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Administrar 3 mL uma vez ao dia por via IM puro ou (EV diluir em 50 mL de SF 0,9%, administrar em 30 minutos)",
+          "doseInterval": "24 horas",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "dexametasona-2mgml-evim",
+          "logica_js": "\"Administrar \" + Math.round((((peso*0.6)<=12) ? (peso*0.6) : (12))/2,1) + \" mL uma vez por dia por via IM puro ou (EV diluir em 50 mL de SF 0,9%, administrar em 30 minutos)\""
+        }
+      },
+      {
+        "name": "Adrenalina 1mg/ml (IM)",
+        "slug": "anfilaxia",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria Anafilaxia",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Administrar 0,1 mL (Puro), por via IM em vasto lateral da coxa. Pode repetir até 3 vezes no total, com intervalo de 15 minutos entre as administrações.",
+          "doseInterval": "",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "adrenalina-1mgml-im",
+          "logica_js": "\"Administrar \" + Math.round(((peso*0.01<=0.3) ? (peso*0.01) : (0.3)),2)/1 + \" mL (Puro), por via IM em vasto lateral da coxa. Pode repetir até 3 vezes no total, com intervalo de 15 minutos entre as administrações.\""
+        }
+      },
+      {
+        "name": "Furosemida - 20 mg/2mL",
+        "slug": "diureticos",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria Diuréticos",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Administrar 0,25 mL por via EV a cada 6 horas | Administrar 0,33 mL por via EV a cada 8 horas | Administrar 0,5 mL por via EV a cada 12 horas | Pode aumentar até 5 vezes cada resultado, se necessário.",
+          "doseInterval": "6/8/12 horas",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "furosemida-20-mg2ml",
+          "logica_js": "\"Administrar \"+Math.round(((peso * 1 / 4 / 10 <= 2) ? ( peso * 1 / 4 / 10) : ( 2)), 2) + \" mL por via EV a cada 6 horas | Administrar \" + Math.round(((peso * 1 / 3 / 10 <= 2) ? ( peso * 1 / 3 / 10) : ( 2)), 2) + \" mL por via EV a cada 8 horas | Administrar \" + Math.round(((peso * 1 / 2 / 10 <= 2) ? ( peso * 1 / 2 / 10) : ( 2)), 2) + \" mL por via EV a cada 12 horas | Pode aumentar até 5 vezes cada resultado, se necessário.\""
+        }
+      },
+      {
+        "name": "Adrenalina 1mg/ml (EV em Bolus)",
+        "slug": "pcr",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria PCR",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Diluir 1 Ampola(s) em 9 mL de SF 0,9%. Administrar 1 mL da mistura por via EV em bolus de 3 a 5 minutos.",
+          "doseInterval": "",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "adrenalina-1mgml-ev-em-bolus",
+          "logica_js": "\"Diluir 1 Ampola(s) em 9 mL de SF 0,9%. Administrar \" + Math.round((((peso/10)<=10) ? ( peso/10) : ( 10)), 2) + \" mL da mistura por via EV em bolus de 3 a 5 minutos.\""
+        }
+      },
+      {
+    "name": "Amiodarona 50mg/ml (EV em Bolus)",
+    "slug": "pcr",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria PCR",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 1 mL por via EV em bolus sem diluição. (Pode ser repetida até no máximo 3 vezes).",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "amiodarona-50mgml-ev-em-bolus",
+      "logica_js": "\"Administrar \" + Math.round(((peso*5<=cond(peso*10<=300) ? (peso*10) : (300)),peso*5,((peso*10<=300) ? (peso*10) : (300)))/50,2) + \" mL por via EV em bolus sem diluição. (Pode ser repetida até no máximo 3 vezes).\""
+    }
+  },
+  {
+    "name": "Cálcio injetável 10% (100mg/ml)",
+    "slug": "pcr",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria PCR",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 6 mL por via EV em bolus lento, puro.",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "calcio-injetavel-10-100mgml",
+      "logica_js": "\"Administrar \" + Math.round(((peso*60<=3000) ? (peso*60) : (3000))/100,2) + \" mL por via EV em bolus lento, puro.\""
+    }
+  },
+  {
+    "name": "Lidocaína 20mg/ml (Sem vasoconstritor)",
+    "slug": "pcr",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria PCR",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,5 mL por via EV em bolus lento.",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "lidocaina-20mgml-sem-vasoconstritor",
+      "logica_js": "\"Administrar \" + Math.round(((peso*1<=cond(peso*3<=75) ? (peso*3) : (75)),peso*1,((peso*3<=75) ? (peso*3) : (75)))/20,2) + \" mL por via EV em bolus lento.\""
+    }
+  },
+  {
+    "name": "Bicarbonato de sódio injetável 8,4% (84mg/ml = 1 mEq/ml)",
+    "slug": "pcr",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria PCR",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Diluir 10 mL de Bicarbonato de Sódio 8,4% + 10 mL de SF 0,9%. Administrar 20 mL por via EV em bolus lento.",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "bicarbonato-de-sodio-injetavel-8-4",
+      "logica_js": "\"Diluir \" + Math.ceil(peso,1) + \" mL de Bicarbonato de Sódio 8,4% + \" + Math.ceil(peso,1) + \" mL de SF 0,9%. Administrar \" + Math.ceil(peso*2,1) + \" mL por via EV em bolus lento.\""
+    }
+  },
+  {
+    "name": "Glicose 10% - 0,1g/ml (Ampola com 10 mL)",
+    "slug": "pcr",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria PCR",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 50 mL de Glicose 10% por via EV em bolus.",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "glicose-10-0-1gml",
+      "logica_js": "\"Administrar \" + Math.ceil(peso*0.5/0.1,1) + \" mL de Glicose 10% por via EV em bolus.\""
+    }
+  },
+  {
+    "name": "Glicose 25% - 0,25g/ml (Ampola com 10 mL)",
+    "slug": "pcr",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria PCR",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Diluir 20 mL de Glicose 25% + 20 mL de água destilada. Administrar 40 mL por via EV em bolus.",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "glicose-25-0-25gml",
+      "logica_js": "\"Diluir \" + Math.ceil(peso*0.5/0.125/2,1) + \" mL de Glicose 25% + \" + Math.ceil(peso*0.5/0.125/2,1) + \" mL de água destilada. Administrar \" + Math.ceil(peso*0.5/0.125,1) + \" mL por via EV em bolus.\""
+    }
+  },
+  {
+    "name": "Glicose 50% - 0,5g/ml (Ampola com 10 mL)",
+    "slug": "pcr",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria PCR",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Diluir 10 mL de Glicose 50% + 30 mL de água destilada. Administrar 40 mL por via EV em bolus.",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "glicose-50-0-5gml",
+      "logica_js": "\"Diluir \" + Math.ceil(peso*0.5/0.125/4,1) + \" mL de Glicose 50% + \" + Math.ceil(peso*0.5/0.125/4*3,1) + \" mL de água destilada. Administrar \" + Math.ceil(peso*0.5/0.125,1) + \" mL por via EV em bolus.\""
+    }
+  },
+{
+    "name": "Adenosina injetável 3mg/mL (EV em Bolus)",
+    "slug": "taquicardia-supraventricular",
+    "description": "Medicamento da categoria Taquicardia Supraventricular",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Primeira dose: Administrar 0,34 mL por via EV, em bolus. Após, fazer 20 mL de SF 0,9% em bolus utilizando o (Three Way). | Segunda dose: Administrar 0,67 mL por via EV, em bolus. Após, fazer 20 mL de SF 0,9% em bolus utilizando o (Three Way).",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "adenosina-injetavel-3mgml-ev-em-bolus",
+      "logica_js": "\"Primeira dose: Administrar \" + Math.ceil(((peso*0.1<=6) ? (peso*0.1) : (6))/3,2) + \" mL por via EV, em bolus. Após, fazer 20 mL de SF 0,9% em bolus utilizando o (Three Way) | Segunda dose: Administrar \" + Math.ceil(((peso*0.2<=12) ? (peso*0.2) : (12))/3,2) + \" mL por via EV, em bolus. Após, fazer 20 mL de SF 0,9% em bolus utilizando o (Three Way).\""
+    }
+  },
+  {
+    "name": "Adrenalina 1mg/ml (EV em Bolus)",
+    "slug": "pcr",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria PCR",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Diluir 1 Ampola(s) em 9 mL de SF 0,9%. Administrar 1 mL da mistura por via EV em bolus de 3 a 5 minutos.",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "adrenalina-1mgml-ev-em-bolus",
+      "logica_js": "\"Diluir 1 Ampola(s) em 9 mL de SF 0,9%. Administrar \" + Math.round((((peso/10)<=10) ? ( peso/10) : ( 10)), 2) + \" mL da mistura por via EV em bolus de 3 a 5 minutos.\""
+    }
+  },
+    {
+        "name": "Cálcio injetável 10% (100mg/ml)",
+        "slug": "pcr",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria PCR",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Administrar 6 mL por via EV em bolus lento, puro.",
+          "doseInterval": "",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "calcio-injetavel-10-100mgml",
+          "logica_js": "\"Administrar \" + Math.round(((peso*60<=3000) ? (peso*60) : (3000))/100,2) + \" mL por via EV em bolus lento, puro.\""
+        }
+    },
+    {
+        "name": "Lidocaína 20mg/ml (Sem vasoconstritor)",
+        "slug": "pcr",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria PCR",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Administrar 0,5 mL por via EV em bolus lento.",
+          "doseInterval": "",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "lidocaina-20mgml-sem-vasoconstritor",
+          "logica_js": "\"Administrar \" + Math.round(((peso*1<=cond(peso*3<=75) ? (peso*3) : (75)),peso*1,((peso*3<=75) ? (peso*3) : (75)))/20,2) + \" mL por via EV em bolus lento.\""
+        }
+    },
+    {
+        "name": "Bicarbonato de sódio injetável 8,4% (84mg/ml = 1 mEq/ml)",
+        "slug": "pcr",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria PCR",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Diluir 10 mL de Bicarbonato de Sódio 8,4% + 10 mL de SF 0,9%. Administrar 20 mL por via EV em bolus lento.",
+          "doseInterval": "",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "bicarbonato-de-sodio-injetavel-8-4",
+          "logica_js": "\"Diluir \" + Math.ceil(peso,1) + \" mL de Bicarbonato de Sódio 8,4% + \" + Math.ceil(peso,1) + \" mL de SF 0,9%. Administrar \" + Math.ceil(peso*2,1) + \" mL por via EV em bolus lento.\""
+        }
+    },
+    {
+        "name": "Glicose 10% - 0,1g/ml (Ampola com 10 mL)",
+        "slug": "pcr",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria PCR",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Administrar 50 mL de Glicose 10% por via EV em bolus.",
+          "doseInterval": "",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "glicose-10-0-1gml",
+          "logica_js": "\"Administrar \" + Math.ceil(peso*0.5/0.1,1) + \" mL de Glicose 10% por via EV em bolus.\""
+        }
+    },
+    {
+        "name": "Glicose 25% - 0,25g/ml (Ampola com 10 mL)",
+        "slug": "pcr",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria PCR",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Diluir 20 mL de Glicose 25% + 20 mL de água destilada. Administrar 40 mL por via EV em bolus.",
+          "doseInterval": "",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "glicose-25-0-25gml",
+          "logica_js": "\"Diluir \" + Math.ceil(peso*0.5/0.125/2,1) + \" mL de Glicose 25% + \" + Math.ceil(peso*0.5/0.125/2,1) + \" mL de água destilada. Administrar \" + Math.ceil(peso*0.5/0.125,1) + \" mL por via EV em bolus.\""
+        }
+    },
+    {
+        "name": "Glicose 50% - 0,5g/ml (Ampola com 10 mL)",
+        "slug": "pcr",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria PCR",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Diluir 10 mL de Glicose 50% + 30 mL de água destilada. Administrar 40 mL por via EV em bolus.",
+          "doseInterval": "",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "glicose-50-0-5gml",
+          "logica_js": "\"Diluir \" + Math.ceil(peso*0.5/0.125/4,1) + \" mL de Glicose 50% + \" + Math.ceil(peso*0.5/0.125/4*3,1) + \" mL de água destilada. Administrar \" + Math.ceil(peso*0.5/0.125,1) + \" mL por via EV em bolus.\""
+        }
+    },
+    {
+        "name": "Aciclovir 250 mg/Pó (EV) - Reconstituir com 10mL de AD.",
+        "slug": "antivirais",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria Antivirais",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Reconstituir 1 frasco(s) com 10 mL de AD. Diluir 6 mL da solução reconstituída com 15,5 mL de SF 0,9%. Infundir por via EV a 21,5 mL/hora. Administrar de 8/8 horas. Por 7 a 21 dias.(15mg/kg/dose)",
+          "doseInterval": "8/8 horas",
+          "treatmentDuration": "7 a 21 dias",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "aciclovir-250mg-po-ev-reconstituir-com-10ml-de-ad",
+          "logica_js": "\"Reconstituir \"+Math.ceil(MIN(peso*15,750)/250,0)+\" frasco(s) com \"+Math.ceil(MIN(peso*15,750)/250,0)*10+\" mL de AD. Diluir \"+Math.ceil(MIN(peso*15,750)/25,1)+\" mL da solução reconstituída com \"+Math.ceil((MIN(peso*15,750)/7)-Math.ceil(MIN(peso*15,750)/25,2),1)+\" mL de SF 0,9%. Infundir por via EV a \"+Math.ceil((MIN(peso*15,750)/7)/1,1)+\" mL/hora. Administrar de 8/8 horas. Por 7 a 21 dias.(15mg/kg/dose)\""
+        }
+    },
+    {
+        "name": "Aciclovir 250 mg/Pó (EV) - Reconstituir com 10mL de AD.",
+        "slug": "antivirais",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria Antivirais",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Reconstituir 1 frasco(s) com 10 mL de AD. Diluir 4 mL da solução reconstituída com 10,3 mL de SF 0,9%. Infundir por via EV a 14,3 mL/hora. Administrar de 8/8 horas. Por 7 a 21 dias.(10mg/kg/dose)",
+          "doseInterval": "8/8 horas",
+          "treatmentDuration": "7 a 21 dias",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "aciclovir-250mg-po-ev-reconstituir-com-10ml-de-ad",
+          "logica_js": "\"Reconstituir \"+Math.ceil(MIN(peso*10,750)/250,0)+\" frasco(s) com \"+Math.ceil(MIN(peso*10,750)/250,0)*10+\" mL de AD. Diluir \"+Math.ceil(MIN(peso*10,750)/25,1)+\" mL da solução reconstituída com \"+Math.ceil((MIN(peso*10,750)/7)-Math.ceil(MIN(peso*10,750)/25,2),1)+\" mL de SF 0,9%. Infundir por via EV a \"+Math.ceil((MIN(peso*10,750)/7)/1,1)+\" mL/hora. Administrar de 8/8 horas. Por 7 a 21 dias.(10mg/kg/dose)\""
+        }
+    },
+    {
+        "name": "Ceftriaxona 1000mg/Pó (EV) - Reconstituir em 5 ml de AD",
+        "slug": "antibioticos-ev",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Reconstituir 1 frasco(s) com 5 mL de AD. Administrar 5 mL por via EV diluído em 100 mL de SF 0,9% a cada 24/24 horas. Infundir em 60 minutos.(100mg/kg/dia).",
+              "doseInterval": "24 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "ceftriaxona-1000mg-po-ev-reconstituir-em-5ml-de-ad",
+              "logica_js": "\"Reconstituir \"+Math.ceil(MIN(peso*100,4000)/1000,0)+\" frasco(s) com \"+Math.ceil(MIN(peso*100,4000)/1000,0)*5+\" mL de AD. Administrar \"+Math.round(MIN(peso*100,4000)/1000,1)+\" mL por via EV diluído em 100 mL de SF 0,9% a cada 24/24 horas. Infundir em 60 minutos.(100mg/kg/dia).\""
+            }
+        },
+        {
+            "name": "Ceftriaxona 1000mg/Pó (EV) - Reconstituir em 5 ml de AD",
+            "slug": "antibioticos-ev",
+            "form": "Ver descrição",
+            "application": "Desconhecida",
+            "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Reconstituir 1 frasco(s) com 5 mL de AD. Administrar 2,5 mL por via EV diluído em 100 mL de SF 0,9% a cada 24/24 horas. Infundir em 60 minutos.(50mg/kg/dia).",
+              "doseInterval": "24 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "ceftriaxona-1000mg-po-ev-reconstituir-em-5ml-de-ad",
+              "logica_js": "\"Reconstituir \"+Math.ceil(MIN(peso*50,2000)/1000,0)+\" frasco(s) com \"+Math.ceil(MIN(peso*50,2000)/1000,0)*5+\" mL de AD. Administrar \"+Math.round(MIN(peso*50,2000)/1000,1)+\" mL por via EV diluído em 100 mL de SF 0,9% a cada 24/24 horas. Infundir em 60 minutos.(50mg/kg/dia).\""
+            }
+        },
+        {
+            "name": "Amicacina 100mg/2ml (EV)",
+            "slug": "antibioticos-ev",
+            "form": "Ver descrição",
+            "application": "Desconhecida",
+            "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Administrar 1 mL diluído em 50 mL de SF 0,9% por via EV de 8/8 horas. Infundir em 30 minutos.",
+              "doseInterval": "8 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "amicacina-100mg2ml-ev",
+              "logica_js": "\"Administrar \"+Math.ceil(Math.min(peso*15,1500)/50/3,1)+\" mL diluído em \"+(Math.ceil(Math.min(peso*15,1500)/50/3)<=20 ? \"50 mL\" : \"100 mL\")+\" de SF 0,9% por via EV de 8/8 horas. Infundir em \"+(Math.ceil(Math.min(peso*15,1500)/50/3)<=20 ? \"30 minutos\" : \"60 minutos\")+\".\""
+            }
+        },
+        {
+            "name": "Amicacina 250mg/2ml (EV)",
+            "slug": "antibioticos-ev",
+            "form": "Ver descrição",
+            "application": "Desconhecida",
+            "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Administrar 0,4 mL diluído em 50 mL de SF 0,9% por via EV de 8/8 horas. Infundir em 30 minutos.",
+              "doseInterval": "8 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "amicacina-250mg2ml-ev",
+              "logica_js": "\"Administrar \"+Math.ceil(Math.min(peso*15,1500)/125/3,1)+\" mL diluído em \"+(Math.ceil(Math.min(peso*15,1500)/125/3)<=20 ? \"50 mL\" : \"100 mL\")+\" de SF 0,9% por via EV de 8/8 horas. Infundir em \"+(Math.ceil(Math.min(peso*15,1500)/125/3)<=20 ? \"30 minutos\" : \"60 minutos\")+\".\""
+            }
+        },
+        {
+            "name": "Amoxicilina + Clavulanato 1000 mg + 200 mg (EV) - Reconstituir em 20ml de AD",
+            "slug": "antibioticos-ev",
+            "form": "Ver descrição",
+            "application": "Desconhecida",
+            "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Reconstituir 1 frasco(s) com 20 mL de AD. Administrar 5 mL diluído em 100 mL de SF 0,9%. Infundir por via EV direto 8/8 horas. Fazer em 30 minutos.",
+              "doseInterval": "8 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "amoxicilina-clavulanato-1000mg-200mg-ev-reconstituir-em-20ml-de-ad",
+              "logica_js": "\"Reconstituir 1 frasco(s) com 20 mL de AD. Administrar \" + Math.ceil((idade<=0.3 ? (peso*25<=1000 ? peso*25 : 1000) : (peso*25<=1000 ? peso*25 : 1000))/50, 1) + \" mL diluído em \" + (idade<=0.3 ? \"50\" : \"100\") + \" mL de SF 0,9%. Infundir por via EV direto \" + (idade<=0.3 ? \"12/12 horas\" : \"8/8 horas\") + \". Fazer em 30 minutos.\""
+            }
+        },
+        {
+            "name": "Amoxicilina + Clavulanato 500 mg + 100 mg (EV) - Reconstituir em 20ml de AD",
+            "slug": "antibioticos-ev",
+            "form": "Ver descrição",
+            "application": "Desconhecida",
+            "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Reconstituir 1 frasco(s) com 10 mL de AD. Administrar 5 mL diluído em 50 mL de SF 0,9%. Infundir por via EV direto 12/12 horas. Fazer em 30 minutos.",
+              "doseInterval": "12 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "amoxicilina-clavulanato-500mg-100mg-ev-reconstituir-em-20ml-de-ad",
+              "logica_js": "\"Reconstituir 1 frasco(s) com 10 mL de AD. Administrar \" + Math.ceil(((peso*25<=1000) ? (Math.ceil(cond(peso*25<=500) : (1,2)),0),2) + \" frasco(s) com \" + ((peso*25<=1000) ? (Math.ceil(cond(peso*25<=500) : (10,20)),0),20) + \" mL de AD. Administrar \" + Math.ceil(((peso*25<=1000) ? (peso*25) : (1000))/50,1) + \" mL diluído em \" + ((B3<=3) ? (\"50\") : (\"100\")) + \" mL de SF 0,9%. Infundir por via EV direto \" + ((B3<=3) ? (\"12/12 horas\") : (\"8/8 horas\")) + \".Fazer em 30 minutos.\""
+            }
+        },
+        {
+            "name": "Ampicilina 1000mg/Pó (EV) - Reconstituir em 3ml de AD",
+            "slug": "antibioticos-ev",
+            "form": "Ver descrição",
+            "application": "Desconhecida",
+            "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Reconstituir 1 frasco(s) com 3 mL de AD. Administrar 0,9 mL da mistura diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 6/6 horas. Infundir em 30 minutos.",
+              "doseInterval": "6 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "ampicilina-1000mg-po-ev-reconstituir-em-3ml-de-ad",
+              "logica_js": "\"Reconstituir 1 frasco(s) com 3 mL de AD. Administrar \" + Math.ceil(MIN(peso*15,1500)/50/3,1)+\" mL diluído em \"+((Math.ceil(MIN(peso*15) ? (1500)/50/3) : (1))<=20,\"50 mL\",\"100 mL\")+\" de SF 0,9% por via EV a cada 6/6 horas. Infundir em 30 minutos.\""
+            }
+        },
+        {
+            "name": "Cefalotina 1000mg/Pó (EV) - Reconstituir em 10ml de AD",
+            "slug": "antibioticos-ev",
+            "form": "Ver descrição",
+            "application": "Desconhecida",
+            "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Reconstituir 1 frasco(s) com 10 mL de água destilada. Administrar 4 mL da solução diluído em 100 mL de SF 0,9%. Infundir por via EV de 6/6 horas. Fazer em 30 minutos.",
+              "doseInterval": "6 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "cefaloina-1000mg-po-ev-reconstituir-em-10ml-de-ad",
+              "logica_js": "\"Reconstituir 1 frasco(s) com 10 mL de água destilada. Administrar \" + Math.ceil(((peso*40>2500) ? (2500) : (peso*40))/1000,0) + \" frasco(s) com \" + Math.ceil(((peso*40>2500) ? (2500) : (peso*40))/1000,0)*10 + \" mL de água destilada. Administrar \" + Math.ceil(((peso*40>2500) ? (2500) : (peso*40))/100,1) + \" mL da solução diluído em 100 mL de SF 0,9%. Infundir por via EV de 6/6 horas. Fazer em 30 minutos.\""
+            }
+        },
+        {
+            "name": "Oxacilina 500mg/Pó (EV) - Reconstituir em 5ml de SF ou AD",
+            "slug": "antibioticos-ev",
+            "form": "Ver descrição",
+            "application": "Desconhecida",
+            "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Reconstituir 1 frasco(s) com 5 mL de AD ou SF 0,9%. Administrar 2,5 mL da mistura diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 6/6 horas. Infundir em 30 minutos.",
+              "doseInterval": "6 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "oxacilina-500mg-po-ev-reconstituir-em-5ml-de-sf-ou-ad",
+              "logica_js": "\"Reconstituir \"+Math.ceil(((peso*100>12000) ? (12000) : (peso*100))/2000,0)+\" frasco(s) com \"+Math.ceil(((peso*100>12000) ? (12000) : (peso*100))/2000,0)*5+\" mL de AD ou SF 0,9%. Administrar \"+Math.round(((peso*100>12000) ? (12000/4) : (peso*100/4))/500,1)*5+\" mL da mistura diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 6/6 horas. Infundir em 30 minutos.\""
+            }
+        },
+        {
+            "name": "Gentamicina 40mg/ml (EV) - Ampola 1,5 ou 2ml",
+            "slug": "antibioticos-ev",
+            "form": "Ver descrição",
+            "application": "Desconhecida",
+            "description": "Medicamento da categoria Antibióticos EV (Calculo: 25 mg/kg/dose de 8/8 horas)",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Administrar 1,9 mL diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 24/24 horas. Infundir em 30 minutos.",
+              "doseInterval": "24 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "gentamicina-40mgml-ev",
+              "logica_js": "\"Administrar \" + Math.round(((idade<5) ? ((peso*5)/40) : ((peso*7.5))/40),1)+ \" mL diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 24/24 horas. Infundir em 30 minutos.\""
+            }
+        },
+        {
+            "name": "Penicilina cristalina (benzilpenicilina potássica) 5.000.000 UI - Reconstituir em 10 mL de AD",
+            "slug": "antibioticos-im",
+            "form": "Ver descrição",
+            "application": "Desconhecida",
+            "description": "Medicamento da categoria Antibióticos IM",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+            "concentration": "Ver fórmula",
+            "usualDose": "Reconstituir 1 frasco(s) com 10 mL de diluente. Pegar 1 mL da mistura e diluir em 49 mL de SG 5% e administrar por via EV bem lento. Correr em 60 minutos. Administrar de 8/8 horas (50.000 UI/kg/dose).",
+            "doseInterval": "8 horas",
+            "treatmentDuration": "",
+            "administrationNotes": ""
+          },
+          "calculationParams": {
+            "type": "penicilina-cristalina-benzilpenicilina-5000000-ui-reconstituir-em-10-ml-de-ad",
+    "logica_js": "\"Reconstituir \"+Math.ceil(1)+\" frasco(s) com 10 mL de diluente. Pegar 1 mL da mistura e diluir em 49 mL de SG 5% e administrar por via EV bem lento. Correr em 60 minutos. Administrar de 8/8 horas (50.000 UI/kg/dose).\""
+  }
+},
+{
+  "name": "Sulfato de polimixina B - 500.000 UI/Pó - Reconstituir em 10 mL de AD",
+  "slug": "antibioticos-im",
+  "form": "Ver descrição",
+  "application": "Desconhecida",
+  "description": "Medicamento da categoria Antibióticos IM",
+  "alerts": [],
+  "commonBrandNames": "",
+  "dosageInformation": {
+    "concentration": "Ver fórmula",
+    "usualDose": "Reconstituir 1 frasco(s) com 10 mL de AD. Pegar 2,5 mL da mistura e diluir em 250 mL de SG 5%. Infundir por via EV bem lenta, em 2 horas. Administrar de 12/12 horas. (25.000 UI/Kg/Dia).",
+    "doseInterval": "12 horas",
+    "treatmentDuration": "",
+    "administrationNotes": ""
+  },
+  "calculationParams": {
+    "type": "sulfato-de-polimixina-b-500000-ui-po-reconstituir-em-10-ml-de-ad",
+    "logica_js": "\"Reconstituir \"+Math.ceil(1)+\" frasco(s) com 10 mL de AD. Pegar 2,5 mL da mistura e diluir em 250 mL de SG 5%. Infundir por via EV bem lenta, em 2 horas. Administrar de 12/12 horas. (25.000 UI/Kg/Dia).\""
+  }
+},
+{
+  "name": "Ketamina 50 mg/ml (EV)",
+  "slug": "sedativos",
+  "form": "Ver descrição",
+  "application": "Desconhecida",
+  "description": "Medicamento da categoria Sedativos",
+  "alerts": [],
+  "commonBrandNames": "",
+  "dosageInformation": {
+    "concentration": "Ver fórmula",
+    "usualDose": "Administrar 0,4 mL diluído em 10 mL de SF 0,9%. Fazer bem lento. Usar uma vez ao dia.(2mg/kg).",
+    "doseInterval": "",
+    "treatmentDuration": "",
+    "administrationNotes": ""
+  },
+  "calculationParams": {
+    "type": "ketamina-50-mgml-ev",
+    "logica_js": "\"Administrar \" + Math.ceil(((peso*2<=peso*13) ? (peso*2) : (peso*13))/50,1) + \" mL diluído em 10 mL de SF 0,9%. Fazer bem lento. Usar uma vez ao dia.(2mg/kg).\""
+  }
+},
+{
+  "name": "Midazolan 15 mg/3ml (IM ou EV)",
+  "slug": "sedativos",
+  "form": "Ver descrição",
+  "application": "Desconhecida",
+  "description": "Medicamento da categoria Sedativos",
+  "alerts": [],
+  "commonBrandNames": "",
+  "dosageInformation": {
+    "concentration": "Ver fórmula",
+    "usualDose": "Administrar 0,4 mL por via IM ou EV.",
+    "doseInterval": "",
+    "treatmentDuration": "",
+    "administrationNotes": ""
+  },
+  "calculationParams": {
+    "type": "midazolan-15-mg3ml-imev",
+    "logica_js": "\"Administrar \" + Math.ceil(((peso*0.2<=10) ? (peso*0.2) : (10))/5,1) + \" mL por via IM ou EV.\""
+  }
+},
+{
+  "name": "Propofol 10 mg/ml (EV)",
+  "slug": "sedativos",
+  "form": "Ver descrição",
+  "application": "Desconhecida",
+  "description": "Medicamento da categoria Sedativos",
+  "alerts": [],
+  "commonBrandNames": "",
+  "dosageInformation": {
+    "concentration": "Ver fórmula",
+    "usualDose": "Administrar 2 mL por via EV puro sem diluição. Fazer bem lento.(2mg/kg).",
+    "doseInterval": "",
+    "treatmentDuration": "",
+    "administrationNotes": ""
+  },
+  "calculationParams": {
+    "type": "propofol-10-mgml-ev",
+    "logica_js": "\"Administrar \" + Math.ceil(((peso*2<=peso*18) ? (peso*2) : (peso*18))/10,1) + \" mL por via EV puro sem diluição. Fazer bem lento.(2mg/kg).\""
+  }
+},
+{
+  "name": "Etomidate 2 mg/ml (EV)",
+  "slug": "sedativos",
+  "form": "Ver descrição",
+  "application": "Desconhecida",
+  "description": "Medicamento da categoria Sedativos",
+  "alerts": [],
+  "commonBrandNames": "",
+  "dosageInformation": {
+    "concentration": "Ver fórmula",
+    "usualDose": "Administrar 1,5 mL diluído em 10 mL de SF 0,9%. Fazer lentamente por via EV.(0,3mg/kg).",
+    "doseInterval": "",
+    "treatmentDuration": "",
+    "administrationNotes": ""
+  },
+  "calculationParams": {
+    "type": "etomidate-2-mgml-ev",
+    "logica_js": "\"Administrar \" + Math.ceil(((peso*0.3<=20) ? (peso*0.3) : (20))/2,1) + \" mL diluído em 10 mL de SF 0,9%. Fazer lentamente por via EV.(0,3mg/kg).\""
+  }
+},
+{
+  "name": "Fentanil 50 mcg/ml (EV)",
+  "slug": "sedativos",
+  "form": "Ver descrição",
+  "application": "Desconhecida",
+  "description": "Medicamento da categoria Sedativos",
+  "alerts": [],
+  "commonBrandNames": "",
+  "dosageInformation": {
+    "concentration": "Ver fórmula",
+    "usualDose": "Administrar 0,4 mL diluído em 10 mL de SF 0,9%. Fazer lentamente por via EV.",
+    "doseInterval": "",
+    "treatmentDuration": "",
+    "administrationNotes": ""
+  },
+  "calculationParams": {
+    "type": "fentanil-50mcgml-ev",
+    "logica_js": "\"Administrar \" + Math.ceil(((peso*2<=50) ? (peso*2) : (50))/50,1) + \" mL diluído em 10 mL de SF 0,9%. Fazer lentamente por via EV.\""
+  }
+},
+{
+  "name": "Brometo de Rocurônio 10mg/ml (EV)",
+  "slug": "bloqueador-neuromuscular",
+  "form": "Ver descrição",
+  "application": "Desconhecida",
+  "description": "Medicamento da categoria Bloqueador Neuromuscular",
+  "alerts": [],
+  "commonBrandNames": "",
+  "dosageInformation": {
+    "concentration": "Ver fórmula",
+    "usualDose": "Administrar 1 mL diluído em 10 mL de SF 0,9%. Fazer em bolus por via EV.",
+    "doseInterval": "",
+    "treatmentDuration": "",
+    "administrationNotes": ""
+  },
+  "calculationParams": {
+    "type": "brometo-de-rocuronio-10mgml-ev",
+    "logica_js": "\"Administrar \" + Math.ceil(peso/10,1) + \" mL diluído em \" + Math.ceil(Math.ceil(peso/10,1)/5,0)*10 + \" mL de SF 0,9%. Fazer em bolus por via EV.\""
+  }
+},
+{
+  "name": "Succinil Colin 10mg/Po (EV) - Reconstituir em 10 ml de AD",
+  "slug": "bloqueador-neuromuscular",
+  "form": "Ver descrição",
+  "application": "Desconhecida",
+  "description": "Medicamento da categoria Bloqueador Neuromuscular",
+  "alerts": [],
+  "commonBrandNames": "",
+  "dosageInformation": {
+    "concentration": "Ver fórmula",
+    "usualDose": "Reconstituir 1 frasco(s) com 10 mL de AD. Administrar 2 mL por via EV em bolus.",
+    "doseInterval": "",
+    "treatmentDuration": "",
+    "administrationNotes": ""
+  },
+  "calculationParams": {
+    "type": "succinil-colin-10mgpo-ev-reconstituir-em-10ml-de-ad",
+    "logica_js": "\"Reconstituir \"+Math.ceil(1)+\" frasco(s) com 10 mL de AD. Administrar \" + Math.ceil(((peso*2<=100) ? (1) : (2)) + \" mL por via EV em bolus.\""
+  }
+},
+{
+  "name": "Atropina 0,25mg/ml (EV)",
+  "slug": "medicacao-para-bradicardia",
+  "form": "Ver descrição",
+  "application": "Desconhecida",
+  "description": "Medicamento da categoria Medicação Para Bradicardia",
+  "alerts": [],
+  "commonBrandNames": "",
+  "dosageInformation": {
+    "concentration": "Ver fórmula",
+    "usualDose": "Administrar 0,8 mL de Atropina por via EV sem diluição. Pode repetir uma vez em 5 minutos.",
+    "doseInterval": "",
+    "treatmentDuration": "",
+    "administrationNotes": ""
+  },
+  "calculationParams": {
+    "type": "atropina-0-25mgml-ev",
+    "logica_js": "\"Administrar \" + ((peso*0.02/0.25<=2) ? (Math.ceil(peso*0.02/0.25) : (1)),2) + \" mL de Atropina por via EV \" + ((peso*0.02/0.25<=2) ? (\"sem diluição\") : (\"diluído em 50 mL de SF 0,9%\")) + \". Pode repetir uma vez em 5 minutos.\""
+  }
+},
+{
+  "name": "Midazolam 5mg/ml (EV ou IM)",
+  "slug": "anticonvulsivantes",
+  "form": "Ver descrição",
+  "application": "Desconhecida",
+  "description": "Medicamento da categoria Anticonvulsivantes",
+  "alerts": [],
+  "commonBrandNames": "",
+  "dosageInformation": {
+    "concentration": "Ver fórmula",
+    "usualDose": "Administrar por via EV ou IM: 0,4 mL/dose, repetir até 0,8 mL (dose total). | EV contínuo: 0,4 mL/hora. | Nasal: 0,8 mL/dose. | Retal: 2 mL/dose.",
+    "doseInterval": "",
+    "treatmentDuration": "",
+    "administrationNotes": ""
+  },
+  "calculationParams": {
+    "type": "midazolam-5mgml-ev-ou-im",
+    "logica_js": "\"Administrar por via EV ou IM: \"+Math.ceil(((peso*0.2<=5) ? ((peso*0.2)/5) : (5/5)),2)+\" mL/dose, repetir até \"+Math.ceil(((peso*0.4<=10) ? ((peso*0.4)/5) : (10/5)),2)+\" mL (dose total). | EV contínuo: \"+Math.ceil(((peso*0.2<=10) ? ((peso*0.2)/5) : (10/5)),2)+\" mL/hora. | Nasal: \"+Math.ceil(((peso*0.4<=10) ? ((peso*0.4)/5) : (10/5)),2)+\" mL/dose. | Retal: \"+Math.ceil(((peso*1<=10) ? ((peso*1)/5) : (10/5)),2)+\" mL/dose.\""
+  }
+},
+{
+  "name": "Diazepam 5mg/ml (EV)",
+  "slug": "anticonvulsivantes",
+  "form": "Ver descrição",
+  "application": "Desconhecida",
+  "description": "Medicamento da categoria Anticonvulsivantes",
+  "alerts": [],
+  "commonBrandNames": "",
+  "dosageInformation": {
+    "concentration": "Ver fórmula",
+    "usualDose": "Administrar 0,4 mL diluído em 10 mL de SF 0,9%. Administrar por via EV bem lento | Pode repetir até 3 vezes com intervalo de 5 minutos.",
+    "doseInterval": "",
+    "treatmentDuration": "",
+    "administrationNotes": ""
+  },
+  "calculationParams": {
+    "type": "diazepam-5mgml-ev",
+    "logica_js": "\"Administrar \"+Math.ceil(((peso*0.2)<=20) ? ((peso*0.2)/5) : (20/5),1)+\" mL diluído em 10 mL de SF 0,9%. Administrar por via EV bem lento | Pode repetir até 3 vezes com intervalo de 5 minutos.\""
+  }
+},
+{
+  "name": "Fenitoína 50mg/ml - Ampola 5ml (EV)",
+  "slug": "anticonvulsivantes",
+  "form": "Ver descrição",
+  "application": "Desconhecida",
+  "description": "Medicamento da categoria Anticonvulsivantes",
+  "alerts": [],
+  "commonBrandNames": "",
+  "dosageInformation": {
+    "concentration": "Ver fórmula",
+    "usualDose": "Administrar 4 mL diluído em 100 mL de SF 0,9%. Correr em 20 minutos a uma taxa de 0,2 mL/min. Pode repetir mais uma dose de 2 mL. Se necessário, caso a convulsão não melhore. Observação: É necessária monitorização cardíaca cuidadosa durante e após a administração intravenosa.",
+    "doseInterval": "",
+    "treatmentDuration": "",
+    "administrationNotes": ""
+  },
+  "calculationParams": {
+    "type": "fenitoina-50mgml-ampola-5ml-ev",
+    "logica_js": "\"Administrar \"+Math.ceil(MIN(peso*20,1000)/50,1)+\" mL diluído em 100 mL de SF 0,9%. Correr em 20 minutos a uma taxa de \"+Math.ceil(MIN(peso*20,1000)/20/50,2)+\" mL/min. Pode repetir mais uma dose de \"+Math.ceil(MIN(peso*10,1000)/50,1)+\" mL. Se necessário, caso a convulsão não melhore. Observação: É necessária monitorização cardíaca cuidadosa durante e após a administração intravenosa.\""
+  }
+},
+{
+  "name": "Fenobarbital 100mg/ml - Ampola 2ml (EV)",
+  "slug": "anticonvulsivantes",
+  "form": "Ver descrição",
+  "application": "Desconhecida",
+  "description": "Medicamento da categoria Anticonvulsivantes",
+  "alerts": [],
+  "commonBrandNames": "",
+  "dosageInformation": {
+    "concentration": "Ver fórmula",
+    "usualDose": "Administrar 2 mL diluído em 100 mL de SF 0,9%. Correr em 20 minutos a uma taxa de 0,1 mL/min. Pode repetir mais uma dose de 1 mL caso a convulsão não melhore após 10 a 15 minutos. Observação: Suporte respiratório adicional pode ser necessário, especialmente ao maximizar a dose de ataque ou com terapia sedativa concomitante.",
+    "doseInterval": "",
+    "treatmentDuration": "",
+    "administrationNotes": ""
+  },
+  "calculationParams": {
+    "type": "fenobarbital-100mgml-ampola-2ml-ev",
+    "logica_js": "\"Administrar \"+Math.ceil(MIN(peso*20,1000)/100,1)+\" mL diluído em 100 mL de SF 0,9%. Correr em 20 minutos a uma taxa de \"+Math.ceil(MIN(peso*20,1000)/20/100,2)+\" mL/min. Pode repetir mais uma dose de \"+Math.ceil(MIN(peso*10,1000)/100,1)+\" mL caso a convulsão não melhore após 10 a 15 minutos. Observação: Suporte respiratório adicional pode ser necessário, especialmente ao maximizar a dose de ataque ou com terapia sedativa concomitante.\""
+  }
+},
+{
+    "name": "Fenobarbital 40mg/ml (Gotas) - VO",
+    "slug": "anticonvulsivantes",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Anticonvulsivantes",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 10 gotas por via oral de 24/24 horas. Uma vez ao dia.",
+      "doseInterval": "24 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "fenobarbital-40mgml-gotas-vo",
+      "logica_js": "\"Administrar \"+Math.ceil(((peso*5)<=200) ? ((peso*5)/20) : (200/20),0)+\" gotas por via oral de 24/24 horas. Uma vez ao dia.\""
+    }
+  },
+  {
+    "name": "Fenobarbital 40mg/ml (Gotas) - VO",
+    "slug": "anticonvulsivantes",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Anticonvulsivantes",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 10 gotas por via oral de 24/24 horas. Uma vez ao dia.",
+      "doseInterval": "24 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "fenobarbital-40mgml-gotas-vo",
+      "logica_js": "\"Administrar \"+Math.ceil(((peso*5)<=200) ? ((peso*5)/20) : (200/20),0)+\" gotas por via oral de 24/24 horas. Uma vez ao dia.\""
+    }
+  },
+  {
+    "name": "Ácido Valpróico 200mg/ml (Gotas) - VO",
+    "slug": "anticonvulsivantes",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Anticonvulsivantes",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 5 gotas por via oral de 12/12 horas.",
+      "doseInterval": "12 horas",
+      "treatmentDuration极": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "acido-valproico-200mgml-gotas-vo",
+      "logica_js": "\"Administrar \"+Math.ceil(((peso*20)<=1000) ? ((peso*20)/40) : (1000/40),0)+\" gotas por via oral de 12/12 horas.\""
+    }
+  },
+  {
+    "name": "Levetiracetam 100mg/ml (Xarope) - VO",
+    "slug": "anticonvulsivantes",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Anticonvulsivantes",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 2,5 mL por via oral de 12/12 horas.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "levetiracetam-100mgml-xarope-vo",
+      "logica_js": "\"Administrar \"+Math.ceil(((peso*20)<=1000) ? ((peso*20)/40) : (1000/40),1)+\" mL por via oral de 12/12 horas.\""
+    }
+  },
+  {
+    "name": "Carbamazepina 20mg/ml (Xarope) - VO",
+    "slug": "anticonvulsivantes",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Anticonvulsivantes",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 2,5 mL por via oral de 8/8 horas.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "carbamazepina-20mgml-xarope-vo",
+      "logica_js": "\"Administrar \"+Math.ceil(((peso*10)<=400) ? ((peso*10)/20) : (400/20),1)+\" mL por via oral de 8/8 horas.\""
+    }
+  },
+  {
+    "name": "Topiramato 25mg/ml (Xarope) - VO",
+    "slug": "anticonvulsivantes",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Anticonvulsivantes",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 2 mL por via oral de 12/12 horas.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "topiramato-25mgml-xarope-vo",
+      "logica_js": "\"Administrar \"+Math.ceil(((peso*3)<=150) ? ((peso*3)/25) : (150/25),1)+\" mL por via oral de 12/12 horas.\""
+    }
+  },
+  {
+    "name": "Lorazepam 2mg/ml (EV)",
+    "slug": "anticonvulsivantes",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Anticonvulsivantes",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,5 mL por via EV sem diluição. Pode repetir após 5 minutos se necessário.",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "lorazepam-2mgml-ev",
+      "logica_js": "\"Administrar \"+Math.ceil(((peso*0.1)<=4) ? ((peso*0.1)/2) : (4/2),1)+\" mL por via EV sem diluição. Pode repetir após 5 minutos se necessário.\""
+    }
+  },
+  {
+    "name": "Penicilina cristalina (benzilpenicilina potássica) 5.000.000 UI - Reconstituir em 10 mL de AD",
+    "slug": "antibioticos-im",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos IM",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 10 mL de diluente. Pegar 1 mL da mistura e diluir em 49 mL de SG 5% e administrar por via EV bem lento. Correr em 60 minutos. Administrar de 8/8 horas (50.000 UI/kg/dose).",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculation极Params": {
+      "type": "penicilina-cristalina-benzilpenicilina-5000000-ui-reconstituir-em-10-ml-de-ad",
+      "logica_js": "\"Reconstituir \"+Math.ceil(1)+\" frasco(s) com 10 mL de diluente. Pegar 1 mL da mistura e diluir em 49 mL de SG 5% e administrar por via EV bem lento. Correr em 60 minutos. Administrar de 8/8 horas (50.000 UI/kg/dose).\""
+    }
+  },
+  {
+    "name": "Sulfato de polimixina B - 500.000 UI/Pó - Reconstituir em 10 mL de AD",
+    "slug": "antibioticos-im",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos IM",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 10 mL de AD. Pegar 2,5 mL da mistura e diluir em 250 mL de SG 5%. Infundir por via EV bem lenta, em 2 horas. Administrar de 12/12 horas. (25.000 UI/Kg/Dia).",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "sulfato-de-polimixina-b-500000-ui-po-reconstituir-em-10-ml-de-ad",
+      "logica_js": "\"Reconstituir \"+Math.ceil(1)+\" frasco(s) com 10 mL de AD. Pegar 2,5 mL da mistura e diluir em 250 mL de SG 5%. Infundir por via EV bem lenta, em 2 horas. Administrar de 12/12 horas. (25.000 UI/Kg/Dia).\""
+    }
+  },
+  {
+    "name": "Ketamina 50 mg/ml (EV)",
+    "slug": "sedativos",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Sedativos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,4 mL diluído em 10 mL de SF 0,9%. Fazer bem lento. Usar uma vez ao dia.(2mg/kg).",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "ketamina-50-mgml-ev",
+      "logica_js": "\"Administrar \" + Math.ceil(((peso*2<=peso*13) ? (peso*2) : (peso*13))/50,1) + \" mL diluído em 10 mL de SF 0,9%. Fazer bem lento. Usar uma vez ao dia.(2mg/kg).\""
+    }
+  },
+  {
+    "name": "Midazolan 15 mg/3ml (IM ou EV)",
+    "slug": "sedativos",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Sedativos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,4 mL por via IM ou EV.",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "midazolan-15-mg3ml-imev",
+      "logica_js": "\"Administrar \" + Math.ceil(((peso*0.2<=10) ? (peso*0.2) : (10))/5,1) + \" mL por via IM ou EV.\""
+    }
+  },
+  {
+    "name": "Propofol 10 mg/ml (EV)",
+    "slug": "sedativos",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Sedativos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 2 mL por via EV puro sem diluição. Fazer bem lento.(2mg/kg).",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "propofol-10-mgml-ev",
+      "logica_js": "\"Administrar \" + Math.ceil(((peso*2<=peso*18) ? (peso*极2) : (peso*18))/10,1) + \" mL por via EV puro sem diluição. Fazer bem lento.(2mg/kg).\""
+    }
+  },
+  {
+    "name": "Etomidate 2 mg/ml (EV)",
+    "slug": "sedativos",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Sedativos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 1,5 mL diluído em 10 mL de SF 0,9%. Fazer lentamente por via EV.(0,3mg/kg).",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "etomidate-2-mgml-ev",
+      "logica_js": "\"Administrar \" + Math.ceil(((peso*0.3<=20) ? (peso*0.3) : (20))/2,1) + \" mL diluído em 10 mL de SF 0,9%. Fazer lentamente por via EV.(0,3mg/kg).\""
+    }
+  },
+  {
+    "name": "Fentanil 50 mcg/ml (EV)",
+    "slug": "sedativos",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Sedativos",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,4 mL diluído em 10 mL de SF 0,9%. Fazer lentamente por via EV.",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "fentanil-50mcgml-ev",
+      "logica_js": "\"Administrar \" + Math.ceil(((peso*2<=50) ? (peso*2) : (50))/50,1) + \" mL diluído em 10 mL de SF 0,9%. Fazer lentamente por via EV.\""
+    }
+  },
+  {
+    "name": "Brometo de Rocurônio 10mg/ml (EV)",
+    "slug": "bloqueador-neuromuscular",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Bloqueador Neuromuscular",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 1 mL diluído em 10 mL de SF 0,9%. Fazer em bolus por via EV.",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "brometo-de-rocuronio-10mgml-ev",
+      "logica_js": "\"Administrar \" + Math.ceil(peso/10,1) + \" mL diluído em \" + Math.ceil(Math.ceil(peso/10,1)/5,0)*10 + \" mL de SF 0,9%. Fazer em bolus por via EV.\""
+    }
+  },
+  {
+    "name": "Succinil Colin 10mg/Po (EV) - Reconstituir em 10 ml de AD",
+    "slug": "bloqueador-neuromuscular",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Bloqueador Neuromuscular",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 10 mL de AD. Administrar 2 mL por via EV em bolus.",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "succinil-colin-10mgpo-ev-reconstituir-em-10ml-de-ad",
+      "logica_js": "\"Reconstituir \"+Math.ceil(1)+\" frasco(s) com 10 mL de AD. Administrar \" + Math.ceil(((peso*2<=100) ? (1) : (2)) + \" mL por via EV em bolus.\""
+    }
+  },
+  {
+    "name": "Atropina 0,25mg/ml (EV)",
+    "slug": "medicacao-para-bradicardia",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Medicação Para Bradicardia",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,8 mL de Atropina por via EV sem diluição. Pode repetir uma vez em 5 minutos.",
+      "doseInterval": "",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "atropina-0-25mgml-ev",
+      "logica_js": "\"Administrar \" + ((peso*0.02/0.25<=2) ? (Math.ceil(peso*0.02/0.25) : (1)),2) + \" mL de Atropina por via EV \" + ((peso*0.02/0.25<=2) ? (\"sem diluição\") : (\"diluído em 50 mL de SF 0,9%\")) + \". Pode repetir uma vez em 5 minutos.\""
+    }
+  }
+]

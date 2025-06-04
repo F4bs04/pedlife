@@ -14,6 +14,7 @@ interface CalculationData {
   calculatedDoseText: string;
   calculationTime: string;
   calculationDate: string;
+  detailedCalculation?: string;
 }
 
 interface MedicationResultsViewProps {
@@ -52,6 +53,7 @@ const MedicationResultsView: React.FC<MedicationResultsViewProps> = ({
         <CalculatedDoseCard
           medication={medication}
           calculatedDoseText={calculationData.calculatedDoseText}
+          detailedCalculation={calculationData.detailedCalculation}
         />
         <PatientDataCard calculationData={calculationData} />
       </div>

@@ -8,6 +8,85 @@ import { format } from 'date-fns';
 import { slugify } from '@/lib/utils';
 
 import { mockMedicationsData, allCategories } from '@/data/mockMedications';
+
+// Função para gerar explicação detalhada do cálculo de dosagem
+function generateDetailedCalculation(medication: Medication, weight: number, age: number): string {
+  try {
+    const params = medication.calculationParams;
+    if (!params || !params.logica_js) {
+      return "Lógica de cálculo não disponível para este medicamento.";
+    }
+    
+    // Remove as aspas que envolvem a string de lógica JavaScript
+    const logicaJs = params.logica_js.replace(/^"|"$/g, '');
+    
+    // Extrair informações do medicamento
+    const name = medication.name;
+    const form = medication.form;
+    const concentration = medication.dosageInformation?.concentration || '';
+    
+    // Iniciar explicação
+    let explanation = `Cálculo detalhado para ${name}:\n\n`;
+    
+    // Adicionar informações do paciente
+    explanation += `Dados do paciente:\n`;
+    explanation += `- Peso: ${weight} kg\n`;
+    explanation += `- Idade: ${age} anos\n\n`;
+    
+    // Analisar a lógica para identificar padrões comuns
+    if (logicaJs.includes('peso*')) {
+      // Extrair o fator de multiplicação do peso
+      const mgPerKgMatch = logicaJs.match(/peso\s*\*\s*([0-9.]+)/);
+      if (mgPerKgMatch && mgPerKgMatch[1]) {
+        const mgPerKg = parseFloat(mgPerKgMatch[1]);
+        const totalDoseMg = weight * mgPerKg;
+        explanation += `1. Cálculo da dose total:\n`;
+        explanation += `   ${weight} kg × ${mgPerKg} mg/kg = ${totalDoseMg.toFixed(2)} mg\n\n`;
+        
+        // Verificar se há divisão por doses por dia
+        if (logicaJs.includes('/2') || logicaJs.includes('/3') || logicaJs.includes('/4')) {
+          let dosesPerDay = 1;
+          if (logicaJs.includes('/2')) dosesPerDay = 2;
+          if (logicaJs.includes('/3')) dosesPerDay = 3;
+          if (logicaJs.includes('/4')) dosesPerDay = 4;
+          
+          const dosePerTakeMg = totalDoseMg / dosesPerDay;
+          explanation += `2. Cálculo da dose por tomada:\n`;
+          explanation += `   ${totalDoseMg.toFixed(2)} mg ÷ ${dosesPerDay} doses = ${dosePerTakeMg.toFixed(2)} mg por dose\n\n`;
+          
+          // Verificar se há conversão para volume baseado na concentração
+          const concentrationMatch = logicaJs.match(/(\d+)\s*\/\s*(\d+)/);
+          if (concentrationMatch && concentrationMatch[1] && concentrationMatch[2]) {
+            const concentrationMg = parseFloat(concentrationMatch[1]);
+            const concentrationMl = parseFloat(concentrationMatch[2]);
+            const volumePerTakeMl = (dosePerTakeMg / concentrationMg) * concentrationMl;
+            explanation += `3. Conversão para volume:\n`;
+            explanation += `   Concentração: ${concentrationMg} mg/${concentrationMl} ml\n`;
+            explanation += `   ${dosePerTakeMg.toFixed(2)} mg ÷ (${concentrationMg} mg/${concentrationMl} ml) = ${volumePerTakeMl.toFixed(2)} ml\n\n`;
+            
+            // Verificar se há arredondamento
+            if (logicaJs.includes('Math.round')) {
+              const roundedVolume = Math.round(volumePerTakeMl * 10) / 10;
+              explanation += `4. Volume arredondado: ${roundedVolume.toFixed(1)} ml\n\n`;
+            }
+          }
+        }
+      }
+    }
+    
+    // Se não conseguiu gerar uma explicação detalhada, retornar uma mensagem genérica
+    if (explanation === `Cálculo detalhado para ${name}:\n\nDados do paciente:\n- Peso: ${weight} kg\n- Idade: ${age} anos\n\n`) {
+      explanation += `A lógica de cálculo específica para este medicamento é complexa.\n\n`;
+      explanation += `Fórmula utilizada: ${logicaJs.replace(/\"/g, '')}\n\n`;
+      explanation += `O resultado foi calculado automaticamente com base nos parâmetros fornecidos.`;
+    }
+    
+    return explanation;
+  } catch (error) {
+    console.error('Erro ao gerar explicação detalhada:', error);
+    return 'Não foi possível gerar uma explicação detalhada para este cálculo.';
+  }
+}
 import { MedicationCategoryData, DosageCalculationParams, Medication } from '@/types/medication';
 
 // New component imports
@@ -33,6 +112,7 @@ interface CalculationData {
   calculatedDoseText: string;
   calculationTime: string;
   calculationDate: string;
+  detailedCalculation?: string; // Adicionando campo para explicação detalhada do cálculo
 }
 
 const MedicationCalculatorPage: React.FC = () => {
@@ -62,9 +142,20 @@ const MedicationCalculatorPage: React.FC = () => {
   }
 
   const onSubmit = (values: FormValues) => {
-    console.log("Valores do formulário:", values);
-    let doseResultText: string;
-    const params = medication.calculationParams as DosageCalculationParams | undefined;
+    if (!medication) return;
+
+    // Get the current date and time
+    const now = new Date();
+    const formattedTime = format(now, 'HH:mm');
+    const formattedDate = format(now, 'dd/MM/yyyy');
+
+    // Calculate the dose based on the medication type and parameters
+    let doseResultText = '';
+    let detailedCalculation = '';
+    const params = medication.calculationParams;
+    
+    // Gerar explicação detalhada do cálculo
+    detailedCalculation = generateDetailedCalculation(medication, values.weight, values.age);
 
     // Existing Amoxicilina 250mg/5mL logic
     if (medication.slug === slugify('Amoxicilina') && params?.type === 'amoxicilina_suspension_250_5') {
@@ -210,7 +301,24 @@ const MedicationCalculatorPage: React.FC = () => {
         console.error(`Parâmetros de cálculo incompletos para ${medication.name}:`, params);
       }
     }
-    // Fallback for other medications
+    // Use the medication's calculation logic if available
+    else if (medication.calculationParams?.logica_js) {
+      try {
+        // Create a function that evaluates the logica_js with the provided parameters
+        const peso = values.weight;
+        const idade = values.age;
+        // Remove the surrounding quotes from logica_js
+        const logicaJs = medication.calculationParams.logica_js.replace(/^"|"$/g, '');
+        // Evaluate the calculation logic
+        const calculatedDose = eval(logicaJs);
+        
+        doseResultText = `Cálculo para ${medication.name} (${medication.form || 'forma não especificada'}): Para peso ${values.weight}kg e idade ${values.age} anos. Dose: ${calculatedDose}`;
+      } catch (error) {
+        console.error('Error evaluating medication calculation logic:', error);
+        doseResultText = `Cálculo para ${medication.name} (${medication.form || 'forma não especificada'}): Para peso ${values.weight}kg e idade ${values.age} anos. Erro ao calcular a dose. Verifique a bula e informações adicionais.`;
+      }
+    }
+    // Fallback if no calculation logic is available
     else {
       doseResultText = `Cálculo para ${medication.name} (${medication.form || 'forma não especificada'}): Para peso ${values.weight}kg e idade ${values.age} anos. Dose: (Lógica de cálculo detalhada ainda não implementada para este medicamento). Verifique a bula e informações adicionais.`;
     }
@@ -221,6 +329,7 @@ const MedicationCalculatorPage: React.FC = () => {
       calculatedDoseText: doseResultText,
       calculationDate: format(new Date(), "dd/MM/yyyy"),
       calculationTime: format(new Date(), "HH:mm"),
+      detailedCalculation: detailedCalculation, // Adicionando a explicação detalhada
     });
   };
 
