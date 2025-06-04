@@ -21,243 +21,233 @@ import {
 import { slugify } from '@/lib/utils';
 import { MockMedicationData, CategoryInfo, MedicationCategoryData, Medication, DosageCalculationParams } from '@/types/medication';
 
-export const allCategories: Omit<CategoryInfo, 'medicationsCount' | 'lastUpdated'>[] = [
-  { title: 'Antibióticos VO', slug: slugify('Antibióticos VO'), icon: Pill, iconColorClass: 'text-blue-500', bgColorClass: 'bg-blue-100' },
-  { title: 'Analgésicos e Antitérmicos', slug: slugify('Analgésicos e Antitérmicos'), icon: Thermometer, iconColorClass: 'text-teal-500', bgColorClass: 'bg-teal-100' },
-  { title: 'Corticoides EV', slug: slugify('Corticoides EV'), icon: Syringe, iconColorClass: 'text-red-500', bgColorClass: 'bg-red-100' },
-  { title: 'Antieméticos', slug: slugify('Antieméticos'), icon: Package, iconColorClass: 'text-purple-500', bgColorClass: 'bg-purple-100' },
-  { title: 'Broncodilatadores', slug: slugify('Broncodilatadores'), icon: Activity, iconColorClass: 'text-green-500', bgColorClass: 'bg-green-100' }, // Icon changed
-  { title: 'Outras Classes', slug: slugify('Outras Classes'), icon: Activity, iconColorClass: 'text-yellow-500', bgColorClass: 'bg-yellow-100' },
-  { title: 'Fluidos e Eletrólitos', slug: slugify('Fluidos e Eletrólitos'), icon: Droplets, iconColorClass: 'text-cyan-500', bgColorClass: 'bg-cyan-100' },
-  { title: 'Vitaminas e Suplementos', slug: slugify('Vitaminas e Suplementos'), icon: TestTube2, iconColorClass: 'text-orange-500', bgColorClass: 'bg-orange-100' },
-  { title: 'Antivirais', slug: slugify('Antivirais'), icon: ShieldAlert, iconColorClass: 'text-pink-500', bgColorClass: 'bg-pink-100' }, // Icon changed
-];
+// Importando o JSON do banco de dosagens
+import jsonData from '@/medications/banco_dosagens_medicas_formatado.json';
 
-export const mockMedicationsData: MockMedicationData = {
-  [slugify('Antibióticos VO')]: {
-    title: 'Antibióticos VO',
-    slug: slugify('Antibióticos VO'),
-    icon: Pill,
-    iconColorClass: 'text-blue-500',
-    bgColorClass: 'bg-blue-100',
-    medicationsCount: 3,
-    lastUpdated: 'Mai/2025',
-    medications: [
-      {
-        name: 'Amoxicilina',
-        slug: slugify('Amoxicilina'),
-        form: 'Suspensão Oral',
-        application: 'VO',
-        description: 'Antibiótico beta-lactâmico comum para infecções bacterianas.',
-        alerts: ['Alergia à penicilina é uma contraindicação.'],
-        commonBrandNames: 'Amoxil®, Novocilin®, Velamox®',
-        dosageInformation: {
-          concentration: '250mg/5mL',
-          usualDose: 'Varia conforme a infecção e peso.',
-          doseInterval: '8/8 horas ou 12/12 horas',
-          treatmentDuration: '7-10 dias geralmente',
-        },
-        calculationParams: {
-          type: 'amoxicilina_suspension_250_5',
-          mgPerKg: 50,
-          maxDailyDoseMg: 2000,
-          dosesPerDay: 3,
-          concentrationNumeratorMg: 250,
-          concentrationDenominatorMl: 5,
-          maxVolumePerDoseBeforeCapMl: 10,
-          cappedVolumeAtMaxMl: 10,
-        } as DosageCalculationParams,
-      },
-      {
-        name: 'Amoxicilina Tri-hidratada',
-        slug: slugify('Amoxicilina Tri-hidratada'),
-        form: 'Suspensão Oral',
-        application: 'VO',
-        description: 'Formulação de amoxicilina com clavulanato, ampliando espectro.',
-        alerts: ['Alergia à penicilina.', 'Ajustar dose em insuficiência renal.'],
-        commonBrandNames: 'Clavulin®, SigmaClav BD®, Novamox 2X®',
-        dosageInformation: {
-          concentration: '400mg/5mL (Amoxicilina)',
-          usualDose: 'Baseado no componente amoxicilina.',
-          doseInterval: '12/12 horas',
-          treatmentDuration: '7-14 dias',
-        },
-        calculationParams: {
-          type: 'amoxicilina_suspension_400_5',
-          mgPerKg: 45,
-          maxDailyDoseMg: 1000,
-          dosesPerDay: 2,
-          concentrationNumeratorMg: 400,
-          concentrationDenominatorMl: 5,
-          maxVolumePerDoseBeforeCapMl: 7.5,
-          cappedVolumeAtMaxMl: 7.5,
-        } as DosageCalculationParams,
-      },
-      {
-        name: 'Azitromicina Di-hidratada',
-        slug: slugify('Azitromicina Di-hidratada'),
-        form: 'Suspensão Oral',
-        application: 'VO',
-        description: 'Antibiótico macrolídeo para diversas infecções.',
-        alerts: ['Pode interagir com outros medicamentos.'],
-        commonBrandNames: 'Astro®, Zitromax®, Azitrokids®',
-        dosageInformation: {
-          concentration: '200mg/5mL',
-          usualDose: '10 mg/kg/dia',
-          doseInterval: 'Uma vez ao dia',
-          treatmentDuration: '3-5 dias',
-        },
-        calculationParams: {
-          type: 'azitromicina_suspensao_200_5',
-          mgPerKg: 10,
-          maxDailyDoseMg: 500,
-          dosesPerDay: 1,
-          concentrationNumeratorMg: 200,
-          concentrationDenominatorMl: 5,
-        } as DosageCalculationParams,
-      },
-    ],
-  },
-  [slugify('Analgésicos e Antitérmicos')]: {
-    title: 'Analgésicos e Antitérmicos',
-    slug: slugify('Analgésicos e Antitérmicos'),
-    icon: Thermometer,
-    iconColorClass: 'text-teal-500',
-    bgColorClass: 'bg-teal-100',
-    medicationsCount: 2,
-    lastUpdated: 'Mai/2025',
-    medications: [
-      {
-        name: 'Paracetamol',
-        slug: slugify('Paracetamol'),
-        form: 'Solução oral em gotas',
-        application: 'VO',
-        description: 'Analgésico e antitérmico. Utilizado para alívio da dor e febre em crianças.',
-        alerts: ['Não exceder a dose máxima diária.', 'Usar com cautela em pacientes com insuficiência hepática.'],
-        commonBrandNames: 'Tylenol®, Pratium®, Tylalgin®',
-        dosageInformation: {
-          concentration: '200 mg / mL (10 gotas = 1 mL)',
-          usualDose: '10 mg/kg/dose. Máximo de 350mg por dose.',
-          doseInterval: 'A cada 4 horas (até 5 vezes ao dia)',
-          treatmentDuration: 'Conforme necessidade ou prescrição médica',
-          administrationNotes: 'Pode ser administrado com ou sem alimentos. Respeitar o intervalo mínimo entre as doses.'
-        },
-        calculationParams: {
-          type: 'paracetamol_gotas_200_ml',
-          mgPerKg: 10,
-          maxDosePerTakeMg: 350,
-          mgInStandardVolume: 200, // 200mg
-          dropsInStandardVolume: 10, // em 10 gotas
-        } as DosageCalculationParams
-      },
-      {
-        name: 'Dipirona',
-        slug: slugify('Dipirona'),
-        form: 'Solução oral em gotas',
-        application: 'VO',
-        description: 'Analgésico e antitérmico. Usado para alívio da dor e febre.',
-        alerts: ['Pode causar reações de hipersensibilidade.', 'Usar com cautela em pacientes com problemas hematológicos.'],
-        commonBrandNames: 'Novalgina®, Anador®, Magnopyrol®',
-        dosageInformation: {
-          concentration: '500 mg / mL (25 gotas = 1 mL)',
-          usualDose: '15 mg/kg/dose. Máximo de 500mg por dose.',
-          doseInterval: 'A cada 6 horas (4 vezes ao dia)',
-          treatmentDuration: 'Conforme necessidade ou prescrição médica',
-          administrationNotes: 'Pode ser administrada com ou sem líquidos.'
-        },
-        calculationParams: {
-          type: 'dipirona_gotas_500_ml',
-          mgPerKg: 15,
-          maxDosePerTakeMg: 500,
-          mgInStandardVolume: 500,
-          dropsInStandardVolume: 25,
-        } as DosageCalculationParams
-      },
-    ],
-  },
-  [slugify('Corticoides EV')]: {
-    title: 'Corticoides EV',
-    slug: slugify('Corticoides EV'),
-    icon: Syringe,
-    iconColorClass: 'text-red-500',
-    bgColorClass: 'bg-red-100',
-    medicationsCount: 0,
-    lastUpdated: 'N/A',
-    medications: [],
-  },
-  [slugify('Antieméticos')]: {
-    title: 'Antieméticos',
-    slug: slugify('Antieméticos'),
-    icon: Package,
-    iconColorClass: 'text-purple-500',
-    bgColorClass: 'bg-purple-100',
-    medicationsCount: 0,
-    lastUpdated: 'N/A',
-    medications: [],
-  },
-  [slugify('Broncodilatadores')]: {
-    title: 'Broncodilatadores',
-    slug: slugify('Broncodilatadores'),
-    icon: Activity, // Icon changed
-    iconColorClass: 'text-green-500',
-    bgColorClass: 'bg-green-100',
-    medicationsCount: 0,
-    lastUpdated: 'N/A',
-    medications: [],
-  },
-  [slugify('Outras Classes')]: {
-    title: 'Outras Classes',
-    slug: slugify('Outras Classes'),
-    icon: Activity,
-    iconColorClass: 'text-yellow-500',
-    bgColorClass: 'bg-yellow-100',
-    medicationsCount: 0,
-    lastUpdated: 'N/A',
-    medications: [],
-  },
-  [slugify('Fluidos e Eletrólitos')]: {
-    title: 'Fluidos e Eletrólitos',
-    slug: slugify('Fluidos e Eletrólitos'),
-    icon: Droplets,
-    iconColorClass: 'text-cyan-500',
-    bgColorClass: 'bg-cyan-100',
-    medicationsCount: 0,
-    lastUpdated: 'N/A',
-    medications: [],
-  },
-  [slugify('Vitaminas e Suplementos')]: {
-    title: 'Vitaminas e Suplementos',
-    slug: slugify('Vitaminas e Suplementos'),
-    icon: TestTube2,
-    iconColorClass: 'text-orange-500',
-    bgColorClass: 'bg-orange-100',
-    medicationsCount: 0,
-    lastUpdated: 'N/A',
-    medications: [],
-  },
-  [slugify('Antivirais')]: {
-    title: 'Antivirais',
-    slug: slugify('Antivirais'),
-    icon: ShieldAlert, // Icon changed
-    iconColorClass: 'text-pink-500',
-    bgColorClass: 'bg-pink-100',
-    medicationsCount: 0,
-    lastUpdated: 'N/A',
-    medications: [],
-  },
+// Mapeamento de categorias para ícones e cores
+const categoryIconMap: Record<string, { icon: LucideIcon; iconColorClass: string; bgColorClass: string }> = {
+  'Antibiótico Vo': { icon: Pill, iconColorClass: 'text-blue-500', bgColorClass: 'bg-blue-100' },
+  'Analgésicos E Antitérmicos': { icon: Thermometer, iconColorClass: 'text-teal-500', bgColorClass: 'bg-teal-100' },
+  'Antieméticos': { icon: Package, iconColorClass: 'text-purple-500', bgColorClass: 'bg-purple-100' },
+  'Antialérgicos': { icon: ShieldAlert, iconColorClass: 'text-pink-500', bgColorClass: 'bg-pink-100' },
+  'Corticoide Oral': { icon: Pill, iconColorClass: 'text-orange-500', bgColorClass: 'bg-orange-100' },
+  'Corticoides Ev': { icon: Syringe, iconColorClass: 'text-red-500', bgColorClass: 'bg-red-100' },
+  'Anafilaxia': { icon: HeartPulse, iconColorClass: 'text-red-600', bgColorClass: 'bg-red-100' },
+  'Diuréticos': { icon: Droplets, iconColorClass: 'text-cyan-500', bgColorClass: 'bg-cyan-100' },
+  'Pcr': { icon: HeartPulse, iconColorClass: 'text-red-700', bgColorClass: 'bg-red-200' },
+  'Taquicardia Supraventricular': { icon: Activity, iconColorClass: 'text-red-500', bgColorClass: 'bg-red-100' },
+  'Antivirais': { icon: ShieldAlert, iconColorClass: 'text-green-500', bgColorClass: 'bg-green-100' },
+  'Antibióticos Ev': { icon: Syringe, iconColorClass: 'text-blue-600', bgColorClass: 'bg-blue-100' },
+  'Antibióticos Im': { icon: Syringe, iconColorClass: 'text-blue-700', bgColorClass: 'bg-blue-200' },
+  'Sedativos': { icon: Brain, iconColorClass: 'text-purple-600', bgColorClass: 'bg-purple-100' },
+  'Bloqueador Neuromuscular': { icon: Brain, iconColorClass: 'text-gray-600', bgColorClass: 'bg-gray-100' },
+  'Medicação Para Bradicardia': { icon: HeartPulse, iconColorClass: 'text-yellow-600', bgColorClass: 'bg-yellow-100' },
+  'Anticonvulsivantes': { icon: Brain, iconColorClass: 'text-indigo-600', bgColorClass: 'bg-indigo-100' },
+  'Drogas De Infusão Contínua': { icon: Syringe, iconColorClass: 'text-purple-700', bgColorClass: 'bg-purple-200' },
+  'Fluidoterapia Para Rn Sintomáticos': { icon: Droplets, iconColorClass: 'text-blue-400', bgColorClass: 'bg-blue-50' },
+  'Fluidoterapia | Hidratacao': { icon: Droplets, iconColorClass: 'text-cyan-600', bgColorClass: 'bg-cyan-100' },
+  'Antagonistas': { icon: FlaskConical, iconColorClass: 'text-gray-700', bgColorClass: 'bg-gray-100' },
+  'Broncodilatadores': { icon: Activity, iconColorClass: 'text-green-500', bgColorClass: 'bg-green-100' },
+  'Probióticos E Repositores De Flora': { icon: Microscope, iconColorClass: 'text-green-600', bgColorClass: 'bg-green-100' },
+  'Laxantes': { icon: Package, iconColorClass: 'text-brown-500', bgColorClass: 'bg-brown-100' },
+  'Controle E Prevenção De Sangramentos': { icon: HeartPulse, iconColorClass: 'text-red-500', bgColorClass: 'bg-red-100' },
+  'Minerais E Vitaminas': { icon: TestTube2, iconColorClass: 'text-orange-500', bgColorClass: 'bg-orange-100' },
+  'Antiparasitários': { icon: Microscope, iconColorClass: 'text-yellow-600', bgColorClass: 'bg-yellow-100' },
+  'Aerosol Hipertônico - Laringite/Bva': { icon: Activity, iconColorClass: 'text-teal-600', bgColorClass: 'bg-teal-100' },
+  'Xaropes/Tosse': { icon: Package, iconColorClass: 'text-amber-500', bgColorClass: 'bg-amber-100' },
+  'Oftalmológicos': { icon: Eye, iconColorClass: 'text-blue-500', bgColorClass: 'bg-blue-100' },
+  'Otologicas': { icon: Ear, iconColorClass: 'text-purple-500', bgColorClass: 'bg-purple-100' },
+  'Nasais': { icon: Package, iconColorClass: 'text-green-400', bgColorClass: 'bg-green-50' },
+  'Uso Tópico - Externo': { icon: Package, iconColorClass: 'text-pink-600', bgColorClass: 'bg-pink-100' },
+  'Quimioprofilaxia (Influenza)': { icon: ShieldAlert, iconColorClass: 'text-indigo-500', bgColorClass: 'bg-indigo-100' },
+  'Antiviral - Influenza Positivo': { icon: ShieldAlert, iconColorClass: 'text-red-400', bgColorClass: 'bg-red-50' },
 };
 
+// Função para extrair informações de concentração do texto da lógica
+function extractConcentration(logicaJs: string): string {
+  const concentrationMatch = logicaJs.match(/(\d+(?:\.\d+)?)\s*mg\/(\d+(?:\.\d+)?)\s*ml/i);
+  if (concentrationMatch) {
+    return `${concentrationMatch[1]}mg/${concentrationMatch[2]}mL`;
+  }
+  
+  const gotsMatch = logicaJs.match(/(\d+)\s*mg\/ml.*gotas/i);
+  if (gotsMatch) {
+    return `${gotsMatch[1]}mg/mL (Gotas)`;
+  }
+  
+  return 'Concentração não especificada';
+}
+
+// Função para extrair intervalo de dosagem
+function extractDoseInterval(logicaJs: string): string {
+  const intervalMatch = logicaJs.match(/de (\d+\/\d+ horas)/);
+  if (intervalMatch) {
+    return intervalMatch[1];
+  }
+  
+  if (logicaJs.includes('uma vez ao dia')) {
+    return 'Uma vez ao dia';
+  }
+  
+  if (logicaJs.includes('dose única')) {
+    return 'Dose única';
+  }
+  
+  return 'Conforme prescrição médica';
+}
+
+// Função para extrair duração do tratamento
+function extractTreatmentDuration(logicaJs: string): string {
+  const durationMatch = logicaJs.match(/por (\d+(?:-\d+)? dias?)/i);
+  if (durationMatch) {
+    return durationMatch[1];
+  }
+  
+  if (logicaJs.includes('dose única')) {
+    return 'Dose única';
+  }
+  
+  return 'Conforme prescrição médica';
+}
+
+// Função para determinar via de administração
+function determineApplication(medicamento: string, logicaJs: string): string {
+  if (logicaJs.includes('por via oral') || logicaJs.includes('VO') || medicamento.includes('Xarope') || medicamento.includes('Gotas')) {
+    return 'VO';
+  }
+  if (logicaJs.includes('EV') || logicaJs.includes('por via EV')) {
+    return 'EV';
+  }
+  if (logicaJs.includes('IM') || logicaJs.includes('por via IM')) {
+    return 'IM';
+  }
+  if (logicaJs.includes('nebulização') || logicaJs.includes('inalação')) {
+    return 'Inalatória';
+  }
+  if (logicaJs.includes('tópica') || logicaJs.includes('pomada') || logicaJs.includes('creme')) {
+    return 'Tópica';
+  }
+  return 'VO'; // Padrão
+}
+
+// Função para determinar forma farmacêutica
+function determineForm(medicamento: string, logicaJs: string): string {
+  if (medicamento.includes('Xarope') || medicamento.includes('xarope')) {
+    return 'Suspensão Oral';
+  }
+  if (medicamento.includes('Gotas') || medicamento.includes('gotas')) {
+    return 'Solução Oral em Gotas';
+  }
+  if (medicamento.includes('Comprimido') || medicamento.includes('comprimido')) {
+    return 'Comprimido';
+  }
+  if (medicamento.includes('Pó') || medicamento.includes('pó')) {
+    return 'Pó para Reconstituição';
+  }
+  if (medicamento.includes('Pomada') || medicamento.includes('pomada')) {
+    return 'Pomada';
+  }
+  if (medicamento.includes('Creme') || medicamento.includes('creme')) {
+    return 'Creme';
+  }
+  if (logicaJs.includes('nebulização')) {
+    return 'Solução para Nebulização';
+  }
+  return 'Suspensão Oral';
+}
+
+// Função para converter medicamentos do JSON
+function convertMedications(jsonData: any): MockMedicationData {
+  const convertedData: MockMedicationData = {};
+
+  // Iterar sobre cada categoria no JSON
+  for (const category in jsonData) {
+    if (category === 'Outros') continue; // Pular categoria "Outros" que contém apenas variáveis
+
+    const categoryInfo = categoryIconMap[category] || {
+      icon: Package,
+      iconColorClass: 'text-gray-500',
+      bgColorClass: 'bg-gray-100'
+    };
+
+    const medications: Medication[] = jsonData[category].map((med: any) => {
+      const medicationName = med.medicamento;
+      const logicaJs = med.logica_js;
+      
+      return {
+        name: medicationName,
+        slug: slugify(medicationName),
+        form: determineForm(medicationName, logicaJs),
+        application: determineApplication(medicationName, logicaJs),
+        description: `Medicamento da categoria ${category}. Consulte sempre um profissional de saúde antes do uso.`,
+        alerts: ['Verificar alergias antes da administração.', 'Respeitar doses máximas recomendadas.'],
+        commonBrandNames: 'Consultar bula para nomes comerciais',
+        dosageInformation: {
+          concentration: extractConcentration(logicaJs),
+          usualDose: 'Conforme cálculo baseado em peso/idade',
+          doseInterval: extractDoseInterval(logicaJs),
+          treatmentDuration: extractTreatmentDuration(logicaJs),
+          administrationNotes: 'Seguir orientações médicas específicas'
+        },
+        calculationParams: {
+          type: slugify(medicationName),
+          originalLogic: logicaJs, // Mantendo a lógica original para referência
+          mgPerKg: 10, // Valor padrão - deve ser extraído da lógica específica
+          maxDailyDoseMg: 1000, // Valor padrão - deve ser extraído da lógica específica
+          dosesPerDay: 1, // Valor padrão - deve ser extraído da lógica específica
+        } as DosageCalculationParams,
+      };
+    });
+
+    convertedData[slugify(category)] = {
+      title: category,
+      slug: slugify(category),
+      icon: categoryInfo.icon,
+      iconColorClass: categoryInfo.iconColorClass,
+      bgColorClass: categoryInfo.bgColorClass,
+      medicationsCount: medications.length,
+      lastUpdated: 'Dez/2024',
+      medications: medications,
+    };
+  }
+
+  return convertedData;
+}
+
+// Gerando as categorias dinamicamente baseadas no JSON
+export const allCategories: Omit<CategoryInfo, 'medicationsCount' | 'lastUpdated'>[] = 
+  Object.keys(jsonData)
+    .filter(category => category !== 'Outros') // Excluir categoria "Outros"
+    .map(category => {
+      const categoryInfo = categoryIconMap[category] || {
+        icon: Package,
+        iconColorClass: 'text-gray-500',
+        bgColorClass: 'bg-gray-100'
+      };
+      
+      return {
+        title: category,
+        slug: slugify(category),
+        icon: categoryInfo.icon,
+        iconColorClass: categoryInfo.iconColorClass,
+        bgColorClass: categoryInfo.bgColorClass,
+      };
+    });
+
+// Convertendo os dados do JSON
+export const mockMedicationsData: MockMedicationData = convertMedications(jsonData);
+
+// Atualizando as categorias com os dados convertidos
 allCategories.forEach(category => {
   const categoryData = mockMedicationsData[category.slug];
   if (categoryData) {
     (category as CategoryInfo).medicationsCount = categoryData.medications.length;
-    (category as CategoryInfo).lastUpdated = categoryData.lastUpdated || 'N/A';
-    // Ensure the icon from mockMedicationsData is also updated if it was derived, though allCategories is primary for display list
-     if (allCategories.find(c => c.slug === category.slug)) {
-        const catInfo = allCategories.find(c => c.slug === category.slug);
-        if(catInfo) categoryData.icon = catInfo.icon;
-     }
-
+    (category as CategoryInfo).lastUpdated = categoryData.lastUpdated || 'Dez/2024';
+    // Garantindo que o ícone seja consistente
+    if (allCategories.find(c => c.slug === category.slug)) {
+      const catInfo = allCategories.find(c => c.slug === category.slug);
+      if (catInfo) categoryData.icon = catInfo.icon;
+    }
   } else {
     (category as CategoryInfo).medicationsCount = 0;
     (category as CategoryInfo).lastUpdated = 'N/A';
