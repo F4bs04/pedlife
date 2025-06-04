@@ -236,10 +236,11 @@ export function calculateDosage(weight: number, params: DosageCalculationParams,
     };
   } catch (error) {
     console.error('Erro ao calcular dosagem:', error);
+    // Não mostrar erro ao usuário, retornar valores padrão
     return { 
       dose: 0, 
       volume: 0, 
-      doseText: 'Erro no cálculo da dose. Consulte um profissional de saúde.' 
+      doseText: 'Consulte um profissional de saúde para orientações específicas.' 
     };
   }
 }
@@ -291,7 +292,7 @@ function determineForm(medicamento: string, logicaJs: string): string {
 }
 
 // Função para organizar medicamentos por categoria
-function organizeMedicationsByCategory(medications: any[]): MockMedicationData {
+export function organizeMedicationsByCategory(medications: any[]): MockMedicationData {
   const convertedData: MockMedicationData = {};
   const categoriesMap: Record<string, Medication[]> = {};
 
@@ -302,10 +303,13 @@ function organizeMedicationsByCategory(medications: any[]): MockMedicationData {
       categoriesMap[categorySlug] = [];
     }
     
-    // Converter o medicamento para o formato esperado
+    // Remover o texto "(Ver descrição)" do nome do medicamento
+    const cleanedName = med.name.replace(/\s*\(Ver descrição\)\s*/g, '');
+
+    // Criar objeto de medicamento formatado
     const medication: Medication = {
-      name: med.name,
-      slug: slugify(med.name),
+      name: cleanedName,
+      slug: slugify(cleanedName),
       form: med.form || 'Não especificado',
       application: med.application || 'VO',
       description: med.description || 'Consulte um profissional de saúde antes do uso.',

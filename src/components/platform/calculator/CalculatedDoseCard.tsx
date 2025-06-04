@@ -1,11 +1,17 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Medication } from '@/types/medication';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { Pill, Copy } from 'lucide-react';
-import { toast } from "@/components/ui/sonner"; // Importando o toast do sonner
+import { Pill, Copy, ChevronDown, ChevronUp } from 'lucide-react';
+import { toast } from "@/components/ui/sonner";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface CalculatedDoseCardProps {
   medication: Medication;
@@ -79,21 +85,32 @@ Cálculo Específico: ${calculatedDoseText}
           
           {detailedCalculation && (
             <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-              <div className="flex justify-between items-start">
-                <h4 className="font-semibold text-gray-900 dark:text-gray-100 text-sm">Lógica de cálculo detalhada:</h4>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-6 w-6 text-primary/70 hover:text-primary -mt-1 -mr-1"
-                  onClick={() => copyToClipboard(detailedCalculation, "Lógica de cálculo copiada!")}
-                  title="Copiar lógica de cálculo"
-                >
-                  <Copy className="h-3 w-3" />
-                </Button>
-              </div>
-              <pre className="text-xs whitespace-pre-wrap bg-gray-50 dark:bg-gray-800/70 p-3 rounded-md mt-2 text-gray-700 dark:text-gray-200 overflow-auto max-h-60">
-                {detailedCalculation}
-              </pre>
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="detailed-calculation" className="border-none">
+                  <div className="flex justify-between items-center">
+                    <AccordionTrigger className="font-semibold text-gray-900 dark:text-gray-100 text-sm p-0 hover:no-underline">
+                      Lógica de cálculo detalhada
+                    </AccordionTrigger>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-6 w-6 text-primary/70 hover:text-primary z-10"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        copyToClipboard(detailedCalculation, "Lógica de cálculo copiada!");
+                      }}
+                      title="Copiar lógica de cálculo"
+                    >
+                      <Copy className="h-3 w-3" />
+                    </Button>
+                  </div>
+                  <AccordionContent>
+                    <pre className="text-xs whitespace-pre-wrap bg-gray-50 dark:bg-gray-800/70 p-3 rounded-md mt-2 text-gray-700 dark:text-gray-200 overflow-auto max-h-60">
+                      {detailedCalculation}
+                    </pre>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
           )}
         </Alert>
