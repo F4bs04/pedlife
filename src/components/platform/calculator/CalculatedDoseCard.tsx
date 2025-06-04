@@ -60,13 +60,24 @@ Cálculo Específico: ${calculatedDoseText}
       </CardHeader>
       <CardContent>
         <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200 mb-3">
-          {medication.name} {medication.form ? `(${medication.form})` : ''}
+          {medication.name} {medication.form && medication.form.trim() !== "" ? `(${medication.form})` : ''}
         </h2>
         <div className="text-sm text-gray-600 dark:text-gray-300 space-y-1 mb-3">
           <p><span className="font-semibold">Posologia:</span></p>
-          <p>Duração: <span className="italic">{medication.dosageInformation?.treatmentDuration || "Conforme orientação médica"}</span></p>
-          <p>Intervalo: <span className="italic">{medication.dosageInformation?.doseInterval || "Conforme orientação médica"}</span></p>
-          <p>Dose usual: <span className="italic">{medication.dosageInformation?.usualDose || "Conforme orientação médica"}</span></p>
+          {medication.dosageInformation?.treatmentDuration && medication.dosageInformation.treatmentDuration.trim() !== "" && (
+            <p>Duração: <span className="italic">{medication.dosageInformation.treatmentDuration}</span></p>
+          )}
+          {medication.dosageInformation?.doseInterval && medication.dosageInformation.doseInterval.trim() !== "" && (
+            <p>Intervalo: <span className="italic">{medication.dosageInformation.doseInterval}</span></p>
+          )}
+          {medication.dosageInformation?.usualDose && medication.dosageInformation.usualDose.trim() !== "" && (
+            <p>Dose usual: <span className="italic">{medication.dosageInformation.usualDose}</span></p>
+          )}
+          {(!medication.dosageInformation?.treatmentDuration || medication.dosageInformation.treatmentDuration.trim() === "") && 
+           (!medication.dosageInformation?.doseInterval || medication.dosageInformation.doseInterval.trim() === "") && 
+           (!medication.dosageInformation?.usualDose || medication.dosageInformation.usualDose.trim() === "") && (
+            <p><span className="italic">Conforme orientação médica</span></p>
+          )}
         </div>
         <Alert variant="default" className="bg-white dark:bg-gray-800/50 border-gray-200 dark:border-gray-700 relative">
           <div className="flex justify-between items-start">

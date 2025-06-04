@@ -313,18 +313,19 @@ const MedicationCalculatorPage: React.FC = () => {
         const calculatedDose = eval(logicaJs);
         
         // Exibir o resultado sem a mensagem de erro
-        const formText = medication.form && medication.form !== '' ? `(${medication.form})` : '';
+        const formText = medication.form && medication.form.trim() !== '' ? `(${medication.form})` : '';
         doseResultText = `Cálculo para ${medication.name} ${formText}: Para peso ${values.weight}kg e idade ${values.age} anos. Dose: ${calculatedDose}`;
       } catch (error) {
         console.error('Error evaluating medication calculation logic:', error);
         // Exibir mensagem sem indicar erro
-        const formText = medication.form && medication.form !== '' ? `(${medication.form})` : '';
+        const formText = medication.form && medication.form.trim() !== '' ? `(${medication.form})` : '';
         doseResultText = `Cálculo para ${medication.name} ${formText}: Para peso ${values.weight}kg e idade ${values.age} anos. Consulte um profissional de saúde para orientações específicas.`;
       }
     }
     // Fallback if no calculation logic is available
     else {
-      doseResultText = `Cálculo para ${medication.name} (${medication.form || 'forma não especificada'}): Para peso ${values.weight}kg e idade ${values.age} anos. Dose: (Lógica de cálculo detalhada ainda não implementada para este medicamento). Verifique a bula e informações adicionais.`;
+      const formText = medication.form && medication.form.trim() !== '' ? `(${medication.form})` : '';
+      doseResultText = `Cálculo para ${medication.name} ${formText}: Para peso ${values.weight}kg e idade ${values.age} anos. Consulte um profissional de saúde para orientações específicas.`;
     }
     
     setCalculationData({

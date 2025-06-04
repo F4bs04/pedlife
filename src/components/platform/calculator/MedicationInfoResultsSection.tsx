@@ -22,7 +22,7 @@ const copyToClipboard = (text: string, successMessage: string = "Texto copiado p
 const MedicationInfoResultsSection: React.FC<MedicationInfoResultsSectionProps> = ({ medication }) => {
   const medicationInfoToCopy = `
 Informações do Medicamento: ${medication.name}
-Descrição: ${medication.description || "Descrição não disponível."}
+${medication.description && medication.description.trim() !== "" ? `Descrição: ${medication.description}` : ''}
 ${medication.alerts && medication.alerts.length > 0 ? `Alertas: ${medication.alerts.join(', ')}` : ''}
   `.trim();
 
@@ -52,9 +52,11 @@ Manter em temperatura ambiente, salvo indicação contrária.`}
             <CardTitle className="text-xl text-gray-700 dark:text-gray-100">{medication.name}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground mb-4 dark:text-gray-300">
-              {medication.description || "Descrição não disponível."}
-            </p>
+            {medication.description && medication.description.trim() !== "" && (
+              <p className="text-sm text-muted-foreground mb-4 dark:text-gray-300">
+                {medication.description}
+              </p>
+            )}
             {medication.alerts && medication.alerts.length > 0 && (
               <div className="mb-4">
                 <h4 className="font-semibold text-red-600 mb-1">Alertas:</h4>
