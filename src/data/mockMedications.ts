@@ -310,13 +310,13 @@ export function organizeMedicationsByCategory(medications: any[]): MockMedicatio
     const medication: Medication = {
       name: cleanedName,
       slug: slugify(cleanedName),
-      form: med.form || 'Não especificado',
+      form: med.form || '',
       application: med.application || 'VO',
       description: med.description || 'Consulte um profissional de saúde antes do uso.',
       alerts: med.alerts || ['Verificar alergias antes da administração.', 'Respeitar doses máximas recomendadas.'],
       commonBrandNames: med.commonBrandNames || 'Consultar bula para nomes comerciais',
       dosageInformation: med.dosageInformation || {
-        concentration: 'Não especificado',
+        concentration: '',
         usualDose: 'Conforme cálculo baseado em peso/idade',
         doseInterval: 'Conforme prescrição médica',
         treatmentDuration: 'Conforme prescrição médica',

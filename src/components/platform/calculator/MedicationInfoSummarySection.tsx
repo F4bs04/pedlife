@@ -21,7 +21,9 @@ const MedicationInfoSummarySection: React.FC<MedicationInfoSummarySectionProps> 
             <CardTitle className="text-xl dark:text-card-foreground">{medication.name}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground">{medication.description || "Descrição não disponível."}</p>
+            {medication.description && medication.description.trim() !== "" ? (
+              <p className="text-sm text-muted-foreground">{medication.description}</p>
+            ) : null}
           </CardContent>
         </Card>
 
@@ -47,7 +49,9 @@ const MedicationInfoSummarySection: React.FC<MedicationInfoSummarySectionProps> 
             <CardTitle className="text-xl dark:text-card-foreground">Principais Apresentações</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground">{medication.form || "Forma de apresentação não disponível."}</p>
+            {medication.form && medication.form.trim() !== "" ? (
+              <p className="text-sm text-muted-foreground">{medication.form}</p>
+            ) : null}
             {medication.commonBrandNames && <p className="text-xs text-muted-foreground mt-1">Nomes comuns: {medication.commonBrandNames}</p>}
           </CardContent>
         </Card>
