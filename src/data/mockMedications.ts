@@ -22,8 +22,8 @@ import { slugify } from '@/lib/utils';
 import { MockMedicationData, CategoryInfo, MedicationCategoryData, Medication, DosageCalculationParams } from '@/types/medication';
 // Removido import do mathjs pois estamos usando Function para avaliação segura
 
-// Importando o JSON do banco de dosagens
-import jsonData from '@/medications/banco_dosagens_medicas.json';
+// Importando o JSON do banco de dosagens corrigido
+import jsonData from '@/medications/banco_dosagens_medicas_corrigido.json';
 // Arquivo formatado não será mais utilizado
 // import jsonDataFormatado from '@/medications/banco_dosagens_medicas_formatado.json';
 
@@ -337,9 +337,32 @@ export function organizeMedicationsByCategory(medicationsData: any): MockMedicat
   } else {
     // Processar o formato antigo (array de medicamentos)
     medicationsData.forEach((med: any) => {
+      // Usar o slug do medicamento como identificador de categoria
       const categorySlug = med.slug;
-      if (!categoriesMap[categorySlug]) {
-        categoriesMap[categorySlug] = [];
+      
+      // Verificar se o slug corresponde a uma categoria válida no categoryIconMap
+      // Se não corresponder, usar uma categoria padrão para evitar "vazamento"
+      const validCategoryKeys = Object.keys(categoryIconMap).map(key => slugify(key));
+      const isValidCategory = validCategoryKeys.includes(categorySlug);
+      
+      // Se não for uma categoria válida, tentar inferir a categoria pelo nome ou descrição
+      let targetCategorySlug = categorySlug;
+      
+      if (!isValidCategory) {
+        // Tentar inferir a categoria com base na descrição ou nome
+        if (med.description && med.description.includes('Antibióticos')) {
+          targetCategorySlug = 'antibioticos-ev';
+        } else if (med.name && med.name.toLowerCase().includes('antibiótico')) {
+          targetCategorySlug = 'antibioticos-ev';
+        } else {
+          // Categoria padrão para medicamentos sem categoria válida
+          targetCategorySlug = 'antibiotico-vo';
+        }
+      }
+      
+      // Garantir que a categoria existe no mapa
+      if (!categoriesMap[targetCategorySlug]) {
+        categoriesMap[targetCategorySlug] = [];
       }
       
       // Remover o texto "(Ver descrição)" do nome do medicamento
@@ -372,7 +395,7 @@ export function organizeMedicationsByCategory(medicationsData: any): MockMedicat
         }
       };
       
-      categoriesMap[categorySlug].push(medication);
+      categoriesMap[targetCategorySlug].push(medication);
     });
   }
 
