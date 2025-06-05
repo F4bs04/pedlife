@@ -2419,7 +2419,7 @@
   },
   {
     "name": "Cefadroxila 250mg/5ml (xarope)",
-    "slug": "cefadroxila-250mg5ml-xarope",
+    "slug": "antibioticos-ev",
     "form": "Ver descrição",
     "application": "VO",
     "description": "Medicamento da categoria Antibióticos Vo.",
@@ -2439,7 +2439,7 @@
   },
   {
     "name": "Cefadroxila 500mg/5ml (xarope)",
-    "slug": "cefadroxila-500mg5ml-xarope",
+    "slug": "antibioticos-ev",
     "form": "Ver descrição",
     "application": "VO",
     "description": "Medicamento da categoria Antibióticos Vo.",
@@ -2459,7 +2459,7 @@
   },
   {
     "name": "Nalidíxico (Wintomylon®) 50 mg/mL - VO",
-    "slug": "nalidixico-wintomylon-50-mgml-vo",
+    "slug": "antibioticos-ev",
     "form": "Ver descrição",
     "application": "VO",
     "description": "Medicamento da categoria Antibióticos Vo.",
@@ -2479,7 +2479,7 @@
   },
   {
     "name": "Azitromicina Di-hidratada 200mg/5ml (Xarope)",
-    "slug": "azitromicina-di-hidratada-200mg5ml-xarope",
+    "slug": "antibioticos-ev",
     "form": "Ver descrição",
     "application": "VO",
     "description": "Medicamento da categoria Antibióticos Vo.",
@@ -3338,9 +3338,9 @@
     }
   },
   {
-    "name": "Ranitidina 50mg/2mL (EV)",
-    "slug": "ranitidina-50mg2ml-ev",
-    "form": "Ver descrição",
+    "name": "Ranitidina 50mg/2mL",
+    "slug": "antiemeticos",
+    "form": "EV",
     "application": "EV",
     "description": "Medicamento da categoria Antieméticos",
     "alerts": [],
