@@ -1,0 +1,1184 @@
+{
+  "Outros": [
+    {
+      "medicamento": "IDADE EM ANOS -> -> ->",
+      "logica_js": "Ex:10",
+      "observacao": null
+    },
+    {
+      "medicamento": "PESO EM KG  ->  ->  ->",
+      "logica_js": "Ex:20",
+      "observacao": null
+    }
+  ],
+  "Antibiótico Vo": [
+    {
+      "medicamento": "Amoxicilina 250mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*50)<=1750) ? ( cond(((peso*50)/3)/(250/5)<=12) : ( ((peso*50))/3)/(250/5), 10), (((1750/3)/(250/5)<=12) ? ( (1750/3)/(250/5)) : ( 10))), 1) + \" mL por via oral de 8/8 horas por 7 a 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Amoxicilina Tri-hidratada 400mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*50)<=1750) ? ( cond(((peso*50)/3)/(400/5)<=12) : ( ((peso*50))/3)/(400/5), 10), (((1750/3)/(400/5)<=12) ? ( (1750/3)/(400/5)) : ( 10))), 1) + \" mL por via oral de 8/8 horas por 7 a 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Amoxicilina/Clavulanato 250mg + 62,5mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*20)<=1500) ? ( cond(((peso*20)/3)/(250/5)<=10) : ( ((peso*20))/3)/(250/5), 10), (((1500/3)/(250/5)<=10) ? ( (1500/3)/(250/5)) : ( 10))), 1) + \" mL por via oral de 8/8 horas por 7 a 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Amoxicilina/Clavulanato 400mg + 57mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*25)<=1750) ? ( cond(((peso*25)/2)/(400/5)<=10) : ( ((peso*25))/2)/(400/5), 10), (((1750/2)/(400/5)<=10) ? ( (1750/2)/(400/5)) : ( 10))), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Amoxicilina/Clavulanato 600mg + 42,9mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*90)<=4000) ? ( cond(((peso*90)/2)/(600/5)<=10) : ( ((peso*90))/2)/(600/5), 10), (((4000/2)/(600/5)<=10) ? ( (4000/2)/(600/5)) : ( 10))), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Amoxicilina/Sulbactam 200 mg + 50 mg / 5 mL (xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*20)<=1750) ? ( cond(((peso*20)/2)/(200/5)<=12) : ( ((peso*20))/2)/(200/5), 12), (((1750/2)/(200/5)<=12) ? ( (1750/2)/(200/5)) : ( 12))), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Amoxicilina/Sulbactam  875/125mg ( comprimido)",
+      "logica_js": "=((peso<35) ? (\"Não se aplica\") : (\"Tomar \" + Math.round(cond((peso*50))<=1750, ((peso*50)/2)/875, (1750/2)/875), 1) + \" comprimidos por via oral de 12/12 horas por 7 dias.\")",
+      "observacao": null
+    },
+    {
+      "medicamento": "Axetilcefuroxima (Zinnat) 250mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*20)<=1000) ? ( ((peso*20)/2)/(250/5)) : ( (1000/2))/(250/5)), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Cefaclor 250mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*20)<=1000) ? ( ((peso*20)/2)/(250/5)) : ( (1000/2))/(250/5)), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Cefaclor 375mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*20)<=1000) ? ( ((peso*20)/2)/(375/5)) : ( (1000/2))/(375/5)), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Cefalexina 250mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*25)<=2000) ? ( peso*25/50/4) : ( 2000/50/4)), 1) + \" mL por via oral de 6/6 horas ou \" + Math.round((((peso*25)<=2000) ? ( peso*25/50/2) : ( 2000/50/2)), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Azitromicina Di-hidratada 200mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*10)<=1000) ? ( (peso*10)/(200/5)) : ( 1000/(200/5))), 1) + \" mL por via oral uma vez ao dia por 3 a 5 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Claritromicina 125mg/5ml (Xarope) > 3 meses",
+      "logica_js": "\"Tomar \" + Math.round((((peso*7.5)<=1000) ? ( cond(((peso*7.5)/2)/(125/5)<=10) : ( ((peso*7.5))/2)/(125/5), 10), (((1000/2)/(125/5)<=10) ? ( (1000/2)/(125/5)) : ( 10))), 1) + \" mL por via oral de 12/12 horas por 7 a 14 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Claritromicina 250mg/5ml (Xarope) > 3 meses",
+      "logica_js": "\"Tomar \" + Math.round((((peso*7.5)<=1000) ? ( cond(((peso*7.5)/2)/(250/5)<=10) : ( ((peso*7.5))/2)/(250/5), 10), (((1000/2)/(250/5)<=10) ? ( (1000/2)/(250/5)) : ( 10))), 1) + \" mL por via oral de 12/12 horas por 7 a 14 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Claritromicina 250mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \"+Math.round((((peso*15>1000) ? (1000/2) : ((peso*15))/2)*5)/250,1)+\" mL por via oral de 12/12 horas por 5 a 7 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Nitrofurantoína 5 mg/mL (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*5)<=100) ? ( cond(((peso*5)/4)/5<=10) : ( ((peso*5))/4)/5, 10), (((100/4)/5<=10) ? ( (100/4)/5) : ( 10))), 1) + \" mL por via oral de 6/6 horas por 7 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Nitrofurantoína 100mg (comprimido)",
+      "logica_js": "=((peso<28.6) ? (\"Não se aplica\") : (cond((peso*7))<=300,\"Tomar 1 comprimido de 12/12 horas por 7 dias.\",(((peso*7)<=400) ? (\"Tomar 1 comprimido de 8/8 horas por 7 dias.\") : ( \"Tomar 1 comprimido de 6/6 horas por 7 dias.\"))))",
+      "observacao": null
+    },
+    {
+      "medicamento": "Metronidazol 200mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*50)<=1200) ? ( ((peso*50)/3)/(200/5)) : ( (1200/3))/(200/5)), 1) + \" mL por via oral de 8/8 horas por 7 a 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Sulfametoxazol/Trimetoprima 200mg + 40mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*20)<=1750) ? ( cond(((peso*20)/2)/(200/5)<=15) : ( ((peso*20))/2)/(200/5), 15), (((1750/2)/(200/5)<=15) ? ( (1750/2)/(200/5)) : ( 15))), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Sulfametoxazol/Trimetoprima 400mg + 80mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*20)<=1750) ? ( cond(((peso*20)/2)/(400/5)<=10) : ( ((peso*20))/2)/(400/5), 10), (((1750/2)/(400/5)<=10) ? ( (1750/2)/(400/5)) : ( 10))), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Cefadroxila 250mg/5ml (xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*30)<=1000) ? ( ((peso*30)/2)/(250/5)) : ( (1000/2))/(250/5)), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Cefadroxila 500mg/5ml (xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*30)<=1000) ? ( ((peso*30)/2)/(500/5)) : ( (1000/2))/(500/5)), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Nalidíxico (Wintomylon®) 50 mg/mL - VO",
+      "logica_js": "=((idade<0.4) ? (\"Contraindicado \") : ( \"Tomar \"+Math.ceil((peso*13.75))/50,2)+\" mL por via oral de 6/6 horas. Por 7 a 14 dias.\")",
+      "observacao": null
+    }
+  ],
+  "Analgésicos E Antitérmicos": [
+    {
+      "medicamento": "Dipirona 500mg/ml (Gotas)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*15)<=500) ? ((peso*15)/25) : (20)),0) + \" gotas por via oral de 6/6 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Dipirona 50mg/ml (Xarope) > 3 Meses",
+      "logica_js": "\"Tomar \" + Math.round((((peso*15)<=500) ? ( (peso*15)/50) : ( 500/50)), 1) + \" mL por via oral de 6/6 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Dipirona 500mg/ml (EV/IM) > 3 Meses",
+      "logica_js": "\"Administrar \" + Math.round((((peso*15)<=1000) ? ( (peso*15)/500) : ( 1000/500)), 1) + \" mL por via EV ou IM a cada 6 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Tramadol 50mg/mL (IM/EV)",
+      "logica_js": "\"Administrar \" + Math.round((((peso*1)<=100) ? ( (peso*1)/50) : ( 100/50)), 1) + \" mL por via EV diluido em 50 ml de SF 0,9% (Administrar bem lentamente), a cada 8 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Tramadol 50mg/mL (Gotas)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*1)<=50) ? ((peso*1)/2.5) : (20)),0) + \" gotas por via oral de 8/8 horas. (Se dor muito forte)\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Escopolamina + Dipirona 10mg/mL + 500mg/mL (Gotas)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*15)<=1000) ? ( (peso*15)/25) : ( 1000/25)), 0) + \" gotas por via oral de 6/6 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Escopolamina + Dipirona 10mg/mL + 500mg/mL (EV)",
+      "logica_js": "\"Administrar \" + Math.round((((peso*15)<=1000) ? ( (peso*15)/500) : ( 1000/500)), 1) + \" mL por via EV diluido em 50 ml de SF 0,9% a cada 6 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Paracetamol 200mg/mL (Gotas)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*10)<=350) ? ( (peso*10)/10) : ( 350/10)), 0) + \" gotas por via oral de 4/4 horas. (Não exceder 5 administrações por dia)\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Ibuprofeno 50mg/mL (Gotas)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*10)<=200) ? ((peso*10)/5) : (200/5)),0) + \" gotas por via oral de 6/6 horas. Por 3 a 5 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Ibuprofeno 100mg/mL (Gotas)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*10)<=200) ? ((peso*10)/10) : (200/10)),0) + \" gotas por via oral de 6/6 horas. Por 3 a 5 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Cetoprofeno 100mg/2mL (IM/EV)",
+      "logica_js": "\"Administrar \" + Math.round((((peso*1)<=100) ? ( (peso*1)/50) : ( 100/50)), 1) + \" mL por via IM ou (EV diluido em 50 ml de SF 0,9%), a cada 12 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Cetoprofeno 20mg/mL (Gotas)",
+      "logica_js": "\"Tomar \" + Math.round(((peso<=40) ? ( cond((peso*1)<=((peso*2)/2)) : ( (peso*1)), (peso*2)/2), (((90/3)<=((peso*1))) ? ( (90/3)) : ( (peso*1)))),1) + \" gotas por via oral \" + ((peso<=40) ? (\" de 12/12 horas. Por 3 a 5 dias.\") : (\" de 8/8 horas. Por 3 a 5 dias.\"))",
+      "observacao": null
+    },
+    {
+      "medicamento": "Diclofenaco 15mg/mL (Gotas)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*0.75)<=30) ? ((peso*0.75)/0.75) : (40)),0) + \" gotas por via oral de 8/8 horas. Por 3 a 5 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Nimesulida 50mg/mL (Gotas)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*2)<=100) ? ((peso*2)/2.5) : (40)),0) + \" gotas por via oral de 12/12 horas. Por 3 a 5 dias.\"",
+      "observacao": null
+    }
+  ],
+  "Antieméticos": [
+    {
+      "medicamento": "Ondansetrona (4mg/Filme)",
+      "logica_js": "\"Tomar \" + ((Math.round(cond((peso*0.2)<=4) ? ((peso*0.2)/4) : (1)),1)<0.5,0.5,Math.round((((peso*0.2)<=4) ? ((peso*0.2)/4) : (1)),1)) + \" Filme por via oral de 8/8 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Ondansetrona 4mg/5ml (VO - Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*0.1)<=4) ? (peso*0.1) : (4))/0.8,1) + \" mL por via oral de 8/8 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Bromoprida 4mg/ml (Gotas)",
+      "logica_js": "\"Tomar \" +Math.round(((peso<=20) ? ( peso) : ( 20)), 0) + \" gotas por via oral de 8/8 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Metoclopramida 4mg/ml (Gotas) > 2 anos",
+      "logica_js": "\"Tomar \" + Math.round((((peso*0.15)<=10/3) ? ( (peso*0.15)/0.2) : ( (10/3))/0.2), 0) + \" gotas por via oral de 8/8 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Dramin-B6 25mg/ml (Gotas) > 2 Anos",
+      "logica_js": "\"Tomar \" + Math.round(((idade<=6) ? (cond((peso*1)<=15) : (peso*1,15)),((idade<=12) ? (cond((peso*1)<=30) : (peso*1,30)),(((peso*1)<=80) ? (peso*1) : (80)))),0) + \" gotas por via oral de 6/6 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Domperidona 1mg/ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*0.3)<=10) ? (peso*0.3) : (10)),1) + \" mL por via oral 30 minutos antes das refeições de 8/8 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Omeprazol 40 mg (EV) - Reconstituir em 10 ml de AD",
+      "logica_js": "\"Reconstituir \"+Math.ceil(((peso*1>40) ? (40) : (peso*1))/40,0)+\" frasco(s) com 10 mL de diluente. Administrar \"+Math.round(((peso*1>40) ? (40) : (peso*1))/4,1)+\" mL EV uma vez ao dia.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Omeprazol 4mg/ml (Xarope) VO/SNG",
+      "logica_js": "\"Tomar \" + Math.round((((peso*1)<=40) ? ( peso*1) : ( 40))/4, 1) + \" mL por via oral ou SNG em dose única pela manhã.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Simeticona 75 mg/mL",
+      "logica_js": "=((idade>=12) ? (\" Tomar 13 gotas por via oral de 8/8 horas. Por 3 a 5 dias.\") : (cond(idade<1,\" Tomar de 3 a 5 gotas por via oral de 8/8 horas. Por 3 a 5 dias.\", \" Tomar de 5 a 10 gotas por via oral de 8/8 horas. Por 3 a 5 dias.\")))",
+      "observacao": null
+    },
+    {
+      "medicamento": "Ranitidina 15mg/ml (Xarope)",
+      "logica_js": "=cond(peso<=4,\"Tomar 0,5 mL por via oral de 12/12 horas.\",\ncond(peso<=7,\"Tomar 1 mL por via oral de 12/12 horas.\",\ncond(peso<=10,\"Tomar 1,5 mL por via oral de 12/12 horas.\",\ncond(peso<=13,\"Tomar 2 mL por via oral de 12/12 horas.\",\ncond(peso<=16,\"Tomar 2,5 mL por via oral de 12/12 horas.\",\ncond(peso<=19,\"Tomar 3 mL por via oral de 12/12 horas.\",\ncond(peso<=22,\"Tomar 3,5 mL por via oral de 12/12 horas.\",\ncond(peso<=25,\"Tomar 4 mL por via oral de 12/12 horas.\",\ncond(peso<=28,\"Tomar 4,5 mL por via oral de 12/12 horas.\",\ncond(peso<=31,\"Tomar 5 mL por via oral de 12/12 horas.\",\ncond(peso<=34,\"Tomar 5,5 mL por via oral de 12/12 horas.\",\ncond(peso<=37,\"Tomar 6 mL por via oral de 12/12 horas.\",\ncond(peso<=40,\"Tomar 6,5 mL por via oral de 12/12 horas.\",\n\"Tomar 7 mL por via oral de 12/12 horas.\")))))))))))))",
+      "observacao": null
+    },
+    {
+      "medicamento": "Ranitidina 15mg/ml (Gotas)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*1)<=90/3) ? ((peso*1)/0.75) : ((90/3))/0.75),0) + \" gotas por via oral de 8/8 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Carvão Ativado (Pó ou Suspensão) - Oral/SNG",
+      "logica_js": "\"Misturar \" + Math.round((((peso*1)<=50) ? ( peso*1) : ( 50)), 0) + \" g com \" + Math.round((((peso*1)<=50) ? ( peso*1) : ( 50))/25*50, 0) + \" mL de água para formar uma suspensão. Administrar por VO ou SNG.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Ondansetrona 2mg/ml (EV/IM)",
+      "logica_js": "\"Administrar \" + Math.round((((peso*0.2)<=4) ? (peso*0.2) : (4))/2,1) + \" mL por via IM ou (EV diluido em 50 mL de SF 0,9% ou SG 5%) a cada 8 horas\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Bromoprida 5mg/ml (EV)",
+      "logica_js": "\"Administrar \" + Math.ceil((((peso*0.2)<=20) ? ( cond(((peso*0.2)/1)/(5/1)<=4) : ( ((peso*0.2))/1)/(5/1), 4), (((20/1)/(5/1)<=4) ? ( (20/1)/(5/1)) : ( 20))), 1) + \" mL por via EV diluido em 50 mL de SF 0,9% ou SG 5% a cada 8 horas\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Metoclopramida 10mg/2mL (Plasil®) - EV",
+      "logica_js": "\"Administrar \" + Math.ceil((((peso*0.15)<=10) ? (peso*0.15) : (10))/5,1) + \" mL + 50 ml de SF 0,9% ou SG 5% por via EV a cada 8 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Dramin-B6 DL 30mg/10ml (EV)",
+      "logica_js": "\"Administrar \" +Math.round((((peso*1.25)<=270/3) ? ( cond(((peso*1.25)/30)*10<=90) : ( ((peso*1.25))/30)*10, 90), (270/3)/30*10), 1) + \" mL por via EV diluido em 50 mL de SF 0,9% ou SG 5% a cada 8 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Dramin-B6 50mg/ml (IM)",
+      "logica_js": "\"Administrar \" +Math.ceil((((peso*0.025)<=1) ? ( peso*0.025) : ( 1)), 1) + \" mL por via IM a cada 8 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Ranitidina 50mg/2mL (EV)",
+      "logica_js": "\"Administrar \" +Math.round(((peso / 20 > 2) ? ( 2) : ( peso / 20)), 1) + \" mL por via EV a cada 12 horas\"",
+      "observacao": null
+    }
+  ],
+  "Antialérgicos": [
+    {
+      "medicamento": "Hidroxizina 2mg/ml (Xarope)",
+      "logica_js": "\"Tomar \" +Math.round(((peso<=40) ? ( cond((peso*0.7)<=((peso*2)/3)) : ( cond((peso*0.7))/2<=12.5, (peso*0.7)/2, 12.5), (((peso*2)/6<=12.5) ? ( (peso*2)/6) : ( 12.5))), (((peso*0.7)<=100/3) ? ( cond((peso*0.7)/2<=12.5) : ( (peso*0.7))/2, 12.5), ((100/6<=12.5) ? ( 100/6) : ( 12.5)))), 1) + \" mL por via oral de 8/8 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Desloratadina 0,5mg/ml (Xarope) > 6 Meses",
+      "logica_js": "\"Tomar \" +Math.round(((idade<=0.92) ? ( 2) : ( cond(idade<=5, 2.5, cond(idade<=11, 5, 10)))), 1) + \" mL por via oral uma vez ao dia.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Fexofenadina 6mg/ml (Xarope) > 6 Meses",
+      "logica_js": "\"Tomar \" +Math.round(((idade<=2) ? ( 2.5) : ( cond(idade<=11, 5, 5))), 1) + \" mL por via oral de 12/12 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Dexclorfeniramina 2mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round(((peso*0.1<=3) ? ((peso*0.1)/(2/5)) : (3/(2/5))),1) + \" mL por via oral de 8/8 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Loratadina 5mg/5ml (Xarope) > 2 anos",
+      "logica_js": "\"Tomar \" + Math.round(((peso*0.2<=5) ? (peso*0.2) : (5))/1,1) + \" mL por via oral, uma vez ao dia.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Dexclorfeniramina + Betametasona 0,4 mg/ml + 0,05mg/ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round(((peso*0.1<=3) ? ((peso*0.1)/(2/5)) : (3/(2/5))),1) + \" mL por via oral de 8/8 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Prometazina 25mg/ml (IM) > 2 Anos",
+      "logica_js": "\"Administrar \" +Math.round(((((peso*0.3)/25)<=2) ? ( (peso*0.3)/25) : ( 2)), 1) + \" mL por via IM a cada 6 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Difenidramina 50mg/ml (EV/IM) > 2 Anos",
+      "logica_js": "\"Administrar \" +Math.round(((peso*0.03 <= 300/3/50) ? ( peso*0.03) : ( 300/3/50)), 1) + \" mL por via IM a cada 8 horas.\"",
+      "observacao": null
+    }
+  ],
+  "Corticoide Oral": [
+    {
+      "medicamento": "Prednisolona 3mg/ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*1)<=40) ? ( cond(((peso*1)/1)/(3/1)<=14) : ( ((peso*1))/1)/(3/1), 14), (((40/1)/(3/1)<=14) ? ( (40/1)/(3/1)) : ( 14))), 1) + \" mL por via oral de 24/24 horas. Por 5 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Dexametasona 0,5mg/5ml (Xarope)",
+      "logica_js": "\"Tomar \" + Math.round((((peso*0.025)<=12) ? ( cond(((peso*0.025)/1)/(0.5/5)<=15) : ( ((peso*0.025))/1)/(0.5/5), 15), (((12/3)/(0.5/5)<=15) ? ( (12/3)/(0.5/5)) : ( 15))), 1) + \" mL por via oral de 24/24 horas. Por 5 dias.\"",
+      "observacao": null
+    }
+  ],
+  "Corticoides Ev": [
+    {
+      "medicamento": "Hidrocortisona 100mg/Pó (EV/IM) - Reconstituir em 2 ml de AD",
+      "logica_js": "\"Reconstituir \"+Math.ceil((((peso*4)/100<1) ? (1) : ((peso*4))/100),0)+\" frasco(s) com \"+Math.round((((peso*4)/100<1) ? (1) : ((peso*4))/100),0)*2+\" mL de AD. Administrar \"+Math.round((((peso*4)<=8*peso) ? ((peso*4)/50) : ((8*peso))/50),1)+\" mL por via IM ou EV diluído em 50 mL de SF 0,9% ou SG 5% a cada 6 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Hidrocortisona 500mg/Pó (EV/IM) - Reconstituir em 5 ml de AD",
+      "logica_js": "\"Reconstituir \"+Math.round((((peso*4)/500<1) ? (1) : ((peso*4))/500),0)+\" frasco(s) com \"+Math.round((((peso*4)/500<1) ? (1) : ((peso*4))/500),0)*5+\" mL de AD. Administrar \"+Math.ceil((((peso*4)<=8*peso) ? ((peso*4)/100) : ((8*peso))/100),1)+\" mL por via IM ou (EV diluído em 50 mL de SF 0,9% ou SG 5%), a cada 6 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Metilprednisolona 125mg/Pó (EV/IM) - Reconstituir em 2ml de AD",
+      "logica_js": "\"Reconstituir \"+Math.round((((peso*1)/125<1) ? (1) : ((peso*1))/125),0)+\" frasco(s) com \"+Math.round((((peso*1)/125<1) ? (1) : ((peso*1))/125),0)*2+\" mL de AD. Administrar \"+Math.ceil((((peso*1)<=125) ? ((peso*1)/62.5) : (125/62.5)),1)+\" mL por via IM ou (EV diluído em 50 mL de SF 0,9% ou SG 5%), a cada 6 horas. (Correr em 30 minutos).\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Metilprednisolona 40 mg/mL (EV)",
+      "logica_js": "\"Dose de ataque:  \" + Math.round(((peso * 1.5 / 40 <= 1) ? ( peso * 1.5 / 40) : ( 1)), 2) + \" ML + \" + Math.round(10 - ((peso * 1.5 / 40 <= 1) ? ( peso * 1.5 / 40) : ( 1)), 2) + \" mL de SF 0,9%, Administrar por via EV em infusão lenta | Dose de manutençao: \" + Math.round(((peso * 0.75 / 40 <= 1) ? ( peso * 0.75 / 40) : ( 1)), 2) + \" ML + \" + Math.round(10 - ((peso * 0.75 / 40 <= 1) ? ( peso * 0.75 / 40) : ( 1)), 2) + \" mL de SF 0,9%, Administrar por via EV em infusão lenta. A cada 6/6 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Sulfato de Magnésio 50% Asma/Bronquite 1mL/500mg (EV)",
+      "logica_js": "\"Administrar \" + Math.ceil(((peso*25<=2000) ? (peso*25) : (2000))/500,1) + \" mL diluído em \" + ((peso*25<=2000) ? (\"60\") : (\"100\")) + \" mL de SF 0,9%. Administrar por via EV em infusão lenta por 30 minutos. (Necessita de internação para realização deste medicamento).\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Sulfato de Magnésio 10% Asma/Bronquite 1mL/100 mg (EV)",
+      "logica_js": "\"Administrar \" + Math.ceil(((peso*25<=2000) ? (peso*25) : (2000))/100,1) + \" mL  diluído em \" + ((peso*25<=2000) ? (\"60\") : (\"100\")) + \" mL de SF 0,9%. Administrar por via EV em infusão lenta por 30 minutos. (Necessita de internação para realização deste medicamento).\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Dexametasona 4mg/ml (EV/IM)",
+      "logica_js": "\"Dose de ataque: \" + Math.round((((peso*0.6)<=12) ? (peso*0.6) : (12))/4,1) + \" mL  por via IM, uma vez por dia ou (EV Diluir em 50 mL de SF 0,9%. Administrar em 30 minutos)  |  Dose de manutenção: \" + Math.round((((peso*0.15)<=10) ? (peso*0.15) : (10))/4,1) + \" mL por via IM ou (EV Diluir em 50 mL de SF 0,9%).\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Dexametasona 2mg/ml (EV/IM)",
+      "logica_js": "\"Administrar \" + Math.round((((peso*0.6)<=12) ? (peso*0.6) : (12))/2,1) + \" mL uma vez ao dia por via IM puro ou (EV diluir em 50 mL de SF 0,9%, administrar em 30 minutos)\"",
+      "observacao": null
+    }
+  ],
+  "Anafilaxia": [
+    {
+      "medicamento": "Adrenalina 1mg/ml (IM)",
+      "logica_js": "\"Administrar \" + Math.round(((peso*0.01<=0.3) ? (peso*0.01) : (0.3)),2)/1 + \" mL (Puro), por via IM em vasto lateral da coxa. Pode repetir até 3 vezes no total, com intervalo de 15 minutos entre as administrações.\"",
+      "observacao": null
+    }
+  ],
+  "Diuréticos": [
+    {
+      "medicamento": "Furosemida - 20 mg/2mL",
+      "logica_js": "\"Administrar \"+Math.round(((peso * 1 / 4 / 10 <= 2) ? ( peso * 1 / 4 / 10) : ( 2)), 2) + \" mL por via EV a cada 6 horas | Administrar \" + Math.round(((peso * 1 / 3 / 10 <= 2) ? ( peso * 1 / 3 / 10) : ( 2)), 2) + \" mL por via EV a cada 8 horas | Administrar \" + Math.round(((peso * 1 / 2 / 10 <= 2) ? ( peso * 1 / 2 / 10) : ( 2)), 2) + \" mL por via EV a cada 12 horas | Pode aumentar ate 5 vezes cada resultado, se necessário.\"",
+      "observacao": null
+    }
+  ],
+  "Pcr": [
+    {
+      "medicamento": "Adrenalina 1mg/ml (EV em Bolus)",
+      "logica_js": "\"Diluir 1 Ampola(s) em 9 mL de SF 0,9%. Administrar \" + Math.round((((peso/10)<=10) ? ( peso/10) : ( 10)), 2) + \" mL da mistura por via EV em bolus de 3 a 5 minutos.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Amiodarona 50mg/ml (EV em Bolus)",
+      "logica_js": "\"Administrar \" + Math.round(((peso*5<=cond(peso*10<=300) ? (peso*10) : (300)),peso*5,((peso*10<=300) ? (peso*10) : (300)))/50,2) + \" mL por via EV em bolus sem diluição. (Pode ser repetida até no máximo 3 vezes).\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Cálcio injetável 10% (100mg/ml)",
+      "logica_js": "\"Administrar \" + Math.round(((peso*60<=3000) ? (peso*60) : (3000))/100,2) + \" mL por via EV em bolus lento, puro.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Lidocaína 20mg/ml (Sem vasoconstritor)",
+      "logica_js": "\"Administrar \" + Math.round(((peso*1<=cond(peso*3<=75) ? (peso*3) : (75)),peso*1,((peso*3<=75) ? (peso*3) : (75)))/20,2) + \" mL por via EV em bolus lento.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Bicarbonato de sódio injetável 8,4% (84mg/ml = 1 mEq/ml)",
+      "logica_js": "\"Diluir \" + Math.ceil(peso,1) + \" mL de Bicarbonato de Sódio 8,4% + \" + Math.ceil(peso,1) + \" mL de SF 0,9%. Administrar \" + Math.ceil(peso*2,1) + \" mL por via EV em bolus lento.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Glicose 10% - 0,1g/ml (Ampola com 10 mL)",
+      "logica_js": "\"Administrar \" + Math.ceil(peso*0.5/0.1,1) + \" mL de Glicose 10% por via EV em bolus.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Glicose 25% - 0,25g/ml (Ampola com 10 mL)",
+      "logica_js": "\"Diluir \" + Math.ceil(peso*0.5/0.125/2,1) + \" mL de Glicose 25% + \" + Math.ceil(peso*0.5/0.125/2,1) + \" mL de água destilada. Administrar \" + Math.ceil(peso*0.5/0.125,1) + \" mL por via EV em bolus.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Glicose 50% - 0,5g/ml (Ampola com 10 mL)",
+      "logica_js": "\"Diluir \" + Math.ceil(peso*0.5/0.125/4,1) + \" mL de Glicose 50% + \" + Math.ceil(peso*0.5/0.125/4*3,1) + \" mL de água destilada. Administrar \" + Math.ceil(peso*0.5/0.125,1) + \" mL por via EV em bolus.\"",
+      "observacao": null
+    }
+  ],
+  "Taquicardia Supraventricular": [
+    {
+      "medicamento": "Adenosina injetável 3mg/mL (EV em Bolus)",
+      "logica_js": "\"Primeira dose: Administrar \" + Math.ceil(((peso*0.1<=6) ? (peso*0.1) : (6))/3,2) + \" mL por via EV, em bolus. Após, fazer 20 mL de SF 0,9% em bolus utilizando o (Three Way) | Segunda dose: Administrar \" + Math.ceil(((peso*0.2<=12) ? (peso*0.2) : (12))/3,2) + \" mL por via EV, em bolus. Após, fazer 20 mL de SF 0,9% em bolus utilizando o (Three Way).\"",
+      "observacao": null
+    }
+  ],
+  "Antivirais": [
+    {
+      "medicamento": "Aciclovir 250 mg/Pó (EV) - Reconstituir com 10mL de AD.",
+      "logica_js": "\"Reconstituir \"+Math.ceil(MIN(peso*15,750)/250,0)+\" frasco(s) com \"+Math.ceil(MIN(peso*15,750)/250,0)*10+\" mL de AD. Diluir \"+Math.ceil(MIN(peso*15,750)/25,1)+\" mL da solução reconstituida com \"+Math.ceil((MIN(peso*15,750)/7)-Math.ceil(MIN(peso*15,750)/25,2),1)+\" mL de SF 0,9%. Infundir por via EV a \"+Math.ceil((MIN(peso*15,750)/7)/1,1)+\" mL/hora. Administrar de 8/8 horas. Por 7 a 21 dias.(15mg/kg/dose)\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Aciclovir 250 mg/Pó (EV) - Reconstituir com 10mL de AD.",
+      "logica_js": "\"Reconstituir \"+Math.ceil(MIN(peso*10,750)/250,0)+\" frasco(s) com \"+Math.ceil(MIN(peso*10,750)/250,0)*10+\" mL de AD. Diluir \"+Math.ceil(MIN(peso*10,750)/25,1)+\" mL da solução reconstituida com \"+Math.ceil((MIN(peso*10,750)/7)-Math.ceil(MIN(peso*10,750)/25,2),1)+\" mL de SF 0,9%. Infundir por via EV a \"+Math.ceil((MIN(peso*10,750)/7)/1,1)+\" mL/hora. Administrar de 8/8 horas. Por 7 a 21 dias.(10mg/kg/dose)\"",
+      "observacao": null
+    }
+  ],
+  "Antibióticos Ev": [
+    {
+      "medicamento": "Ceftriaxona 1000mg/Pó (EV) - Reconstituir em 5 ml de AD",
+      "logica_js": "\"Reconstituir \"+(((peso*100)>2000) ? (Math.ceil(MIN(peso*100/2) : (2000))/1000,0),Math.ceil(MIN(peso*100,4000)/1000,0))+\" frasco(s) com \"+(((peso*100)>2000) ? (Math.ceil(MIN(peso*100/2) : (2000))/1000,0),Math.ceil(MIN(peso*100,4000)/1000,0))*5+\" mL de AD. Administrar \"+(((peso*100)>2000) ? (Math.round(MIN(peso*100/2) : (2000))/200,1),Math.round(MIN(peso*100,4000)/200,1))+\" mL por via EV diluído em 100 mL de SF 0,9% \"+(((peso*100)>2000) ? (\"a cada 12/12 horas\") : (\"a cada 24/24 horas\"))+\". Infundir em 60 minutos.(100mg/kg/dia).\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Ceftriaxona 1000mg/Pó (EV) - Reconstituir em 5 ml de AD",
+      "logica_js": "\"Reconstituir \"+(((peso*50)>2000) ? (Math.ceil(MIN(peso*50/2) : (2000))/1000,0),Math.ceil(MIN(peso*50,4000)/1000,0))+\" frasco(s) com \"+(((peso*50)>2000) ? (Math.ceil(MIN(peso*50/2) : (2000))/1000,0),Math.ceil(MIN(peso*50,4000)/1000,0))*5+\" mL de AD. Administrar \"+(((peso*50)>2000) ? (Math.round(MIN(peso*50/2) : (2000))/200,1),Math.round(MIN(peso*50,4000)/200,1))+\" mL por via EV diluído em 100 mL de SF 0,9% \"+(((peso*50)>2000) ? (\"a cada 12/12 horas\") : (\"a cada 24/24 horas\"))+\". Infundir em 60 minutos.(50mg/kg/dia).\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Amicacina 100mg/2ml (EV)",
+      "logica_js": "\"Administrar \"+Math.ceil(MIN(peso*15,1500)/50/3,1)+\" mL diluído em \"+((Math.ceil(MIN(peso*15) ? (1500)/50/3) : (1))<=20,\"50 mL\",\"100 mL\")+\" de SF 0,9% por via EV de 8/8 horas. Infundir em \"+((Math.ceil(MIN(peso*15) ? (1500)/50/3) : (1))<=20,\"30 minutos\",\"60 minutos\")+\".\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Amicacina 250mg/2ml (EV)",
+      "logica_js": "\"Administrar \"+Math.ceil(MIN(peso*15,1500)/125/3,1)+\" mL diluído em \"+((Math.ceil(MIN(peso*15) ? (1500)/125/3) : (1))<=20,\"50 mL\",\"100 mL\")+\" de SF 0,9% por via EV de 8/8 horas. Infundir em \"+((Math.ceil(MIN(peso*15) ? (1500)/125/3) : (1))<=20,\"30 minutos\",\"60 minutos\")+\".\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Amoxicilina + Clavulanato 1000 mg + 200 mg  (EV) - Reconstituir em 20ml de AD",
+      "logica_js": "\"Reconstituir 1 frasco(s) com 20 mL de AD. Administrar \" + Math.ceil(((idade<=0.3) ? (cond(peso*25<=1000) : (peso*25,1000))/50,((peso*25<=1000) ? (peso*25) : (1000))/50),1) + \" mL diluído em \" + ((idade<=0.3) ? (\"50\") : (\"100\")) + \" mL de SF 0,9%. Infundir por via EV direto \" + ((idade<=0.3) ? (\"12/12 horas\") : (\"8/8 horas\")) + \".Fazer em 30 minutos.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Amoxicilina + Clavulanato 500 mg + 100 mg  (EV) - Reconstituir em 20ml de AD",
+      "logica_js": "\"Reconstituir \" + ((peso*25<=1000) ? (Math.ceil(cond(peso*25<=500) : (1,2)),0),2) + \" frasco(s) com \" + ((peso*25<=1000) ? (Math.ceil(cond(peso*25<=500) : (10,20)),0),20) + \" mL de AD. Administrar \" + Math.ceil(((peso*25<=1000) ? (peso*25) : (1000))/50,1) + \" mL diluído em \" + ((B3<=3) ? (\"50\") : (\"100\")) + \" mL de SF 0,9%. Infundir por via EV direto \" + ((B3<=3) ? (\"12/12 horas\") : (\"8/8 horas\")) + \".Fazer em 30 minutos.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Ampicilina 1000mg/Pó (EV) - Reconstituir em 3ml de AD",
+      "logica_js": "\"Reconstituir \"+Math.ceil(((peso*100>12000) ? (12000) : (peso*100))/4000,0)+\" frasco(s) com \"+Math.ceil(((peso*100>12000) ? (12000) : (peso*100))/4000,0)*3+\" mL de AD. Administrar \"+Math.round(((peso*100>12000) ? (12000/4) : (peso*100/4))/1000,1)*3+\" mL da mistura diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 6/6 horas. Infundir em 30 minutos.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Cefalotina 1000mg/Pó (EV) - Reconstituir em 10ml de AD",
+      "logica_js": "\"Reconstituir \" + Math.ceil(((peso*40>2500) ? (2500) : (peso*40))/1000,0) + \" frasco(s) com \" + Math.ceil(((peso*40>2500) ? (2500) : (peso*40))/1000,0)*10 + \" mL de água destilada. Administrar \" + Math.ceil(((peso*40>2500) ? (2500) : (peso*40))/100,1) + \" mL da solução diluído em 100 mL de SF 0,9%. Infundir por via EV de 6/6 horas. Fazer em 30 minutos.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Oxacilina 500mg/Pó (EV) - Reconstituir em 5ml de SF ou AD",
+      "logica_js": "\"Reconstituir \"+Math.ceil(((peso*100>12000) ? (12000) : (peso*100))/2000,0)+\" frasco(s) com \"+Math.ceil(((peso*100>12000) ? (12000) : (peso*100))/2000,0)*5+\" mL de AD ou SF 0,9%. Administrar \"+Math.round(((peso*100>12000) ? (12000/4) : (peso*100/4))/500,1)*5+\" mL da mistura diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 6/6 horas. Infundir em 30 minutos.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Gentamicina 40mg/ml (EV) - Ampola 1,5 ou 2ml",
+      "logica_js": "\"Administrar \" +Math.round(((idade<5) ? ((peso*5)/40) : ((peso*7.5))/40),1)+ \" mL diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 24/24 horas. Infundir em 30 minutos.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Clindamicina 150mg/ml (EV)",
+      "logica_js": "\"Administrar \"+Math.round(((peso*40>2700) ? (2700/3) : (peso*40/3))/150,1)+\" mL diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 8/8 horas. Infundir em 30 minutos.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Vancomicina 500mg/Frasco (EV) Reconstituir em 5ml de AD > 1 Meses",
+      "logica_js": "\"Reconstituir \" +Math.ceil(((peso*10>2000) ? (2000) : (peso*10))/500,0)+\" frasco(s) com \" + Math.ceil(((peso*10>2000) ? (2000) : (peso*10))/500,0)*5 + \" mL de AD. Administrar \"+Math.round(((peso*10>2000) ? (2000) : (peso*10))/500,1)*5+\" mL da mistura diluído em 100 mL de SF 0,9% por via EV, a cada 6/6 horas. Infundir em 60 minutos.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Meropeném Tri-hidratado 500mg/Frasco (EV) - Reconstituir em 5ml de AD",
+      "logica_js": "\"Reconstituir \"+Math.ceil(((peso*40*3>6000) ? (6000) : (peso*40*3))/1500,0)+\" frasco(s) com \"+Math.ceil(((peso*40*3>6000) ? (6000) : (peso*40*3))/1500,0)*5+\" mL de AD. Administrar \"+Math.ceil(((peso*40>2000) ? (2000) : (peso*40))/500,1)*5+\" mL da mistura diluído em 50 a 100 mL de SF 0,9% ou SG 5% por via EV, a cada 8/8 horas. Infundir em 30 minutos.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Ampicilina Sódica + Sulbactam Sódico 1,5g/Ampola (EV)",
+      "logica_js": "\"Reconstituir \"+Math.ceil(((peso*100>12000) ? (12000) : (peso*100))/4000,0)+\" ampola(s) com \"+Math.ceil(((peso*100>12000) ? (12000) : (peso*100))/4000,0)*3+\" mL de AD. Administrar \"+Math.ceil(((peso*100>12000) ? (12000/3) : (peso*100/3))/1500,1)*3+\" mL da mistura diluído em 50 a 100 mL de SF 0,9% ou SG 5% por via EV, a cada 8/8 horas. Infundir em 30 minutos.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Piperacilina + Tazobactam 4 g + 500 mg (EV) - Reconstituir em 5ml de AD",
+      "logica_js": "\"Reconstituir \"+Math.ceil(((idade<=0.9) ? (MIN(peso*80) : (16000))/4000,MIN(peso*100,16000)/4000),0)+\" frasco(s) com \"+Math.ceil(((idade<=0.9) ? (MIN(peso*80) : (16000))/4000,MIN(peso*100,16000)/4000),0)*4+\" mL de AD. Administrar \"+Math.ceil(((idade<=0) ? (MIN(peso*80) : (16000))/1000,MIN(peso*100,16000)/1000),1)+\" mL diluído em \"+((idade<=0.9) ? (\"50 mL\") : (\"100 mL\"))+\" de SF 0,9% por via EV de \"+((idade<=0.9) ? (\"6/6 horas\") : (\"8/8 horas\"))+\". Infundir em 60 minutos.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Metronidazol 5mg/ml - Bolsa de 100ml (EV)",
+      "logica_js": "=((idade<=4) ? (\"Dose de ataque: Administrar \"+Math.round(cond(peso*15>4000) : (4000,peso*15))/5,1)+\" mL por via EV. (Infundir em 60 minutos) | Dose de manutenção: Administrar \"+Math.round(((peso*7.5*2>4000) ? (4000/2) : (peso*7.5))/5,1)+\" mL por via EV de 12/12 horas. (Infundir em 60 minutos)\",\"Dose de ataque: Administrar \"+Math.round(((peso*15>4000) ? (4000) : (peso*15))/5,1)+\" mL por via EV. (Infundir em 60 minutos) | Dose de manutenção: Administrar \"+Math.round(((peso*7.5*3>4000) ? (4000/3) : (peso*7.5))/5,1)+\" mL por via EV de 8/8 horas. (Infundir em 60 minutos)\")",
+      "observacao": null
+    },
+    {
+      "medicamento": "Claritromicina 500mg/Frasco (EV)  - Reconstituir em 10ml de AD",
+      "logica_js": "\"Reconstituir 1 frasco(s) com 10 mL de AD. Administrar \" + Math.ceil(((peso*7.5<=500) ? (peso*7.5) : (500))/50,1) + \" mL diluído em 100 mL de SF 0,9% ou SG 5%  por via EV, de 12/12 horas. Infundir em 30 minutos.\"",
+      "observacao": null
+    }
+  ],
+  "Antibióticos Im": [
+    {
+      "medicamento": "Ceftriaxona Sódica 1000mg/Pó (IM) - Reconstituir em 2,5 ml de AD",
+      "logica_js": "\"Reconstituir \"+((Math.ceil((peso*100)/1000) ? (0)<=2) : (Math.ceil((peso*100))/1000,0),2)+\" frasco(s) com \"+((Math.ceil((peso*100)/1000) ? (0)<=2) : (Math.ceil((peso*100))/1000,0),2)*2.5+\" mL de AD. Administrar \"+Math.round((((peso*100)<=2000) ? ((peso*100)/400) : (2000/400)),1)+\" mL por via IM a cada 24/24 horas. Por 3 a 5 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Penicilina Benzatina 600.000 UI (IM) - Reconstituir em 3,2 ml de AD",
+      "logica_js": "\"Reconstituir \"+((Math.ceil((peso*50000)/600000) ? (0)<=2) : (Math.ceil((peso*50000))/600000,0),2)+\" frasco(s) com \"+((Math.ceil((peso*50000)/600000) ? (0)<=2) : (Math.ceil((peso*50000))/600000,0),2)*3.2+\" mL de diluente para obter uma mistura de \"+((Math.ceil((peso*50000)/600000) ? (0)<=2) : (Math.ceil((peso*50000))/600000,0),2)*4+\" mL. Administrar \"+Math.round((((peso*50000)<=1200000) ? ((peso*50000)/150000) : (1200000/150000)),1)+\" mL por via IM, dose única.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Penicilina Benzatina 1.200.000 UI (IM) - Reconstituir em 3,2 ml de AD",
+      "logica_js": "\"Reconstituir \"+((Math.ceil((peso*50000)/1200000) ? (0)<=1) : (Math.ceil((peso*50000))/1200000,0),1)+\" frasco(s) com 3,2 mL de diluente para obter uma mistura de 4 mL. Administrar \"+Math.round((((peso*50000)<=1200000) ? ((peso*50000)/300000) : (1200000/300000)),1)+\" mL por via IM, dose única.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Penicilina cristalina (benzilpenicilina potássica) 5.000.000 UI - Recostituir em 10 mL de AD",
+      "logica_js": "\"Reconstituir \"+Math.ceil(MIN(peso*50000,5000000)/5000000,0)+\" frasco(s) com \"+Math.ceil(MIN(peso*50000,5000000)/5000000,0)*10+\" mL de diluente. Pegar \"+Math.roundDOWN(MIN(peso*50000,5000000)/500000,2)+\" mL da mistura e diluir em \"+Math.roundDOWN((MIN(peso*50000,5000000)/10000)-Math.roundDOWN(MIN(peso*50000,5000000)/500000,2),2)+\" mL de SG 5% e administrar por via EV bem lento. Correr em 60 minutos. Administrar de \"+((idade<=0.07) ? (\"12/12 horas\") : (\"8/8 horas\"))+\" (50.000 UI/kg/dose).\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Sulfato de polimixina B - 500.000 UI/Pó - Recostituir em 10 mL de AD",
+      "logica_js": "\"Reconstituir \"+Math.ceil(MIN(peso*25000,2000000)/1000000,0)+\" frasco(s) com \"+Math.ceil(MIN(peso*25000,2000000)/1000000,0)*10+\" mL de AD. Pegar \"+Math.roundDOWN(MIN(peso*25000,2000000)/100000,2)+\" mL da mistura e diluir em \"+Math.roundDOWN(((MIN(peso*25000) ? (2000000)<=500000) : (250,250*(MIN(peso*25000,2000000))/500000)),2)+\" mL de SG 5%. Infundir por via EV bem lenta, em 2 horas. Administrar de 12/12 horas. (25.000 UI/Kg/Dia).\"",
+      "observacao": null
+    }
+  ],
+  "Sedativos": [
+    {
+      "medicamento": "Ketamina 50 mg/ml (EV)",
+      "logica_js": "\"Administrar \" + Math.ceil(((peso*2<=peso*13) ? (peso*2) : (peso*13))/50,1) + \" mL diluído em 10 mL de SF 0,9%. Fazer bem lento. Usar uma vez ao dia.(2mg/kg).\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Midazolan 15 mg/3ml (IM ou EV)",
+      "logica_js": "\"Administrar \" + Math.ceil(((peso*0.2<=10) ? (peso*0.2) : (10))/5,1) + \" mL por via IM ou EV.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Propofol 10 mg/ml (EV)",
+      "logica_js": "\"Administrar \" + Math.ceil(((peso*2<=peso*18) ? (peso*2) : (peso*18))/10,1) + \" mL por via EV puro sem diluição. Fazer bem lento.(2mg/kg).\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Etomidate 2 mg/ml (EV)",
+      "logica_js": "\"Administrar \" + Math.ceil(((peso*0.3<=20) ? (peso*0.3) : (20))/2,1) + \" mL diluído em 10 mL de SF 0,9%. Fazer lentamente por via EV.(0,3mg/kg).\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Fentanil 50 mcg/ml (EV)",
+      "logica_js": "\"Administrar \" + Math.ceil(((peso*2<=50) ? (peso*2) : (50))/50,1) + \" mL diluído em 10 mL de SF 0,9%. Fazer lentamente por via EV.\"",
+      "observacao": null
+    }
+  ],
+  "Bloqueador Neuromuscular": [
+    {
+      "medicamento": "Brometo de Rocurônio 10mg/ml (EV)",
+      "logica_js": "\"Administrar \" + Math.ceil(peso/10,1) + \" mL diluído em \" + Math.ceil(Math.ceil(peso/10,1)/5,0)*10 + \" mL de SF 0,9%. Fazer em bolus por via EV.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Succinil Colin 10mg/Po (EV) - Reconstituir em 10 ml de AD",
+      "logica_js": "\"Reconstituir \" + ((peso*2<=100) ? (1) : (2)) + \" frasco(s) com \" + ((peso*2<=100) ? (10) : (20)) + \" mL de AD. Administrar \" + Math.ceil(((peso*2<=150) ? (peso*2) : (150))/10,1) + \" mL por via EV em bolus.\"",
+      "observacao": null
+    }
+  ],
+  "Medicação Para Bradicardia": [
+    {
+      "medicamento": "Atropina 0,25mg/ml (EV)",
+      "logica_js": "\"Administrar \" + ((peso*0.02/0.25<=2) ? (Math.ceil(peso*0.02/0.25) : (1)),2) + \" mL de Atropina por via EV \" + ((peso*0.02/0.25<=2) ? (\"sem diluição\") : (\"diluído em 50 mL de SF 0,9%\")) + \". Pode repetir uma vez em 5 minutos.\"",
+      "observacao": null
+    }
+  ],
+  "Anticonvulsivantes": [
+    {
+      "medicamento": "Midazolam 5mg/ml (EV ou IM)",
+      "logica_js": "\"Administrar por via EV ou IM: \"+Math.ceil(((peso*0.2<=5) ? ((peso*0.2)/5) : (5/5)),2)+\" mL/dose, repetir até \"+Math.ceil(((peso*0.4<=10) ? ((peso*0.4)/5) : (10/5)),2)+\" mL (dose total). | EV contínuo: \"+Math.ceil(((peso*0.2<=10) ? ((peso*0.2)/5) : (10/5)),2)+\" mL/hora. | Nasal: \"+Math.ceil(((peso*0.4<=10) ? ((peso*0.4)/5) : (10/5)),2)+\" mL/dose. | Retal: \"+Math.ceil(((peso*1<=10) ? ((peso*1)/5) : (10/5)),2)+\" mL/dose.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Diazepam 5mg/ml (EV)",
+      "logica_js": "\"Administrar \"+Math.ceil((((peso*0.2)<=20) ? ((peso*0.2)/5) : (20/5)),1)+\" mL diluído em 10 mL de SF 0,9%. Administrar por via EV bem lento | Pode repetir até 3 vezes com intervalo de 5 minutos.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Fenitoína 50mg/ml - Ampola 5ml (EV)",
+      "logica_js": "\"Administrar \"+Math.ceil(MIN(peso*20,1000)/50,1)+\" mL diluído em 100 mL de SF 0,9%. Correr em 20 minutos a uma taxa de \"+Math.ceil(MIN(peso*20,1000)/20/50,2)+\" mL/min. Pode repetir mais uma dose de \"+Math.ceil(MIN(peso*10,1000)/50,1)+\" mL. Se necessário, caso a convulsão não melhore. Observção: É necessária monitorização cardíaca cuidadosa durante e após a administração intravenosa.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Fenobarbital 100mg/ml - Ampola 2ml (EV)",
+      "logica_js": "\"Administrar \"+Math.ceil(MIN(peso*20,1000)/100,1)+\" mL diluído em 100 mL de SF 0,9%. Correr em 20 minutos a uma taxa de \"+Math.ceil(MIN(peso*20,1000)/20/100,2)+\" mL/min. Pode repetir mais uma dose de \"+Math.ceil(MIN(peso*10,1000)/100,1)+\" mL caso a convulsão não melhore após 10 a 15 minutos. Observação: Suporte respiratório adicional pode ser necessário, especialmente ao maximizar a dose de ataque ou com terapia sedativa concomitante.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Fenobarbital 40mg/ml (Gotas) - VO",
+      "logica_js": "\"Administrar \"+Math.ceil(MIN(peso*2,500)/2,0)+\" gotas por via oral de 24/24 horas. Uma vez ao dia.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Clonazepam 2,5mg/ml (Gotas) - VO",
+      "logica_js": "\"Dose inicial: Tomar \"+Math.ceil(MIN(peso*0.01,peso*0.03)/0.125/2,0)+\" gotas por via oral de 12/12 horas. | Dose de manutenção: Tomar \"+Math.ceil(MIN(peso*0.1,peso*0.2)/0.125/2,0)+\" gotas por via oral de 12/12 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Clorpromazina 25mg/5ml (Amplicitil®) Solução Injetável - IV/IM",
+      "logica_js": "\"Administrar \"+Math.ceil(((idade<5) ? (MIN(peso*0.55) : (40))/5,MIN(peso*0.55,75)/5),1)+\" mL diluído em \"+Math.ceil(((idade<5) ? (MIN(peso*0.55) : (40))/1,MIN(peso*0.55,75)/1),1)-Math.ceil(((idade<5) ? (MIN(peso*0.55) : (40))/5,MIN(peso*0.55,75)/5),1)+\" mL de SF 0,9% por via EV. Pode repetir a cada 8 horas. Se necessário. Observação: Administrar EV lentamente, por pelo menos 2 minutos.\"",
+      "observacao": null
+    }
+  ],
+  "Drogas De Infusão Contínua": [
+    {
+      "medicamento": "Adrenalina 1mg/ml (EV em BIC) - Dose Inotropica",
+      "logica_js": "\"Administrar \"+Math.round((peso * 0.1 * 1440) / 1000, 2) + \" mL de adrenalina + \" + Math.round(100 - ((peso * 0.1 * 1440) / 1000), 2) + \" mL de SF 0,9% | Administrar a \" + Math.round(250 / 24, 1) + \" mL/hora em BIC - Por 24 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Adrenalina 1mg/ml (EV em BIC) - Vasoconstritor",
+      "logica_js": "\"Administrar \"+Math.round((peso * 0.3 * 1440) / 1000, 2) + \" mL de adrenalina + \" + Math.round(250 - ((peso * 0.3 * 1440) / 1000), 2) + \" mL de SF 0,9% | Administrar a \" + Math.round(250 / 24, 1) + \" mL/hora em BIC - Por 24 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Noradrenalina 1mg/ml (EV em BIC)",
+      "logica_js": "\"Administrar \"+Math.round((peso * 0.1 * 1440) / 1000, 2) + \" mL de noradrenalina + \" + Math.round(250 - ((peso * 0.1 * 1440) / 1000), 2) + \" mL de SF 0,9% | ADMINISTRAR A \" + Math.round(250 / 24, 1) + \" mL/hora em BIC - Por 24 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Dobutamina 12,5mg/ml (EV em BIC)",
+      "logica_js": "\"Administrar \"+Math.round((peso * 5 * 1440) / 12500, 2) + \" mL de dobutamina + \" + Math.round(250 - ((peso * 5 * 1440) / 12500), 2) + \" mL de SF 0,9% | Administrar a \" + Math.round(250 / 24, 1) + \" mL/hora em BIC - Por 24 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Milrinona 1mg/ml (EV em BIC)",
+      "logica_js": "\"Administrar \"+Math.round((peso * 0.25 * 1440) / 1000, 2) + \" mL de milrinona + \" + Math.round(192 - ((peso * 0.25 * 1440) / 1000), 2) + \" mL de SF 0,9% | Administrar a \" + Math.round(192 / 24, 1) + \" mL/hora em BIC - Por 24 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Nitroprussiato de Sódio 25mg/ml (EV em BIC)",
+      "logica_js": "\"Administrar \"+Math.round((peso * 0.3 * 1440) / 25000, 2) + \" mL de nitruprussiato + \" + Math.round(200 - ((peso * 0.3 * 1440) / 25000), 2) + \" mL de SF 0,9% | Administrar a \" + Math.round(200 / 24, 1) + \" mL/hora em BIC - Por 24 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Fentanil 50mcg/ml (EV em BIC)",
+      "logica_js": "\"Administrar \"+Math.round((peso * 3 * 24) / 50, 2) + \" mL de fentanil + \" + Math.round(100 - ((peso * 3 * 24) / 50), 2) + \" mL de SF 0,9% | Administrar a \" + Math.round(100 / 24, 1) + \" mL/hora em BIC - Por 24 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Morfina 10mg/ml (EV em BIC)",
+      "logica_js": "\"Administrar \"+Math.round((peso * 10 * 24) / 10000, 2) + \" mL de morfina + \" + Math.round(100 - ((peso * 10 * 24) / 10000), 2) + \" mL de SF 0,9% | Administrar a \" + Math.round(100 / 24, 1) + \" mL/hora em BIC - Por 24 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Midazolam 5mg/ml (EV em BIC)",
+      "logica_js": "\"Administrar \"+Math.round((peso * 0.3 * 24) / 5, 2) + \" mL de midazolan + \" + Math.round(100 - ((peso * 0.3 * 24) / 5), 2) + \" mL de SF 0,9% | Administrar a \" + Math.round(100 / 24, 1) + \" mL/hora em BIC - Por 24 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Ketamine 50mg/ml (EV em BIC)",
+      "logica_js": "\"Administrar \"+Math.round((peso * 10 * 1440) / 50000, 2) + \" mL de ketamine + \" + Math.round(150 - ((peso * 10 * 1440) / 50000), 2) + \" mL de SF 0,9% | Administrar a \" + Math.round(150 / 24, 1) + \" mL/hora em BIC - Por 24 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "SALBUTAMOL (AEROLIN: EV em BIC) - 500MCG/1ML",
+      "logica_js": "\"Dose de ataque => Administrar \" + Math.round((peso * 15) / 500, 2) + \" mL de salbutamol diluido em  \" + Math.round(10 - ((peso * 15) / 500), 2) + \" mL de SF 0,9% infundir em 5 minutos. | Dose de infusão contínua => Administrar \" + Math.round((peso * 5 * 24) / 500, 2) + \" mL de salbutamol diluido em  \" + Math.round(50 - ((peso * 5 * 24) / 500), 2) + \" mL de SF 0,9% infundir a \" + Math.round(50 / 24, 1) + \" mL/hora em BIC - Por 24 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Dexmedetomidina 100mcg/ml (EV em BIC)",
+      "logica_js": "\"Administrar \"+Math.round((peso * 0.2 * 24) / 100, 2) + \" mL de dexmedetomidina + \" + Math.round(150 - ((peso * 0.2 * 24) / 100), 2) + \" mL de SF 0,9% | Administrar a \" + Math.round(150 / 24, 1) + \" mL/hora em BIC - Por 24 horas.\"",
+      "observacao": null
+    }
+  ],
+  "Fluidoterapia Para Rn Sintomáticos": [
+    {
+      "medicamento": "Soluções (SG 5% e GH 50%) + Eletrólitos (NaCl, KCl e GluCa).",
+      "logica_js": "\"SG5%: \"+Math.round(((100*peso)*(50-10))/45,1)+\" ML | GH50%: \"+Math.round(((100*peso)*(10-5))/45,1)+\" ML | NaCl 20%: \"+Math.round((peso*2)/3.4,1)+\" ML | KCl 19,1%: \"+Math.round((peso*2)/2.5,1)+\" ML | GLUCA 10%: \"+Math.round((peso*1)/0.5,1)+\" ML | BIC: \"+Math.round(((((100*peso)*(50-10))/45)+(((100*peso)*(10-5))/45)+((peso*2)/3.4)+((peso*2)/2.5)+((peso*1)/0.5))/24,0)+\" ML/H\"",
+      "observacao": null
+    }
+  ],
+  "Fluidoterapia | Hidratacao": [
+    {
+      "medicamento": "Holliday e Segar - 24 horas",
+      "logica_js": "=Math.round(((peso<=10) ? (peso*100) : (cond(peso<=20,1000+(peso-10))*50,1500+(peso-20)*20))/250,0)*250+\" ML SG5% |\"+Math.round((136*Math.round(((peso<=10) ? (peso*100) : (cond(peso<=20,1000+(peso-10))*50,1500+(peso-20)*20))/250,0)*250)/1000/3.4,1)+\" ML NaCl 20% |\"+Math.round((25*Math.round(((peso<=10) ? (peso*100) : (cond(peso<=20,1000+(peso-10))*50,1500+(peso-20)*20))/250,0)*250)/1000/1.5,1)+\" ML KCl 15% |\"+Math.round(((Math.round(((peso<=10) ? (peso*100) : (cond(peso<=20,1000+(peso-10))*50,1500+(peso-20)*20))/250,0)*250)+(136*Math.round(((peso<=10) ? (peso*100) : (cond(peso<=20,1000+(peso-10))*50,1500+(peso-20)*20))/250,0)*250)/1000/3.4+(25*Math.round(((peso<=10) ? (peso*100) : (cond(peso<=20,1000+(peso-10))*50,1500+(peso-20)*20))/250,0)*250)/1000/1.5)/24,0)+\" ML/H BIC\"",
+      "observacao": null
+    }
+  ],
+  "Antagonistas": [
+    {
+      "medicamento": "Naloxona 0,4mg/ml - (Narcan: Antagonista opioide)",
+      "logica_js": "\"Administrar \"+Math.round(((peso<=20) ? ( peso*0.1/0.4) : ( 2/0.4)), 2) + \" mL IM/IV/SUBCUTÂNEO pode ser repetido a cada 3 minutos se necessário.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Naloxona 1mg/ml - (Narcan: Antagonista opioide)",
+      "logica_js": "\"Administrar \"+Math.round(((peso<=20) ? ( peso*0.1/1) : ( 2/1)), 2) + \" mL IM/IV/SUBCUTÂNEO pode ser repetido a cada 3 minutos se necessário.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Flumazenil 0,1 MG/ML - (LANEXAT - Antagonista benzodiazepínico)",
+      "logica_js": "\"Administrar \"+Math.round(((peso*0.01<=0.2) ? ( peso*0.01/0.1) : ( 0.2/0.1)), 2) + \" mL infundido por 15 segundos. Pode ser repetido \" + Math.round(((peso*0.01<=0.2) ? ( peso*0.01/0.1) : ( 0.2/0.1)), 2) + \" mL após 45 segundos e a cada minuto. Dose cumulativa maxima \" + Math.round(((peso*0.05<=1) ? ( peso*0.05/0.1) : ( 1/0.1)), 2) + \" mL\"",
+      "observacao": null
+    }
+  ],
+  "Broncodilatadores": [
+    {
+      "medicamento": "Salbutamol (Nebulização) 5 mg/mL",
+      "logica_js": "\"Diluir \"+Math.ceil((((peso*0.13)<=5) ? ((peso*0.13)/0.125) : (5/0.125)),0)+\" gotas + 3 mL de SF 0,9%, realizar nebulização por 20 minutos. Nos casos agudos e/ou de exacerbação do broncoespasmo, utilizar a solução (por nebulização) a cada 20 minutos até estabilização do quadro.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Dipropionato de Beclometasona 50 mcg/puff (Clenil)",
+      "logica_js": "\"Administrar \" +((idade<6) ? (\"Contraindicado\") : ( cond(AND(idade>=6,idade<=12)),\"2 puffs por via inalatória de 12/12 horas. Agite o frasco antes de usar. Inspire profundamente ao pressionar o frasco e segure a respiração. Enxague a boca após o uso.\", \"4 puffs por via inalatória de 12/12 horas. Agite o frasco antes de usar. Inspire profundamente ao pressionar o frasco e segure a respiração. Enxague a boca após o uso.\"))",
+      "observacao": null
+    },
+    {
+      "medicamento": "Salbutamol 100mcg/Puff (Aerolin)",
+      "logica_js": "\"Aplicar \"+Math.ceil(MIN(peso/3,10),0)+\" jatos (puffs), por via inalatória, de 6/6 horas. \"+((idade<4) ? (\"Com o uso de espaçador + máscara facial.\") : (\"Sem necessidade de máscara facial.\"))+\" Observação: Nos casos agudos e/ou de exacerbação do broncoespasmo, repetir a dose inalatória a cada 20 minutos até estabilização do quadro.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Fenoterol (Berotec) - 5mg/1ml (NBZ)",
+      "logica_js": "\"Diluir \" + Math.round(((peso / 2 <= 10) ? ( peso / 2) : ( 10)), 0) + \" gotas + 3 mL de SF 0,9% e realizar nebulização, inalando até a solução ser totalmente consumida.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Ipratrópio Brometo Nebulização 0,25 mg/mL (ATROVENT) - NBZ",
+      "logica_js": "\"Diluir \"+Math.roundDOWN(MIN(peso,20),0)+\" gotas + 3 mL de SF 0,9% e realizar nebulização, inalando até a solução ser totalmente consumida, de 6/6 horas. Nos casos agudos e/ou de exacerbação do broncoespasmo, utilizar a solução (por nebulização) a cada 20 minutos até estabilização do quadro.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Fluticasona (MDI 50 mcg/puff)",
+      "logica_js": "=((idade>12) ? (\"Aerossol: Realizar 2 inalações de 12/12 horas; Disco: Realizar 1 inalação de 12/12 horas.\") : (cond(idade>4,\"Aerossol: Realizar 2 inalações de 12/12 horas; Disco: Realizar 1 inalação de 12/12 horas.\", \"Idade inferior a 4 anos, uso não indicado.\")))",
+      "observacao": null
+    },
+    {
+      "medicamento": "Broncho-Vaxom 3,5 mg",
+      "logica_js": "=((idade<0.5) ? (\"Contraindicado para pacientes abaixo de 6 meses de vida.\") : ( \"Dar 1 sachê ao dia em jejum por 10 dias consecutivos. Fazer intervalo de 20 dias e retornar por mais 10 dias. Repetir o ciclo por 3 meses seguidos.\"))",
+      "observacao": null
+    }
+  ],
+  "Probióticos E Repositores De Flora": [
+    {
+      "medicamento": "Floratil Pediátrico 200mg",
+      "logica_js": "\"Dar \"+((idade>=5) ? ( \"1 flaconete por via oral uma vez ao dia\") : ( \"1 flaconete por via oral uma vez ao dia.\"))",
+      "observacao": null
+    },
+    {
+      "medicamento": "Solução de Reidratação Oral (SRO)",
+      "logica_js": "\"Tomar \"+Math.round(peso * ((idade<5) ? ( 5) : ( 10)), 0) + \" mL SRO 0,9% de reidratação oral, tomar de 4 em 4 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Zinco 10 mg/5mL (Xarope)",
+      "logica_js": "\"Tomar \"+((idade<6) ? ( Math.round(10 / (10 / 2.5)) : ( 2)), Math.round(20 / (10 / 2.5), 2)) + \" mL de xarope de zinco, uma vez por dia. Por 7 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Enterogermina Plus - VO",
+      "logica_js": "\"Dar \"+((idade>=5) ? ( \"1 flaconete por via oral uma vez ao dia. Por 7 dias.\") : ( \"1 flaconete por via oral uma vez ao dia. Por 7 dias.\"))",
+      "observacao": null
+    },
+    {
+      "medicamento": "Racecadotrila Granulado (Tiorfan)",
+      "logica_js": "=((idade>18) ? ( \"100 mg Tomar 1 sachê de 100 mg por via oral de 8/8 horas. Por no máximo 7 dias.\") : ( cond(peso<=25, \"10 mg Tomar 1 sachê de 10 mg por via oral de 8/8 horas. Por no máximo 7 dias.\", \"30 mg Tomar 1 sachê de 30 mg por via oral de 8/8 horas. Por no máximo 7 dias.\")))",
+      "observacao": null
+    }
+  ],
+  "Laxantes": [
+    {
+      "medicamento": "Lactulona ou Pentalac (Xarope)",
+      "logica_js": "\"Tomar \"+Math.roundDOWN(MIN(peso*0.5,60)/3,1)+\" mL por via oral de 8/8 horas. (Observação: 1 frasco contém 120 mL).\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Clister Evacuativo (Fosfato Monossódico 16 g + Fosfato Dissódico 6 g/100 mL) - Via Retal.",
+      "logica_js": "=((peso<11) ? (\"Contraindicado\") : (\"Administrar \"+cond(peso<=22,\"33\",cond(peso<=43,\"66\",\"100\")))+\" mL por via retal. Observação: Orientar a criança ou responsável para reter a solução por cerca de 2 a 5 minutos antes da evacuação.\")",
+      "observacao": null
+    },
+    {
+      "medicamento": "Leite de Magnésia (Hidróxido de Magnésio) - VO > 2 anos.",
+      "logica_js": "=((idade<2) ? (\"Contraindicado\") : (cond(idade<=5,\"Tomar 5 a 15 mL por via oral, uma vez ao dia, preferencialmente à noite.\",cond(idade<=11,\"Tomar 15 a 30 mL por via oral, uma vez ao dia, preferencialmente à noite.\",cond(idade>=12,\"Tomar 30 a 60 mL por via oral, uma vez ao dia, preferencialmente à noite.\", \"Idade inválida\")))))",
+      "observacao": null
+    },
+    {
+      "medicamento": "Muvinlax® Macrogol 14 g/Sachê - VO",
+      "logica_js": "\"Dissolver \" + Math.ceil(((peso*1>28) ? (28) : (peso*1))/14,0) + \" sachê(s) com \" + Math.ceil(((peso*1>28) ? (28) : (peso*1))/14,0)*100 + \" mL de água filtrada. Ingerir \" + Math.ceil(((peso*1>28) ? (28) : (peso*1))/0.14,0) + \" mL da solução por via oral. Uma vez ao dia.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Óleo mineral (Nujol®) - VO",
+      "logica_js": "=((peso<1) ? (\"Contraindicado para crianças menores de 1 ano.\") : ( \"Tomar \"+Math.round(MIN(peso*0.5,22.5)),1)+\" mL do óleo mineral puro por via oral de 12/12 horas. De preferência em jejum ou entre as refeições para melhores resultados. Observação: Evitar a ingestão noturna.\")",
+      "observacao": null
+    },
+    {
+      "medicamento": "Solução de Enema de Glicerina 12% para clister - Frasco de 500 mL (Via Retal) > 2 anos",
+      "logica_js": "=((idade<2) ? (\"Contraindicado\") : ( \"Utilizar \"+MIN(peso*10,500))+\" mL por via retal. Orientar o paciente a reter a substância por 2 minutos ou até sentir a vontade de evacuar.\")",
+      "observacao": null
+    },
+    {
+      "medicamento": "PEG-Lax Macrogol 4000 (0,5 g/mL)  Xarope > 2 anos",
+      "logica_js": "=((idade<2) ? (\"Contraindicado\") : ( \"Tomar \"+MIN(peso*1.4/2,40/2))+\" mL por via oral de 12/12 horas. Por 3 a 5 dias, ou até evacuar.\")",
+      "observacao": null
+    }
+  ],
+  "Controle E Prevenção De Sangramentos": [
+    {
+      "medicamento": "Ácido Tranexâmico 250mg/5mL (EV)",
+      "logica_js": "\"Diluir \"+Math.roundDOWN(MIN(MIN(peso*10,1000)/50,20),1)+\" mL + \"+((Math.roundDOWN(MIN(MIN(peso*10) ? (1000)/50) : (20)),1)<=5,\"50\",\"100\")+\" mL de SF 0,9% ou SG 5%. Administrar de 8/8 horas. Infundir a \"+Math.roundDOWN((Math.roundDOWN(MIN(MIN(peso*10,1000)/50,20),1)+((Math.roundDOWN(MIN(MIN(peso*10) ? (1000)/50) : (20)),1)<=5,50,100))/(50/60),2)+\" mL/hora por via EV. (Observação: A administração endovenosa deverá ser o mais lenta possível).\"",
+      "observacao": null
+    }
+  ],
+  "Minerais E Vitaminas": [
+    {
+      "medicamento": "Protovit Plus (Polivitamínico)",
+      "logica_js": "=((idade<=6) ? (\"Crianças até 6 anos de idade: Tomar 6 gotas por via oral uma vez ao dia. Todos os dias.\") : ( \"Crianças acima de 6 anos de idade: Tomar 12 gotas por via oral uma vez ao dia. Todos os dias.\"))",
+      "observacao": null
+    },
+    {
+      "medicamento": "Grow Ferro 100 mg/mL (Gotas)",
+      "logica_js": "\"Tomar \"+Math.ceil(MIN(peso*3/100*20,120/100*20),0)+\" gotas por via oral uma vez ao dia.\"",
+      "observacao": null
+    }
+  ],
+  "Antiparasitários": [
+    {
+      "medicamento": "Nitazoxanida 20 mg/mL (ANNITA® ) - Suspensão Oral",
+      "logica_js": "=((peso<1) ? (\"Contraindicado\") : (\"Tomar \"+TEXT((peso*7.5))/20,\"0,0\")+\" mL por via oral de 12/12 horas. Por 3 dias.\")",
+      "observacao": null
+    },
+    {
+      "medicamento": "Albendazol VO 400 mg/10 mL (Suspensão Oral)",
+      "logica_js": "=((idade<2) ? (\"Contraindicado.\") : ( \"Tomar \"+Math.ceil(400/40,0))+\" mL por via oral. Dose única ou a cada 24/24 horas. Por 3 a 5 dias.\")",
+      "observacao": null
+    },
+    {
+      "medicamento": "Ivermectina 6 mg (Comprimido)",
+      "logica_js": "\"Tomar \"+((peso<=24) ? ( \"½ cp por via oral. Dose única\") : ( cond(peso<=35, \"1 cp por via oral. Dose única\", cond(peso<=50, \"1½ cp por via oral. Dose única\", cond(peso<=65, \"2 cp por via oral. Dose única\", cond(peso<=79, \"2½ cp por via oral. Dose única\", \"3 cp por via oral. Dose única\"))))))",
+      "observacao": null
+    },
+    {
+      "medicamento": "Mebendazol  20 mg/mL (Suspensão Oral)",
+      "logica_js": "=((peso<1) ? (\"Contraindicado\") : (cond(peso<2,\" \", \"Tomar 5 mL por via oral de 12/12 horas. Por 3 dias.\")))",
+      "observacao": null
+    },
+    {
+      "medicamento": "Pamoato de Pirvínio (Pyr-pam®) 10 mg/mL  (Suspensão Oral)",
+      "logica_js": "=((peso<10) ? (\"Não recomendado\") : ( \"Tomar \"+MIN(peso*1,60))+\" mL por via oral em dose única diária. Recomenda-se a repetição da dose cerca de 2 semanas após a primeira administração.\")",
+      "observacao": null
+    },
+    {
+      "medicamento": "Secnidazol 30 mg/mL (Suspensão Oral)",
+      "logica_js": "\"Tomar \"+Math.ceil(MIN(peso*30/30,2000/30),2)+\" mL por via oral uma vez ao dia, preferencialmente à noite, após o jantar. Em dose única ou Por 5 a 7 dias.\"",
+      "observacao": null
+    }
+  ],
+  "Aerosol Hipertônico - Laringite/Bva": [
+    {
+      "medicamento": "Adrenalina 1 mg/mL (Epinefrina) - Nebulização",
+      "logica_js": "\"Utilizar \"+Math.roundDOWN(MIN(peso*0.5,3),2)+\" mL de adrenalina 1 mg/mL diluída em 3 mL de SF 0,9% por nebulização. Pode ser repetido a cada 20 minutos até 3 vezes em 1 hora.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Água Destilada - Nebulização",
+      "logica_js": "\"Utilizar \"+((idade<18) ? (\"3 a 5 mL de água destilada pura\") : (\"3 a 5 mL de água destilada pura ou conforme orientação médica\"))+\" por nebulização.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "NaCl 20% (Solução Hipertônica) - Nebulização",
+      "logica_js": "=cond(idade<1,\"Utilizar 1 a 2 mL de NaCl 20% diluído em 1 a 2 mL de SF 0,9%. Nebulização de 8/8 horas. Pode repetir de 20/20 minutos até 3 vezes em 1 hora.\",\ncond(idade<18,\"Utilizar 3 mL de NaCl 20% puro ou diluído em SF 0,9%. Nebulização de 8/8 horas. Pode repetir de 20/20 minutos até 3 vezes em 1 hora.\",\n\"Utilizar 3 a 5 mL de NaCl 20% puro ou diluído em SF 0,9%. Nebulização de 8/8 horas. Pode repetir de 20/20 minutos até 3 vezes em 1 hora.\"))",
+      "observacao": null
+    }
+  ],
+  "Xaropes/Tosse": [
+    {
+      "medicamento": "Acebrofilina 25 mg/5 mL",
+      "logica_js": "\"Tomar \"+Math.ceil(MIN(peso*1/5*5,30/5),1)+\" mL por via oral de 8/8 horas. Por 5 a 7 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Hedera helix (Extrato Seco de Hera)",
+      "logica_js": "=cond(idade<2,\"Contraindicado para crianças menores de 2 anos.\",\ncond(AND(idade>=2,idade<=5),\"Tomar 1 mL por via oral de 8/8 horas. Por 7 a 14 dias.\",\ncond(AND(idade>=6,idade<=12),\"Tomar 2 mL por via oral de 8/8 horas. Por 7 a 14 dias.\",\n\"Verificar faixa de idade adequada.\")))",
+      "observacao": null
+    },
+    {
+      "medicamento": "Levodropropizina 30 mg/5 mL",
+      "logica_js": "\"Tomar \"+Math.ceil(MIN(peso*2/30*5,((peso<=30) ? (60/30*5) : (180/30*5))),1)+\" mL por via oral de 8/8 horas. Por 5 a 7 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Carbocisteína 20 mg/mL",
+      "logica_js": "\"Tomar \"+Math.ceil(MIN(peso*20/20/3,((idade<=5) ? (200/20/3) : (300/20/3))),1)+\" mL por via oral de 8/8 horas por 5 a 10 dias.\"",
+      "observacao": null
+    }
+  ],
+  "Oftalmológicos": [
+    {
+      "medicamento": "Lacrfilm® (Solução Oftálmica)",
+      "logica_js": "\"Pingar 1 gota no(s) olho(s) afetado(s) de 4/4 horas. Ate melhora do quadro.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Cloridrato de Olopatadina (Patanol S®)  1 mg/mL",
+      "logica_js": "\"Pingar 1 gota no(s) olho(s) afetado(s) uma vez ao dia. Por 6 semanas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Systane® Ultra ou Hyabak® (Solução Oftálmica)",
+      "logica_js": "\"Pingar 1 gota no(s) olho(s) afetado(s) de 4/4 horas. Ate melhora do quadro.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Tobramicina 3 mg/mL (Tobrex®) > 2 meses",
+      "logica_js": "\"Pingar 1 gota no(s) olho(s) afetado(s) de 4/4 horas. Por 5 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Tobramicina 3 mg/g  Pomada Oftálmica (Tobrex®) > 2 meses",
+      "logica_js": "\"Aplicar 1 CM da pomada, uma fina camada na região do olho afetada de 8/8 horas. Por 5 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Moxifloxacino Oftalmológico (VIGAMOX)",
+      "logica_js": "\"Pingar 1 gota no(s) olho(s) afetado(s) de 8/8 horas. Por 7 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Ciprofloxacino colírio (0,3%)",
+      "logica_js": "\"Pingar 1 gota(s) de 2/2 horas no olho acometido. Durante os primeiros 2 dias de tratamento. Seguido de 1 gota de 4/4 horas. Nos 5 dias seguintes.\"",
+      "observacao": null
+    }
+  ],
+  "Otologicas": [
+    {
+      "medicamento": "Biamotil (Ciprofloxacino 3 mg/mL + Dexametasona 1 mg/mL) Otológico - OMC",
+      "logica_js": "\"Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Cerumin (Solução Otológica)",
+      "logica_js": "\"Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Otociriax (Ciprofloxacino 3 mg/mL + Hidrocortisona 1 mg/mL) Otológico - Otite Externa",
+      "logica_js": "\"Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Otosporin (Hidrocortisona + Sulfato de Neomicina + Sulfato de Polimixina B)",
+      "logica_js": "\"Pingar 2 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Oto-xilodase (Cloridrato de Lidocaína + Sulfato de Neomicina + Hialuronidase)",
+      "logica_js": "\"Pingar 4 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Até o desaparecimento da dor e da infecção.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Otomixyn ou Otosylase ou Elotin (Fluocinolona Acetonida + Polimixina B + Neomicina + Lidocaína)",
+      "logica_js": "\"Pingar 2 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "MIiconazol 2% Loção (Manipulado)",
+      "logica_js": "\"Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 21 dias\"",
+      "observacao": null
+    }
+  ],
+  "Nasais": [
+    {
+      "medicamento": "Budesonida 32 mcg (Noex®) Aerossol - IL (≥ 2 anos).",
+      "logica_js": "\"Administrar 2 jatos em região nasal de 12/12 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Budesonida 50 mcg (Noex®) Aerossol - IL (≥ 2 anos).",
+      "logica_js": "\"Administrar 2 jatos em região nasal de 12/12 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Budesonida 64 mcg (Noex®) Aerossol - IL (≥ 2 anos).",
+      "logica_js": "\"Administrar 2 jatos em região nasal de 12/12 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Cromoglicato 4% (Rilan®) Solução - IL",
+      "logica_js": "\"Administrar 4 jatos em região nasal de 6/6 horas. Por 5 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Fluticasona 27,5 mcg (Avamys®) Spray Nasal - IL (> 1 ano)",
+      "logica_js": "\"Administrar 2 jatos em região nasal de 12/12 horas.\"",
+      "observacao": null
+    }
+  ],
+  "Uso Tópico - Externo": [
+    {
+      "medicamento": "Nebacetim Pomada",
+      "logica_js": "\"Aplicar nas lesões e dentro das narinas de 6/6 horas por 10 dias. Manter as unhas curtas e limpas. Realizar a limpeza das lesões com água e sabão antes da aplicação da pomada.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Cetoconazol Shampoo",
+      "logica_js": "Aplicar no couro cabeludo e lesões, 3 vezes por semana por 4 semanas. Remover com óleos vegetais (amêndoas) ou minerais (vaselina).",
+      "observacao": null
+    },
+    {
+      "medicamento": "Novacort",
+      "logica_js": "\"Aplicar uma fina camada no local afetado de 12/12 horas por 10 dias. Indicado para dermatites: de contato, atópica, seborreica, intertrigo, desidrose e neurodermatite.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Quadriderm",
+      "logica_js": "\"Aplicar uma fina camada no local afetado de 12/12 horas por 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Cutisanol ou Osmogel",
+      "logica_js": "\"Aplicar uma camada no local afetado de 12/12 horas por 10 dias como tratamento.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Postec (Betametasona 0,05% + Hialuronidase 150 UI/g)",
+      "logica_js": "\"Aplicar na região do prepúcio de 12/12 horas por 3 semanas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Tiabendazol 5% Pomada",
+      "logica_js": "\"Aplicar uma fina camada no local afetado de 12/12 horas por 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Talco Mentolado",
+      "logica_js": "\"Aplicar nas lesões, 2 vezes ao dia, até melhorar. (Não passar no rosto). Manter as unhas curtas e limpas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Oncilom - A – M Pomada",
+      "logica_js": "\"Passar na(s) assadura(s) de 8/8 horas por 5 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Dermodex (Nistatina 100.000 UI + Óxido de Zinco 20%)",
+      "logica_js": "\"Passar na(s) assadura(s) a cada troca de fraldas ou de 6/6 horas por 14 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Deltametrina Shampoo",
+      "logica_js": "\"Aplicar e friccionar levemente. Manter a espuma sem enxaguar por 10 minutos. Depois enxaguar bem. Repetir por 4 dias consecutivos. Fazer intervalo de 7 dias e repetir por mais 4 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Nebacetim Pomada",
+      "logica_js": "\"Aplicar dentro das narinas com um cotonete de 6/6 horas por 5 dias. Retorno com otorrino em 1 semana para reavaliação.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Deltametrina Loção",
+      "logica_js": "\"Aplicar e friccionar nas áreas afetadas após o banho e deixar até o próximo banho. Repetir por 4 dias consecutivos. Fazer intervalo de 7 dias e repetir por mais 4 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Permetrina 5%",
+      "logica_js": "\"Aplicar e friccionar levemente abaixo do pescoço. Retirar no próximo dia. Para menores de 1 mês, retirar em menos de 6 horas. Repetir o tratamento entre 5 a 7 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Aciclovir 50 mg/g - (Pomada)",
+      "logica_js": "\"Aplicar creme tópico na região acometida de 4/4 horas por 4 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Ácido Fusídico 20 mg/g - (Pomada)",
+      "logica_js": "\"Aplicar uma camada fina sobre a pele lesionada de 8/8 horas por 7 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Mupirocina 20 mg/g - (Pomada)",
+      "logica_js": "\"Aplicar na área afetada até de 8/8 horas por no máximo 10 dias.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Dexametasona 0,1% - (Pomada)",
+      "logica_js": "\"Aplicar uma pequena quantidade do creme no local afetado, de 8/8 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Mometasona 0,1% - (Pomada) > 2 anos",
+      "logica_js": "\"Aplicar uma fina camada de modo a cobrir toda a área afetada uma vez ao dia.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Flogo-rosa (Peróxido de Hidrogênio e Cloridrato de Benzidamina)",
+      "logica_js": "\"Dissolver o conteúdo de 1 a 2 envelope(s) do pó para preparação extemporânea ou 10 a 20 mL da solução ginecológica em 1 L de água e usar em lavagens vaginais de 12/12 horas.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Hexomedine Spray 0,1% > 3 Anos",
+      "logica_js": "\"Aplicar 1 ou 2 nebulizações 15 minutos antes das principais refeições. As nebulizações devem ser aplicadas na cavidade bucal, direcionando o aplicador para a orofaringe (fundo da garganta).\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Flogoral Spray",
+      "logica_js": "\"Aplicar 1 jato na garganta 20 minutos antes das principais refeições.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Permanganato de Potássio 100mg (Uso tópico)",
+      "logica_js": "\"Diluir o comprimido no momento do uso, em 1 a 4 litros de água, e usar na forma de compressas ou no banho.\"",
+      "observacao": null
+    },
+    {
+      "medicamento": "Sulfadiazina de Prata 1% Creme (Dermazine®)",
+      "logica_js": "\"Aplicar uma camada sobre a lesão de 12/12 horas utilizando técnica asséptica. Ocluir o local com gaze estéril. Continuar até a cicatrização completa da ferida.\"",
+      "observacao": null
+    }
+  ],
+  "Quimioprofilaxia (Influenza)": [
+    {
+      "medicamento": "Osetalmivir (Tamiflu®) 75mg/Capsula",
+      "logica_js": "=((idade<0.9) ? (\"Administrar \"+Math.ceil(peso*0.3) : (1))+\" mL por via oral de 24/24 horas. Por 10 dias.\",((AND(idade>=0.9) ? (idade<=0.11)) : (\"Administrar \"+Math.ceil(peso*0.35,1))+\" mL por via oral de 24/24 horas. Por 10 dias.\",((idade>=1) ? (cond(peso<=15) : (\"Administrar 3 mL por via oral de 24/24 horas. Por 10 dias.\",cond(AND(peso>15,peso<=23)),\"Administrar 4,5 mL por via oral de 24/24 horas. Por 10 dias.\",((AND(peso>23) ? (peso<=40)) : (\"Administrar 6 mL por via oral de 24/24 horas. Por 10 dias.\",\"Administrar 7,5 mL por via oral de 24/24 horas. Por 10 dias.\")))))))",
+      "observacao": null
+    }
+  ],
+  "Antiviral - Influenza Positivo": [
+    {
+      "medicamento": "Osetalmivir (Tamiflu®) 75mg/Capsula",
+      "logica_js": "\"Oferecer \"+((idade<0.3) ? (\"1) : (2\",cond(AND(idade>=0.3,idade<=0.5)),\"2\",((AND(idade>=0.6) ? (idade<=0.11)) : (\"2,5\",cond(peso<=14,\"3\",cond(AND(peso>14,peso<=23)),\"4,5\",((AND(peso>23) ? (peso<=40)) : (\"6\",\"7,5\")))))))+\" mL de 12 em 12 horas, por 5 dias. Necessário 10 cápsulas ao total.\"",
+      "observacao": null
+    }
+  ]
+}

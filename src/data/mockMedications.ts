@@ -23,9 +23,9 @@ import { MockMedicationData, CategoryInfo, MedicationCategoryData, Medication, D
 // Removido import do mathjs pois estamos usando Function para avaliação segura
 
 // Importando o JSON do banco de dosagens
-import jsonDataFormatado from '@/medications/banco_dosagens_medicas_formatado.json';
-// Importando o arquivo banco_dosagens_medicas.json que criamos
-import medicationsData from '@/medications/banco_dosagens_medicas.json';
+import jsonData from '@/medications/banco_dosagens_medicas.json';
+// Arquivo formatado não será mais utilizado
+// import jsonDataFormatado from '@/medications/banco_dosagens_medicas_formatado.json';
 
 // Mapeamento de categorias para ícones e cores
 const categoryIconMap: Record<string, { icon: LucideIcon; iconColorClass: string; bgColorClass: string }> = {
@@ -292,49 +292,89 @@ function determineForm(medicamento: string, logicaJs: string): string {
 }
 
 // Função para organizar medicamentos por categoria
-export function organizeMedicationsByCategory(medications: any[]): MockMedicationData {
+export function organizeMedicationsByCategory(medicationsData: any): MockMedicationData {
   const convertedData: MockMedicationData = {};
   const categoriesMap: Record<string, Medication[]> = {};
 
-  // Agrupar medicamentos por categoria (slug)
-  medications.forEach((med: any) => {
-    const categorySlug = med.slug;
-    if (!categoriesMap[categorySlug]) {
-      categoriesMap[categorySlug] = [];
-    }
-    
-    // Remover o texto "(Ver descrição)" do nome do medicamento
-    const cleanedName = med.name.replace(/\s*\(Ver descrição\)\s*/g, '');
-
-    // Criar objeto de medicamento formatado
-    const medication: Medication = {
-      name: cleanedName,
-      slug: slugify(cleanedName),
-      form: med.form || '',
-      application: med.application || 'VO',
-      description: med.description || 'Consulte um profissional de saúde antes do uso.',
-      alerts: med.alerts || ['Verificar alergias antes da administração.', 'Respeitar doses máximas recomendadas.'],
-      commonBrandNames: med.commonBrandNames || 'Consultar bula para nomes comerciais',
-      dosageInformation: med.dosageInformation || {
-        concentration: '',
-        usualDose: 'Conforme cálculo baseado em peso/idade',
-        doseInterval: 'Conforme prescrição médica',
-        treatmentDuration: 'Conforme prescrição médica',
-        administrationNotes: 'Seguir orientações médicas específicas'
-      },
-      calculationParams: {
-        type: slugify(med.name),
-        originalLogic: med.calculationParams?.logica_js || '',
-        jsLogic: med.calculationParams?.logica_js || '',
-        logica_js: med.calculationParams?.logica_js || '',
-        mgPerKg: 0,
-        maxDailyDoseMg: 0,
-        dosesPerDay: 1
+  // Verificar se estamos recebendo um objeto (JSON formatado) ou um array
+  if (!Array.isArray(medicationsData)) {
+    // Processar o formato do JSON formatado (objeto com categorias como chaves)
+    Object.entries(medicationsData).forEach(([category, medications]) => {
+      const categorySlug = slugify(category);
+      if (!categoriesMap[categorySlug]) {
+        categoriesMap[categorySlug] = [];
       }
-    };
-    
-    categoriesMap[categorySlug].push(medication);
-  });
+      
+      // Processar cada medicamento na categoria
+      if (Array.isArray(medications)) {
+        medications.forEach((med: any) => {
+          // Usar o nome do medicamento do campo "medicamento"
+          const name = med.medicamento || 'Medicamento sem nome';
+          
+          // Criar objeto de medicamento formatado
+          const medication: Medication = {
+            name: name,
+            slug: slugify(name),
+            form: determineForm(name, med.logica_js || ''),
+            application: determineApplication(name, med.logica_js || ''),
+            description: med.observacao || 'Consulte um profissional de saúde antes do uso.',
+            alerts: ['Verificar alergias antes da administração.', 'Respeitar doses máximas recomendadas.'],
+            commonBrandNames: 'Consultar bula para nomes comerciais',
+            dosageInformation: {
+              concentration: extractConcentration(med.logica_js || ''),
+              usualDose: 'Conforme cálculo baseado em peso/idade',
+              doseInterval: extractDoseInterval(med.logica_js || ''),
+              treatmentDuration: extractTreatmentDuration(med.logica_js || ''),
+              administrationNotes: 'Seguir orientações médicas específicas'
+            },
+            calculationParams: extractCalculationParams(name, med.logica_js || '')
+          };
+          
+          categoriesMap[categorySlug].push(medication);
+        });
+      }
+    });
+  } else {
+    // Processar o formato antigo (array de medicamentos)
+    medicationsData.forEach((med: any) => {
+      const categorySlug = med.slug;
+      if (!categoriesMap[categorySlug]) {
+        categoriesMap[categorySlug] = [];
+      }
+      
+      // Remover o texto "(Ver descrição)" do nome do medicamento
+      const cleanedName = med.name ? med.name.replace(/\s*\(Ver descrição\)\s*/g, '') : 'Medicamento sem nome';
+
+      // Criar objeto de medicamento formatado
+      const medication: Medication = {
+        name: cleanedName,
+        slug: slugify(cleanedName),
+        form: med.form || '',
+        application: med.application || 'VO',
+        description: med.description || 'Consulte um profissional de saúde antes do uso.',
+        alerts: med.alerts || ['Verificar alergias antes da administração.', 'Respeitar doses máximas recomendadas.'],
+        commonBrandNames: med.commonBrandNames || 'Consultar bula para nomes comerciais',
+        dosageInformation: med.dosageInformation || {
+          concentration: '',
+          usualDose: 'Conforme cálculo baseado em peso/idade',
+          doseInterval: 'Conforme prescrição médica',
+          treatmentDuration: 'Conforme prescrição médica',
+          administrationNotes: 'Seguir orientações médicas específicas'
+        },
+        calculationParams: {
+          type: slugify(med.name || ''),
+          originalLogic: med.calculationParams?.logica_js || '',
+          jsLogic: med.calculationParams?.logica_js || '',
+          logica_js: med.calculationParams?.logica_js || '',
+          mgPerKg: 0,
+          maxDailyDoseMg: 0,
+          dosesPerDay: 1
+        }
+      };
+      
+      categoriesMap[categorySlug].push(medication);
+    });
+  }
 
   // Mapear categorias para o formato final
   for (const categorySlug in categoriesMap) {
@@ -369,7 +409,7 @@ export function organizeMedicationsByCategory(medications: any[]): MockMedicatio
 }
 
 // Convertendo os dados do banco_dosagens_medicas
-const mockMedicationsData: MockMedicationData = organizeMedicationsByCategory(medicationsData);
+const mockMedicationsData: MockMedicationData = organizeMedicationsByCategory(jsonData);
 
 // Exportando os dados de medicamentos
 export { mockMedicationsData };
