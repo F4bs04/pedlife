@@ -293,18 +293,41 @@ function determineForm(medicamento: string, logicaJs: string): string {
 
 // Função para extrair o nome base de um medicamento (sem concentração, forma, etc.)
 function extractBaseName(fullName: string): string {
-  // Remover informações de concentração, forma, etc.
-  // Exemplos:
-  // "Amoxicilina 250mg/5ml" -> "Amoxicilina"
-  // "Cefalexina 500mg" -> "Cefalexina"
-  
-  // Padrão para encontrar o nome base (geralmente é a primeira palavra ou palavras antes de números)
-  const baseNameMatch = fullName.match(/^([\w\sáàâãéèêíïóôõöúçñ-]+?)(?:\s+\d|\s+\(|$)/i);
-  if (baseNameMatch && baseNameMatch[1]) {
-    return baseNameMatch[1].trim();
+    // Remover informações de concentração, forma, etc.
+    // Exemplos:
+    // "Amoxicilina 250mg/5ml" -> "Amoxicilina"
+    // "Cefalexina 500mg" -> "Cefalexina"
+    // "Escopolamina + Dipirona 10mg/mL + 500mg/mL" -> "Escopolamina + Dipirona"
+
+    // Primeiro, remover qualquer texto entre parênteses
+    let cleanedName = fullName.replace(/\s*\([^)]*\)\s*/g, ' ');
+    
+    // Remover marcas registradas e símbolos comerciais
+    cleanedName = cleanedName.replace(/\s*[®™©]\s*/g, ' ');
+    
+    // Casos especiais: medicamentos compostos (com +)
+    if (cleanedName.includes('+')) {
+      // Para medicamentos compostos, queremos manter o formato "Medicamento A + Medicamento B"
+      // mas remover as concentrações que vêm depois
+      const compoundMatch = cleanedName.match(/^([^\d]+(?:\+[^\d]+)+)(?:\s+\d|\s*$)/i);
+      if (compoundMatch && compoundMatch[1]) {
+        return compoundMatch[1].trim();
+      }
+    }
+    
+    // Padrão para encontrar o nome base (geralmente é a primeira palavra ou palavras antes de números ou formas farmacêuticas)
+    const commonForms = ['xarope', 'gotas', 'comprimido', 'cápsula', 'injetável', 'suspensão', 'solução', 'pó', 'creme', 'pomada', 'gel'];
+    const formsPattern = commonForms.join('|');
+    
+    // Padrão melhorado: captura o nome até encontrar um número ou uma forma farmacêutica
+    const baseNameMatch = cleanedName.match(new RegExp(`^([\\w\\sáàâãéèêíïóôõöúçñ-]+?)(?:\\s+\\d|\\s+(?:${formsPattern})|\\s+\\(|$)`, 'i'));
+    
+    if (baseNameMatch && baseNameMatch[1]) {
+      return baseNameMatch[1].trim();
+    }
+    
+    return cleanedName.trim(); // Retorna o nome limpo se não conseguir extrair o nome base
   }
-  return fullName; // Retorna o nome completo se não conseguir extrair o nome base
-}
 
 // Função para organizar medicamentos por categoria
 export function organizeMedicationsByCategory(medicationsData: any): MockMedicationData {
