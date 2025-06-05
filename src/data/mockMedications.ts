@@ -310,8 +310,8 @@ function extractBaseName(fullName: string): string {
 export function organizeMedicationsByCategory(medicationsData: any): MockMedicationData {
   const convertedData: MockMedicationData = {};
   const categoriesMap: Record<string, Medication[]> = {};
-  // Mapa para armazenar grupos de medicamentos por categoria
   const medicationGroupsMap: Record<string, Record<string, Medication[]>> = {};
+  const processedMedicationNames = new Set<string>(); // Para evitar duplicações
 
   // Verificar se estamos recebendo um objeto (JSON formatado) ou um array
   if (!Array.isArray(medicationsData)) {
@@ -331,6 +331,12 @@ export function organizeMedicationsByCategory(medicationsData: any): MockMedicat
         medications.forEach((med: any) => {
           // Usar o nome do medicamento do campo "medicamento"
           const name = med.medicamento || 'Medicamento sem nome';
+          
+          // Ignorar medicamentos duplicados (mesmo nome)
+          if (processedMedicationNames.has(name)) {
+            return;
+          }
+          processedMedicationNames.add(name);
           
           // Criar objeto de medicamento formatado
           const medication: Medication = {
@@ -369,6 +375,12 @@ export function organizeMedicationsByCategory(medicationsData: any): MockMedicat
   } else {
     // Processar o formato antigo (array de medicamentos)
     medicationsData.forEach((med: any) => {
+      // Ignorar medicamentos duplicados (mesmo nome)
+      if (processedMedicationNames.has(med.name)) {
+        return;
+      }
+      processedMedicationNames.add(med.name);
+      
       // Usar o slug do medicamento como identificador de categoria
       const categorySlug = med.slug;
       
