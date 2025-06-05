@@ -1917,5 +1917,2448 @@
       "type": "atropina-0-25mgml-ev",
       "logica_js": "\"Administrar \" + ((peso*0.02/0.25<=2) ? (Math.ceil(peso*0.02/0.25) : (1)),2) + \" mL de Atropina por via EV \" + ((peso*0.02/0.25<=2) ? (\"sem diluição\") : (\"diluído em 50 mL de SF 0,9%\")) + \". Pode repetir uma vez em 5 minutos.\""
     }
-  }
-]
+  },
+  {
+    "name": "Ceftriaxona 1000mg/Pó (EV) - Reconstituir em 5 ml de AD",
+    "slug": "antibioticos-ev",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos EV",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 5 mL de AD. Administrar 5 mL por via EV diluído em 100 mL de SF 0,9% a cada 24/24 horas. Infundir em 60 minutos.(100mg/kg/dia).",
+      "doseInterval": "24 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "ceftriaxona-1000mg-po-ev-reconstituir-em-5ml-de-ad",
+      "logica_js": "\"Reconstituir \"+Math.ceil(MIN(peso*100,4000)/1000,0)+\" frasco(s) com \"+Math.ceil(MIN(peso*100,4000)/1000,0)*5+\" mL de AD. Administrar \"+Math.round(MIN(peso*100,4000)/1000,1)+\" mL por via EV diluído em 100 mL de SF 0,9% a cada 24/24 horas. Infundir em 60 minutos.(100mg/kg/dia).\""
+    }
+  },
+  {
+    "name": "Ceftriaxona 1000mg/Pó (EV) - Reconstituir em 5 ml de AD",
+    "slug": "antibioticos-ev",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos EV",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 5 mL de AD. Administrar 2,5 mL por via EV diluído em 100 mL de SF 0,9% a cada 24/24 horas. Infundir em 60 minutos.(50mg/kg/dia).",
+      "doseInterval": "24 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "ceftriaxona-1000mg-po-ev-reconstituir-em-5ml-de-ad",
+      "logica_js": "\"Reconstituir \"+Math.ceil(MIN(peso*50,2000)/1000,0)+\" frasco(s) com \"+Math.ceil(MIN(peso*50,2000)/1000,0)*5+\" mL de AD. Administrar \"+Math.round(MIN(peso*50,2000)/1000,1)+\" mL por via EV diluído em 100 mL de SF 0,9% a cada 24/24 horas. Infundir em 60 minutos.(50mg/kg/dia).\""
+    }
+  },
+  {
+    "name": "Amicacina 100mg/2ml (EV)",
+    "slug": "antibioticos-ev",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos EV",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 1 mL diluído em 50 mL de SF 0,9% por via EV de 8/8 horas. Infundir em 30 minutos.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "amicacina-100mg2ml-ev",
+      "logica_js": "\"Administrar \"+Math.ceil(MIN(peso*15,1500)/50/3,1)+\" mL diluído em \"+((Math.ceil(MIN(peso*15) ? (1500)/50/3) : (1))<=20,\"50 mL\",\"100 mL\")+\" de SF 0,9% por via EV de 8/8 horas. Infundir em 30 minutos.\""
+    }
+  },
+  {
+    "name": "Amicacina 250mg/2ml (EV)",
+    "slug": "antibioticos-ev",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos EV",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,4 mL diluído em 50 mL de SF 0,9% por via EV de 8/8 horas. Infundir em 30 minutos.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "amicacina-250mg2ml-ev",
+      "logica_js": "\"Administrar \"+Math.ceil(MIN(peso*15,1500)/125/3,1)+\" mL diluído em \"+((Math.ceil(MIN(peso*15) ? (1500)/125/3) : (1))<=20,\"50 mL\",\"100 mL\")+\" de SF 0,9% por via EV de 8/8 horas. Infundir em 30 minutos.\""
+    }
+  },
+  {
+    "name": "Amoxicilina + Clavulanato 1000 mg + 200 mg (EV) - Reconstituir em 20ml de AD",
+    "slug": "antibioticos-ev",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos EV",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 20 mL de AD. Administrar 5 mL diluído em 100 mL de SF 0,9%. Infundir por via EV direto 8/8 horas. Fazer em 30 minutos.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "amoxicilina-clavulanato-1000mg-200mg-ev-reconstituir-em-20ml-de-ad",
+      "logica_js": "\"Reconstituir 1 frasco(s) com 20 mL de AD. Administrar \" + Math.ceil(((idade<=0.3) ? (cond(peso*25<=1000) : (peso*25,1000))/50,((peso*25<=1000) ? (peso*25) : (1000))/50),1) + \" mL diluído em \" + ((idade<=0.3) ? (\"50\") : (\"100\")) + \" mL de SF 0,9%. Infundir por via EV direto \" + ((idade<=0.3) ? (\"12/12 horas\") : (\"8/8 horas\")) + \".Fazer em 30 minutos.\""
+    }
+  },
+  {
+    "name": "Amoxicilina + Clavulanato 500 mg + 100 mg (EV) - Reconstituir em 20ml de AD",
+    "slug": "antibioticos-ev",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos EV",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 10 mL de AD. Administrar 5 mL diluído em 50 mL de SF 0,9%. Infundir por via EV direto 12/12 horas. Fazer em 30 minutos.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "amoxicilina-clavulanato-500mg-100mg-ev-reconstituir-em-20ml-de-ad",
+      "logica_js": "\"Reconstituir 1 frasco(s) com 10 mL de AD. Administrar \" + Math.ceil(((peso*25<=1000) ? (Math.ceil(cond(peso*25<=500) : (1,2)),0),2) + \" frasco(s) com \" + ((peso*25<=1000) ? (Math.ceil(cond(peso*25<=500) : (10,20)),0),20) + \" mL de AD. Administrar \" + Math.ceil(((peso*25<=1000) ? (peso*25) : (1000))/50,1) + \" mL diluído em \" + ((B3<=3) ? (\"50\") : (\"100\")) + \" mL de SF 0,9%. Infundir por via EV direto \" + ((B3<=3) ? (\"12/12 horas\") : (\"8/8 horas\")) + \".Fazer em 30 minutos.\""
+    }
+  },
+  {
+    "name": "Ampicilina 1000mg/Pó (EV) - Reconstituir em 3ml de AD",
+    "slug": "antibioticos-ev",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos EV",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 3 mL de AD. Administrar 0,9 mL da mistura diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 6/6 horas. Infundir em 30 minutos.",
+      "doseInterval": "6 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "ampicilina-1000mg-po-ev-reconstituir-em-3ml-de-ad",
+      "logica_js": "\"Reconstituir 1 frasco(s) com 3 mL de AD. Administrar \" + Math.ceil(MIN(peso*15,1500)/50/3,1)+\" mL diluído em \"+((Math.ceil(MIN(peso*15) ? (1500)/50/3) : (1))<=20,\"50 mL\",\"100 mL\")+\" de SF 0,9% por via EV a cada 6/6 horas. Infundir em 30 minutos.\""
+    }
+  },
+  {
+    "name": "Cefalotina 1000mg/Pó (EV) - Reconstituir em 10ml de AD",
+    "slug": "antibioticos-ev",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos EV",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 10 mL de água destilada. Administrar 4 mL da solução diluído em 100 mL de SF 0,9%. Infundir por via EV de 6/6 horas. Fazer em 30 minutos.",
+      "doseInterval": "6 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "cefaloina-1000mg-po-ev-reconstituir-em-10ml-de-ad",
+      "logica_js": "\"Reconstituir 1 frasco(s) com 10 mL de água destilada. Administrar \" + Math.ceil(((peso*40>2500) ? (2500) : (peso*40))/1000,0) + \" frasco(s) com \" + Math.ceil(((peso*40>2500) ? (2500) : (peso*40))/1000,0)*10 + \" mL de água destilada. Administrar \" + Math.ceil(((peso*40>2500) ? (2500) : (peso*40))/100,1) + \" mL da solução diluído em 100 mL de SF 0,9%. Infundir por via EV de 6/6 horas. Fazer em 30 minutos.\""
+    }
+  },
+  {
+    "name": "Oxacilina 500mg/Pó (EV) - Reconstituir em 5ml de SF ou AD",
+    "slug": "antibioticos-ev",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos EV",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 5 mL de AD ou SF 0,9%. Administrar 2,5 mL da mistura diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 6/6 horas. Infundir em 30 minutos.",
+      "doseInterval": "6 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "oxacilina-500mg-po-ev-reconstituir-em-5ml-de-sf-ou-ad",
+      "logica_js": "\"Reconstituir \"+Math.ceil(((peso*100>12000) ? (12000) : (peso*100))/2000,0)+\" frasco(s) com \"+Math.ceil(((peso*100>12000) ? (12000) : (peso*100))/2000,0)*5+\" mL de AD ou SF 0,9%. Administrar \"+Math.round(((peso*100>12000) ? (12000/4) : (peso*100/4))/500,1)*5+\" mL da mistura diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 6/6 horas. Infundir em 30 minutos.\""
+    }
+  },
+  {
+    "name": "Gentamicina 40mg/ml (EV) - Ampola 1,5 ou 2ml",
+    "slug": "antibioticos-ev",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos EV",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 1,9 mL diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 24/24 horas. Infundir em 30 minutos.",
+      "doseInterval": "24 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "gentamicina-40mgml-ev",
+      "logica_js": "\"Administrar \" + Math.round(((idade<5) ? ((peso*5)/40) : ((peso*7.5))/40),1)+ \" mL diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 24/24 horas. Infundir em 30 minutos.\""
+    }
+  },
+  {
+    "name": "Clindamicina 150mg/ml (EV)",
+    "slug": "antibioticos-ev",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos EV",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,9 mL diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 8/8 horas. Infundir em 30 minutos.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "clindamicina-150mgml-ev",
+      "logica_js": "\"Administrar \"+Math.round(((peso*40>2700) ? (2700/3) : (peso*40/3))/150,1)+\" mL diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 8/8 horas. Infundir em 30 minutos.\""
+    }
+  },
+  {
+    "name": "Vancomicina 500mg/Frasco (EV) Reconstituir em 5ml de AD > 1 Meses",
+    "slug": "antibioticos-ev",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos EV",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Reconstituir 1 frasco(s) com 5 mL de AD. Administrar 1 mL da mistura diluído em 100 mL de SF 0,9% por via EV, a cada 6/6 horas. Infundir em 60 minutos.",
+        "doseInterval": "6 horas",
+        "treatmentDuration": "",
+        "administrationNotes": ""
+    },
+    "calculationParams": {
+        "type": "vancomicina-500mg-frasco-ev-reconstituir-em-5ml-de-ad",
+        "logica_js": "\"Reconstituir 1 frasco(s) com 5 mL de AD. Administrar 1 mL da mistura diluído em 100 mL de SF 0,9% por via EV, a cada 6/6 horas. Infundir em 60 minutos.\""
+    }
+  },
+  {
+    "name": "Meropeném Tri-hidratado 500mg/Frasco (EV) - Reconstituir em 5ml de AD",
+    "slug": "antibioticos-ev",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos EV",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 5 mL de AD. Administrar 4 mL da mistura diluído em 50 a 100 mL de SF 0,9% ou SG 5% por via EV, a cada 8/8 horas. Infundir em 30 minutos.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "meropenem-tri-hidratado-500mg-frasco-ev-reconstituir-em-5ml-de-ad",
+      "logica_js": "\"Reconstituir \" + Math.ceil(MIN(peso*40*3,6000)/1500,0) + \" frasco(s) com \" + Math.ceil(MIN(peso*40*3,6000)/1500,0)*5 + \" mL de AD. Administrar \" + Math.ceil(((peso*40>2000) ? 2000 : peso*40)/500,1)*5 + \" mL da mistura diluído em 50 a 100 mL de SF 0,9% ou SG 5% por via EV, a cada 8/8 horas. Infundir em 30 minutos.\""
+    }
+  },
+  {
+    "name": "Ampicilina Sódica + Sulbactam Sódico 1,5g/Ampola (EV)",
+    "slug": "antibioticos-ev",
+    "form": "Ver descrição",
+    "application": "Desconhecida",
+    "description": "Medicamento da categoria Antibióticos EV",
+    "alerts": [],
+    "commonBrandNames": "",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 ampola(s) com 3 mL de AD. Administrar 0,9 mL da mistura diluído em 50 a 100 mL de SF 0,9% ou SG 5% por via EV, a cada 8/8 horas. Infundir em 30 minutos.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "",
+      "administrationNotes": ""
+    },
+    "calculationParams": {
+      "type": "ampicilina-sodica-sulbactam-sodico-15g-ampola-ev",
+      "logica_js": "\"Reconstituir \" + Math.ceil(((peso*100>12000) ? 12000 : peso*100)/4000,0) + \" ampola(s) com \" + Math.ceil(((peso*100>12000) ? 12000 : peso*100)/4000,0)*3 + \" mL de AD. Administrar \" + Math.ceil(((peso*100>12000) ? (12000/3) : (peso*100/3))/1500,1)*3 + \" mL da mistura diluído em 50 a 100 mL de SF 0,9% ou SG 5% por via EV, a cada 8/8 horas. Infundir em 30 minutos.\""
+    }
+  },
+  [
+    {
+      "name": "Piperacilina + Tazobactam 4 g + 500 mg (EV) - Reconstituir em 5ml de AD",
+      "slug": "antibioticos-ev",
+      "form": "Ver descrição",
+      "application": "Desconhecida",
+      "description": "Medicamento da categoria Antibióticos EV",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Reconstituir 1 frasco(s) com 4 mL de AD. Administrar 1 mL diluído em 100 mL de SF 0,9% por via EV de 8/8 horas. Infundir em 60 minutos.",
+        "doseInterval": "8 horas",
+        "treatmentDuration": "",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "piperacilina-tazobactam-4g-500mg-ev-reconstituir-em-5ml-de-ad",
+        "logica_js": "\"Reconstituir \" + Math.ceil(((idade<=0.9) ? (MIN(peso*80) : (16000))/4000,MIN(peso*100,16000)/4000),0) + \" frasco(s) com \" + Math.ceil(((idade<=0.9) ? (MIN(peso*80) : (16000))/4000,MIN(peso*100,16000)/4000),0)*4 + \" mL de AD. Administrar \" + Math.ceil(((idade<=0) ? (MIN(peso*80) : (16000))/1000,MIN(peso*100,16000)/1000),1) + \" mL diluído em \" + ((idade<=0.9) ? (\"50 mL\") : (\"100 mL\")) + \" de SF 0,9% por via EV de \" + ((idade<=0.9) ? (\"6/6 horas\") : (\"8/8 horas\")) + \". Infundir em 60 minutos.\""
+      }
+    },
+    {
+      "name": "Ceftriaxona 1000mg/Pó (EV) - Reconstituir em 5 ml de AD",
+      "slug": "antibioticos-ev",
+      "form": "Ver descrição",
+      "application": "Desconhecida",
+      "description": "Medicamento da categoria Antibióticos EV",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Reconstituir 1 frasco(s) com 5 mL de AD. Administrar 5 mL por via EV diluído em 100 mL de SF 0,9% a cada 24/24 horas. Infundir em 60 minutos.",
+        "doseInterval": "24 horas",
+        "treatmentDuration": "",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "ceftriaxona-1000mg-po-ev-reconstituir-em-5ml-de-ad",
+        "logica_js": "\"Reconstituir 1 frasco(s) com 5 mL de AD. Administrar 5 mL por via EV diluído em 100 mL de SF 0,9% a cada 24/24 horas. Infundir em 60 minutos.\""
+      }
+    },
+    {
+      "name": "Amicacina 100mg/2ml (EV)",
+      "slug": "antibioticos-ev",
+      "form": "Ver descrição",
+      "application": "Desconhecida",
+      "description": "Medicamento da categoria Antibióticos EV",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Administrar 1 mL diluído em 50 mL de SF 0,9% por via EV de 8/8 horas. Infundir em 30 minutos.",
+        "doseInterval": "8 horas",
+        "treatmentDuration": "",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "amicacina-100mg-2ml-ev",
+        "logica_js": "\"Administrar 1 mL diluído em 50 mL de SF 0,9% por via EV de 8/8 horas. Infundir em 30 minutos.\""
+      }
+    },
+    {
+      "name": "Amicacina 250mg/2ml (EV)",
+      "slug": "antibioticos-ev",
+      "form": "Ver descrição",
+      "application": "Desconhecida",
+      "description": "Medicamento da categoria Antibióticos EV",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Administrar 0,4 mL diluído em 50 mL de SF 0,9% por via EV de 8/8 horas. Infundir em 30 minutos.",
+        "doseInterval": "8 horas",
+        "treatmentDuration": "",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "amicacina-250mg-2ml-ev",
+        "logica_js": "\"Administrar 0,4 mL diluído em 50 mL de SF 0,9% por via EV de 8/8 horas. Infundir em 30 minutos.\""
+      }
+    },
+    {
+      "name": "Cefalotina 1000mg/Pó (EV) - Reconstituir em 10ml de AD",
+      "slug": "antibioticos-ev",
+      "form": "Ver descrição",
+      "application": "Desconhecida",
+      "description": "Medicamento da categoria Antibióticos EV",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Reconstituir 1 frasco(s) com 10 mL de água destilada. Administrar 4 mL da solução diluído em 100 mL de SF 0,9%. Infundir por via EV de 6/6 horas. Fazer em 30 minutos.",
+        "doseInterval": "6 horas",
+        "treatmentDuration": "",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "cefaloina-1000mg-po-ev-reconstituir-em-10ml-de-ad",
+        "logica_js": "\"Reconstituir 1 frasco(s) com 10 mL de água destilada. Administrar 4 mL da solução diluído em 100 mL de SF 0,9%. Infundir por via EV de 6/6 horas. Fazer em 30 minutos.\""
+      }
+    },
+    {
+      "name": "Oxacilina 500mg/Pó (EV) - Reconstituir em 5ml de SF ou AD",
+      "slug": "antibioticos-ev",
+      "form": "Ver descrição",
+      "application": "Desconhecida",
+      "description": "Medicamento da categoria Antibióticos EV",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Reconstituir 1 frasco(s) com 5 mL de AD ou SF 0,9%. Administrar 2,5 mL da mistura diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 6/6 horas. Infundir em 30 minutos.",
+        "doseInterval": "6 horas",
+        "treatmentDuration": "",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "oxacilina-500mg-po-ev-reconstituir-em-5ml-de-sf-ou-ad",
+        "logica_js": "\"Reconstituir 1 frasco(s) com 5 mL de AD ou SF 0,9%. Administrar 2,5 mL da mistura diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 6/6 horas. Infundir em 30 minutos.\""
+      }
+    },
+    {
+      "name": "Gentamicina 40mg/ml (EV) - Ampola 1,5 ou 2ml",
+      "slug": "antibioticos-ev",
+      "form": "Ver descrição",
+      "application": "Desconhecida",
+      "description": "Medicamento da categoria Antibióticos EV",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Administrar 1,9 mL diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 24/24 horas. Infundir em 30 minutos.",
+        "doseInterval": "24 horas",
+        "treatmentDuration": "",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "gentamicina-40mg-ml-ev-ampola-15-ou-2ml",
+        "logica_js": "\"Administrar 1,9 mL diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 24/24 horas. Infundir em 30 minutos.\""
+      }
+    },
+    {
+      "name": "Clindamicina 150mg/ml (EV)",
+      "slug": "antibioticos-ev",
+      "form": "Ver descrição",
+      "application": "Desconhecida",
+      "description": "Medicamento da categoria Antibióticos EV",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Administrar 0,9 mL diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 8/8 horas. Infundir em 30 minutos.",
+        "doseInterval": "8 horas",
+        "treatmentDuration": "",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "clindamicina-150mg-ml-ev",
+        "logica_js": "\"Administrar 0,9 mL diluído em 50 a 100 mL de SF 0,9%, SG 5% ou RL por via EV, a cada 8/8 horas. Infundir em 30 minutos.\""
+      }
+    },
+    {
+      "name": "Vancomicina 500mg/Frasco (EV) Reconstituir em 5ml de AD > 1 Meses",
+      "slug": "antibioticos-ev",
+      "form": "Ver descrição",
+      "application": "Desconhecida",
+      "description": "Medicamento da categoria Antibióticos EV",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Reconstituir 1 frasco(s) com 5 mL de AD. Administrar 1 mL da mistura diluído em 100 mL de SF 0,9% por via EV, a cada 6/6 horas. Infundir em 60 minutos.",
+        "doseInterval": "6 horas",
+        "treatmentDuration": "",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "vancomicina-500mg-frasco-ev-reconstituir-em-5ml-de-ad",
+        "logica_js": "\"Reconstituir 1 frasco(s) com 5 mL de AD. Administrar 1 mL da mistura diluído em 100 mL de SF 0,9% por via EV, a cada 6/6 horas. Infundir em 60 minutos.\""
+      }
+    },
+    {
+      "name": "Ceftriaxona 1000mg/Pó (EV) - Reconstituir em 5 ml de AD",
+      "slug": "antibioticos-ev",
+      "form": "Ver descrição",
+      "application": "Desconhecida",
+      "description": "Medicamento da categoria Antibióticos EV",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Reconstituir 1 frasco(s) com 5 mL de AD. Administrar 5 mL por via EV diluído em 100 mL de SF 0,9% a cada 24/24 horas. Infundir em 60 minutos.",
+        "doseInterval": "24 horas",
+        "treatmentDuration": "",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "ceftriaxona-1000mg-po-ev-reconstituir-em-5ml-de-ad",
+        "logica_js": "\"Reconstituir 1 frasco(s) com 5 mL de AD. Administrar 5 mL por via EV diluído em 100 mL de SF 0,9% a cada 24/24 horas. Infundir em 60 minutos.\""
+      }
+    },
+    {
+      "name": "Amicacina 100mg/2ml (EV)",
+      "slug": "antibioticos-ev",
+      "form": "Ver descrição",
+      "application": "Desconhecida",
+      "description": "Medicamento da categoria Antibióticos EV",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Administrar 1 mL diluído em 50 mL de SF 0,9% por via EV de 8/8 horas. Infundir em 30 minutos.",
+        "doseInterval": "8 horas",
+        "treatmentDuration": "",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "amicacina-100mg-2ml-ev",
+        "logica_js": "\"Administrar 1 mL diluído em 50 mL de SF 0,9% por via EV de 8/8 horas. Infundir em 30 minutos.\""
+      }
+    },
+    {
+      "name": "Amicacina 250mg/2ml (EV)",
+      "slug": "antibioticos-ev",
+      "form": "Ver descrição",
+      "application": "Desconhecida",
+      "description": "Medicamento da categoria Antibióticos EV",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Administrar 0,4 mL diluído em 50 mL de SF 0,9% por via EV de 8/8 horas. Infundir em 30 minutos.",
+        "doseInterval": "8 horas",
+        "treatmentDuration": "",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "amicacina-250mg-2ml-ev",
+        "logica_js": "\"Administrar 0,4 mL diluído em 50 mL de SF 0,9% por via EV de 8/8 horas. Infundir em 30 minutos.\""
+      }
+    }
+  ],
+    {
+      "name": "Cefadroxila 250mg/5ml (xarope)",
+      "slug": "cefadroxila-250mg5ml-xarope",
+      "form": "Ver descrição",
+      "application": "VO",
+      "description": "Medicamento da categoria Antibióticos Vo.",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Tomar 3 mL por via oral de 12/12 horas por 7 a 10 dias.",
+        "doseInterval": "12 horas",
+        "treatmentDuration": "7-10 dias",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "cefadroxila-250mg5ml-xarope",
+        "logica_js": "\"Tomar \" + Math.round((((peso*30)<=1000) ? ( ((peso*30)/2)/(250/5)) : ( (1000/2))/(250/5)), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\""
+      }
+    },
+    {
+      "name": "Cefadroxila 500mg/5ml (xarope)",
+      "slug": "cefadroxila-500mg5ml-xarope",
+      "form": "Ver descrição",
+      "application": "VO",
+      "description": "Medicamento da categoria Antibióticos Vo.",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Tomar 1,5 mL por via oral de 12/12 horas por 7 a 10 dias.",
+        "doseInterval": "12 horas",
+        "treatmentDuration": "7-10 dias",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "cefadroxila-500mg5ml-xarope",
+        "logica_js": "\"Tomar \" + Math.round((((peso*30)<=1000) ? ( ((peso*30)/2)/(500/5)) : ( (1000/2))/(500/5)), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\""
+      }
+    },
+    {
+      "name": "Nalidíxico (Wintomylon®) 50 mg/mL - VO",
+      "slug": "nalidixico-wintomylon-50-mgml-vo",
+      "form": "Ver descrição",
+      "application": "VO",
+      "description": "Medicamento da categoria Antibióticos Vo.",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Tomar 2,75 mL por via oral de 6/6 horas. Por 7 a 14 dias.",
+        "doseInterval": "6 horas",
+        "treatmentDuration": "7-14 dias",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "nalidixico-wintomylon-50-mgml-vo",
+        "logica_js": "=((idade<0.4) ? (\"Contraindicado \") : ( \"Tomar \"+Math.ceil((peso*13.75))/50,2)+\" mL por via oral de 6/6 horas. Por 7 a 14 dias.\")"
+      }
+    },
+    {
+      "name": "Azitromicina Di-hidratada 200mg/5ml (Xarope)",
+      "slug": "azitromicina-di-hidratada-200mg5ml-xarope",
+      "form": "Ver descrição",
+      "application": "VO",
+      "description": "Medicamento da categoria Antibióticos Vo.",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Tomar 2,5 mL por via oral uma vez ao dia por 3 a 5 dias.",
+        "doseInterval": "Uma vez ao dia",
+        "treatmentDuration": "3-5 dias",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "azitromicina-di-hidratada-200mg5ml-xarope",
+        "logica_js": "\"Tomar \" + Math.round((((peso*10)<=1000) ? ( (peso*10)/(200/5)) : ( 1000/(200/5))), 1) + \" mL por via oral uma vez ao dia por 3 a 5 dias.\""
+      }
+    },
+    {
+      "name": "Claritromicina 125mg/5ml (Xarope) > 3 meses",
+      "slug": "claritromicina-125mg5ml-xarope-3-meses",
+      "form": "Ver descrição",
+      "application": "VO",
+      "description": "Medicamento da categoria Antibióticos Vo.",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Tomar 1,5 mL por via oral de 12/12 horas por 7 a 14 dias.",
+        "doseInterval": "12 horas",
+        "treatmentDuration": "7-14 dias",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "claritromicina-125mg5ml-xarope-3-meses",
+        "logica_js": "\"Tomar \" + Math.round((((peso*7.5)<=1000) ? ( cond(((peso*7.5)/2)/(125/5)<=10) : ( ((peso*7.5))/2)/(125/5), 10), (((1000/2)/(125/5)<=10) ? ( (1000/2)/(125/5)) : ( 10))), 1) + \" mL por via oral de 12/12 horas por 7 a 14 dias.\""
+      }
+    },
+    {
+      "name": "Claritromicina 250mg/5ml (Xarope) > 3 meses",
+      "slug": "claritromicina-250mg5ml-xarope-3-meses",
+      "form": "Ver descrição",
+      "application": "VO",
+      "description": "Medicamento da categoria Antibióticos Vo.",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Tomar 0,8 mL por via oral de 12/12 horas por 7 a 14 dias.",
+        "doseInterval": "12 horas",
+        "treatmentDuration": "7-14 dias",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "claritromicina-250mg5ml-xarope-3-meses",
+        "logica_js": "\"Tomar \" + Math.round((((peso*7.5)<=1000) ? ( cond(((peso*7.5)/2)/(250/5)<=10) : ( ((peso*7.5))/2)/(250/5), 10), (((1000/2)/(250/5)<=10) ? ( (1000/2)/(250/5)) : ( 10))), 1) + \" mL por via oral de 12/12 horas por 7 a 14 dias.\""
+      }
+    },
+    {
+      "name": "Claritromicina 250mg/5ml (Xarope)",
+      "slug": "claritromicina-250mg5ml-xarope",
+      "form": "Ver descrição",
+      "application": "VO",
+      "description": "Medicamento da categoria Antibióticos Vo.",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Tomar 1,5 mL por via oral de 12/12 horas por 5 a 7 dias.",
+        "doseInterval": "12 horas",
+        "treatmentDuration": "5-7 dias",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "claritromicina-250mg5ml-xarope",
+        "logica_js": "\"Tomar \"+Math.round((((peso*15>1000) ? (1000/2) : ((peso*15))/2)*5)/250,1)+\" mL por via oral de 12/12 horas por 5 a 7 dias.\""
+      }
+    },
+    {
+      "name": "Nitrofurantoína 5 mg/mL (Xarope)",
+      "slug": "nitrofurantoina-5-mgml-xarope",
+      "form": "Ver descrição",
+      "application": "VO",
+      "description": "Medicamento da categoria Antibióticos Vo.",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Tomar 2,5 mL por via oral de 6/6 horas por 7 dias.",
+        "doseInterval": "6 horas",
+        "treatmentDuration": "7 dias",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "nitrofurantoina-5-mgml-xarope",
+        "logica_js": "\"Tomar \" + Math.round((((peso*5)<=100) ? ( cond(((peso*5)/4)/5<=10) : ( ((peso*5))/4)/5, 10), (((100/4)/5<=10) ? ( (100/4)/5) : ( 10))), 1) + \" mL por via oral de 6/6 horas por 7 dias.\""
+      }
+    },
+    {
+      "name": "Nitrofurantoína 100mg (comprimido)",
+      "slug": "nitrofurantoina-100mg-comprimido",
+      "form": "Ver descrição",
+      "application": "Desconhecida",
+      "description": "Medicamento da categoria Antibióticos Vo.",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Tomar 1 comprimido de 12/12 horas por 7 dias.",
+        "doseInterval": "12 horas",
+        "treatmentDuration": "7 dias",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "nitrofurantoina-100mg-comprimido",
+        "logica_js": "=((peso<28.6) ? (\"Não se aplica\") : (cond((peso*7))<=300,\"Tomar 1 comprimido de 12/12 horas por 7 dias.\",(((peso*7)<=400) ? (\"Tomar 1 comprimido de 8/8 horas por 7 dias.\") : ( \"Tomar 1 comprimido de 6/6 horas por 7 dias.\"))))"
+      }
+    },
+    {
+      "name": "Metronidazol 200mg/5ml (Xarope)",
+      "slug": "metronidazol-200mg5ml-xarope",
+      "form": "Ver descrição",
+      "application": "VO",
+      "description": "Medicamento da categoria Antibióticos Vo.",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+        "concentration": "Ver fórmula",
+        "usualDose": "Tomar 4,2 mL por via oral de 8/8 horas por 7 a 10 dias.",
+        "doseInterval": "8 horas",
+        "treatmentDuration": "7-10 dias",
+        "administrationNotes": ""
+      },
+      "calculationParams": {
+        "type": "metronidazol-200mg5ml-xarope",
+        "logica_js": "\"Tomar \" + Math.round((((peso*50)<=1200) ? ( ((peso*50)/3)/(200/5)) : ( (1200/3))/(200/5)), 1) + \" mL por via oral de 8/8 horas por 7 a 10 dias.\""
+      }
+    },
+    {
+      "name": "Sulfametoxazol/Trimetoprima 200mg + 40mg/5ml (Xarope)",
+      "slug": "sulfametoxazol-trimetoprima-200mg-40mg5ml-xarope",
+      "form": "Ver descrição",
+      "application": "VO",
+      "description": "Medicamento da categoria Antibióticos Vo.",
+      "alerts": [],
+      "commonBrandNames": "",
+      "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Tomar 2,5 mL por via oral de 12/12 horas por 7 a 10 dias.",
+          "doseInterval": "12 horas",
+          "treatmentDuration": "7-10 dias",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "sulfametoxazoltrimetoprima-200mg-40mg5ml-xarope",
+          "logica_js": "\"Tomar \" + Math.round((((peso*20)<=1750) ? ( cond(((peso*20)/2)/(200/5)<=15) : ( ((peso*20))/2)/(200/5), 15), (((1750/2)/(200/5)<=15) ? ( (1750/2)/(200/5)) : ( 15))), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\""
+        }
+      },
+    {
+        "name": "Sulfametoxazol/Trimetoprima 400mg + 80mg/5ml (Xarope)",
+        "slug": "sulfametoxazol-trimetoprima-400mg-80mg5ml-xarope",
+        "form": "Ver descrição",
+        "application": "VO",
+        "description": "Medicamento da categoria Antibióticos Vo.",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Tomar 1,3 mL por via oral de 12/12 horas por 7 a 10 dias.",
+          "doseInterval": "12 horas",
+          "treatmentDuration": "7-10 dias",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "sulfametoxazoltrimetoprima-400mg-80mg5ml-xarope",
+          "logica_js": "\"Tomar \" + Math.round((((peso*20)<=1750) ? ( cond(((peso*20)/2)/(400/5)<=10) : ( ((peso*20))/2)/(400/5), 10), (((1750/2)/(400/5)<=10) ? ( (1750/2)/(400/5)) : ( 10))), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\""
+        }
+      },
+      {
+        "name": "Cefadroxila 250mg/5ml (xarope)",
+        "slug": "cefadroxila-250mg5ml-xarope",
+        "form": "Ver descrição",
+        "application": "VO",
+        "description": "Medicamento da categoria Antibióticos Vo.",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Tomar 3 mL por via oral de 12/12 horas por 7 a 10 dias.",
+          "doseInterval": "12 horas",
+          "treatmentDuration": "7-10 dias",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "cefadroxila-250mg5ml-xarope",
+          "logica_js": "\"Tomar \" + Math.round((((peso*30)<=1000) ? ( ((peso*30)/2)/(250/5)) : ( (1000/2))/(250/5)), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\""
+        }
+      },
+      {
+        "name": "Cefadroxila 500mg/5ml (xarope)",
+        "slug": "cefadroxila-500mg5ml-xarope",
+        "form": "Ver descrição",
+        "application": "VO",
+        "description": "Medicamento da categoria Antibióticos Vo.",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Tomar 1,5 mL por via oral de 12/12 horas por 7 a 10 dias.",
+          "doseInterval": "12 horas",
+          "treatmentDuration": "7-10 dias",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "cefadroxila-500mg5ml-xarope",
+          "logica_js": "\"Tomar \" + Math.round((((peso*30)<=1000) ? ( ((peso*30)/2)/(500/5)) : ( (1000/2))/(500/5)), 1) + \" mL por via oral de 12/12 horas por 7 a 10 dias.\""
+        }
+      },
+      {
+        "name": "Nalidíxico (Wintomylon®) 50 mg/mL - VO",
+        "slug": "nalidixico-wintomylon-50-mgml-vo",
+        "form": "Ver descrição",
+        "application": "VO",
+        "description": "Medicamento da categoria Antibióticos Vo.",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Tomar 2,75 mL por via oral de 6/6 horas. Por 7 a 14 dias.",
+          "doseInterval": "6 horas",
+          "treatmentDuration": "7-14 dias",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "nalidixico-wintomylon-50-mgml-vo",
+          "logica_js": "=((idade<0.4) ? (\"Contraindicado \") : ( \"Tomar \"+Math.ceil((peso*13.75))/50,2)+\" mL por via oral de 6/6 horas. Por 7 a 14 dias.\")"
+        }
+      },
+      {
+        "name": "Dipirona 500mg/ml (Gotas)",
+        "slug": "analgesicos-e-antitermicos",
+        "form": "Ver descrição",
+        "application": "VO",
+        "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Tomar 6 gotas por via oral de 6/6 horas.",
+          "doseInterval": "6 horas",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "dipirona-500mgml-gotas",
+          "logica_js": "\"Tomar \" + Math.round((((peso*15)<=500) ? ((peso*15)/25) : (20)),0) + \" gotas por via oral de 6/6 horas.\""
+        }
+      },
+      {
+        "name": "Dipirona 50mg/ml (Xarope) > 3 Meses",
+        "slug": "analgesicos-e-antitermicos",
+        "form": "Ver descrição",
+        "application": "VO",
+        "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Tomar 3 mL por via oral de 6/6 horas.",
+          "doseInterval": "6 horas",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "dipirona-50mgml-xarope-3-meses",
+          "logica_js": "\"Tomar \" + Math.round((((peso*15)<=500) ? ( (peso*15)/50) : ( 500/50)), 1) + \" mL por via oral de 6/6 horas.\""
+        }
+      },
+      {
+        "name": "Dipirona 500mg/ml (EV/IM) > 3 Meses",
+        "slug": "analgesicos-e-antitermicos",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Administrar 0,3 mL por via EV ou IM a cada 6 horas.",
+          "doseInterval": "6 horas",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "dipirona-500mgml-evim-3-meses",
+          "logica_js": "\"Administrar \" + Math.round((((peso*15)<=1000) ? ( (peso*15)/500) : ( 1000/500)), 1) + \" mL por via EV ou IM a cada 6 horas.\""
+        }
+      },
+      {
+        "name": "Tramadol 50mg/mL (IM/EV)",
+        "slug": "analgesicos-e-antitermicos",
+        "form": "Ver descrição",
+        "application": "Desconhecida",
+        "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+        "alerts": [],
+        "commonBrandNames": "",
+        "dosageInformation": {
+          "concentration": "Ver fórmula",
+          "usualDose": "Administrar 0,2 mL por via EV diluído em 50 mL de SF 0,9% (Administrar bem lentamente), a cada 8 horas.",
+          "doseInterval": "8 horas",
+          "treatmentDuration": "",
+          "administrationNotes": ""
+        },
+        "calculationParams": {
+          "type": "tramadol-50mgml-imev",
+          "logica_js": "\"Administrar \" + Math.round((((peso*1)<=100) ? ( (peso*1)/50) : ( 100/50)), 1) + \" mL por via EV diluído em 50 mL de SF 0,9% (Administrar bem lentamente), a cada 8 horas.\""
+        }
+      },
+        {
+         "name": "Tramadol 50mg/mL (Gotas)",
+         "slug": "analgesicos-e-antitermicos",
+         "form": "Ver descrição",
+         "application": "VO",
+         "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+         "alerts": [],
+         "commonBrandNames": "",
+         "dosageInformation": {
+            "concentration": "Ver fórmula",
+            "usualDose": "Tomar 4 gotas por via oral de 8/8 horas. (Se dor muito forte)",
+            "doseInterval": "8 horas",
+            "treatmentDuration": "",
+            "administrationNotes": ""
+          },
+          "calculationParams": {
+            "type": "tramadol-50mgml-gotas",
+            "logica_js": "\"Tomar \" + Math.round((((peso*1)<=50) ? ((peso*1)/2.5) : (20)), 0) + \" gotas por via oral de 8/8 horas. (Se dor muito forte)\""
+          }
+        },
+        {
+          "name": "Escopolamina + Dipirona 10mg/mL + 500mg/mL (Gotas)",
+          "slug": "analgesicos-e-antitermicos",
+          "form": "Ver descrição",
+          "application": "VO",
+          "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+          "alerts": [],
+          "commonBrandNames": "",
+          "dosageInformation": {
+            "concentration": "Ver fórmula",
+            "usualDose": "Tomar 6 gotas por via oral de 6/6 horas.",
+            "doseInterval": "6 horas",
+            "treatmentDuration": "",
+            "administrationNotes": ""
+          },
+          "calculationParams": {
+            "type": "escopolamina-dipirona-10mgml-500mgml-gotas",
+            "logica_js": "\"Tomar \" + Math.round((((peso*15)<=1000) ? ( (peso*15)/25) : ( 1000/25)), 0) + \" gotas por via oral de 6/6 horas.\""
+          }
+        },
+        {
+          "name": "Escopolamina + Dipirona 10mg/mL + 500mg/mL (EV)",
+          "slug": "analgesicos-e-antitermicos",
+          "form": "Ver descrição",
+          "application": "Desconhecida",
+          "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+          "alerts": [],
+          "commonBrandNames": "",
+          "dosageInformation": {
+            "concentration": "Ver fórmula",
+            "usualDose": "Administrar 0,3 mL por via EV diluído em 50 mL de SF 0,9% a cada 6 horas.",
+            "doseInterval": "6 horas",
+            "treatmentDuration": "",
+            "administrationNotes": ""
+          },
+          "calculationParams": {
+            "type": "escopolamina-dipirona-10mgml-500mgml-ev",
+            "logica_js": "\"Administrar \" + Math.round((((peso*15)<=1000) ? ( (peso*15)/500) : ( 1000/500)), 1) + \" mL por via EV diluído em 50 mL de SF 0,9% a cada 6 horas.\""
+          }
+        },
+        {
+          "name": "Paracetamol 200mg/mL (Gotas)",
+          "slug": "analgesicos-e-antitermicos",
+          "form": "Ver descrição",
+          "application": "VO",
+          "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+          "alerts": [],
+          "commonBrandNames": "",
+          "dosageInformation": {
+            "concentration": "Ver fórmula",
+            "usualDose": "Tomar 10 gotas por via oral de 4/4 horas. (Não exceder 5 administrações por dia)",
+            "doseInterval": "4 horas",
+            "treatmentDuration": "",
+            "administrationNotes": ""
+          },
+          "calculationParams": {
+            "type": "paracetamol-200mgml-gotas",
+            "logica_js": "\"Tomar \" + Math.round((((peso*10)<=350) ? ( (peso*10)/10) : ( 350/10)), 0) + \" gotas por via oral de 4/4 horas. (Não exceder 5 administrações por dia)\""
+          }
+        },
+        {
+          "name": "Ibuprofeno 50mg/mL (Gotas)",
+          "slug": "analgesicos-e-antitermicos",
+          "form": "Ver descrição",
+          "application": "VO",
+          "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+          "alerts": [],
+          "commonBrandNames": "",
+          "dosageInformation": {
+            "concentration": "Ver fórmula",
+            "usualDose": "Tomar 20 gotas por via oral de 6/6 horas. Por 3 a 5 dias.",
+            "doseInterval": "6 horas",
+            "treatmentDuration": "3-5 dias",
+            "administrationNotes": ""
+          },
+          "calculationParams": {
+            "type": "ibuprofeno-50mgml-gotas",
+            "logica_js": "\"Tomar \" + Math.round((((peso*10)<=200) ? ((peso*10)/5) : (200/5)),0) + \" gotas por via oral de 6/6 horas. Por 3 a 5 dias.\""
+          }
+        },
+        {
+          "name": "Ibuprofeno 100mg/mL (Gotas)",
+          "slug": "analgesicos-e-antitermicos",
+          "form": "Ver descrição",
+          "application": "VO",
+          "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+          "alerts": [],
+          "commonBrandNames": "",
+          "dosageInformation": {
+            "concentration": "Ver fórmula",
+            "usualDose": "Tomar 10 gotas por via oral de 6/6 horas. Por 3 a 5 dias.",
+            "doseInterval": "6 horas",
+            "treatmentDuration": "3-5 dias",
+            "administrationNotes": ""
+          },
+          "calculationParams": {
+            "type": "ibuprofeno-100mgml-gotas",
+            "logica_js": "\"Tomar \" + Math.round((((peso*10)<=200) ? ((peso*10)/10) : (200/10)),0) + \" gotas por via oral de 6/6 horas. Por 3 a 5 dias.\""
+          }
+        },
+        {
+          "name": "Cetoprofeno 100mg/2mL (IM/EV)",
+          "slug": "analgesicos-e-antitermicos",
+          "form": "Ver descrição",
+          "application": "Desconhecida",
+          "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+          "alerts": [],
+          "commonBrandNames": "",
+          "dosageInformation": {
+            "concentration": "Ver fórmula",
+            "usualDose": "Administrar 0,2 mL por via IM ou (EV diluído em 50 mL de SF 0,9%), a cada 12 horas.",
+            "doseInterval": "12 horas",
+            "treatmentDuration": "",
+            "administrationNotes": ""
+          },
+          "calculationParams": {
+            "type": "cetoprofeno-100mg2ml-imev",
+            "logica_js": "\"Administrar \" + Math.round((((peso*1)<=100) ? ( (peso*1)/50) : ( 100/50)), 1) + \" mL por via IM ou (EV diluído em 50 mL de SF 0,9%), a cada 12 horas.\""
+          }
+        },
+        {
+          "name": "Cetoprofeno 20mg/mL (Gotas)",
+          "slug": "analgesicos-e-antitermicos",
+          "form": "Ver descrição",
+          "application": "VO",
+          "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+          "alerts": [],
+          "commonBrandNames": "",
+          "dosageInformation": {
+            "concentration": "Ver fórmula",
+            "usualDose": "Tomar 10 gotas por via oral de 12/12 horas. Por 3 a 5 dias.",
+            "doseInterval": "12 horas",
+            "treatmentDuration": "3-5 dias",
+            "administrationNotes": ""
+          },
+          "calculationParams": {
+            "type": "cetoprofeno-20mgml-gotas",
+            "logica_js": "\"Tomar \" + Math.round(((peso<=40) ? ( cond((peso*1)<=((peso*2)/2)) : ( (peso*1)), (peso*2)/2), (((90/3)<=((peso*1))) ? ( (90/3)) : ( (peso*1)))),1) + \" gotas por via oral \" + ((peso<=40) ? (\" de 12/12 horas. Por 3 a 5 dias.\") : (\" de 8/8 horas. Por 3 a 5 dias.\"))"
+          }
+        },
+        {
+          "name": "Diclofenaco 15mg/mL (Gotas)",
+          "slug": "analgesicos-e-antitermicos",
+          "form": "Ver descrição",
+          "application": "VO",
+          "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+          "alerts": [],
+          "commonBrandNames": "",
+          "dosageInformation": {
+            "concentration": "Ver fórmula",
+            "usualDose": "Tomar 10 gotas por via oral de 8/8 horas. Por 3 a 5 dias.",
+            "doseInterval": "8 horas",
+            "treatmentDuration": "3-5 dias",
+            "administrationNotes": ""
+          },
+          "calculationParams": {
+            "type": "diclofenaco-15mgml-gotas",
+            "logica_js": "\"Tomar \" + Math.round((((peso*0.75)<=30) ? ((peso*0.75)/0.75) : (40)),0) + \" gotas por via oral de 8/8 horas. Por 3 a 5 dias.\""
+          }
+        },
+        {
+          "name": "Nimesulida 50mg/mL (Gotas)",
+          "slug": "analgesicos-e-antitermicos",
+          "form": "Ver descrição",
+          "application": "VO",
+          "description": "Medicamento da categoria Analgésicos E Antitérmicos",
+          "alerts": [],
+          "commonBrandNames": "",
+          "dosageInformation": {
+            "concentration": "Ver fórmula",
+            "usualDose": "Tomar 8 gotas por via oral de 12/12 horas. Por 3 a 5 dias.",
+            "doseInterval": "12 horas",
+            "treatmentDuration": "3-5 dias",
+            "administrationNotes": ""
+          },
+          "calculationParams": {
+            "type": "nimesulida-50mgml-gotas",
+            "logica_js": "\"Tomar \" + Math.round((((peso*2)<=100) ? ((peso*2)/2.5) : (40)),0) + \" gotas por via oral de 12/12 horas. Por 3 a 5 dias.\""
+          }
+        },
+        {
+          "name": "Ondansetrona (4mg/Filme)",
+          "slug": "antiemeticos",
+          "form": "Ver descrição",
+          "application": "VO",
+          "description": "Medicamento da categoria Antieméticos",
+          "alerts": [],
+          "commonBrandNames": "",
+          "dosageInformation": {
+            "concentration": "Ver fórmula",
+            "usualDose": "Tomar 0,5 Filme por via oral de 8/8 horas.",
+            "doseInterval": "8 horas",
+            "treatmentDuration": "",
+            "administrationNotes": ""
+          },
+          "calculationParams": {
+            "type": "ondansetrona-4mg-filme",
+            "logica_js": "\"Tomar \" + ((Math.round(cond((peso*0.2)<=4) ? ((peso*0.2)/4) : (1)),1)<0.5 ? 0.5 : Math.round((((peso*0.2)<=4) ? ((peso*0.2)/4) : (1)),1)) + \" Filme por via oral de 8/8 horas.\""
+          }
+        },
+        {
+          "name": "Ondansetrona 4mg/5ml (VO - Xarope)",
+          "slug": "antiemeticos",
+          "form": "Ver descrição",
+          "application": "VO",
+          "description": "Medicamento da categoria Antieméticos",
+          "alerts": [],
+          "commonBrandNames": "",
+          "dosageInformation": {
+            "concentration": "Ver fórmula",
+            "usualDose": "Tomar 1,3 mL por via oral de 8/8 horas.",
+            "doseInterval": "8 horas",
+            "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "ondansetrona-4mg-5ml-vo-xarope",
+              "logica_js": "\"Tomar \" + Math.round((((peso*0.1)<=4) ? (peso*0.1) : (4))/0.8,1) + \" mL por via oral de 8/8 horas.\""
+            }
+          },
+          {
+            "name": "Bromoprida 4mg/ml (Gotas)",
+            "slug": "antiemeticos",
+            "form": "Ver descrição",
+            "application": "VO",
+            "description": "Medicamento da categoria Antieméticos",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Tomar 10 gotas por via oral de 8/8 horas.",
+              "doseInterval": "8 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "bromoprida-4mgml-gotas",
+              "logica_js": "\"Tomar \" + Math.round(((peso<=20) ? ( peso) : ( 20)), 0) + \" gotas por via oral de 8/8 horas.\""
+            }
+          },
+          {
+            "name": "Metoclopramida 4mg/ml (Gotas) > 2 anos",
+            "slug": "antiemeticos",
+            "form": "Ver descrição",
+            "application": "VO",
+            "description": "Medicamento da categoria Antieméticos",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Tomar 8 gotas por via oral de 8/8 horas.",
+              "doseInterval": "8 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "metoclopramida-4mgml-gotas-2-anos",
+              "logica_js": "\"Tomar \" + Math.round((((peso*0.15)<=10/3) ? ( (peso*0.15)/0.2) : ( (10/3))/0.2), 0) + \" gotas por via oral de 8/8 horas.\""
+            }
+          },
+          {
+            "name": "Dramin-B6 25mg/ml (Gotas) > 2 Anos",
+            "slug": "antiemeticos",
+            "form": "Ver descrição",
+            "application": "VO",
+            "description": "Medicamento da categoria Antieméticos",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Tomar 10 gotas por via oral de 6/6 horas.",
+              "doseInterval": "6 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "dramin-b6-25mgml-gotas-2-anos",
+              "logica_js": "\"Tomar \" + Math.round(((idade<=6) ? (cond((peso*1)<=15) : (peso*1,15)),((idade<=12) ? (cond((peso*1)<=30) : (peso*1,30)),(((peso*1)<=80) ? (peso*1) : (80)))),0) + \" gotas por via oral de 6/6 horas.\""
+            }
+          },
+          {
+            "name": "Domperidona 1mg/ml (Xarope)",
+            "slug": "antiemeticos",
+            "form": "Ver descrição",
+            "application": "VO",
+            "description": "Medicamento da categoria Antieméticos",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Tomar 3 mL por via oral 30 minutos antes das refeições de 8/8 horas.",
+              "doseInterval": "8 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "domperidona-1mgml-xarope",
+              "logica_js": "\"Tomar \" + Math.round((((peso*0.3)<=10) ? (peso*0.3) : (10)),1) + \" mL por via oral 30 minutos antes das refeições de 8/8 horas.\""
+            }
+          },
+          {
+            "name": "Omeprazol 40 mg (EV) - Reconstituir em 10 ml de AD",
+            "slug": "antiemeticos",
+            "form": "Ver descrição",
+            "application": "EV",
+            "description": "Medicamento da categoria Antieméticos",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Reconstituir 1 frasco(s) com 10 mL de diluente. Administrar 2,5 mL EV uma vez ao dia.",
+              "doseInterval": "24 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "omeprazol-40mg-ev-reconstituir-em-10-ml-de-ad",
+              "logica_js": "\"Reconstituir \"+Math.ceil(((peso*1>40) ? (40) : (peso*1))/40,0)+\" frasco(s) com 10 mL de diluente. Administrar \"+Math.round(((peso*1>40) ? (40) : (peso*1))/4,1)+\" mL EV uma vez ao dia.\""
+            }
+          },
+          {
+            "name": "Omeprazol 4mg/ml (Xarope) VO/SNG",
+            "slug": "antiemeticos",
+            "form": "Ver descrição",
+            "application": "VO",
+            "description": "Medicamento da categoria Antieméticos",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Tomar 2,5 mL por via oral ou SNG em dose única pela manhã.",
+              "doseInterval": "Única dose",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "omeprazol-4mgml-xarope-vo-sng",
+              "logica_js": "\"Tomar \" + Math.round((((peso*1)<=40) ? ( peso*1) : ( 40))/4, 1) + \" mL por via oral ou SNG em dose única pela manhã.\""
+            }
+          },
+          {
+            "name": "Simeticona 75 mg/mL",
+            "slug": "antiemeticos",
+            "form": "Ver descrição",
+            "application": "VO",
+            "description": "Medicamento da categoria Antieméticos",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Tomar 13 gotas por via oral de 8/8 horas. Por 3 a 5 dias.",
+              "doseInterval": "8 horas",
+              "treatmentDuration": "3-5 dias",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "simeticona-75-mgml",
+              "logica_js": "=((idade>=12) ? (\" Tomar 13 gotas por via oral de 8/8 horas. Por 3 a 5 dias.\") : (cond(idade<1,\" Tomar de 3 a 5 gotas por via oral de 8/8 horas. Por 3 a 5 dias.\", \" Tomar de 5 a 10 gotas por via oral de 8/8 horas. Por 3 a 5 dias.\")))"
+            }
+          },
+          {
+            "name": "Ranitidina 15mg/ml (Xarope)",
+            "slug": "antiemeticos",
+            "form": "Ver descrição",
+            "application": "VO",
+            "description": "Medicamento da categoria Antieméticos",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Tomar dose variável de acordo com peso, de 0,5 a 7 mL por via oral em intervalos de 12/12 horas.",
+              "doseInterval": "12 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "ranitidina-15mgml-xarope",
+              "logica_js": "=cond(peso<=4,\"Tomar 0,5 mL por via oral de 12/12 horas.\",\ncond(peso<=7,\"Tomar 1 mL por via oral de 12/12 horas.\",\ncond(peso<=10,\"Tomar 1,5 mL por via oral de 12/12 horas.\",\ncond(peso<=13,\"Tomar 2 mL por via oral de 12/12 horas.\",\ncond(peso<=16,\"Tomar 2,5 mL por via oral de 12/12 horas.\",\ncond(peso<=19,\"Tomar 3 mL por via oral de 12/12 horas.\",\ncond(peso<=22,\"Tomar 3,5 mL por via oral de 12/12 horas.\",\ncond(peso<=25,\"Tomar 4 mL por via oral de 12/12 horas.\",\ncond(peso<=28,\"Tomar 4,5 mL por via oral de 12/12 horas.\",\ncond(peso<=31,\"Tomar 5 mL por via oral de 12/12 horas.\",\ncond(peso<=34,\"Tomar 5,5 mL por via oral de 12/12 horas.\",\ncond(peso<=37,\"Tomar 6 mL por via oral de 12/12 horas.\",\ncond(peso<=40,\"Tomar 6,5 mL por via oral de 12/12 horas.\",\n\"Tomar 7 mL por via oral de 12/12 horas.\")))))))))))))"
+            }
+          },
+          {
+            "name": "Ranitidina 15mg/ml (Gotas)",
+            "slug": "antiemeticos",
+            "form": "Ver descrição",
+            "application": "VO",
+            "description": "Medicamento da categoria Antieméticos",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+              "concentration": "Ver fórmula",
+              "usualDose": "Tomar 13 gotas por via oral de 8/8 horas.",
+              "doseInterval": "8 horas",
+              "treatmentDuration": "",
+              "administrationNotes": ""
+            },
+            "calculationParams": {
+              "type": "ranitidina-15mgml-gotas",
+              "logica_js": "\"Tomar \" + Math.round((((peso*1)<=90/3) ? ((peso*1)/0.75) : ((90/3))/0.75),0) + \" gotas por via oral de 8/8 horas.\""
+            }
+          },
+          {
+            "name": "Carvão Ativado (Pó ou Suspensão) - Oral/SNG",
+            "slug": "carvao-ativado-po-ou-suspensao-oral-sng",
+            "form": "Ver descrição",
+            "application": "VO/SNG",
+            "description": "Tratamento com Carvão Ativado",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+                "concentration": "Ver fórmula",
+                "usualDose": "Misturar 10 g com 20 mL de água para formar uma suspensão. Administrar por VO ou SNG.",
+                "doseInterval": "",
+                "treatmentDuration": "",
+                "administrationNotes": ""
+            },
+            "calculationParams": {
+                "type": "carvao-ativado-po-ou-suspensao-oral-sng",
+                "logica_js": "\"Misturar \" + Math.round((((peso*1)<=50) ? ( peso*1) : ( 50)), 0) + \" g com \" + Math.round((((peso*1)<=50) ? ( peso*1) : ( 50))/25*50, 0) + \" mL de água para formar uma suspensão. Administrar por VO ou SNG.\""
+            }
+        },
+        {
+            "name": "Ondansetrona 2mg/ml (EV/IM)",
+            "slug": "ondansetrona-2mgml-ev-im",
+            "form": "Ver descrição",
+            "application": "EV/IM",
+            "description": "Medicamento da categoria Antieméticos",
+            "alerts": [],
+            "commonBrandNames": "",
+            "dosageInformation": {
+                "concentration": "Ver fórmula",
+                "usualDose": "Administrar 1 mL por via IM ou EV diluído em 50 mL de SF 0,9% ou SG 5% a cada 8 horas.",
+                "doseInterval": "8 horas",
+                "treatmentDuration": "",
+                "administrationNotes": ""
+              },
+              "calculationParams": {
+                "type": "ondansetrona-2mgml-ev-im",
+                "logica_js": "\"Administrar \" + Math.round((((peso*0.2)<=4) ? (peso*0.2) : (4))/2,1) + \" mL por via IM ou (EV diluído em 50 mL de SF 0,9% ou SG 5%) a cada 8 horas\""
+              }
+            },
+            {
+              "name": "Bromoprida 5mg/ml (EV)",
+              "slug": "bromoprida-5mgml-ev",
+              "form": "Ver descrição",
+              "application": "EV",
+              "description": "Medicamento da categoria Antieméticos",
+              "alerts": [],
+              "commonBrandNames": "",
+              "dosageInformation": {
+                "concentration": "Ver fórmula",
+                "usualDose": "Administrar 0,4 mL por via EV diluído em 50 mL de SF 0,9% ou SG 5% a cada 8 horas",
+                "doseInterval": "8 horas",
+                "treatmentDuration": "",
+                "administrationNotes": ""
+              },
+              "calculationParams": {
+                "type": "bromoprida-5mgml-ev",
+                "logica_js": "\"Administrar \" + Math.ceil((((peso*0.2)<=20) ? ( cond(((peso*0.2)/1)/(5/1)<=4) : ( ((peso*0.2))/1)/(5/1), 4), (((20/1)/(5/1)<=4) ? ( (20/1)/(5/1)) : ( 20))), 1) + \" mL por via EV diluído em 50 mL de SF 0,9% ou SG 5% a cada 8 horas\""
+              }
+            },
+            {
+              "name": "Metoclopramida 10mg/2mL (Plasil®) - EV",
+              "slug": "metoclopramida-10mg2ml-plasil-ev",
+              "form": "Ver descrição",
+              "application": "EV",
+              "description": "Medicamento da categoria Antieméticos",
+              "alerts": [],
+              "commonBrandNames": "",
+              "dosageInformation": {
+                "concentration": "Ver fórmula",
+                "usualDose": "Administrar 0,3 mL + 50 ml de SF 0,9% ou SG 5% por via EV a cada 8 horas.",
+                "doseInterval": "8 horas",
+                "treatmentDuration": "",
+                "administrationNotes": ""
+              },
+              "calculationParams": {
+                "type": "metoclopramida-10mg2ml-plasil-ev",
+                "logica_js": "\"Administrar \" + Math.ceil((((peso*0.15)<=10) ? (peso*0.15) : (10))/5,1) + \" mL + 50 ml de SF 0,9% ou SG 5% por via EV a cada 8 horas.\""
+              }
+            },
+            {
+              "name": "Dramin-B6 DL 30mg/10ml (EV)",
+              "slug": "dramin-b6-dl-30mg10ml-ev",
+              "form": "Ver descrição",
+              "application": "EV",
+              "description": "Medicamento da categoria Antieméticos",
+              "alerts": [],
+              "commonBrandNames": "",
+              "dosageInformation": {
+                "concentration": "Ver fórmula",
+                "usualDose": "Administrar 4,2 mL por via EV diluído em 50 mL de SF 0,9% ou SG 5% a cada 8 horas.",
+                "doseInterval": "8 horas",
+                "treatmentDuration": "",
+                "administrationNotes": ""
+              },
+              "calculationParams": {
+                "type": "dramin-b6-dl-30mg10ml-ev",
+                "logica_js": "\"Administrar \" + Math.round((((peso*1.25)<=270/3) ? ( cond(((peso*1.25)/30)*10<=90) : ( ((peso*1.25))/30)*10, 90), (270/3)/30*10), 1) + \" mL por via EV diluído em 50 mL de SF 0,9% ou SG 5% a cada 8 horas.\""
+              }
+            },
+            {
+              "name": "Dramin-B6 50mg/ml (IM)",
+              "slug": "dramin-b6-50mgml-im",
+              "form": "Ver descrição",
+              "application": "IM",
+              "description": "Medicamento da categoria Antieméticos",
+              "alerts": [],
+              "commonBrandNames": "",
+              "dosageInformation": {
+                "concentration": "Ver fórmula",
+                "usualDose": "Administrar 0,3 mL por via IM a cada 8 horas.",
+                "doseInterval": "8 horas",
+                "treatmentDuration": "",
+                "administrationNotes": ""
+              },
+              "calculationParams": {
+                "type": "dramin-b6-50mgml-im",
+                "logica_js": "\"Administrar \" + Math.ceil((((peso*0.025)<=1) ? ( peso*0.025) : ( 1)), 1) + \" mL por via IM a cada 8 horas.\""
+              }
+            },
+            {
+              "name": "Ranitidina 50mg/2mL (EV)",
+              "slug": "ranitidina-50mg2ml-ev",
+              "form": "Ver descrição",
+              "application": "EV",
+              "description": "Medicamento da categoria Antieméticos",
+              "alerts": [],
+              "commonBrandNames": "",
+              "dosageInformation": {
+                "concentration": "Ver fórmula",
+                "usualDose": "Administrar 0,5 mL por via EV a cada 12 horas",
+                "doseInterval": "12 horas",
+                "treatmentDuration": "",
+                "administrationNotes": ""
+              },
+              "calculationParams": {
+                "type": "ranitidina-50mg2ml-ev",
+                "logica_js": "\"Administrar \" + Math.round(((peso / 20 > 2) ? ( 2) : ( peso / 20)), 1) + \" mL por via EV a cada 12 horas\""
+              }
+            },
+            {
+              "name": "Acebrofilina 25 mg/5 mL",
+              "slug": "xaropes-tosse",
+              "form": "Ver descrição",
+              "application": "VO",
+              "description": "Medicamento da categoria Xaropes/Tosse",
+              "alerts": [],
+              "commonBrandNames": "",
+              "dosageInformation": {
+                "concentration": "Ver fórmula",
+                "usualDose": "Tomar 6 mL por via oral de 8/8 horas. Por 5 a 7 dias.",
+                "doseInterval": "8 horas",
+                "treatmentDuration": "5-7 dias",
+                "administrationNotes": ""
+              },
+              "calculationParams": {
+                "type": "acebrofilina-25-mg5-ml",
+                "logica_js": "\"Tomar \"+Math.ceil(MIN(peso*1/5*5,30/5),1)+\" mL por via oral de 8/8 horas. Por 5 a 7 dias.\""
+              }
+            },
+            {
+              "name": "Hedera helix (Extrato Seco de Hera)",
+              "slug": "xaropes-tosse",
+              "form": "Ver descrição",
+              "application": "VO",
+              "description": "Medicamento da categoria Xaropes/Tosse",
+              "alerts": [],
+              "commonBrandNames": "",
+              "dosageInformation": {
+                "concentration": "Ver fórmula",
+                "usualDose": "Tomar 2 mL por via oral de 8/8 horas. Por 7 a 14 dias.",
+                "doseInterval": "8 horas",
+                "treatmentDuration": "7-14 dias",
+                "administrationNotes": ""
+              },
+              "calculationParams": {
+                "type": "hedera-helix-extrato-seco-de-hera",
+                "logica_js": "cond(idade<2,\"Contraindicado para crianças menores de 2 anos.\",\ncond(AND(idade>=2,idade<=5),\"Tomar 1 mL por via oral de 8/8 horas. Por 7 a 14 dias.\",\ncond(AND(idade>=6,idade<=12),\"Tomar 2 mL por via oral de 8/8 horas. Por 7 a 14 dias.\",\n\"Verificar faixa de idade adequada.\")))"
+              }
+            },
+            {
+                "name": "Levodropropizina 30 mg/5 mL",
+                "slug": "xaropes-tosse",
+                "form": "Ver descrição",
+                "application": "VO",
+                "description": "Medicamento da categoria Xaropes/Tosse",
+                "alerts": [],
+                "commonBrandNames": "",
+                "dosageInformation": {
+                  "concentration": "Ver fórmula",
+                  "usualDose": "Tomar 3,4 mL por via oral de 8/8 horas. Por 5 a 7 dias.",
+                  "doseInterval": "8 horas",
+                  "treatmentDuration": "5-7 dias",
+                  "administrationNotes": ""
+                },
+                "calculationParams": {
+                  "type": "levodropropizina-30-mg5-ml",
+                  "logica_js": "\"Tomar \"+Math.ceil(MIN(peso*2/30*5,((peso<=30) ? (60/30*5) : (180/30*5))),1)+\" mL por via oral de 8/8 horas. Por 5 a 7 dias.\""
+                }
+              },
+              {
+                "name": "Carbocisteína 20 mg/mL",
+                "slug": "xaropes-tosse",
+                "form": "Ver descrição",
+                "application": "VO",
+                "description": "Medicamento da categoria Xaropes/Tosse",
+                "alerts": [],
+                "commonBrandNames": "",
+                "dosageInformation": {
+                  "concentration": "Ver fórmula",
+                  "usualDose": "Tomar 3,4 mL por via oral de 8/8 horas por 5 a 10 dias.",
+                  "doseInterval": "8 horas",
+                  "treatmentDuration": "5-10 dias",
+                  "administrationNotes": ""
+                },
+                "calculationParams": {
+                  "type": "carbocisteina-20-mgml",
+                  "logica_js": "\"Tomar \"+Math.ceil(MIN(peso*20/20/3,((idade<=5) ? (200/20/3) : (300/20/3))),1)+\" mL por via oral de 8/8 horas por 5 a 10 dias.\""
+                }
+              },
+              {
+                "name": "Lacrfilm® (Solução Oftálmica)",
+                "slug": "oftalmologicos",
+                "form": "Ver descrição",
+                "application": "Uso tópico",
+                "description": "Medicamento da categoria Oftalmológicos",
+                "alerts": [],
+                "commonBrandNames": "",
+                "dosageInformation": {
+                  "concentration": "Ver fórmula",
+                  "usualDose": "Pingar 1 gota no(s) olho(s) afetado(s) de 4/4 horas. Ate melhora do quadro.",
+                  "doseInterval": "4 horas",
+                  "treatmentDuration": "",
+                  "administrationNotes": ""
+                },
+                "calculationParams": {
+                  "type": "lacrfilm-solucao-oftalmica",
+                  "logica_js": "\"Pingar 1 gota no(s) olho(s) afetado(s) de 4/4 horas. Ate melhora do quadro.\""
+                }
+              },
+              {
+                "name": "Cloridrato de Olopatadina (Patanol S®) 1 mg/mL",
+                "slug": "oftalmologicos",
+                "form": "Ver descrição",
+                "application": "Uso tópico",
+                "description": "Medicamento da categoria Oftalmológicos",
+                "alerts": [],
+                "commonBrandNames": "",
+                "dosageInformation": {
+                  "concentration": "Ver fórmula",
+                  "usualDose": "Pingar 1 gota no(s) olho(s) afetado(s) uma vez ao dia. Por 6 semanas.",
+                  "doseInterval": "24 horas",
+                  "treatmentDuration": "6 semanas",
+                  "administrationNotes": ""
+                },
+                "calculationParams": {
+                  "type": "cloridrato-de-olopatadina-patanol-s-1-mgml",
+                  "logica_js": "\"Pingar 1 gota no(s) olho(s) afetado(s) uma vez ao dia. Por 6 semanas.\""
+                }
+              },
+              {
+                "name": "Systane® Ultra ou Hyabak® (Solução Oftálmica)",
+                "slug": "oftalmologicos",
+                "form": "Ver descrição",
+                "application": "Uso tópico",
+                "description": "Medicamento da categoria Oftalmológicos",
+                "alerts": [],
+                "commonBrandNames": "",
+                "dosageInformation": {
+                  "concentration": "Ver fórmula",
+                  "usualDose": "Pingar 1 gota no(s) olho(s) afetado(s) de 4/4 horas. Ate melhora do quadro.",
+                  "doseInterval": "4 horas",
+                  "treatmentDuration": "",
+                  "administrationNotes": ""
+                },
+                "calculationParams": {
+                  "type": "systane-ultra-ou-hyabak-solucao-oftalmica",
+                  "logica_js": "\"Pingar 1 gota no(s) olho(s) afetado(s) de 4/4 horas. Ate melhora do quadro.\""
+                }
+              },
+              {
+                "name": "Tobramicina 3 mg/mL (Tobrex®) > 2 meses",
+                "slug": "oftalmologicos",
+                "form": "Ver descrição",
+                "application": "Uso tópico",
+                "description": "Medicamento da categoria Oftalmológicos",
+                "alerts": [],
+                "commonBrandNames": "",
+                "dosageInformation": {
+                  "concentration": "Ver fórmula",
+                  "usualDose": "Pingar 1 gota no(s) olho(s) afetado(s) de 4/4 horas. Por 5 dias.",
+                  "doseInterval": "4 horas",
+                  "treatmentDuration": "5 dias",
+                  "administrationNotes": ""
+                },
+                "calculationParams": {
+                  "type": "tobramicina-3-mgml-tobrex-2-meses",
+                  "logica_js": "\"Pingar 1 gota no(s) olho(s) afetado(s) de 4/4 horas. Por 5 dias.\""
+                }
+              },
+              {
+                "name": "Tobramicina 3 mg/g Pomada Oftálmica (Tobrex®) > 2 meses",
+                "slug": "oftalmologicos",
+                "form": "Ver descrição",
+                "application": "Uso tópico",
+                "description": "Medicamento da categoria Oftalmológicos",
+                "alerts": [],
+                "commonBrandNames": "",
+                "dosageInformation": {
+                  "concentration": "Ver fórmula",
+                  "usualDose": "Aplicar 1 CM da pomada, uma fina camada na região do olho afetada de 8/8 horas. Por 5 dias.",
+                  "doseInterval": "8 horas",
+                  "treatmentDuration": "5 dias",
+                  "administrationNotes": ""
+                },
+                "calculationParams": {
+                  "type": "tobramicina-3-mg-g-pomada-oftalmica-tobrex-2-meses",
+                  "logica_js": "\"Aplicar 1 CM da pomada, uma fina camada na região do olho afetada de 8/8 horas. Por 5 dias.\""
+                }
+              },
+              {
+                "name": "Moxifloxacino Oftalmológico (VIGAMOX)",
+                "slug": "oftalmologicos",
+                "form": "Ver descrição",
+                "application": "Uso tópico",
+                "description": "Medicamento da categoria Oftalmológicos",
+                "alerts": [],
+                "commonBrandNames": "",
+                "dosageInformation": {
+                  "concentration": "Ver fórmula",
+                  "usualDose": "Pingar 1 gota no(s) olho(s) afetado(s) de 8/8 horas. Por 7 dias.",
+                  "doseInterval": "8 horas",
+                  "treatmentDuration": "7 dias",
+                  "administrationNotes": ""
+                },
+                "calculationParams": {
+                  "type": "moxifloxacino-oftalmologico-vigamox",
+                  "logica_js": "\"Pingar 1 gota no(s) olho(s) afetado(s) de 8/8 horas. Por 7 dias.\""
+                }
+              },
+              {
+                "name": "Ciprofloxacino colírio (0,3%)",
+                "slug": "oftalmologicos",
+                "form": "Ver descrição",
+                "application": "Uso tópico",
+                "description": "Medicamento da categoria Oftalmológicos",
+                "alerts": [],
+                "commonBrandNames": "",
+                "dosageInformation": {
+                  "concentration": "Ver fórmula",
+                  "usualDose": "Pingar 1 gota(s) de 2/2 horas no olho acometido. Durante os primeiros 2 dias de tratamento. Seguido de 1 gota de 4/4 horas. Nos 5 dias seguintes.",
+                  "doseInterval": "2 a 4 horas",
+                  "treatmentDuration": "7 dias",
+                  "administrationNotes": ""
+                },
+                "calculationParams": {
+                  "type": "ciprofloxacino-colirio-0-3",
+                  "logica_js": "\"Pingar 1 gota(s) de 2/2 horas no olho acometido. Durante os primeiros 2 dias de tratamento. Seguido de 1 gota de 4/4 horas. Nos 5 dias seguintes.\""
+                }
+              },
+                {
+                  "name": "Biamotil (Ciprofloxacino 3 mg/mL + Dexametasona 1 mg/mL) Otológico - OMC",
+                  "slug": "otologicos",
+                  "form": "Ver descrição",
+                  "application": "Uso tópico",
+                  "description": "Medicamento da categoria Otológicos",
+                  "alerts": [],
+                  "commonBrandNames": "",
+                  "dosageInformation": {
+                    "concentration": "Ver fórmula",
+                    "usualDose": "Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.",
+                    "doseInterval": "8 horas",
+                    "treatmentDuration": "7-10 dias",
+                    "administrationNotes": ""
+                  },
+                  "calculationParams": {
+                    "type": "biamotil-ciprofloxacino-3-mgml-dexametasona-1-mgml-otologico-omc",
+                    "logica_js": "\"Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.\""
+                  }
+                },
+                {
+                  "name": "Cerumin (Solução Otológica)",
+                  "slug": "otologicos",
+                  "form": "Ver descrição",
+                  "application": "Uso tópico",
+                  "description": "Medicamento da categoria Otológicos",
+                  "alerts": [],
+                  "commonBrandNames": "",
+                  "dosageInformation": {
+                    "concentration": "Ver fórmula",
+                    "usualDose": "Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.",
+                    "doseInterval": "8 horas",
+                    "treatmentDuration": "7-10 dias",
+                    "administrationNotes": ""
+                  },
+                  "calculationParams": {
+                    "type": "cerumin-solucao-otologica",
+                    "logica_js": "\"Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.\""
+                  }
+                },
+                {
+                  "name": "Otociriax (Ciprofloxacino 3 mg/mL + Hidrocortisona 1 mg/mL) Otológico - Otite Externa",
+                  "slug": "otologicos",
+                  "form": "Ver descrição",
+                  "application": "Uso tópico",
+                  "description": "Medicamento da categoria Otológicos",
+                  "alerts": [],
+                  "commonBrandNames": "",
+                  "dosageInformation": {
+                    "concentration": "Ver fórmula",
+                    "usualDose": "Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.",
+                    "doseInterval": "8 horas",
+                    "treatmentDuration": "7-10 dias",
+                    "administrationNotes": ""
+                  },
+                  "calculationParams": {
+                    "type": "otociriax-ciprofloxacino-3-mgml-hidrocortisona-1-mgml-otologico-otite-externa",
+                    "logica_js": "\"Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.\""
+                  }
+                },
+                {
+                  "name": "Otosporin (Hidrocortisona + Sulfato de Neomicina + Sulfato de Polimixina B)",
+                  "slug": "otologicos",
+                  "form": "Ver descrição",
+                  "application": "Uso tópico",
+                  "description": "Medicamento da categoria Otológicos",
+                  "alerts": [],
+                  "commonBrandNames": "",
+                  "dosageInformation": {
+                    "concentration": "Ver fórmula",
+                    "usualDose": "Pingar 2 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.",
+                    "doseInterval": "8 horas",
+                    "treatmentDuration": "7-10 dias",
+                    "administrationNotes": ""
+                  },
+                  "calculationParams": {
+                    "type": "otosporin-hidrocortisona-sulfato-de-neomicina-polimixina-b",
+                    "logica_js": "\"Pingar 2 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.\""
+                  }
+                },
+                {
+                  "name": "Oto-xilodase (Cloridrato de Lidocaína + Sulfato de Neomicina + Hialuronidase)",
+                  "slug": "otologicos",
+                  "form": "Ver descrição",
+                  "application": "Uso tópico",
+                  "description": "Medicamento da categoria Otológicos",
+                  "alerts": [],
+                  "commonBrandNames": "",
+                  "dosageInformation": {
+                    "concentration": "Ver fórmula",
+                    "usualDose": "Pingar 4 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Até o desaparecimento da dor e da infecção.",
+                    "doseInterval": "8 horas",
+                    "treatmentDuration": "Até recuperação",
+                    "administrationNotes": ""
+                  },
+                  "calculationParams": {
+                    "type": "oto-xilodase-cloridrato-de-lidocaina-sulfato-de-neomicina-hialuronidase",
+                    "logica_js": "\"Pingar 4 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Até o desaparecimento da dor e da infecção.\""
+                  }
+                },
+                {
+                  "name": "Otomixyn ou Otosylase ou Elotin (Fluocinolona Acetonida + Polimixina B + Neomicina + Lidocaína)",
+                  "slug": "otologicos",
+                  "form": "Ver descrição",
+                  "application": "Uso tópico",
+                  "description": "Medicamento da categoria Otológicos",
+                  "alerts": [],
+                  "commonBrandNames": "",
+                  "dosageInformation": {
+                    "concentration": "Ver fórmula",
+                    "usualDose": "Pingar 2 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.",
+                    "doseInterval": "8 horas",
+                    "treatmentDuration": "7-10 dias",
+                    "administrationNotes": ""
+                  },
+                  "calculationParams": {
+                    "type": "otomixyn-otosylase-elotin-fluocinolona-acetonida-polimixina-b-neomicina-lidocaina",
+                    "logica_js": "\"Pingar 2 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.\""
+                  }
+                },
+                {
+                  "name": "MIiconazol 2% Loção (Manipulado)",
+                  "slug": "otologicos",
+                  "form": "Ver descrição",
+                  "application": "Uso tópico",
+                  "description": "Medicamento da categoria Otológicos",
+                  "alerts": [],
+                  "commonBrandNames": "",
+                  "dosageInformation": {
+                    "concentration": "Ver fórmula",
+                    "usualDose": "Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 21 dias.",
+                    "doseInterval": "8 horas",
+                    "treatmentDuration": "21 dias",
+                    "administrationNotes": ""
+                  },
+                  "calculationParams": {
+                    "type": "miiconazol-2-por-cento-locao-manipulado",
+                    "logica_js": "\"Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 21 dias.\""
+                  }
+                },
+                {
+                  "name": "Budesonida 32 mcg (Noex®) Aerossol - IL (≥ 2 anos).",
+                  "slug": "nasais",
+                  "form": "Ver descrição",
+                  "application": "Uso tópico - inalatório",
+                  "description": "Medicamento da categoria Nasais",
+                  "alerts": [],
+                  "commonBrandNames": "",
+                  "dosageInformation": {
+                    "concentration": "Ver fórmula",
+                    "usualDose": "Administrar 2 jatos em região nasal de 12/12 horas.",
+                    "doseInterval": "12 horas",
+                    "treatmentDuration": "",
+                    "administrationNotes": ""
+                  },
+                  "calculationParams": {
+                    "type": "budesonida-32-mcg-noex-aerossol-il-2-anos",
+                    "logica_js": "\"Administrar 2 jatos em região nasal de 12/12 horas.\""
+                  }
+                },
+                {
+                  "name": "Budesonida 50 mcg (Noex®) Aerossol - IL (≥ 2 anos).",
+                  "slug": "nasais",
+                  "form": "Ver descrição",
+                  "application": "Uso tópico - inalatório",
+                  "description": "Medicamento da categoria Nasais",
+                  "alerts": [],
+                  "commonBrandNames": "",
+                  "dosageInformation": {
+                    "concentration": "Ver fórmula",
+                    "usualDose": "Administrar 2 jatos em região nasal de 12/12 horas.",
+                    "doseInterval": "12 horas",
+                    "treatmentDuration": "",
+                    "administrationNotes": ""
+                  },
+                  "calculationParams": {
+                    "type": "budesonida-50-mcg-noex-aerossol-il-2-anos",
+                    "logica_js": "\"Administrar 2 jatos em região nasal de 12/12 horas.\""
+                  }
+                },
+                {
+                  "name": "Budesonida 64 mcg (Noex®) Aerossol - IL (≥ 2 anos).",
+                  "slug": "nasais",
+                  "form": "Ver descrição",
+                  "application": "Uso tópico - inalatório",
+                  "description": "Medicamento da categoria Nasais",
+                  "alerts": [],
+                  "commonBrandNames": "",
+                  "dosageInformation": {
+                    "concentration": "Ver fórmula",
+                    "usualDose": "Administrar 2 jatos em região nasal de 12/12 horas.",
+                    "doseInterval": "12 horas",
+                    "treatmentDuration": "",
+                    "administrationNotes": ""
+                  },
+                  "calculationParams": {
+                    "type": "budesonida-64-mcg-noex-aerossol-il-2-anos",
+                    "logica_js": "\"Administrar 2 jatos em região nasal de 12/12 horas.\""
+                  }
+                },
+                {
+                  "name": "Cromoglicato 4% (Rilan®) Solução - IL",
+                  "slug": "nasais",
+                  "form": "Ver descrição",
+                  "application": "Uso tópico - inalatório",
+                  "description": "Medicamento da categoria Nasais",
+                  "alerts": [],
+                  "commonBrandNames": "",
+                  "dosageInformation": {
+                    "concentration": "Ver fórmula",
+                    "usualDose": "Administrar 4 jatos em região nasal de 6/6 horas. Por 5 dias.",
+                    "doseInterval": "6 horas",
+                    "treatmentDuration": "5 dias",
+                    "administrationNotes": ""
+                  },
+                  "calculationParams": {
+                    "type": "cromoglicato-4-rilan-solucao-il",
+                    "logica_js": "\"Administrar 4 jatos em região nasal de 6/6 horas. Por 5 dias.\""
+                  }
+                },
+                {
+                  "name": "Fluticasona 27,5 mcg (Avamys®) Spray Nasal - IL (> 1 ano)",
+                  "slug": "nasais",
+                  "form": "Ver descrição",
+                  "application": "Uso tópico - inalatório",
+                  "description": "Medicamento da categoria Nasais",
+                  "alerts": [],
+                  "commonBrandNames": "",
+                  "dosageInformation": {
+                    "concentration": "Ver fórmula",
+                    "usualDose": "Administrar 2 jatos em região nasal de 12/12 horas.",
+                    "doseInterval": "12 horas",
+                    "treatmentDuration": "",
+                    "administrationNotes": ""
+                  },
+                  "calculationParams": {
+                    "type": "fluticasona-27-5-mcg-avamys-spray-nasal-il-1-ano",
+                    "logica_js": "\"Administrar 2 jatos em região nasal de 12/12 horas.\""
+                  }
+                },
+                  {
+                    "name": "Nebacetim Pomada",
+                    "slug": "uso-topico-externo",
+                    "form": "Ver descrição",
+                    "application": "Uso tópico",
+                    "description": "Medicamento da categoria Uso Tópico - Externo",
+                    "alerts": [],
+                    "commonBrandNames": "",
+                    "dosageInformation": {
+                      "concentration": "Ver fórmula",
+                      "usualDose": "Aplicar nas lesões e dentro das narinas de 6/6 horas por 10 dias. Manter as unhas curtas e limpas. Realizar a limpeza das lesões com água e sabão antes da aplicação da pomada.",
+                      "doseInterval": "6 horas",
+                      "treatmentDuration": "10 dias",
+                      "administrationNotes": ""
+                    },
+                    "calculationParams": {
+                      "type": "nebacetim-pomada",
+                      "logica_js": "\"Aplicar nas lesões e dentro das narinas de 6/6 horas por 10 dias. Manter as unhas curtas e limpas. Realizar a limpeza das lesões com água e sabão antes da aplicação da pomada.\""
+                    }
+                  },
+                  {
+                    "name": "Cetoconazol Shampoo",
+                    "slug": "uso-topico-externo",
+                    "form": "Ver descrição",
+                    "application": "Uso tópico",
+                    "description": "Medicamento da categoria Uso Tópico - Externo",
+                    "alerts": [],
+                    "commonBrandNames": "",
+                    "dosageInformation": {
+                      "concentration": "Ver fórmula",
+                      "usualDose": "Aplicar no couro cabeludo e lesões, 3 vezes por semana por 4 semanas. Remover com óleos vegetais (amêndoas) ou minerais (vaselina).",
+                      "doseInterval": "Três vezes por semana",
+                      "treatmentDuration": "4 semanas",
+                      "administrationNotes": ""
+                    },
+                    "calculationParams": {
+                      "type": "cetoconazol-shampoo",
+                      "logica_js": "\"Aplicar no couro cabeludo e lesões, 3 vezes por semana por 4 semanas. Remover com óleos vegetais (amêndoas) ou minerais (vaselina).\""
+                    }
+                  },
+                  {
+                    "name": "Novacort",
+                    "slug": "uso-topico-externo",
+                    "form": "Ver descrição",
+                    "application": "Uso tópico",
+                    "description": "Medicamento da categoria Uso Tópico - Externo",
+                    "alerts": [],
+                    "commonBrandNames": "",
+                    "dosageInformation": {
+                      "concentration": "Ver fórmula",
+                      "usualDose": "Aplicar uma fina camada no local afetado de 12/12 horas por 10 dias. Indicado para dermatites: de contato, atópica, seborreica, intertrigo, desidrose e neurodermatite.",
+                      "doseInterval": "12 horas",
+                      "treatmentDuration": "10 dias",
+                      "administrationNotes": ""
+                    },
+                    "calculationParams": {
+                      "type": "novacort",
+                      "logica_js": "\"Aplicar uma fina camada no local afetado de 12/12 horas por 10 dias. Indicado para dermatites: de contato, atópica, seborreica, intertrigo, desidrose e neurodermatite.\""
+                    }
+                  },
+                  {
+                    "name": "Quadriderm",
+                    "slug": "uso-topico-externo",
+                    "form": "Ver descrição",
+                    "application": "Uso tópico",
+                    "description": "Medicamento da categoria Uso Tópico - Externo",
+                    "alerts": [],
+                    "commonBrandNames": "",
+                    "dosageInformation": {
+                      "concentration": "Ver fórmula",
+                      "usualDose": "Aplicar uma fina camada no local afetado de 12/12 horas por 10 dias.",
+                      "doseInterval": "12 horas",
+                      "treatmentDuration": "10 dias",
+                      "administrationNotes": ""
+                    },
+                    "calculationParams": {
+                      "type": "quadriderm",
+                      "logica_js": "\"Aplicar uma fina camada no local afetado de 12/12 horas por 10 dias.\""
+                    }
+                  },
+                  {
+                    "name": "Cutisanol ou Osmogel",
+                    "slug": "uso-topico-externo",
+                    "form": "Ver descrição",
+                    "application": "Uso tópico",
+                    "description": "Medicamento da categoria Uso Tópico - Externo",
+                    "alerts": [],
+                    "commonBrandNames": "",
+                    "dosageInformation": {
+                      "concentration": "Ver fórmula",
+                      "usualDose": "Aplicar uma camada no local afetado de 12/12 horas por 10 dias como tratamento.",
+                      "doseInterval": "12 horas",
+                      "treatmentDuration": "10 dias",
+                      "administrationNotes": ""
+                    },
+                    "calculationParams": {
+                      "type": "cutisanol-ou-osmogel",
+                      "logica_js": "\"Aplicar uma camada no local afetado de 12/12 horas por 10 dias como tratamento.\""
+                    }
+                  },
+                  {
+                    "name": "Postec (Betametasona 0,05% + Hialuronidase 150 UI/g)",
+                    "slug": "uso-topico-externo",
+                    "form": "Ver descrição",
+                    "application": "Uso tópico",
+                    "description": "Medicamento da categoria Uso Tópico - Externo",
+                    "alerts": [],
+                    "commonBrandNames": "",
+                    "dosageInformation": {
+                      "concentration": "Ver fórmula",
+                      "usualDose": "Aplicar na região do prepúcio de 12/12 horas por 3 semanas.",
+                      "doseInterval": "12 horas",
+                      "treatmentDuration": "3 semanas",
+                      "administrationNotes": ""
+                    },
+                    "calculationParams": {
+                      "type": "postec-betametasona-0-05-hialuronidase-150-ui-g",
+                      "logica_js": "\"Aplicar na região do prepúcio de 12/12 horas por 3 semanas.\""
+                    }
+                  },
+                  {
+                    "name": "Tiabendazol 5% Pomada",
+                    "slug": "uso-topico-externo",
+                    "form": "Ver descrição",
+                    "application": "Uso tópico",
+                    "description": "Medicamento da categoria Uso Tópico - Externo",
+                    "alerts": [],
+                    "commonBrandNames": "",
+                    "dosageInformation": {
+                      "concentration": "Ver fórmula",
+                      "usualDose": "Aplicar uma fina camada no local afetado de 12/12 horas por 10 dias.",
+                      "doseInterval": "12 horas",
+                      "treatmentDuration": "10 dias",
+                      "administrationNotes": ""
+                    },
+                    "calculationParams": {
+                      "type": "tiabendazol-5-pomada",
+                      "logica_js": "\"Aplicar uma fina camada no local afetado de 12/12 horas por 10 dias.\""
+                    }
+                  },
+                  {
+                    "name": "Talco Mentolado",
+                    "slug": "uso-topico-externo",
+                    "form": "Ver descrição",
+                    "application": "Uso tópico",
+                    "description": "Medicamento da categoria Uso Tópico - Externo",
+                    "alerts": [],
+                    "commonBrandNames": "",
+                    "dosageInformation": {
+                      "concentration": "Ver fórmula",
+                      "usualDose": "Aplicar nas lesões, 2 vezes ao dia, até melhorar. (Não passar no rosto). Manter as unhas curtas e limpas.",
+                      "doseInterval": "12 horas",
+                      "treatmentDuration": "Até melhora",
+                      "administrationNotes": ""
+                    },
+                    "calculationParams": {
+                      "type": "talco-mentolado",
+                      "logica_js": "\"Aplicar nas lesões, 2 vezes ao dia, até melhorar. (Não passar no rosto). Manter as unhas curtas e limpas.\""
+                    }
+                  },
+                  {
+                    "name": "Oncilom - A – M Pomada",
+                    "slug": "uso-topico-externo",
+                    "form": "Ver descrição",
+                    "application": "Uso tópico",
+                    "description": "Medicamento da categoria Uso Tópico - Externo",
+                    "alerts": [],
+                    "commonBrandNames": "",
+                    "dosageInformation": {
+                      "concentration": "Ver fórmula",
+                      "usualDose": "Passar na(s) assadura(s) de 8/8 horas por 5 dias.",
+                      "doseInterval": "8 horas",
+                      "treatmentDuration": "5 dias",
+                      "administrationNotes": ""
+                    },
+                    "calculationParams": {
+                      "type": "oncilom-a-m-pomada",
+                      "logica_js": "\"Passar na(s) assadura(s) de 8/8 horas por 5 dias.\""
+                    }
+                  },
+                  {
+                    "name": "Dermodex (Nistatina 100.000 UI + Óxido de Zinco 20%)",
+                    "slug": "uso-topico-externo",
+                    "form": "Ver descrição",
+                    "application": "Uso tópico",
+                    "description": "Medicamento da categoria Uso Tópico - Externo",
+                    "alerts": [],
+                    "commonBrandNames": "",
+                    "dosageInformation": {
+                      "concentration": "Ver fórmula",
+                      "usualDose": "Passar na(s) assadura(s) a cada troca de fraldas ou de 6/6 horas por 14 dias.",
+                      "doseInterval": "6 horas",
+                      "treatmentDuration": "14 dias",
+                      "administrationNotes": ""
+                    },
+                    "calculationParams": {
+                      "type": "dermodex-nistatina-100000-ui-oxido-de-zinco-20",
+                      "logica_js": "\"Passar na(s) assadura(s) a cada troca de fraldas ou de 6/6 horas por 14 dias.\""
+                    }
+                  },
+                  {
+                    "name": "Deltametrina Shampoo",
+                    "slug": "uso-topico-externo",
+                    "form": "Ver descrição",
+                    "application": "Uso tópico",
+                    "description": "Medicamento da categoria Uso Tópico - Externo",
+                    "alerts": [],
+                    "commonBrandNames": "",
+                    "dosageInformation": {
+                      "concentration": "Ver fórmula",
+                      "usualDose": "Aplicar e friccionar levemente. Manter a espuma sem enxaguar por 10 minutos. Depois enxaguar bem. Repetir por 4 dias consecutivos. Fazer intervalo de 7 dias e repetir por mais 4 dias.",
+                      "doseInterval": "Variável",
+                      "treatmentDuration": "8 dias (com intervalo)",
+                      "administrationNotes": ""
+                    },
+                    "calculationParams": {
+                      "type": "deltametrina-shampoo",
+                      "logica_js": "\"Aplicar e friccionar levemente. Manter a espuma sem enxaguar por 10 minutos. Depois enxaguar bem. Repetir por 4 dias consecutivos. Fazer intervalo de 7 dias e repetir por mais 4 dias.\""
+                    }
+                  },
+                  {
+                    "name": "Nebacetim Pomada",
+                    "slug": "uso-topico-externo",
+                    "form": "Ver descrição",
+                    "application": "Uso tópico",
+                    "description": "Medicamento da categoria Uso Tópico - Externo",
+                    "alerts": [],
+                      "commonBrandNames": "",
+                      "dosageInformation": {
+                        "concentration": "Ver fórmula",
+                        "usualDose": "Aplicar dentro das narinas com um cotonete de 6/6 horas por 5 dias. Retorno com otorrino em 1 semana para reavaliação.",
+                        "doseInterval": "6 horas",
+                        "treatmentDuration": "5 dias",
+                        "administrationNotes": ""
+                      },
+                      "calculationParams": {
+                        "type": "nebacetim-pomada",
+                        "logica_js": "\"Aplicar dentro das narinas com um cotonete de 6/6 horas por 5 dias. Retorno com otorrino em 1 semana para reavaliação.\""
+                      }
+                    },
+                    {
+                      "name": "Deltametrina Loção",
+                      "slug": "uso-topico-externo",
+                      "form": "Ver descrição",
+                      "application": "Uso tópico",
+                      "description": "Medicamento da categoria Uso Tópico - Externo",
+                      "alerts": [],
+                      "commonBrandNames": "",
+                      "dosageInformation": {
+                        "concentration": "Ver fórmula",
+                        "usualDose": "Aplicar e friccionar nas áreas afetadas após o banho e deixar até o próximo banho. Repetir por 4 dias consecutivos. Fazer intervalo de 7 dias e repetir por mais 4 dias.",
+                        "doseInterval": "Diário",
+                        "treatmentDuration": "8 dias (com intervalo)",
+                        "administrationNotes": ""
+                      },
+                      "calculationParams": {
+                        "type": "deltametrina-locao",
+                        "logica_js": "\"Aplicar e friccionar nas áreas afetadas após o banho e deixar até o próximo banho. Repetir por 4 dias consecutivos. Fazer intervalo de 7 dias e repetir por mais 4 dias.\""
+                      }
+                    },
+                    {
+                      "name": "Permetrina 5%",
+                      "slug": "uso-topico-externo",
+                      "form": "Ver descrição",
+                      "application": "Uso tópico",
+                      "description": "Medicamento da categoria Uso Tópico - Externo",
+                      "alerts": [],
+                      "commonBrandNames": "",
+                      "dosageInformation": {
+                        "concentration": "Ver fórmula",
+                        "usualDose": "Aplicar e friccionar levemente abaixo do pescoço. Retirar no próximo dia. Para menores de 1 mês, retirar em menos de 6 horas. Repetir o tratamento entre 5 a 7 dias.",
+                        "doseInterval": "Diário",
+                        "treatmentDuration": "5-7 dias",
+                        "administrationNotes": ""
+                      },
+                      "calculationParams": {
+                        "type": "permetrina-5",
+                        "logica_js": "\"Aplicar e friccionar levemente abaixo do pescoço. Retirar no próximo dia. Para menores de 1 mês, retirar em menos de 6 horas. Repetir o tratamento entre 5 a 7 dias.\""
+                      }
+                    },
+                    {
+                      "name": "Aciclovir 50 mg/g - (Pomada)",
+                      "slug": "uso-topico-externo",
+                      "form": "Ver descrição",
+                      "application": "Uso tópico",
+                      "description": "Medicamento da categoria Uso Tópico - Externo",
+                      "alerts": [],
+                      "commonBrandNames": "",
+                      "dosageInformation": {
+                        "concentration": "Ver fórmula",
+                        "usualDose": "Aplicar creme tópico na região acometida de 4/4 horas por 4 dias.",
+                        "doseInterval": "4 horas",
+                        "treatmentDuration": "4 dias",
+                        "administrationNotes": ""
+                      },
+                      "calculationParams": {
+                        "type": "aciclovir-50-mg-g-pomada",
+                        "logica_js": "\"Aplicar creme tópico na região acometida de 4/4 horas por 4 dias.\""
+                      }
+                    },
+                    {
+                      "name": "Ácido Fusídico 20 mg/g - (Pomada)",
+                      "slug": "uso-topico-externo",
+                      "form": "Ver descrição",
+                      "application": "Uso tópico",
+                      "description": "Medicamento da categoria Uso Tópico - Externo",
+                      "alerts": [],
+                      "commonBrandNames": "",
+                      "dosageInformation": {
+                        "concentration": "Ver fórmula",
+                        "usualDose": "Aplicar uma camada fina sobre a pele lesionada de 8/8 horas por 7 dias.",
+                        "doseInterval": "8 horas",
+                        "treatmentDuration": "7 dias",
+                        "administrationNotes": ""
+                      },
+                      "calculationParams": {
+                        "type": "acido-fusidico-20-mg-g-pomada",
+                        "logica_js": "\"Aplicar uma camada fina sobre a pele lesionada de 8/8 horas por 7 dias.\""
+                      }
+                    },
+                    {
+                      "name": "Mupirocina 20 mg/g - (Pomada)",
+                      "slug": "uso-topico-externo",
+                      "form": "Ver descrição",
+                      "application": "Uso tópico",
+                      "description": "Medicamento da categoria Uso Tópico - Externo",
+                      "alerts": [],
+                      "commonBrandNames": "",
+                      "dosageInformation": {
+                        "concentration": "Ver fórmula",
+                        "usualDose": "Aplicar na área afetada até de 8/8 horas por no máximo 10 dias.",
+                        "doseInterval": "8 horas",
+                        "treatmentDuration": "Até 10 dias",
+                        "administrationNotes": ""
+                      },
+                      "calculationParams": {
+                        "type": "mupirocina-20-mg-g-pomada",
+                        "logica_js": "\"Aplicar na área afetada até de 8/8 horas por no máximo 10 dias.\""
+                      }
+                    },
+                    {
+                      "name": "Dexametasona 0,1% - (Pomada)",
+                      "slug": "uso-topico-externo",
+                      "form": "Ver descrição",
+                      "application": "Uso tópico",
+                      "description": "Medicamento da categoria Uso Tópico - Externo",
+                      "alerts": [],
+                      "commonBrandNames": "",
+                      "dosageInformation": {
+                        "concentration": "Ver fórmula",
+                        "usualDose": "Aplicar uma pequena quantidade do creme no local afetado, de 8/8 horas.",
+                        "doseInterval": "8 horas",
+                        "treatmentDuration": "",
+                        "administrationNotes": ""
+                      },
+                      "calculationParams": {
+                        "type": "dexametasona-0-1-pomada",
+                        "logica_js": "\"Aplicar uma pequena quantidade do creme no local afetado, de 8/8 horas.\""
+                      }
+                    },
+                    {
+                      "name": "Mometasona 0,1% - (Pomada) > 2 anos",
+                      "slug": "uso-topico-externo",
+                      "form": "Ver descrição",
+                      "application": "Uso tópico",
+                      "description": "Medicamento da categoria Uso Tópico - Externo",
+                      "alerts": [],
+                      "commonBrandNames": "",
+                      "dosageInformation": {
+                        "concentration": "Ver fórmula",
+                        "usualDose": "Aplicar uma fina camada de modo a cobrir toda a área afetada uma vez ao dia.",
+                        "doseInterval": "24 horas",
+                        "treatmentDuration": "",
+                        "administrationNotes": ""
+                      },
+                      "calculationParams": {
+                        "type": "mometasona-0-1-pomada-2-anos",
+                        "logica_js": "\"Aplicar uma fina camada de modo a cobrir toda a área afetada uma vez ao dia.\""
+                      }
+                    },
+                    {
+                      "name": "Flogo-rosa (Peróxido de Hidrogênio e Cloridrato de Benzidamina)",
+                      "slug": "uso-topico-externo",
+                      "form": "Ver descrição",
+                      "application": "Uso tópico",
+                      "description": "Medicamento da categoria Uso Tópico - Externo",
+                      "alerts": [],
+                      "commonBrandNames": "",
+                      "dosageInformation": {
+                        "concentration": "Ver fórmula",
+                        "usualDose": "Dissolver o conteúdo de 1 a 2 envelope(s) do pó para preparação extemporânea ou 10 a 20 mL da solução ginecológica em 1 L de água e usar em lavagens vaginais de 12/12 horas.",
+                        "doseInterval": "12 horas",
+                        "treatmentDuration": "",
+                        "administrationNotes": ""
+                      },
+                      "calculationParams": {
+                        "type": "flogo-rosa-peroxido-de-hidrogenio-e-cloridrato-de-benzidamina",
+                        "logica_js": "\"Dissolver o conteúdo de 1 a 2 envelope(s) do pó para preparação extemporânea ou 10 a 20 mL da solução ginecológica em 1 L de água e usar em lavagens vaginais de 12/12 horas.\""
+                      }
+                    },
+                    {
+                      "name": "Hexomedine Spray 0,1% > 3 Anos",
+                      "slug": "uso-topico-externo",
+                      "form": "Ver descrição",
+                      "application": "Uso tópico",
+                      "description": "Medicamento da categoria Uso Tópico - Externo",
+                      "alerts": [],
+                      "commonBrandNames": "",
+                      "dosageInformation": {
+                          "concentration": "Ver fórmula",
+                          "usualDose": "Aplicar 1 ou 2 nebulizações 15 minutos antes das principais refeições. As nebulizações devem ser aplicadas na cavidade bucal, direcionando o aplicador para a orofaringe (fundo da garganta).",
+                          "doseInterval": "Antes das refeições",
+                          "treatmentDuration": "",
+                          "administrationNotes": ""
+                        },
+                        "calculationParams": {
+                          "type": "hexomedine-spray-0-1-3-anos",
+                          "logica_js": "\"Aplicar 1 ou 2 nebulizações 15 minutos antes das principais refeições. As nebulizações devem ser aplicadas na cavidade bucal, direcionando o aplicador para a orofaringe (fundo da garganta).\""
+                        }
+                      },
+                      {
+                        "name": "Flogoral Spray",
+                        "slug": "uso-topico-externo",
+                        "form": "Ver descrição",
+                        "application": "Uso tópico",
+                        "description": "Medicamento da categoria Uso Tópico - Externo",
+                        "alerts": [],
+                        "commonBrandNames": "",
+                        "dosageInformation": {
+                          "concentration": "Ver fórmula",
+                          "usualDose": "Aplicar 1 jato na garganta 20 minutos antes das principais refeições.",
+                          "doseInterval": "Antes das refeições",
+                          "treatmentDuration": "",
+                          "administrationNotes": ""
+                        },
+                        "calculationParams": {
+                          "type": "flogoral-spray",
+                          "logica_js": "\"Aplicar 1 jato na garganta 20 minutos antes das principais refeições.\""
+                        }
+                      },
+                      {
+                        "name": "Permanganato de Potássio 100mg (Uso tópico)",
+                        "slug": "uso-topico-externo",
+                        "form": "Ver descrição",
+                        "application": "Uso tópico",
+                        "description": "Medicamento da categoria Uso Tópico - Externo",
+                        "alerts": [],
+                        "commonBrandNames": "",
+                        "dosageInformation": {
+                          "concentration": "Ver fórmula",
+                          "usualDose": "Diluir o comprimido no momento do uso, em 1 a 4 litros de água, e usar na forma de compressas ou no banho.",
+                          "doseInterval": "",
+                          "treatmentDuration": "",
+                          "administrationNotes": ""
+                        },
+                        "calculationParams": {
+                          "type": "permanganato-de-potassio-100mg-uso-topico",
+                          "logica_js": "\"Diluir o comprimido no momento do uso, em 1 a 4 litros de água, e usar na forma de compressas ou no banho.\""
+                        }
+                      },
+                      {
+                        "name": "Sulfadiazina de Prata 1% Creme (Dermazine®)",
+                        "slug": "uso-topico-externo",
+                        "form": "Ver descrição",
+                        "application": "Uso tópico",
+                        "description": "Medicamento da categoria Uso Tópico - Externo",
+                        "alerts": [],
+                        "commonBrandNames": "",
+                        "dosageInformation": {
+                          "concentration": "Ver fórmula",
+                          "usualDose": "Aplicar uma camada sobre a lesão de 12/12 horas utilizando técnica asséptica. Ocluir o local com gaze estéril. Continuar até a cicatrização completa da ferida.",
+                          "doseInterval": "12 horas",
+                          "treatmentDuration": "Até cicatrização",
+                          "administrationNotes": ""
+                        },
+                        "calculationParams": {
+                          "type": "sulfadiazina-de-prata-1-dermazine",
+                          "logica_js": "\"Aplicar uma camada sobre a lesão de 12/12 horas utilizando técnica asséptica. Ocluir o local com gaze estéril. Continuar até a cicatrização completa da ferida.\""
+                        }
+                      },
+                      {
+                        "name": "Osetalmivir (Tamiflu®) 75mg/Capsula",
+                        "slug": "quimioprofilaxia-influenza",
+                        "form": "Ver descrição",
+                        "application": "VO",
+                        "description": "Medicamento da categoria Quimioprofilaxia (Influenza)",
+                        "alerts": [],
+                        "commonBrandNames": "",
+                        "dosageInformation": {
+                          "concentration": "Ver fórmula",
+                          "usualDose": "Administrar 1 cápsula por via oral de 24/24 horas. Por 10 dias.",
+                          "doseInterval": "24 horas",
+                          "treatmentDuration": "10 dias",
+                          "administrationNotes": ""
+                        },
+                        "calculationParams": {
+                          "type": "oseltamivir-tamiflu-75mg-capsula",
+                          "logica_js": "=((idade<0.9) ? (\"Administrar \"+Math.ceil(peso*0.3) : (1))+\" mL por via oral de 24/24 horas. Por 10 dias.\",((AND(idade>=0.9) ? (idade<=0.11)) : (\"Administrar \"+Math.ceil(peso*0.35,1))+\" mL por via oral de 24/24 horas. Por 10 dias.\",((idade>=1) ? (cond(peso<=15) : (\"Administrar 3 mL por via oral de 24/24 horas. Por 10 dias.\",cond(AND(peso>15,peso<=23)),\"Administrar 4,5 mL por via oral de 24/24 horas. Por 10 dias.\",((AND(peso>23) ? (peso<=40)) : (\"Administrar 6 mL por via oral de 24/24 horas. Por 10 dias.\",\"Administrar 7,5 mL por via oral de 24/24 horas. Por 10 dias.\")))))))"
+                        }
+                      },
+                      {
+                        "name": "Osetalmivir (Tamiflu®) 75mg/Capsula",
+                        "slug": "antiviral-influenza-positivo",
+                        "form": "Ver descrição",
+                        "application": "VO",
+                        "description": "Medicamento da categoria Antiviral - Influenza Positivo",
+                        "alerts": [],
+                        "commonBrandNames": "",
+                        "dosageInformation": {
+                          "concentration": "Ver fórmula",
+                          "usualDose": "Administrar 1 cápsula por via oral de 12 em 12 horas, por 5 dias.",
+                          "doseInterval": "12 horas",
+                          "treatmentDuration": "5 dias",
+                          "administrationNotes": ""
+                        },
+                        "calculationParams": {
+                          "type": "oseltamivir-tamiflu-75mg-capsula-influenza-positivo",
+                          "logica_js": "\"Oferecer \"+((idade<0.3) ? (\"1) : (2\",cond(AND(idade>=0.3,idade<=0.5)),\"2\",((AND(idade>=0.6) ? (idade<=0.11)) : (\"2,5\",cond(peso<=14,\"3\",cond(AND(peso>14,peso<=23)),\"4,5\",((AND(peso>23) ? (peso<=40)) : (\"6\",\"7,5\")))))))+\" mL de 12 em 12 horas, por 5 dias. Necessário 10 cápsulas ao total.\""
+                        }
+                      }
+                    ]
+                    
