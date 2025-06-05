@@ -3,6 +3,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { mockMedicationsData } from '@/data/mockMedications';
 import MedicationListItem from '@/components/platform/MedicationListItem';
+import MedicationGroupItem from '@/components/platform/MedicationGroupItem';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Pill, BookOpen, CalendarDays } from 'lucide-react';
@@ -18,6 +19,7 @@ import { slugify } from '@/lib/utils'; // Importar slugify
 
 const MedicationCategoryPage: React.FC = () => {
   const { categorySlug } = useParams<{ categorySlug: string }>();
+  const [showGrouped, setShowGrouped] = React.useState<boolean>(true);
   
   const categoryData = categorySlug ? mockMedicationsData[categorySlug] : undefined;
 
@@ -72,19 +74,70 @@ const MedicationCategoryPage: React.FC = () => {
       
       <div>
         {categoryData.medications.length > 0 ? (
-          categoryData.medications.map((med) => {
-            // Certifique-se que categorySlug está definido antes de usá-lo no Link
-            const medSlug = med.slug || slugify(med.name); // Usa slug existente ou gera um novo
-            return (
-              <Link 
-                key={medSlug} 
-                to={`/platform/calculator/${categorySlug}/${medSlug}`} 
-                className="block mb-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-lg transition-colors"
-              >
-                <MedicationListItem medication={med} />
-              </Link>
-            );
-          })
+          <>
+            {/* Botão para alternar entre visualização agrupada e lista plana */}
+            {categoryData.medicationGroups && categoryData.medicationGroups.length > 0 && (
+              <div className="flex justify-end mb-4">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => setShowGrouped(!showGrouped)}
+                >
+                  Visualizar como {showGrouped ? "Lista" : "Grupos"}
+                </Button>
+              </div>
+            )}
+
+            {/* Visualização agrupada */}
+            {showGrouped && categoryData.medicationGroups && categoryData.medicationGroups.length > 0 && (
+              <div className="space-y-4">
+                {/* Grupos de medicamentos */}
+                {categoryData.medicationGroups.map((group) => (
+                  <MedicationGroupItem 
+                    key={group.baseSlug} 
+                    group={group} 
+                    categorySlug={categorySlug || ''} 
+                  />
+                ))}
+                
+                {/* Medicamentos que não estão em nenhum grupo */}
+                {categoryData.medications
+                  .filter(med => {
+                    // Verificar se o medicamento não está em nenhum grupo
+                    return !categoryData.medicationGroups?.some(group => 
+                      group.variants.some(variant => variant.slug === med.slug)
+                    );
+                  })
+                  .map((med) => {
+                    const medSlug = med.slug || slugify(med.name);
+                    return (
+                      <Link 
+                        key={medSlug} 
+                        to={`/platform/calculator/${categorySlug}/${medSlug}`} 
+                        className="block mb-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-lg transition-colors"
+                      >
+                        <MedicationListItem medication={med} />
+                      </Link>
+                    );
+                  })
+                }
+              </div>
+            )}
+
+            {/* Visualização em lista plana */}
+            {!showGrouped && categoryData.medications.map((med) => {
+              const medSlug = med.slug || slugify(med.name);
+              return (
+                <Link 
+                  key={medSlug} 
+                  to={`/platform/calculator/${categorySlug}/${medSlug}`} 
+                  className="block mb-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-lg transition-colors"
+                >
+                  <MedicationListItem medication={med} />
+                </Link>
+              );
+            })}
+          </>
         ) : (
           <Card className="dark:bg-gray-800/50 border-gray-200 dark:border-gray-700">
             <CardContent className="p-10 text-center">

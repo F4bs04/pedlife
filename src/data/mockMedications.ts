@@ -19,7 +19,7 @@ import {
   TestTube2,
 } from 'lucide-react';
 import { slugify } from '@/lib/utils';
-import { MockMedicationData, CategoryInfo, MedicationCategoryData, Medication, DosageCalculationParams } from '@/types/medication';
+import { MockMedicationData, CategoryInfo, MedicationCategoryData, Medication, DosageCalculationParams, MedicationGroup } from '@/types/medication';
 // Removido import do mathjs pois estamos usando Function para avaliação segura
 
 // Importando o JSON do banco de dosagens corrigido
@@ -291,10 +291,27 @@ function determineForm(medicamento: string, logicaJs: string): string {
   return 'Suspensão Oral';
 }
 
+// Função para extrair o nome base de um medicamento (sem concentração, forma, etc.)
+function extractBaseName(fullName: string): string {
+  // Remover informações de concentração, forma, etc.
+  // Exemplos:
+  // "Amoxicilina 250mg/5ml" -> "Amoxicilina"
+  // "Cefalexina 500mg" -> "Cefalexina"
+  
+  // Padrão para encontrar o nome base (geralmente é a primeira palavra ou palavras antes de números)
+  const baseNameMatch = fullName.match(/^([\w\sáàâãéèêíïóôõöúçñ-]+?)(?:\s+\d|\s+\(|$)/i);
+  if (baseNameMatch && baseNameMatch[1]) {
+    return baseNameMatch[1].trim();
+  }
+  return fullName; // Retorna o nome completo se não conseguir extrair o nome base
+}
+
 // Função para organizar medicamentos por categoria
 export function organizeMedicationsByCategory(medicationsData: any): MockMedicationData {
   const convertedData: MockMedicationData = {};
   const categoriesMap: Record<string, Medication[]> = {};
+  // Mapa para armazenar grupos de medicamentos por categoria
+  const medicationGroupsMap: Record<string, Record<string, Medication[]>> = {};
 
   // Verificar se estamos recebendo um objeto (JSON formatado) ou um array
   if (!Array.isArray(medicationsData)) {
@@ -303,6 +320,10 @@ export function organizeMedicationsByCategory(medicationsData: any): MockMedicat
       const categorySlug = slugify(category);
       if (!categoriesMap[categorySlug]) {
         categoriesMap[categorySlug] = [];
+      }
+      
+      if (!medicationGroupsMap[categorySlug]) {
+        medicationGroupsMap[categorySlug] = {};
       }
       
       // Processar cada medicamento na categoria
@@ -330,6 +351,17 @@ export function organizeMedicationsByCategory(medicationsData: any): MockMedicat
             calculationParams: extractCalculationParams(name, med.logica_js || '')
           };
           
+          // Extrair o nome base do medicamento
+          const baseName = extractBaseName(name);
+          const baseSlug = slugify(baseName);
+          
+          // Adicionar ao grupo de medicamentos com o mesmo nome base
+          if (!medicationGroupsMap[categorySlug][baseSlug]) {
+            medicationGroupsMap[categorySlug][baseSlug] = [];
+          }
+          medicationGroupsMap[categorySlug][baseSlug].push(medication);
+          
+          // Também adicionar à lista plana de medicamentos
           categoriesMap[categorySlug].push(medication);
         });
       }
@@ -365,6 +397,10 @@ export function organizeMedicationsByCategory(medicationsData: any): MockMedicat
         categoriesMap[targetCategorySlug] = [];
       }
       
+      if (!medicationGroupsMap[targetCategorySlug]) {
+        medicationGroupsMap[targetCategorySlug] = {};
+      }
+      
       // Remover o texto "(Ver descrição)" do nome do medicamento
       const cleanedName = med.name ? med.name.replace(/\s*\(Ver descrição\)\s*/g, '') : 'Medicamento sem nome';
 
@@ -395,6 +431,17 @@ export function organizeMedicationsByCategory(medicationsData: any): MockMedicat
         }
       };
       
+      // Extrair o nome base do medicamento
+      const baseName = extractBaseName(cleanedName);
+      const baseSlug = slugify(baseName);
+      
+      // Adicionar ao grupo de medicamentos com o mesmo nome base
+      if (!medicationGroupsMap[targetCategorySlug][baseSlug]) {
+        medicationGroupsMap[targetCategorySlug][baseSlug] = [];
+      }
+      medicationGroupsMap[targetCategorySlug][baseSlug].push(medication);
+      
+      // Também adicionar à lista plana de medicamentos
       categoriesMap[targetCategorySlug].push(medication);
     });
   }
@@ -416,6 +463,19 @@ export function organizeMedicationsByCategory(medicationsData: any): MockMedicat
       bgColorClass: 'bg-gray-100'
     };
 
+    // Criar grupos de medicamentos para esta categoria
+    const medicationGroups = Object.entries(medicationGroupsMap[categorySlug] || {}).map(([baseSlug, variants]) => {
+      // Só criar grupos para medicamentos com mais de uma variante
+      if (variants.length > 1) {
+        return {
+          baseName: variants[0].name.split(' ')[0], // Pegar o primeiro nome como nome base
+          baseSlug: baseSlug,
+          variants: variants
+        };
+      }
+      return null;
+    }).filter(Boolean) as MedicationGroup[];
+
     convertedData[categorySlug] = {
       title: categoryTitle,
       slug: categorySlug,
@@ -425,6 +485,8 @@ export function organizeMedicationsByCategory(medicationsData: any): MockMedicat
       medicationsCount: categoriesMap[categorySlug].length,
       lastUpdated: 'Jun/2025',
       medications: categoriesMap[categorySlug],
+      medicationGroups: medicationGroups.length > 0 ? medicationGroups : undefined,
+      showGrouped: medicationGroups.length > 0 // Mostrar agrupado se houver grupos
     };
   }
 

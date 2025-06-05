@@ -42,8 +42,17 @@ export interface CategoryInfo {
   lastUpdated: string; // e.g., "Jan/2025"
 }
 
+// Interface para agrupar medicamentos com o mesmo nome base
+export interface MedicationGroup {
+  baseName: string;  // Nome base do medicamento (ex: "Amoxicilina")
+  baseSlug: string;  // Slug do nome base
+  variants: Medication[];  // Variantes do medicamento (ex: diferentes concentrações)
+}
+
 export interface MedicationCategoryData extends CategoryInfo {
   medications: Medication[];
+  medicationGroups?: MedicationGroup[];  // Grupos de medicamentos com o mesmo nome base
+  showGrouped?: boolean;  // Flag para indicar se deve mostrar agrupado ou não
 }
 
 // Estrutura para os dados mock
