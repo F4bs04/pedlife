@@ -2519,7 +2519,7 @@
   },
   {
     "name": "Claritromicina 250mg/5ml (Xarope) > 3 meses",
-    "slug": "claritromicina-250mg5ml-xarope-3-meses",
+    "slug": "antibioticos-ev",
     "form": "Ver descrição",
     "application": "VO",
     "description": "Medicamento da categoria Antibióticos Vo.",
@@ -2539,7 +2539,7 @@
   },
   {
     "name": "Claritromicina 250mg/5ml (Xarope)",
-    "slug": "claritromicina-250mg5ml-xarope",
+    "slug": "antibioticos-ev",
     "form": "Ver descrição",
     "application": "VO",
     "description": "Medicamento da categoria Antibióticos Vo.",
@@ -2559,7 +2559,7 @@
   },
   {
     "name": "Nitrofurantoína 5 mg/mL (Xarope)",
-    "slug": "nitrofurantoina-5-mgml-xarope",
+    "slug": "antibioticos-ev",
     "form": "Ver descrição",
     "application": "VO",
     "description": "Medicamento da categoria Antibióticos Vo.",
@@ -2579,7 +2579,7 @@
   },
   {
     "name": "Nitrofurantoína 100mg (comprimido)",
-    "slug": "nitrofurantoina-100mg-comprimido",
+    "slug": "antibioticos-ev",
     "form": "Ver descrição",
     "application": "Desconhecida",
     "description": "Medicamento da categoria Antibióticos Vo.",
@@ -2599,7 +2599,7 @@
   },
   {
     "name": "Metronidazol 200mg/5ml (Xarope)",
-    "slug": "metronidazol-200mg5ml-xarope",
+    "slug": "antibioticos-ev",
     "form": "Ver descrição",
     "application": "VO",
     "description": "Medicamento da categoria Antibióticos Vo.",
@@ -2619,7 +2619,7 @@
   },
   {
     "name": "Sulfametoxazol/Trimetoprima 200mg + 40mg/5ml (Xarope)",
-    "slug": "sulfametoxazol-trimetoprima-200mg-40mg5ml-xarope",
+    "slug": "antibioticos-ev",
     "form": "Ver descrição",
     "application": "VO",
     "description": "Medicamento da categoria Antibióticos Vo.",
@@ -2639,7 +2639,7 @@
   },
   {
     "name": "Sulfametoxazol/Trimetoprima 400mg + 80mg/5ml (Xarope)",
-    "slug": "sulfametoxazol-trimetoprima-400mg-80mg5ml-xarope",
+    "slug": "antibioticos-ev",
     "form": "Ver descrição",
     "application": "VO",
     "description": "Medicamento da categoria Antibióticos Vo.",
@@ -2659,7 +2659,7 @@
   },
   {
     "name": "Cefadroxila 250mg/5ml (xarope)",
-    "slug": "cefadroxila-250mg5ml-xarope",
+    "slug": "antibioticos-ev",
     "form": "Ver descrição",
     "application": "VO",
     "description": "Medicamento da categoria Antibióticos Vo.",
@@ -2679,7 +2679,7 @@
   },
   {
     "name": "Cefadroxila 500mg/5ml (xarope)",
-    "slug": "cefadroxila-500mg5ml-xarope",
+    "slug": "antibioticos-ev",
     "form": "Ver descrição",
     "application": "VO",
     "description": "Medicamento da categoria Antibióticos Vo.",
@@ -2699,7 +2699,7 @@
   },
   {
     "name": "Nalidíxico (Wintomylon®) 50 mg/mL - VO",
-    "slug": "nalidixico-wintomylon-50-mgml-vo",
+    "slug": "antibioticos-ev",
     "form": "Ver descrição",
     "application": "VO",
     "description": "Medicamento da categoria Antibióticos Vo.",
