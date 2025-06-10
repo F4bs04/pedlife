@@ -88,6 +88,15 @@ function generateDetailedCalculation(medication: Medication, weight: number, age
   }
 }
 import { MedicationCategoryData, DosageCalculationParams, Medication } from '@/types/medication';
+import { evaluateJsLogic } from '@/data/mockMedications';
+
+// Interface para dados de dosagem analisados
+interface ParsedDose {
+  amount: string;
+  route?: string;
+  period?: string;
+  frequency?: string;
+}
 
 // New component imports
 import MedicationNotFound from '@/components/platform/calculator/MedicationNotFound';
@@ -112,8 +121,57 @@ interface CalculationData {
   calculatedDoseText: string;
   calculationTime: string;
   calculationDate: string;
-  detailedCalculation?: string; // Adicionando campo para explicação detalhada do cálculo
+  detailedCalculation?: string;
+  parsedDose?: ParsedDose;
 }
+
+// Função para analisar o texto de dosagem e extrair informações estruturadas
+const parseDoseText = (doseText: string, medication: Medication): ParsedDose => {
+  // Inicializar objeto de retorno
+  const parsedDose: ParsedDose = {
+    amount: ""
+  };
+  
+  // Extrair a quantidade da dose
+  const doseMatch = doseText.match(/Dose:\s*([\d,.]+\s*(?:ml|mL|mg|g|mcg|UI|unidades|ampola|ampolas|comprimido|comprimidos|cápsula|cápsulas|gota|gotas|aplicação|aplicações|dose|doses|adesivo|adesivos|inalação|inalações|spray|sprays|supositório|supositórios)(?:\/[\w]+)?)/i);
+  if (doseMatch && doseMatch[1]) {
+    parsedDose.amount = doseMatch[1].trim();
+  } else {
+    // Se não encontrar um padrão específico, tentar extrair após "Dose: "
+    const simpleDoseMatch = doseText.match(/Dose:\s*([^.\n]+)/i);
+    if (simpleDoseMatch && simpleDoseMatch[1]) {
+      parsedDose.amount = simpleDoseMatch[1].trim();
+    } else {
+      // Fallback: usar o texto completo como quantidade
+      parsedDose.amount = doseText;
+    }
+  }
+  
+  // Extrair via de administração
+  parsedDose.route = medication.application || "";
+  
+  // Extrair período de tratamento
+  if (medication.dosageInformation?.treatmentDuration) {
+    parsedDose.period = medication.dosageInformation.treatmentDuration;
+  } else {
+    const periodMatch = doseText.match(/(?:por|durante|tratamento\s+(?:por|de))\s+([\d]+\s*(?:dia|dias|semana|semanas|mês|meses))/i);
+    if (periodMatch && periodMatch[1]) {
+      parsedDose.period = periodMatch[1].trim();
+    }
+  }
+  
+  // Extrair frequência
+  if (medication.dosageInformation?.doseInterval) {
+    parsedDose.frequency = medication.dosageInformation.doseInterval;
+  } else {
+    const frequencyMatch = doseText.match(/(?:a\s+cada|de|em)\s+([\d]+\s*(?:em|a\s+cada)?\s*(?:hora|horas|h|dia|dias|vez|vezes)(?:\s+ao\s+dia)?)/i);
+    if (frequencyMatch && frequencyMatch[1]) {
+      parsedDose.frequency = frequencyMatch[1].trim();
+    }
+  }
+  
+  return parsedDose;
+};
 
 const MedicationCalculatorPage: React.FC = () => {
   const { categorySlug, medicationSlug } = useParams<{ categorySlug: string; medicationSlug: string }>();
@@ -304,29 +362,86 @@ const MedicationCalculatorPage: React.FC = () => {
     // Use the medication's calculation logic if available
     else if (medication.calculationParams?.logica_js) {
       try {
-        // Create a function that evaluates the logica_js with the provided parameters
+        // Usar a função evaluateJsLogic para calcular a dose com segurança
         const peso = values.weight;
         const idade = values.age;
-        // Remove the surrounding quotes from logica_js
-        const logicaJs = medication.calculationParams.logica_js.replace(/^"|"$/g, '');
-        // Evaluate the calculation logic
-        const calculatedDose = eval(logicaJs);
         
-        // Exibir o resultado sem a mensagem de erro
+        // Calcular a dose usando a função evaluateJsLogic importada
+        let calculatedDose;
+        try {
+          calculatedDose = evaluateJsLogic(medication.calculationParams.logica_js, peso);
+        } catch (evalError) {
+          console.error('Erro ao avaliar lógica de cálculo:', evalError);
+          calculatedDose = 'Erro no cálculo';
+        }
+        
+        // Exibir o resultado com a dose e frequência
         const formText = medication.form && medication.form.trim() !== '' ? `(${medication.form})` : '';
-        doseResultText = `Cálculo para ${medication.name} ${formText}: Para peso ${values.weight}kg e idade ${values.age} anos. Dose: ${calculatedDose}`;
+        
+        // Adicionar frequência se disponível
+        let frequencia = '';
+        if (medication.dosageInformation?.doseInterval) {
+          frequencia = ` a cada ${medication.dosageInformation.doseInterval}`;
+        }
+        
+        // Verificar se calculatedDose já contém a unidade (mL, mg, etc)
+        // Se não contiver, adicionar a unidade apropriada baseada na forma do medicamento
+        let doseComUnidade = calculatedDose;
+        if (!doseComUnidade.includes('mL') && !doseComUnidade.includes('mg') && 
+            !doseComUnidade.includes('g') && !doseComUnidade.includes('mcg')) {
+          if (medication.form?.toLowerCase().includes('xarope') || 
+              medication.form?.toLowerCase().includes('suspen') || 
+              medication.form?.toLowerCase().includes('solu')) {
+            doseComUnidade += ' mL';
+          } else if (medication.form?.toLowerCase().includes('comprimido')) {
+            doseComUnidade += ' comprimido(s)';
+          }
+        }
+        
+        doseResultText = `Dar a dose de ${doseComUnidade}${frequencia}`;
+        
+        // Adicionar observação ou restrição se houver
+        if (medication.alerts && medication.alerts.length > 0) {
+          doseResultText += ` (${medication.alerts[0]})`;
+        } else if (medication.dosageInformation?.administrationNotes) {
+          doseResultText += ` (${medication.dosageInformation.administrationNotes})`;
+        }
       } catch (error) {
         console.error('Error evaluating medication calculation logic:', error);
-        // Exibir mensagem sem indicar erro
+        // Tentar exibir alguma informação útil mesmo em caso de erro
         const formText = medication.form && medication.form.trim() !== '' ? `(${medication.form})` : '';
-        doseResultText = `Cálculo para ${medication.name} ${formText}: Para peso ${values.weight}kg e idade ${values.age} anos. Consulte um profissional de saúde para orientações específicas.`;
+        
+        let frequencia = '';
+        if (medication.dosageInformation?.doseInterval) {
+          frequencia = ` a cada ${medication.dosageInformation.doseInterval}`;
+        }
+        
+        if (medication.dosageInformation?.usualDose) {
+          doseResultText = `${medication.dosageInformation.usualDose}`;
+        } else {
+          doseResultText = `Consulte um profissional de saúde para orientações específicas${frequencia}.`;
+        }
       }
     }
     // Fallback if no calculation logic is available
     else {
       const formText = medication.form && medication.form.trim() !== '' ? `(${medication.form})` : '';
-      doseResultText = `Cálculo para ${medication.name} ${formText}: Para peso ${values.weight}kg e idade ${values.age} anos. Consulte um profissional de saúde para orientações específicas.`;
+      
+      // Tentar exibir alguma informação útil mesmo sem lógica de cálculo
+      let frequencia = '';
+      if (medication.dosageInformation?.doseInterval) {
+        frequencia = ` a cada ${medication.dosageInformation.doseInterval}`;
+      }
+      
+      if (medication.dosageInformation?.usualDose) {
+        doseResultText = `${medication.dosageInformation.usualDose}`;
+      } else {
+        doseResultText = `Consulte um profissional de saúde para orientações específicas${frequencia}.`;
+      }
     }
+    
+    // Analisar o texto de dosagem para extrair informações estruturadas
+    const parsedDose = parseDoseText(doseResultText, medication);
     
     setCalculationData({
       weight: values.weight,
@@ -334,7 +449,8 @@ const MedicationCalculatorPage: React.FC = () => {
       calculatedDoseText: doseResultText,
       calculationDate: format(new Date(), "dd/MM/yyyy"),
       calculationTime: format(new Date(), "HH:mm"),
-      detailedCalculation: detailedCalculation, // Adicionando a explicação detalhada
+      detailedCalculation: detailedCalculation,
+      parsedDose: parsedDose, // Adicionar os dados de dosagem analisados
     });
   };
 

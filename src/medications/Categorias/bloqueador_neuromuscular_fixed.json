@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Brometo de Rocurônio 10mg/ml (EV)",
+    "slug": "bloqueador-neuromuscular",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria Bloqueador Neuromuscular - Relaxante muscular não despolarizante",
+    "alerts": ["Paralisia sem sedação", "Ventilação mecânica obrigatória"],
+    "commonBrandNames": "Esmeron",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 1 mL diluído em 10 mL de SF 0,9%. Fazer em bolus por via EV.",
+      "doseInterval": "Dose única para intubação",
+      "treatmentDuration": "Efeito de 30-60 minutos",
+      "administrationNotes": "Ventilação mecânica obrigatória"
+    },
+    "calculationParams": {
+      "type": "brometo-de-rocuronio-10mgml-ev",
+      "logica_js": "\"Administrar \" + Math.round(peso/10, 1) + \" mL diluído em \" + Math.ceil(Math.round(peso/10, 1)*2) + \" mL de SF 0,9%. Fazer em bolus por via EV.\""
+    }
+  },
+  {
+    "name": "Succinilcolina 100mg/Pó (EV) - Reconstituir em 10 ml de AD",
+    "slug": "bloqueador-neuromuscular",
+    "form": "Pó para reconstituição",
+    "application": "EV",
+    "description": "Medicamento da categoria Bloqueador Neuromuscular - Relaxante muscular despolarizante",
+    "alerts": ["Paralisia sem sedação", "Hipercalemia", "Hipertermia maligna"],
+    "commonBrandNames": "Quelicin",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 10 mL de AD. Administrar 2 mL por via EV em bolus.",
+      "doseInterval": "Dose única para intubação",
+      "treatmentDuration": "Efeito de 5-10 minutos",
+      "administrationNotes": "Ventilação mecânica obrigatória"
+    },
+    "calculationParams": {
+      "type": "succinilcolina-100mg-po-ev-reconstituir-em-10ml-de-ad",
+      "logica_js": "\"Reconstituir 1 frasco(s) com 10 mL de AD. Administrar \" + Math.round((peso*2<=100 ? peso*2 : 100)/10, 1) + \" mL por via EV em bolus.\""
+    }
+  }
+]

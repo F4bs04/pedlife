@@ -1,0 +1,202 @@
+[
+  {
+    "name": "Midazolam 5mg/ml (EV ou IM)",
+    "slug": "anticonvulsivantes",
+    "form": "Solução injetável",
+    "application": "EV/IM/Nasal/Retal",
+    "description": "Medicamento da categoria Anticonvulsivantes - Benzodiazepínico de ação rápida",
+    "alerts": ["Depressão respiratória", "Monitorar sinais vitais"],
+    "commonBrandNames": "Dormium",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar por via EV ou IM: 0,4 mL/dose, repetir até 0,8 mL (dose total). | EV contínuo: 0,4 mL/hora. | Nasal: 0,8 mL/dose. | Retal: 2 mL/dose.",
+      "doseInterval": "SOS",
+      "treatmentDuration": "Dose única ou infusão contínua",
+      "administrationNotes": "Monitorar via aérea"
+    },
+    "calculationParams": {
+      "type": "midazolam-5mgml-ev-ou-im",
+      "logica_js": "\"Administrar por via EV ou IM: \"+Math.round((peso*0.2<=5 ? peso*0.2/5 : 5/5), 2)+\" mL/dose, repetir até \"+Math.round((peso*0.4<=10 ? peso*0.4/5 : 10/5), 2)+\" mL (dose total). | EV contínuo: \"+Math.round((peso*0.2<=10 ? peso*0.2/5 : 10/5), 2)+\" mL/hora. | Nasal: \"+Math.round((peso*0.4<=10 ? peso*0.4/5 : 10/5), 2)+\" mL/dose. | Retal: \"+Math.round((peso*1<=10 ? peso*1/5 : 10/5), 2)+\" mL/dose.\""
+    }
+  },
+  {
+    "name": "Diazepam 5mg/ml (EV)",
+    "slug": "anticonvulsivantes",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria Anticonvulsivantes - Benzodiazepínico primeira linha",
+    "alerts": ["Depressão respiratória", "Administração lenta"],
+    "commonBrandNames": "Valium",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,4 mL diluído em 10 mL de SF 0,9%. Administrar por via EV bem lento | Pode repetir até 3 vezes com intervalo de 5 minutos.",
+      "doseInterval": "SOS",
+      "treatmentDuration": "Até 3 doses",
+      "administrationNotes": "Administração bem lenta"
+    },
+    "calculationParams": {
+      "type": "diazepam-5mgml-ev",
+      "logica_js": "\"Administrar \"+Math.round((peso*0.2<=20 ? peso*0.2/5 : 20/5), 1)+\" mL diluído em 10 mL de SF 0,9%. Administrar por via EV bem lento | Pode repetir até 3 vezes com intervalo de 5 minutos.\""
+    }
+  },
+  {
+    "name": "Fenitoína 50mg/ml - Ampola 5ml (EV)",
+    "slug": "anticonvulsivantes",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria Anticonvulsivantes - Segunda linha para status epilepticus",
+    "alerts": ["Monitorização cardíaca obrigatória", "Arritmias"],
+    "commonBrandNames": "Hidantal",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 4 mL diluído em 100 mL de SF 0,9%. Correr em 20 minutos a uma taxa de 0,2 mL/min. Pode repetir mais uma dose de 2 mL. Se necessário, caso a convulsão não melhore. Observação: É necessária monitorização cardíaca cuidadosa durante e após a administração intravenosa.",
+      "doseInterval": "SOS",
+      "treatmentDuration": "Dose de ataque + dose adicional se necessário",
+      "administrationNotes": "Monitorização cardíaca obrigatória"
+    },
+    "calculationParams": {
+      "type": "fenitoina-50mgml-ampola-5ml-ev",
+      "logica_js": "\"Administrar \"+Math.round(Math.min(peso*20,1000)/50, 1)+\" mL diluído em 100 mL de SF 0,9%. Correr em 20 minutos a uma taxa de \"+Math.round(Math.min(peso*20,1000)/20/50, 2)+\" mL/min. Pode repetir mais uma dose de \"+Math.round(Math.min(peso*10,500)/50, 1)+\" mL. Se necessário, caso a convulsão não melhore. Observação: É necessária monitorização cardíaca cuidadosa durante e após a administração intravenosa.\""
+    }
+  },
+  {
+    "name": "Fenobarbital 100mg/ml - Ampola 2ml (EV)",
+    "slug": "anticonvulsivantes",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria Anticonvulsivantes - Terceira linha para status epilepticus",
+    "alerts": ["Depressão respiratória", "Suporte ventilatório"],
+    "commonBrandNames": "Gardenal",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 2 mL diluído em 100 mL de SF 0,9%. Correr em 20 minutos a uma taxa de 0,1 mL/min. Pode repetir mais uma dose de 1 mL caso a convulsão não melhore após 10 a 15 minutos. Observação: Suporte respiratório adicional pode ser necessário, especialmente ao maximizar a dose de ataque ou com terapia sedativa concomitante.",
+      "doseInterval": "SOS",
+      "treatmentDuration": "Dose de ataque + dose adicional se necessário",
+      "administrationNotes": "Suporte respiratório pode ser necessário"
+    },
+    "calculationParams": {
+      "type": "fenobarbital-100mgml-ampola-2ml-ev",
+      "logica_js": "\"Administrar \"+Math.round(Math.min(peso*20,1000)/100, 1)+\" mL diluído em 100 mL de SF 0,9%. Correr em 20 minutos a uma taxa de \"+Math.round(Math.min(peso*20,1000)/20/100, 2)+\" mL/min. Pode repetir mais uma dose de \"+Math.round(Math.min(peso*10,500)/100, 1)+\" mL caso a convulsão não melhore após 10 a 15 minutos. Observação: Suporte respiratório adicional pode ser necessário, especialmente ao maximizar a dose de ataque ou com terapia sedativa concomitante.\""
+    }
+  },
+  {
+    "name": "Fenobarbital 40mg/ml (Gotas) - VO",
+    "slug": "anticonvulsivantes",
+    "form": "Solução oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Anticonvulsivantes - Manutenção oral",
+    "alerts": ["Sonolência", "Depressão do SNC"],
+    "commonBrandNames": "Gardenal",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 10 gotas por via oral de 24/24 horas. Uma vez ao dia.",
+      "doseInterval": "24 horas",
+      "treatmentDuration": "Longo prazo",
+      "administrationNotes": "Administrar sempre no mesmo horário"
+    },
+    "calculationParams": {
+      "type": "fenobarbital-40mgml-gotas-vo",
+      "logica_js": "\"Administrar \"+Math.round((peso*5<=200 ? peso*5/2 : 200/2), 0)+\" gotas por via oral de 24/24 horas. Uma vez ao dia.\""
+    }
+  },
+  {
+    "name": "Ácido Valpróico 200mg/ml (Gotas) - VO",
+    "slug": "anticonvulsivantes",
+    "form": "Solução oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Anticonvulsivantes - Amplo espectro",
+    "alerts": ["Hepatotoxicidade", "Teratogênico"],
+    "commonBrandNames": "Depakene",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 5 gotas por via oral de 12/12 horas.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "Longo prazo",
+      "administrationNotes": "Monitorar enzimas hepáticas"
+    },
+    "calculationParams": {
+      "type": "acido-valproico-200mgml-gotas-vo",
+      "logica_js": "\"Administrar \"+Math.round((peso*20<=1000 ? peso*20/40 : 1000/40), 0)+\" gotas por via oral de 12/12 horas.\""
+    }
+  },
+  {
+    "name": "Levetiracetam 100mg/ml (Xarope) - VO",
+    "slug": "anticonvulsivantes",
+    "form": "Solução oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Anticonvulsivantes - Terceira geração",
+    "alerts": ["Alterações comportamentais"],
+    "commonBrandNames": "Keppra",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 2,5 mL por via oral de 12/12 horas.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "Longo prazo",
+      "administrationNotes": "Pode ser administrado com alimentos"
+    },
+    "calculationParams": {
+      "type": "levetiracetam-100mgml-xarope-vo",
+      "logica_js": "\"Administrar \"+Math.round((peso*20<=1000 ? peso*20/40 : 1000/40), 1)+\" mL por via oral de 12/12 horas.\""
+    }
+  },
+  {
+    "name": "Carbamazepina 20mg/ml (Xarope) - VO",
+    "slug": "anticonvulsivantes",
+    "form": "Suspensão oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Anticonvulsivantes - Crises focais",
+    "alerts": ["Leucopenia", "Interações medicamentosas"],
+    "commonBrandNames": "Tegretol",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 2,5 mL por via oral de 8/8 horas.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "Longo prazo",
+      "administrationNotes": "Administrar com alimentos"
+    },
+    "calculationParams": {
+      "type": "carbamazepina-20mgml-xarope-vo",
+      "logica_js": "\"Administrar \"+Math.round((peso*10<=400 ? peso*10/60 : 400/60), 1)+\" mL por via oral de 8/8 horas.\""
+    }
+  },
+  {
+    "name": "Topiramato 25mg/ml (Xarope) - VO",
+    "slug": "anticonvulsivantes",
+    "form": "Solução oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Anticonvulsivantes - Adjuvante",
+    "alerts": ["Acidose metabólica", "Nefrolitíase"],
+    "commonBrandNames": "Topamax",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 2 mL por via oral de 12/12 horas.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "Longo prazo",
+      "administrationNotes": "Hidratação adequada"
+    },
+    "calculationParams": {
+      "type": "topiramato-25mgml-xarope-vo",
+      "logica_js": "\"Administrar \"+Math.round((peso*3<=150 ? peso*3/50 : 150/50), 1)+\" mL por via oral de 12/12 horas.\""
+    }
+  },
+  {
+    "name": "Lorazepam 2mg/ml (EV)",
+    "slug": "anticonvulsivantes",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria Anticonvulsivantes - Benzodiazepínico de ação prolongada",
+    "alerts": ["Depressão respiratória", "Sedação prolongada"],
+    "commonBrandNames": "Ativan",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,5 mL por via EV sem diluição. Pode repetir após 5 minutos se necessário.",
+      "doseInterval": "SOS",
+      "treatmentDuration": "Até 2 doses",
+      "administrationNotes": "Administração lenta"
+    },
+    "calculationParams": {
+      "type": "lorazepam-2mgml-ev",
+      "logica_js": "\"Administrar \"+Math.round((peso*0.1<=4 ? peso*0.1/2 : 4/2), 1)+\" mL por via EV sem diluição. Pode repetir após 5 minutos se necessário.\""
+    }
+  }
+]

@@ -1,0 +1,262 @@
+[
+  {
+    "name": "Ondansetrona (4mg/Filme)",
+    "slug": "antiemeticos",
+    "form": "Filme orodispersível",
+    "application": "VO",
+    "description": "Medicamento da categoria Antieméticos - Antagonista 5-HT3",
+    "alerts": ["Prolongamento QT", "Constipação"],
+    "commonBrandNames": "Zofran",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 0,5 Filme por via oral de 8/8 horas.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "Até resolução dos sintomas",
+      "administrationNotes": "Colocar na língua até dissolver"
+    },
+    "calculationParams": {
+      "type": "ondansetrona-4mg-filme",
+      "logica_js": "\"Tomar \" + Math.max(0.5, Math.round((peso*0.2<=4 ? peso*0.2/4 : 1), 1)) + \" Filme por via oral de 8/8 horas.\""
+    }
+  },
+  {
+    "name": "Ondansetrona 4mg/5ml (VO - Xarope)",
+    "slug": "antiemeticos",
+    "form": "Solução oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Antieméticos - Antagonista 5-HT3",
+    "alerts": ["Prolongamento QT", "Constipação"],
+    "commonBrandNames": "Zofran",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 1,3 mL por via oral de 8/8 horas.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "Até resolução dos sintomas",
+      "administrationNotes": "Pode ser administrado com ou sem alimentos"
+    },
+    "calculationParams": {
+      "type": "ondansetrona-4mg-5ml-vo-xarope",
+      "logica_js": "\"Tomar \" + Math.round((peso*0.1<=4 ? peso*0.1 : 4)/0.8, 1) + \" mL por via oral de 8/8 horas.\""
+    }
+  },
+  {
+    "name": "Ondansetrona 2mg/ml (EV/IM)",
+    "slug": "antiemeticos",
+    "form": "Solução injetável",
+    "application": "EV/IM",
+    "description": "Medicamento da categoria Antieméticos - Antagonista 5-HT3",
+    "alerts": ["Prolongamento QT", "Administração lenta"],
+    "commonBrandNames": "Zofran",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 1 mL por via IM ou EV diluído em 50 mL de SF 0,9% ou SG 5% a cada 8 horas.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "Até resolução dos sintomas",
+      "administrationNotes": "Infundir em 15 minutos se EV"
+    },
+    "calculationParams": {
+      "type": "ondansetrona-2mgml-ev-im",
+      "logica_js": "\"Administrar \" + Math.round((peso*0.2<=4 ? peso*0.2 : 4)/2, 1) + \" mL por via IM ou (EV diluído em 50 mL de SF 0,9% ou SG 5%) a cada 8 horas\""
+    }
+  },
+  {
+    "name": "Bromoprida 4mg/ml (Gotas)",
+    "slug": "antiemeticos",
+    "form": "Solução oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Antieméticos - Procinético",
+    "alerts": ["Efeitos extrapiramidais", "Não usar < 1 ano"],
+    "commonBrandNames": "Plamet",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 10 gotas por via oral de 8/8 horas.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "5-7 dias",
+      "administrationNotes": "Administrar 30 minutos antes das refeições"
+    },
+    "calculationParams": {
+      "type": "bromoprida-4mgml-gotas",
+      "logica_js": "\"Tomar \" + Math.round(Math.min(peso, 20), 0) + \" gotas por via oral de 8/8 horas.\""
+    }
+  },
+  {
+    "name": "Bromoprida 5mg/ml (EV)",
+    "slug": "antiemeticos",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria Antieméticos - Procinético",
+    "alerts": ["Efeitos extrapiramidais", "Administração lenta"],
+    "commonBrandNames": "Plamet",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,4 mL por via EV diluído em 50 mL de SF 0,9% ou SG 5% a cada 8 horas",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "5-7 dias",
+      "administrationNotes": "Infundir em 15 minutos"
+    },
+    "calculationParams": {
+      "type": "bromoprida-5mgml-ev",
+      "logica_js": "\"Administrar \" + Math.round(Math.min((peso*0.2<=20 ? (peso*0.2/1)/(5/1) : 20/(5/1)), 4), 1) + \" mL por via EV diluído em 50 mL de SF 0,9% ou SG 5% a cada 8 horas\""
+    }
+  },
+  {
+    "name": "Metoclopramida 4mg/ml (Gotas) > 2 anos",
+    "slug": "antiemeticos",
+    "form": "Solução oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Antieméticos - Procinético (contraindicado < 2 anos)",
+    "alerts": ["Efeitos extrapiramidais", "Contraindicado < 2 anos"],
+    "commonBrandNames": "Plasil",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 8 gotas por via oral de 8/8 horas.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "5-7 dias",
+      "administrationNotes": "Administrar 30 minutos antes das refeições"
+    },
+    "calculationParams": {
+      "type": "metoclopramida-4mgml-gotas-2-anos",
+      "logica_js": "\"Tomar \" + Math.round((peso*0.15<=10/3 ? (peso*0.15)/0.2 : (10/3)/0.2), 0) + \" gotas por via oral de 8/8 horas.\""
+    }
+  },
+  {
+    "name": "Dramin-B6 25mg/ml (Gotas) > 2 Anos",
+    "slug": "antiemeticos",
+    "form": "Solução oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Antieméticos - Anti-histamínico",
+    "alerts": ["Sonolência", "Boca seca"],
+    "commonBrandNames": "Dramin B6",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 10 gotas por via oral de 6/6 horas.",
+      "doseInterval": "6 horas",
+      "treatmentDuration": "Até resolução dos sintomas",
+      "administrationNotes": "Pode causar sonolência"
+    },
+    "calculationParams": {
+      "type": "dramin-b6-25mgml-gotas-2-anos",
+      "logica_js": "\"Tomar \" + Math.round((idade<=6 ? Math.min(peso*1, 15) : (idade<=12 ? Math.min(peso*1, 30) : Math.min(peso*1, 80))), 0) + \" gotas por via oral de 6/6 horas.\""
+    }
+  },
+  {
+    "name": "Domperidona 1mg/ml (Xarope)",
+    "slug": "antiemeticos",
+    "form": "Suspensão oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Antieméticos - Procinético periférico",
+    "alerts": ["Arritmias cardíacas", "Prolongamento QT"],
+    "commonBrandNames": "Motilium",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 3 mL por via oral 30 minutos antes das refeições de 8/8 horas.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "5-7 dias",
+      "administrationNotes": "30 minutos antes das refeições"
+    },
+    "calculationParams": {
+      "type": "domperidona-1mgml-xarope",
+      "logica_js": "\"Tomar \" + Math.round(Math.min(peso*0.3, 10), 1) + \" mL por via oral 30 minutos antes das refeições de 8/8 horas.\""
+    }
+  },
+  {
+    "name": "Omeprazol 40 mg (EV) - Reconstituir em 10 ml de AD",
+    "slug": "antiemeticos",
+    "form": "Pó para reconstituição",
+    "application": "EV",
+    "description": "Medicamento da categoria Antieméticos/Antiácido - Inibidor de bomba de prótons",
+    "alerts": ["Hipocalcemia", "Hipomagnesemia"],
+    "commonBrandNames": "Losec",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 10 mL de diluente. Administrar 2,5 mL EV uma vez ao dia.",
+      "doseInterval": "24 horas",
+      "treatmentDuration": "5-14 dias",
+      "administrationNotes": "Administração lenta"
+    },
+    "calculationParams": {
+      "type": "omeprazol-40mg-ev-reconstituir-em-10-ml-de-ad",
+      "logica_js": "\"Reconstituir \"+Math.ceil((peso*1>40 ? 40 : peso*1)/40)+\" frasco(s) com 10 mL de diluente. Administrar \"+Math.round((peso*1>40 ? 40 : peso*1)/4, 1)+\" mL EV uma vez ao dia.\""
+    }
+  },
+  {
+    "name": "Omeprazol 4mg/ml (Xarope) VO/SNG",
+    "slug": "antiemeticos",
+    "form": "Suspensão oral",
+    "application": "VO/SNG",
+    "description": "Medicamento da categoria Antieméticos/Antiácido - Inibidor de bomba de prótons",
+    "alerts": ["Administrar em jejum"],
+    "commonBrandNames": "Losec MUPS",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 2,5 mL por via oral ou SNG em dose única pela manhã.",
+      "doseInterval": "Dose única diária",
+      "treatmentDuration": "14-28 dias",
+      "administrationNotes": "Administrar em jejum"
+    },
+    "calculationParams": {
+      "type": "omeprazol-4mgml-xarope-vo-sng",
+      "logica_js": "\"Tomar \" + Math.round(Math.min(peso*1, 40)/4, 1) + \" mL por via oral ou SNG em dose única pela manhã.\""
+    }
+  },
+  {
+    "name": "Simeticona 75 mg/mL",
+    "slug": "antiemeticos",
+    "form": "Emulsão oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Antieméticos/Antiflatulento - Antiespumante",
+    "alerts": ["Seguro em todas as idades"],
+    "commonBrandNames": "Luftal",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 13 gotas por via oral de 8/8 horas. Por 3 a 5 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "3-5 dias",
+      "administrationNotes": "Pode ser administrado com mamadeira"
+    },
+    "calculationParams": {
+      "type": "simeticona-75-mgml",
+      "logica_js": "(idade>=12 ? \"Tomar 13 gotas por via oral de 8/8 horas. Por 3 a 5 dias.\" : (idade<1 ? \"Tomar de 3 a 5 gotas por via oral de 8/8 horas. Por 3 a 5 dias.\" : \"Tomar de 5 a 10 gotas por via oral de 8/8 horas. Por 3 a 5 dias.\"))"
+    }
+  },
+  {
+    "name": "Ranitidina 15mg/ml (Xarope)",
+    "slug": "antiemeticos",
+    "form": "Solução oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Antieméticos/Antiácido - Antagonista H2",
+    "alerts": ["Retirado do mercado em muitos países"],
+    "commonBrandNames": "Antak, Label",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar dose variável de acordo com peso, de 0,5 a 7 mL por via oral em intervalos de 12/12 horas.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "14-28 dias",
+      "administrationNotes": "Pode ser administrado com alimentos"
+    },
+    "calculationParams": {
+      "type": "ranitidina-15mgml-xarope",
+      "logica_js": "(peso<=4 ? \"Tomar 0,5 mL por via oral de 12/12 horas.\" : (peso<=7 ? \"Tomar 1 mL por via oral de 12/12 horas.\" : (peso<=10 ? \"Tomar 1,5 mL por via oral de 12/12 horas.\" : (peso<=13 ? \"Tomar 2 mL por via oral de 12/12 horas.\" : (peso<=16 ? \"Tomar 2,5 mL por via oral de 12/12 horas.\" : (peso<=19 ? \"Tomar 3 mL por via oral de 12/12 horas.\" : (peso<=22 ? \"Tomar 3,5 mL por via oral de 12/12 horas.\" : (peso<=25 ? \"Tomar 4 mL por via oral de 12/12 horas.\" : (peso<=28 ? \"Tomar 4,5 mL por via oral de 12/12 horas.\" : (peso<=31 ? \"Tomar 5 mL por via oral de 12/12 horas.\" : (peso<=34 ? \"Tomar 5,5 mL por via oral de 12/12 horas.\" : (peso<=37 ? \"Tomar 6 mL por via oral de 12/12 horas.\" : (peso<=40 ? \"Tomar 6,5 mL por via oral de 12/12 horas.\" : \"Tomar 7 mL por via oral de 12/12 horas.\")))))))))))))"
+    }
+  },
+  {
+    "name": "Ranitidina 15mg/ml (Gotas)",
+    "slug": "antiemeticos",
+    "form": "Solução oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Antieméticos/Antiácido - Antagonista H2",
+    "alerts": ["Retirado do mercado em muitos países"],
+    "commonBrandNames": "Antak, Label",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 13 gotas por via oral de 8/8 horas.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "14-28 dias",
+      "administrationNotes": "Pode ser administrado com alimentos"
+    },
+    "calculationParams": {
+      "type": "ranitidina-15mgml-gotas",
+      "logica_js": "\"Tomar \" + Math.round(Math.min(peso*1, 90/3)/0.75, 0) + \" gotas por via oral de 8/8 horas.\""
+    }
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Acebrofilina 25 mg/5 mL",
+    "slug": "xaropes-tosse",
+    "form": "Xarope",
+    "application": "VO",
+    "description": "Medicamento da categoria Xaropes/Tosse - Mucolítico e broncodilatador",
+    "alerts": ["Pode causar agitação"],
+    "commonBrandNames": "Brondilat",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 6 mL por via oral de 8/8 horas. Por 5 a 7 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "5-7 dias",
+      "administrationNotes": "Administrar com alimentos"
+    },
+    "calculationParams": {
+      "type": "acebrofilina-25-mg5-ml",
+      "logica_js": "\"Tomar \"+Math.round(Math.min(peso*1*5, 30)/5, 1)+\" mL por via oral de 8/8 horas. Por 5 a 7 dias.\""
+    }
+  },
+  {
+    "name": "Hedera helix (Extrato Seco de Hera)",
+    "slug": "xaropes-tosse",
+    "form": "Xarope fitoterápico",
+    "application": "VO",
+    "description": "Medicamento da categoria Xaropes/Tosse - Expectorante natural",
+    "alerts": ["Contraindicado < 2 anos"],
+    "commonBrandNames": "Herbax",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 2 mL por via oral de 8/8 horas. Por 7 a 14 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "7-14 dias",
+      "administrationNotes": "Natural, sem açúcar"
+    },
+    "calculationParams": {
+      "type": "hedera-helix-extrato-seco-de-hera",
+      "logica_js": "(idade<2 ? \"Contraindicado para crianças menores de 2 anos.\" : (idade>=2 && idade<=5 ? \"Tomar 1 mL por via oral de 8/8 horas. Por 7 a 14 dias.\" : (idade>=6 && idade<=12 ? \"Tomar 2 mL por via oral de 8/8 horas. Por 7 a 14 dias.\" : \"Verificar faixa de idade adequada.\")))"
+    }
+  },
+  {
+    "name": "Levodropropizina 30 mg/5 mL",
+    "slug": "xaropes-tosse",
+    "form": "Xarope",
+    "application": "VO",
+    "description": "Medicamento da categoria Xaropes/Tosse - Antitussígeno periférico",
+    "alerts": ["Não causa depressão respiratória"],
+    "commonBrandNames": "Antux",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 3,4 mL por via oral de 8/8 horas. Por 5 a 7 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "5-7 dias",
+      "administrationNotes": "Seguro em crianças"
+    },
+    "calculationParams": {
+      "type": "levodropropizina-30-mg5-ml",
+      "logica_js": "\"Tomar \"+Math.round(Math.min(peso*2, (peso<=30 ? 60 : 180))*5/30, 1)+\" mL por via oral de 8/8 horas. Por 5 a 7 dias.\""
+    }
+  },
+  {
+    "name": "Carbocisteína 20 mg/mL",
+    "slug": "xaropes-tosse",
+    "form": "Xarope",
+    "application": "VO",
+    "description": "Medicamento da categoria Xaropes/Tosse - Mucolítico que fluidifica o muco",
+    "alerts": ["Aumentar ingesta hídrica"],
+    "commonBrandNames": "Mucofan",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 3,4 mL por via oral de 8/8 horas por 5 a 10 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "5-10 dias",
+      "administrationNotes": "Beber bastante líquido"
+    },
+    "calculationParams": {
+      "type": "carbocisteina-20-mgml",
+      "logica_js": "\"Tomar \"+Math.round(Math.min(peso*20/3, (idade<=5 ? 200/3 : 300/3))/20, 1)+\" mL por via oral de 8/8 horas por 5 a 10 dias.\""
+    }
+  }
+]

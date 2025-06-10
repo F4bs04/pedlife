@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Amoxicilina 250mg/5ml (Xarope)",
+    "slug": "antibiotico-vo",
+    "form": "Suspensão oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Antibiótico VO (Cálculo: 50mg/kg/dia dividido em 3 doses)",
+    "alerts": ["Observar reações alérgicas"],
+    "commonBrandNames": "Amoxil, Novamox",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 3,3 mL por via oral de 8/8 horas por 7 a 10 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "7-10 dias",
+      "administrationNotes": "Administrar com ou sem alimentos"
+    },
+    "calculationParams": {
+      "type": "amoxicilina-250mg5ml-xarope",
+      "logica_js": "\"Tomar \" + Math.round((peso*50<=1750 ? (peso*50/3)/(250/5) : (1750/3)/(250/5)), 1) + \" mL por via oral de 8/8 horas por 7 a 10 dias.\""
+    }
+  },
+  {
+    "name": "Amoxicilina Tri-hidratada 400mg/5ml (Xarope)",
+    "slug": "antibiotico-vo",
+    "form": "Suspensão oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Antibiótico VO (Cálculo: 50mg/kg/dia dividido em 3 doses)",
+    "alerts": ["Observar reações alérgicas"],
+    "commonBrandNames": "Amoxil BD, Novamox",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 2,1 mL por via oral de 8/8 horas por 7 a 10 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "7-10 dias",
+      "administrationNotes": "Administrar com ou sem alimentos"
+    },
+    "calculationParams": {
+      "type": "amoxicilina-tri-hidratada-400mg5ml-xarope",
+      "logica_js": "\"Tomar \" + Math.round((peso*50<=1750 ? (peso*50/3)/(400/5) : (1750/3)/(400/5)), 1) + \" mL por via oral de 8/8 horas por 7 a 10 dias.\""
+    }
+  },
+  {
+    "name": "Claritromicina 125mg/5ml (Xarope) > 3 meses",
+    "slug": "antibiotico-vo",
+    "form": "Suspensão oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Antibióticos VO (Cálculo: 7.5mg/kg/dose de 12/12 horas, máximo 500mg/dia)",
+    "alerts": ["Interações medicamentosas", "Não usar < 3 meses"],
+    "commonBrandNames": "Klaricid, Claritin",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 1,5 mL por via oral de 12/12 horas por 7 a 14 dias.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "7-14 dias",
+      "administrationNotes": "Administrar com alimentos"
+    },
+    "calculationParams": {
+      "type": "claritromicina-125mg5ml-xarope-3-meses",
+      "logica_js": "\"Tomar \" + Math.round(Math.min((peso*7.5<=500 ? (peso*7.5/2)/(125/5) : (500/2)/(125/5)), 10), 1) + \" mL por via oral de 12/12 horas por 7 a 14 dias.\""
+    }
+  },
+  {
+    "name": "Claritromicina 250mg/5ml (Xarope) > 3 meses",
+    "slug": "antibiotico-vo",
+    "form": "Suspensão oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Antibióticos VO (Cálculo: 7.5mg/kg/dose de 12/12 horas, máximo 500mg/dia)",
+    "alerts": ["Interações medicamentosas", "Não usar < 3 meses"],
+    "commonBrandNames": "Klaricid, Claritin",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 0,8 mL por via oral de 12/12 horas por 7 a 14 dias.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "7-14 dias",
+      "administrationNotes": "Administrar com alimentos"
+    },
+    "calculationParams": {
+      "type": "claritromicina-250mg5ml-xarope-3-meses",
+      "logica_js": "\"Tomar \" + Math.round(Math.min((peso*7.5<=500 ? (peso*7.5/2)/(250/5) : (500/2)/(250/5)), 10), 1) + \" mL por via oral de 12/12 horas por 7 a 14 dias.\""
+    }
+  },
+  {
+    "name": "Claritromicina 250mg/5ml (Xarope) - Dose alta",
+    "slug": "antibiotico-vo",
+    "form": "Suspensão oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Antibióticos VO (Cálculo: 15mg/kg/dia dividido em 2 doses)",
+    "alerts": ["Interações medicamentosas"],
+    "commonBrandNames": "Klaricid, Claritin",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 1,5 mL por via oral de 12/12 horas por 5 a 7 dias.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "5-7 dias",
+      "administrationNotes": "Administrar com alimentos"
+    },
+    "calculationParams": {
+      "type": "claritromicina-250mg5ml-xarope-dose-alta",
+      "logica_js": "\"Tomar \" + Math.round((peso*15 > 1000 ? 1000/2 : peso*15/2) * 5 / 250, 1) + \" mL por via oral de 12/12 horas por 5 a 7 dias.\""
+    }
+  },
+  {
+    "name": "Nitrofurantoína 5 mg/mL (Xarope)",
+    "slug": "antibiotico-vo",
+    "form": "Suspensão oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Antibióticos VO (Cálculo: 5mg/kg/dia dividido em 4 doses para ITU)",
+    "alerts": ["Não usar em < 1 mês", "Monitorar função pulmonar"],
+    "commonBrandNames": "Macrodantina",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 2,5 mL por via oral de 6/6 horas por 7 dias.",
+      "doseInterval": "6 horas",
+      "treatmentDuration": "7 dias",
+      "administrationNotes": "Administrar com alimentos"
+    },
+    "calculationParams": {
+      "type": "nitrofurantoina-5-mgml-xarope",
+      "logica_js": "\"Tomar \" + Math.round(Math.min((peso*5<=100 ? (peso*5/4)/5 : (100/4)/5), 10), 1) + \" mL por via oral de 6/6 horas por 7 dias.\""
+    }
+  }
+]

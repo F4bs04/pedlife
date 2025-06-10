@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Metronidazol 200mg/5ml (Xarope)",
+    "slug": "antimicrobiano",
+    "form": "Suspensão oral",
+    "application": "VO",
+    "description": "Medicamento da categoria Antimicrobianos - Nitroimidazol ativo contra anaeróbios e protozoários",
+    "alerts": ["Evitar álcool", "Escurecimento da urina"],
+    "commonBrandNames": "Flagyl",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Tomar 4,2 mL por via oral de 8/8 horas por 7 a 10 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "7-10 dias",
+      "administrationNotes": "Administrar com alimentos para reduzir irritação gástrica"
+    },
+    "calculationParams": {
+      "type": "metronidazol-200mg5ml-xarope",
+      "logica_js": "\"Tomar \" + Math.round((peso*50<=1200 ? (peso*50/3)/(200/5) : (1200/3)/(200/5)), 1) + \" mL por via oral de 8/8 horas por 7 a 10 dias.\""
+    }
+  }
+]

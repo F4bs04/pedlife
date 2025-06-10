@@ -1,10 +1,8 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import { Medication } from '@/types/medication';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { Pill, Copy, ChevronDown, ChevronUp } from 'lucide-react';
+import { Pill, Copy, Calendar, Repeat, Route } from 'lucide-react';
 import { toast } from "@/components/ui/sonner";
 import {
   Accordion,
@@ -17,9 +15,15 @@ interface CalculatedDoseCardProps {
   medication: Medication;
   calculatedDoseText: string;
   detailedCalculation?: string;
+  parsedDose?: {
+    amount: string;
+    route?: string;
+    period?: string;
+    frequency?: string;
+  };
 }
 
-// Adicionando a função de cópia (pode ser movida para utils se usada em mais lugares)
+// Função para copiar texto para a área de transferência
 const copyToClipboard = (text: string, successMessage: string = "Texto copiado para a área de transferência!") => {
   navigator.clipboard.writeText(text).then(() => {
     toast.success(successMessage);
@@ -29,16 +33,24 @@ const copyToClipboard = (text: string, successMessage: string = "Texto copiado p
   });
 };
 
-
-const CalculatedDoseCard: React.FC<CalculatedDoseCardProps> = ({ medication, calculatedDoseText, detailedCalculation }) => {
+const CalculatedDoseCard: React.FC<CalculatedDoseCardProps> = ({ 
+  medication, 
+  calculatedDoseText, 
+  detailedCalculation, 
+  parsedDose 
+}) => {
   
+  // Extrair informações do parsedDose ou usar valores padrão
+  const doseAmount = parsedDose?.amount || calculatedDoseText;
+  const doseRoute = parsedDose?.route || medication.application || "";
+  const dosePeriod = parsedDose?.period || medication.dosageInformation?.treatmentDuration || "";
+  const doseFrequency = parsedDose?.frequency || medication.dosageInformation?.doseInterval || "";
+
+  // Texto para copiar com todas as informações relevantes
   const textToCopyAll = `
 Medicamento: ${medication.name} ${medication.form ? `(${medication.form})` : ''}
-Posologia:
-- Duração: ${medication.dosageInformation?.treatmentDuration || "Conforme orientação médica"}
-- Intervalo: ${medication.dosageInformation?.doseInterval || "Conforme orientação médica"}
-- Dose usual: ${medication.dosageInformation?.usualDose || "Conforme orientação médica"}
-Cálculo Específico: ${calculatedDoseText}
+Dosagem: ${doseAmount}
+${doseRoute ? `Via de administração: ${doseRoute}\n` : ''}${dosePeriod ? `Período: ${dosePeriod}\n` : ''}${doseFrequency ? `Frequência: ${doseFrequency}\n` : ''}
   `.trim();
 
   return (
@@ -52,55 +64,81 @@ Cálculo Específico: ${calculatedDoseText}
       >
         <Copy className="h-4 w-4" />
       </Button>
+      
       <CardHeader className="pb-2">
         <div className="flex items-center text-pink-600 dark:text-pink-400">
           <Pill className="h-5 w-5 mr-2" />
           <CardTitle className="text-lg font-semibold">Dose Calculada</CardTitle>
         </div>
       </CardHeader>
+      
       <CardContent>
         <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-200 mb-3">
           {medication.name} {medication.form && medication.form.trim() !== "" ? `(${medication.form})` : ''}
         </h2>
-        <div className="text-sm text-gray-600 dark:text-gray-300 space-y-1 mb-3">
-          <p><span className="font-semibold">Posologia:</span></p>
-          {medication.dosageInformation?.treatmentDuration && medication.dosageInformation.treatmentDuration.trim() !== "" && (
-            <p>Duração: <span className="italic">{medication.dosageInformation.treatmentDuration}</span></p>
-          )}
-          {medication.dosageInformation?.doseInterval && medication.dosageInformation.doseInterval.trim() !== "" && (
-            <p>Intervalo: <span className="italic">{medication.dosageInformation.doseInterval}</span></p>
-          )}
-          {medication.dosageInformation?.usualDose && medication.dosageInformation.usualDose.trim() !== "" && (
-            <p>Dose usual: <span className="italic">{medication.dosageInformation.usualDose}</span></p>
-          )}
-          {(!medication.dosageInformation?.treatmentDuration || medication.dosageInformation.treatmentDuration.trim() === "") && 
-           (!medication.dosageInformation?.doseInterval || medication.dosageInformation.doseInterval.trim() === "") && 
-           (!medication.dosageInformation?.usualDose || medication.dosageInformation.usualDose.trim() === "") && (
-            <p><span className="italic">Conforme orientação médica</span></p>
-          )}
-        </div>
-        <Alert variant="default" className="bg-white dark:bg-gray-800/50 border-gray-200 dark:border-gray-700 relative">
-          <div className="flex justify-between items-start">
-            <AlertTitle className="font-semibold text-gray-900 dark:text-gray-100">Cálculo Específico:</AlertTitle>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-6 w-6 text-primary/70 hover:text-primary -mt-1 -mr-1" // Ajuste de posicionamento
-              onClick={() => copyToClipboard(calculatedDoseText, "Cálculo específico copiado!")}
-              title="Copiar cálculo específico"
+        
+        {/* Card com informações simplificadas e objetivas */}
+        <div className="bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg p-4 relative">
+          {/* Dose em destaque com botão de copiar */}
+          <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-md border border-blue-100 dark:border-blue-800/30 relative">
+            <div className="text-xl font-bold text-blue-700 dark:text-blue-300 text-center pr-8">
+              {doseAmount}
+            </div>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="absolute top-2 right-2 text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+              onClick={() => copyToClipboard(doseAmount, "Dose copiada!")}
+              title="Copiar dose"
             >
-              <Copy className="h-3 w-3" />
+              <Copy className="h-4 w-4" />
             </Button>
           </div>
-          <AlertDescription className="text-gray-700 dark:text-gray-100 mt-1">{calculatedDoseText}</AlertDescription>
           
+          {/* Informações adicionais em cards separados */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
+            {/* Via de administração */}
+            {doseRoute && (
+              <div className="flex items-center gap-2 p-2 bg-gray-50 dark:bg-gray-800/70 rounded border border-gray-200 dark:border-gray-700">
+                <Route className="h-4 w-4 text-gray-500 dark:text-gray-400" />
+                <div>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Via</p>
+                  <p className="font-medium">{doseRoute}</p>
+                </div>
+              </div>
+            )}
+            
+            {/* Período */}
+            {dosePeriod && (
+              <div className="flex items-center gap-2 p-2 bg-gray-50 dark:bg-gray-800/70 rounded border border-gray-200 dark:border-gray-700">
+                <Calendar className="h-4 w-4 text-gray-500 dark:text-gray-400" />
+                <div>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Período</p>
+                  <p className="font-medium">{dosePeriod}</p>
+                </div>
+              </div>
+            )}
+            
+            {/* Frequência */}
+            {doseFrequency && (
+              <div className="flex items-center gap-2 p-2 bg-gray-50 dark:bg-gray-800/70 rounded border border-gray-200 dark:border-gray-700">
+                <Repeat className="h-4 w-4 text-gray-500 dark:text-gray-400" />
+                <div>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Frequência</p>
+                  <p className="font-medium">{doseFrequency}</p>
+                </div>
+              </div>
+            )}
+          </div>
+          
+          {/* Detalhes do cálculo em acordeão */}
           {detailedCalculation && (
             <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="detailed-calculation" className="border-none">
                   <div className="flex justify-between items-center">
-                    <AccordionTrigger className="font-semibold text-gray-900 dark:text-gray-100 text-sm p-0 hover:no-underline">
-                      Lógica de cálculo detalhada
+                    <AccordionTrigger className="font-semibold text-gray-600 dark:text-gray-400 text-sm p-0 hover:no-underline">
+                      Detalhes do cálculo
                     </AccordionTrigger>
                     <Button
                       variant="ghost"
@@ -108,9 +146,9 @@ Cálculo Específico: ${calculatedDoseText}
                       className="h-6 w-6 text-primary/70 hover:text-primary z-10"
                       onClick={(e) => {
                         e.stopPropagation();
-                        copyToClipboard(detailedCalculation, "Lógica de cálculo copiada!");
+                        copyToClipboard(detailedCalculation, "Detalhes do cálculo copiados!");
                       }}
-                      title="Copiar lógica de cálculo"
+                      title="Copiar detalhes do cálculo"
                     >
                       <Copy className="h-3 w-3" />
                     </Button>
@@ -124,11 +162,10 @@ Cálculo Específico: ${calculatedDoseText}
               </Accordion>
             </div>
           )}
-        </Alert>
+        </div>
       </CardContent>
     </Card>
   );
 };
 
 export default CalculatedDoseCard;
-

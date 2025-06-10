@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Aciclovir 250 mg/Pó (EV) - Reconstituir com 10mL de AD (15mg/kg/dose)",
+    "slug": "antivirais",
+    "form": "Pó para reconstituição",
+    "application": "EV",
+    "description": "Medicamento da categoria Antivirais - Tratamento de infecções por herpes vírus",
+    "alerts": ["Nefrotoxicidade", "Hidratação adequada"],
+    "commonBrandNames": "Zovirax",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 10 mL de AD. Diluir 6 mL da solução reconstituída com 15,5 mL de SF 0,9%. Infundir por via EV a 21,5 mL/hora. Administrar de 8/8 horas. Por 7 a 21 dias.(15mg/kg/dose)",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "7-21 dias",
+      "administrationNotes": "Infundir em 1 hora, manter hidratação adequada"
+    },
+    "calculationParams": {
+      "type": "aciclovir-250mg-po-ev-reconstituir-com-10ml-de-ad-15mg",
+      "logica_js": "\"Reconstituir \"+Math.ceil(Math.min(peso*15,750)/250)+\" frasco(s) com \"+Math.ceil(Math.min(peso*15,750)/250)*10+\" mL de AD. Diluir \"+Math.round(Math.min(peso*15,750)/25, 1)+\" mL da solução reconstituída com \"+Math.round((Math.min(peso*15,750)/7)-Math.min(peso*15,750)/25, 1)+\" mL de SF 0,9%. Infundir por via EV a \"+Math.round(Math.min(peso*15,750)/7, 1)+\" mL/hora. Administrar de 8/8 horas. Por 7 a 21 dias.(15mg/kg/dose)\""
+    }
+  },
+  {
+    "name": "Aciclovir 250 mg/Pó (EV) - Reconstituir com 10mL de AD (10mg/kg/dose)",
+    "slug": "antivirais",
+    "form": "Pó para reconstituição",
+    "application": "EV",
+    "description": "Medicamento da categoria Antivirais - Tratamento de infecções por herpes vírus (dose reduzida)",
+    "alerts": ["Nefrotoxicidade", "Hidratação adequada"],
+    "commonBrandNames": "Zovirax",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 10 mL de AD. Diluir 4 mL da solução reconstituída com 10,3 mL de SF 0,9%. Infundir por via EV a 14,3 mL/hora. Administrar de 8/8 horas. Por 7 a 21 dias.(10mg/kg/dose)",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "7-21 dias",
+      "administrationNotes": "Infundir em 1 hora, manter hidratação adequada"
+    },
+    "calculationParams": {
+      "type": "aciclovir-250mg-po-ev-reconstituir-com-10ml-de-ad-10mg",
+      "logica_js": "\"Reconstituir \"+Math.ceil(Math.min(peso*10,500)/250)+\" frasco(s) com \"+Math.ceil(Math.min(peso*10,500)/250)*10+\" mL de AD. Diluir \"+Math.round(Math.min(peso*10,500)/25, 1)+\" mL da solução reconstituída com \"+Math.round((Math.min(peso*10,500)/7)-Math.min(peso*10,500)/25, 1)+\" mL de SF 0,9%. Infundir por via EV a \"+Math.round(Math.min(peso*10,500)/7, 1)+\" mL/hora. Administrar de 8/8 horas. Por 7 a 21 dias.(10mg/kg/dose)\""
+    }
+  },
+  {
+    "name": "Oseltamivir (Tamiflu®) 75mg/Cápsula - Tratamento",
+    "slug": "antivirais",
+    "form": "Cápsula",
+    "application": "VO",
+    "description": "Medicamento da categoria Antivirais - Inibidor da neuraminidase para influenza",
+    "alerts": ["Iniciar em até 48h do início dos sintomas"],
+    "commonBrandNames": "Tamiflu",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 1 cápsula por via oral de 12 em 12 horas, por 5 dias.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "5 dias",
+      "administrationNotes": "Administrar com alimentos"
+    },
+    "calculationParams": {
+      "type": "oseltamivir-tamiflu-75mg-capsula-tratamento",
+      "logica_js": "\"Administrar \" + (idade<0.3 ? \"1\" : (idade>=0.3 && idade<=0.5 ? \"2\" : (idade>=0.6 && idade<=0.11 ? \"2,5\" : (peso<=14 ? \"3\" : (peso>14 && peso<=23 ? \"4,5\" : (peso>23 && peso<=40 ? \"6\" : \"7,5\")))))) + \" mL de 12 em 12 horas, por 5 dias. Necessário \" + Math.ceil((idade<0.3 ? 1 : (idade>=0.3 && idade<=0.5 ? 2 : (idade>=0.6 && idade<=0.11 ? 2.5 : (peso<=14 ? 3 : (peso>14 && peso<=23 ? 4.5 : (peso>23 && peso<=40 ? 6 : 7.5))))))*10/7.5) + \" cápsulas ao total.\""
+    }
+  },
+  {
+    "name": "Oseltamivir (Tamiflu®) 75mg/Cápsula - Quimioprofilaxia",
+    "slug": "antivirais",
+    "form": "Cápsula",
+    "application": "VO",
+    "description": "Medicamento da categoria Antivirais - Quimioprofilaxia pós-exposição ao influenza",
+    "alerts": ["Usar apenas em casos específicos"],
+    "commonBrandNames": "Tamiflu",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 1 cápsula por via oral de 24/24 horas. Por 10 dias.",
+      "doseInterval": "24 horas",
+      "treatmentDuration": "10 dias",
+      "administrationNotes": "Administrar com alimentos"
+    },
+    "calculationParams": {
+      "type": "oseltamivir-tamiflu-75mg-capsula-profilaxia",
+      "logica_js": "(idade<0.9 ? \"Administrar \"+Math.round(peso*0.3, 1)+\" mL por via oral de 24/24 horas. Por 10 dias.\" : (idade>=0.9 && idade<=0.11 ? \"Administrar \"+Math.round(peso*0.35, 1)+\" mL por via oral de 24/24 horas. Por 10 dias.\" : (idade>=1 ? (peso<=15 ? \"Administrar 3 mL por via oral de 24/24 horas. Por 10 dias.\" : (peso>15 && peso<=23 ? \"Administrar 4,5 mL por via oral de 24/24 horas. Por 10 dias.\" : (peso>23 && peso<=40 ? \"Administrar 6 mL por via oral de 24/24 horas. Por 10 dias.\" : \"Administrar 7,5 mL por via oral de 24/24 horas. Por 10 dias.\"))) : \"\")))"
+    }
+  }
+]

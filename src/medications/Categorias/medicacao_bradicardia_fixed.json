@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Atropina 0,25mg/ml (EV)",
+    "slug": "medicacao-para-bradicardia",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria Medicação Para Bradicardia - Anticolinérgico",
+    "alerts": ["Taquicardia reflexa", "Midríase"],
+    "commonBrandNames": "Sulfato de Atropina",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,8 mL de Atropina por via EV sem diluição. Pode repetir uma vez em 5 minutos.",
+      "doseInterval": "SOS",
+      "treatmentDuration": "Até 2 doses",
+      "administrationNotes": "Monitorar frequência cardíaca"
+    },
+    "calculationParams": {
+      "type": "atropina-0-25mgml-ev",
+      "logica_js": "\"Administrar \" + Math.round((peso*0.02/0.25<=2 ? peso*0.02/0.25 : 2), 1) + \" mL de Atropina por via EV \" + (peso*0.02/0.25<=2 ? \"sem diluição\" : \"diluído em 50 mL de SF 0,9%\") + \". Pode repetir uma vez em 5 minutos.\""
+    }
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Budesonida 32 mcg (Noex®) Aerossol - IL (≥ 2 anos)",
+    "slug": "nasais",
+    "form": "Spray nasal",
+    "application": "Uso tópico - inalatório",
+    "description": "Medicamento da categoria Nasais - Corticoide tópico nasal",
+    "alerts": ["Não usar < 2 anos", "Efeitos sistêmicos mínimos"],
+    "commonBrandNames": "Noex",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 2 jatos em região nasal de 12/12 horas.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "Uso contínuo conforme orientação",
+      "administrationNotes": "Limpar nariz antes da aplicação"
+    },
+    "calculationParams": {
+      "type": "budesonida-32-mcg-noex-aerossol-il-2-anos",
+      "logica_js": "\"Administrar 2 jatos em região nasal de 12/12 horas.\""
+    }
+  },
+  {
+    "name": "Budesonida 50 mcg (Noex®) Aerossol - IL (≥ 2 anos)",
+    "slug": "nasais",
+    "form": "Spray nasal",
+    "application": "Uso tópico - inalatório",
+    "description": "Medicamento da categoria Nasais - Corticoide tópico nasal",
+    "alerts": ["Não usar < 2 anos", "Efeitos sistêmicos mínimos"],
+    "commonBrandNames": "Noex",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 2 jatos em região nasal de 12/12 horas.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "Uso contínuo conforme orientação",
+      "administrationNotes": "Limpar nariz antes da aplicação"
+    },
+    "calculationParams": {
+      "type": "budesonida-50-mcg-noex-aerossol-il-2-anos",
+      "logica_js": "\"Administrar 2 jatos em região nasal de 12/12 horas.\""
+    }
+  },
+  {
+    "name": "Budesonida 64 mcg (Noex®) Aerossol - IL (≥ 2 anos)",
+    "slug": "nasais",
+    "form": "Spray nasal",
+    "application": "Uso tópico - inalatório",
+    "description": "Medicamento da categoria Nasais - Corticoide tópico nasal",
+    "alerts": ["Não usar < 2 anos", "Efeitos sistêmicos mínimos"],
+    "commonBrandNames": "Noex",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 2 jatos em região nasal de 12/12 horas.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "Uso contínuo conforme orientação",
+      "administrationNotes": "Limpar nariz antes da aplicação"
+    },
+    "calculationParams": {
+      "type": "budesonida-64-mcg-noex-aerossol-il-2-anos",
+      "logica_js": "\"Administrar 2 jatos em região nasal de 12/12 horas.\""
+    }
+  },
+  {
+    "name": "Cromoglicato 4% (Rilan®) Solução - IL",
+    "slug": "nasais",
+    "form": "Spray nasal",
+    "application": "Uso tópico - inalatório",
+    "description": "Medicamento da categoria Nasais - Estabilizador de mastócitos",
+    "alerts": ["Seguro para uso prolongado"],
+    "commonBrandNames": "Rilan",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 4 jatos em região nasal de 6/6 horas. Por 5 dias.",
+      "doseInterval": "6 horas",
+      "treatmentDuration": "5 dias",
+      "administrationNotes": "Limpar nariz antes da aplicação"
+    },
+    "calculationParams": {
+      "type": "cromoglicato-4-rilan-solucao-il",
+      "logica_js": "\"Administrar 4 jatos em região nasal de 6/6 horas. Por 5 dias.\""
+    }
+  },
+  {
+    "name": "Fluticasona 27,5 mcg (Avamys®) Spray Nasal - IL (> 1 ano)",
+    "slug": "nasais",
+    "form": "Spray nasal",
+    "application": "Uso tópico - inalatório",
+    "description": "Medicamento da categoria Nasais - Corticoide tópico nasal potente",
+    "alerts": ["Não usar < 1 ano", "Potente corticoide"],
+    "commonBrandNames": "Avamys",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 2 jatos em região nasal de 12/12 horas.",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "Uso contínuo conforme orientação",
+      "administrationNotes": "Limpar nariz antes da aplicação"
+    },
+    "calculationParams": {
+      "type": "fluticasona-27-5-mcg-avamys-spray-nasal-il-1-ano",
+      "logica_js": "\"Administrar 2 jatos em região nasal de 12/12 horas.\""
+    }
+  }
+]

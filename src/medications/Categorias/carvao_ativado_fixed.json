@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Carvão Ativado (Pó ou Suspensão) - Oral/SNG",
+    "slug": "carvao-ativado-po-ou-suspensao-oral-sng",
+    "form": "Pó para suspensão",
+    "application": "VO/SNG",
+    "description": "Tratamento com Carvão Ativado - Adsorvente para intoxicações",
+    "alerts": ["Não usar em intoxicação por ácidos/álcalis", "Aspiração pulmonar"],
+    "commonBrandNames": "Carvão Ativado",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Misturar 10 g com 20 mL de água para formar uma suspensão. Administrar por VO ou SNG.",
+      "doseInterval": "Dose única ou repetida conforme indicação",
+      "treatmentDuration": "Conforme intoxicação",
+      "administrationNotes": "Proteger via aérea, administrar o mais rápido possível"
+    },
+    "calculationParams": {
+      "type": "carvao-ativado-po-ou-suspensao-oral-sng",
+      "logica_js": "\"Misturar \" + Math.round(Math.min(peso*1, 50), 0) + \" g com \" + Math.round(Math.min(peso*1, 50)*2, 0) + \" mL de água para formar uma suspensão. Administrar por VO ou SNG.\""
+    }
+  }
+]

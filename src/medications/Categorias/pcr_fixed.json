@@ -1,0 +1,182 @@
+[
+  {
+    "name": "Adrenalina 1mg/ml (EV em Bolus)",
+    "slug": "pcr",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria PCR - Vasopressor e inotrópico",
+    "alerts": ["Arritmias", "Hipertensão"],
+    "commonBrandNames": "Epinefrina",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Diluir 1 Ampola(s) em 9 mL de SF 0,9%. Administrar 1 mL da mistura por via EV em bolus de 3 a 5 minutos.",
+      "doseInterval": "3-5 minutos",
+      "treatmentDuration": "Durante PCR",
+      "administrationNotes": "Bolus rápido durante PCR"
+    },
+    "calculationParams": {
+      "type": "adrenalina-1mgml-ev-em-bolus",
+      "logica_js": "\"Diluir 1 Ampola(s) em 9 mL de SF 0,9%. Administrar \" + Math.round(Math.min(peso/10, 10), 2) + \" mL da mistura por via EV em bolus de 3 a 5 minutos.\""
+    }
+  },
+  {
+    "name": "Amiodarona 50mg/ml (EV em Bolus)",
+    "slug": "pcr",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria PCR - Antiarrítmico para FV/TV sem pulso",
+    "alerts": ["Hipotensão", "Bradicardia"],
+    "commonBrandNames": "Ancoron",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 1 mL por via EV em bolus sem diluição. (Pode ser repetida até no máximo 3 vezes).",
+      "doseInterval": "Conforme indicação",
+      "treatmentDuration": "Até 3 doses",
+      "administrationNotes": "Bolus rápido"
+    },
+    "calculationParams": {
+      "type": "amiodarona-50mgml-ev-em-bolus",
+      "logica_js": "\"Administrar \" + Math.round(Math.min(peso*5, (peso*10<=300 ? peso*10 : 300))/50, 2) + \" mL por via EV em bolus sem diluição. (Pode ser repetida até no máximo 3 vezes).\""
+    }
+  },
+  {
+    "name": "Cálcio injetável 10% (100mg/ml)",
+    "slug": "pcr",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria PCR - Para hipercalemia, hipomagnesemia, hipocalcemia",
+    "alerts": ["Extravasamento causa necrose", "Incompatível com bicarbonato"],
+    "commonBrandNames": "Gluconato de Cálcio",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 6 mL por via EV em bolus lento, puro.",
+      "doseInterval": "Conforme indicação",
+      "treatmentDuration": "Conforme necessidade",
+      "administrationNotes": "Bolus lento"
+    },
+    "calculationParams": {
+      "type": "calcio-injetavel-10-100mgml",
+      "logica_js": "\"Administrar \" + Math.round(Math.min(peso*60, 3000)/100, 2) + \" mL por via EV em bolus lento, puro.\""
+    }
+  },
+  {
+    "name": "Lidocaína 20mg/ml (Sem vasoconstritor)",
+    "slug": "pcr",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria PCR - Antiarrítmico local",
+    "alerts": ["Convulsões em overdose"],
+    "commonBrandNames": "Xilocaína",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,5 mL por via EV em bolus lento.",
+      "doseInterval": "Conforme indicação",
+      "treatmentDuration": "Dose única ou repetida",
+      "administrationNotes": "Bolus lento"
+    },
+    "calculationParams": {
+      "type": "lidocaina-20mgml-sem-vasoconstritor",
+      "logica_js": "\"Administrar \" + Math.round(Math.min(peso*1, (peso*3<=75 ? peso*3 : 75))/20, 2) + \" mL por via EV em bolus lento.\""
+    }
+  },
+  {
+    "name": "Bicarbonato de sódio injetável 8,4% (84mg/ml = 1 mEq/ml)",
+    "slug": "pcr",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria PCR - Correção de acidose metabólica",
+    "alerts": ["Hiperosmolaridade", "Incompatível com cálcio"],
+    "commonBrandNames": "Bicarbonato de Sódio",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Diluir 10 mL de Bicarbonato de Sódio 8,4% + 10 mL de SF 0,9%. Administrar 20 mL por via EV em bolus lento.",
+      "doseInterval": "Conforme gasometria",
+      "treatmentDuration": "Conforme necessidade",
+      "administrationNotes": "Bolus lento, diluído"
+    },
+    "calculationParams": {
+      "type": "bicarbonato-de-sodio-injetavel-8-4",
+      "logica_js": "\"Diluir \" + Math.round(peso, 1) + \" mL de Bicarbonato de Sódio 8,4% + \" + Math.round(peso, 1) + \" mL de SF 0,9%. Administrar \" + Math.round(peso*2, 1) + \" mL por via EV em bolus lento.\""
+    }
+  },
+  {
+    "name": "Glicose 10% - 0,1g/ml (Ampola com 10 mL)",
+    "slug": "pcr",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria PCR - Correção de hipoglicemia",
+    "alerts": ["Hiperglicemia de rebote"],
+    "commonBrandNames": "Glicose",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 50 mL de Glicose 10% por via EV em bolus.",
+      "doseInterval": "Conforme glicemia",
+      "treatmentDuration": "Conforme necessidade",
+      "administrationNotes": "Bolus"
+    },
+    "calculationParams": {
+      "type": "glicose-10-0-1gml",
+      "logica_js": "\"Administrar \" + Math.round(peso*0.5/0.1, 1) + \" mL de Glicose 10% por via EV em bolus.\""
+    }
+  },
+  {
+    "name": "Glicose 25% - 0,25g/ml (Ampola com 10 mL)",
+    "slug": "pcr",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria PCR - Correção de hipoglicemia severa",
+    "alerts": ["Hiperglicemia de rebote", "Osmolaridade alta"],
+    "commonBrandNames": "Glicose",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Diluir 20 mL de Glicose 25% + 20 mL de água destilada. Administrar 40 mL por via EV em bolus.",
+      "doseInterval": "Conforme glicemia",
+      "treatmentDuration": "Conforme necessidade",
+      "administrationNotes": "Diluir antes de usar"
+    },
+    "calculationParams": {
+      "type": "glicose-25-0-25gml",
+      "logica_js": "\"Diluir \" + Math.round(peso*0.5/0.125/2, 1) + \" mL de Glicose 25% + \" + Math.round(peso*0.5/0.125/2, 1) + \" mL de água destilada. Administrar \" + Math.round(peso*0.5/0.125, 1) + \" mL por via EV em bolus.\""
+    }
+  },
+  {
+    "name": "Glicose 50% - 0,5g/ml (Ampola com 10 mL)",
+    "slug": "pcr",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria PCR - Correção de hipoglicemia severa",
+    "alerts": ["Hiperglicemia de rebote", "Osmolaridade muito alta"],
+    "commonBrandNames": "Glicose",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Diluir 10 mL de Glicose 50% + 30 mL de água destilada. Administrar 40 mL por via EV em bolus.",
+      "doseInterval": "Conforme glicemia",
+      "treatmentDuration": "Conforme necessidade",
+      "administrationNotes": "Diluir obrigatoriamente"
+    },
+    "calculationParams": {
+      "type": "glicose-50-0-5gml",
+      "logica_js": "\"Diluir \" + Math.round(peso*0.5/0.125/4, 1) + \" mL de Glicose 50% + \" + Math.round(peso*0.5/0.125/4*3, 1) + \" mL de água destilada. Administrar \" + Math.round(peso*0.5/0.125, 1) + \" mL por via EV em bolus.\""
+    }
+  },
+  {
+    "name": "Adenosina injetável 3mg/mL (EV em Bolus)",
+    "slug": "pcr",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria PCR - Para taquicardia supraventricular",
+    "alerts": ["Parada cardíaca transitória", "Push rápido + flush"],
+    "commonBrandNames": "Adenosina",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Primeira dose: Administrar 0,34 mL por via EV, em bolus. Após, fazer 20 mL de SF 0,9% em bolus utilizando o (Three Way). | Segunda dose: Administrar 0,67 mL por via EV, em bolus. Após, fazer 20 mL de SF 0,9% em bolus utilizando o (Three Way).",
+      "doseInterval": "Se necessário",
+      "treatmentDuration": "Até 2 doses",
+      "administrationNotes": "Push rápido + flush imediato"
+    },
+    "calculationParams": {
+      "type": "adenosina-injetavel-3mgml-ev-em-bolus",
+      "logica_js": "\"Primeira dose: Administrar \" + Math.round(Math.min(peso*0.1, 6)/3, 2) + \" mL por via EV, em bolus. Após, fazer 20 mL de SF 0,9% em bolus utilizando o (Three Way) | Segunda dose: Administrar \" + Math.round(Math.min(peso*0.2, 12)/3, 2) + \" mL por via EV, em bolus. Após, fazer 20 mL de SF 0,9% em bolus utilizando o (Three Way).\""
+    }
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Penicilina cristalina (benzilpenicilina potássica) 5.000.000 UI - Reconstituir em 10 mL de AD",
+    "slug": "antibioticos-im",
+    "form": "Pó para reconstituição",
+    "application": "EV",
+    "description": "Medicamento da categoria Antibióticos IM/EV (Cálculo: 50.000 UI/kg/dose de 8/8 horas)",
+    "alerts": ["Observar reações alérgicas", "Administração EV deve ser lenta"],
+    "commonBrandNames": "Penicilina G Cristalina",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 10 mL de diluente. Pegar 1 mL da mistura e diluir em 49 mL de SG 5% e administrar por via EV bem lento. Correr em 60 minutos. Administrar de 8/8 horas (50.000 UI/kg/dose).",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "7-14 dias",
+      "administrationNotes": "Correr em 60 minutos para via EV"
+    },
+    "calculationParams": {
+      "type": "penicilina-cristalina-benzilpenicilina-5000000-ui-reconstituir-em-10-ml-de-ad",
+      "logica_js": "\"Reconstituir \" + Math.ceil((peso*50000)/5000000) + \" frasco(s) com \" + Math.ceil((peso*50000)/5000000)*10 + \" mL de diluente. Pegar \" + Math.round((peso*50000)/500000) + \" mL da mistura e diluir em \" + (50-Math.round((peso*50000)/500000)) + \" mL de SG 5% e administrar por via EV bem lento. Correr em 60 minutos. Administrar de 8/8 horas (50.000 UI/kg/dose).\""
+    }
+  },
+  {
+    "name": "Sulfato de polimixina B - 500.000 UI/Pó - Reconstituir em 10 mL de AD",
+    "slug": "antibioticos-im",
+    "form": "Pó para reconstituição",
+    "application": "EV",
+    "description": "Medicamento da categoria Antibióticos EV (Cálculo: 25.000 UI/kg/dia dividido em 2 doses)",
+    "alerts": ["Monitorar função renal", "Neurotoxicidade"],
+    "commonBrandNames": "Polimixina B",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Reconstituir 1 frasco(s) com 10 mL de AD. Pegar 2,5 mL da mistura e diluir em 250 mL de SG 5%. Infundir por via EV bem lenta, em 2 horas. Administrar de 12/12 horas. (25.000 UI/Kg/Dia).",
+      "doseInterval": "12 horas",
+      "treatmentDuration": "7-10 dias",
+      "administrationNotes": "Infundir em 2 horas"
+    },
+    "calculationParams": {
+      "type": "sulfato-de-polimixina-b-500000-ui-po-reconstituir-em-10-ml-de-ad",
+      "logica_js": "\"Reconstituir \" + Math.ceil((peso*25000)/1000000) + \" frasco(s) com \" + Math.ceil((peso*25000)/1000000)*10 + \" mL de AD. Pegar \" + Math.round((peso*25000/2)/50000) + \" mL da mistura e diluir em 250 mL de SG 5%. Infundir por via EV bem lenta, em 2 horas. Administrar de 12/12 horas. (25.000 UI/Kg/Dia).\""
+    }
+  }
+]

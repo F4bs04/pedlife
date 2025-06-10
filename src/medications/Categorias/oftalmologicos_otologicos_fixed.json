@@ -1,0 +1,282 @@
+[
+  {
+    "name": "Lacrfilm® (Solução Oftálmica)",
+    "slug": "oftalmologicos",
+    "form": "Solução oftálmica",
+    "application": "Uso tópico",
+    "description": "Medicamento da categoria Oftalmológicos - Lubrificante ocular",
+    "alerts": ["Sem conservantes"],
+    "commonBrandNames": "Lacrfilm",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Pingar 1 gota no(s) olho(s) afetado(s) de 4/4 horas. Até melhora do quadro.",
+      "doseInterval": "4 horas",
+      "treatmentDuration": "Até melhora",
+      "administrationNotes": "Uso tópico ocular"
+    },
+    "calculationParams": {
+      "type": "lacrfilm-solucao-oftalmica",
+      "logica_js": "\"Pingar 1 gota no(s) olho(s) afetado(s) de 4/4 horas. Até melhora do quadro.\""
+    }
+  },
+  {
+    "name": "Cloridrato de Olopatadina (Patanol S®) 1 mg/mL",
+    "slug": "oftalmologicos",
+    "form": "Solução oftálmica",
+    "application": "Uso tópico",
+    "description": "Medicamento da categoria Oftalmológicos - Anti-histamínico tópico",
+    "alerts": ["Não usar lentes de contato durante tratamento"],
+    "commonBrandNames": "Patanol S",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Pingar 1 gota no(s) olho(s) afetado(s) uma vez ao dia. Por 6 semanas.",
+      "doseInterval": "24 horas",
+      "treatmentDuration": "6 semanas",
+      "administrationNotes": "Uso tópico ocular"
+    },
+    "calculationParams": {
+      "type": "cloridrato-de-olopatadina-patanol-s-1-mgml",
+      "logica_js": "\"Pingar 1 gota no(s) olho(s) afetado(s) uma vez ao dia. Por 6 semanas.\""
+    }
+  },
+  {
+    "name": "Systane® Ultra ou Hyabak® (Solução Oftálmica)",
+    "slug": "oftalmologicos",
+    "form": "Solução oftálmica",
+    "application": "Uso tópico",
+    "description": "Medicamento da categoria Oftalmológicos - Lubrificante ocular",
+    "alerts": ["Sem conservantes"],
+    "commonBrandNames": "Systane Ultra, Hyabak",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Pingar 1 gota no(s) olho(s) afetado(s) de 4/4 horas. Até melhora do quadro.",
+      "doseInterval": "4 horas",
+      "treatmentDuration": "Até melhora",
+      "administrationNotes": "Uso tópico ocular"
+    },
+    "calculationParams": {
+      "type": "systane-ultra-ou-hyabak-solucao-oftalmica",
+      "logica_js": "\"Pingar 1 gota no(s) olho(s) afetado(s) de 4/4 horas. Até melhora do quadro.\""
+    }
+  },
+  {
+    "name": "Tobramicina 3 mg/mL (Tobrex®) > 2 meses",
+    "slug": "oftalmologicos",
+    "form": "Solução oftálmica",
+    "application": "Uso tópico",
+    "description": "Medicamento da categoria Oftalmológicos - Antibiótico aminoglicosídeo",
+    "alerts": ["Não usar < 2 meses"],
+    "commonBrandNames": "Tobrex",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Pingar 1 gota no(s) olho(s) afetado(s) de 4/4 horas. Por 5 dias.",
+      "doseInterval": "4 horas",
+      "treatmentDuration": "5 dias",
+      "administrationNotes": "Uso tópico ocular"
+    },
+    "calculationParams": {
+      "type": "tobramicina-3-mgml-tobrex-2-meses",
+      "logica_js": "\"Pingar 1 gota no(s) olho(s) afetado(s) de 4/4 horas. Por 5 dias.\""
+    }
+  },
+  {
+    "name": "Tobramicina 3 mg/g Pomada Oftálmica (Tobrex®) > 2 meses",
+    "slug": "oftalmologicos",
+    "form": "Pomada oftálmica",
+    "application": "Uso tópico",
+    "description": "Medicamento da categoria Oftalmológicos - Antibiótico aminoglicosídeo",
+    "alerts": ["Não usar < 2 meses", "Pode causar visão turva temporária"],
+    "commonBrandNames": "Tobrex",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Aplicar 1 CM da pomada, uma fina camada na região do olho afetada de 8/8 horas. Por 5 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "5 dias",
+      "administrationNotes": "Aplicar na pálpebra inferior"
+    },
+    "calculationParams": {
+      "type": "tobramicina-3-mg-g-pomada-oftalmica-tobrex-2-meses",
+      "logica_js": "\"Aplicar 1 CM da pomada, uma fina camada na região do olho afetada de 8/8 horas. Por 5 dias.\""
+    }
+  },
+  {
+    "name": "Moxifloxacino Oftalmológico (VIGAMOX®)",
+    "slug": "oftalmologicos",
+    "form": "Solução oftálmica",
+    "application": "Uso tópico",
+    "description": "Medicamento da categoria Oftalmológicos - Antibiótico quinolona",
+    "alerts": ["Amplo espectro"],
+    "commonBrandNames": "Vigamox",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Pingar 1 gota no(s) olho(s) afetado(s) de 8/8 horas. Por 7 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "7 dias",
+      "administrationNotes": "Uso tópico ocular"
+    },
+    "calculationParams": {
+      "type": "moxifloxacino-oftalmologico-vigamox",
+      "logica_js": "\"Pingar 1 gota no(s) olho(s) afetado(s) de 8/8 horas. Por 7 dias.\""
+    }
+  },
+  {
+    "name": "Ciprofloxacino colírio (0,3%)",
+    "slug": "oftalmologicos",
+    "form": "Solução oftálmica",
+    "application": "Uso tópico",
+    "description": "Medicamento da categoria Oftalmológicos - Antibiótico quinolona",
+    "alerts": ["Esquema de dose decrescente"],
+    "commonBrandNames": "Ciloxan",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Pingar 1 gota(s) de 2/2 horas no olho acometido. Durante os primeiros 2 dias de tratamento. Seguido de 1 gota de 4/4 horas. Nos 5 dias seguintes.",
+      "doseInterval": "2-4 horas",
+      "treatmentDuration": "7 dias",
+      "administrationNotes": "Esquema decrescente"
+    },
+    "calculationParams": {
+      "type": "ciprofloxacino-colirio-0-3",
+      "logica_js": "\"Pingar 1 gota(s) de 2/2 horas no olho acometido. Durante os primeiros 2 dias de tratamento. Seguido de 1 gota de 4/4 horas. Nos 5 dias seguintes.\""
+    }
+  },
+  {
+    "name": "Biamotil (Ciprofloxacino 3 mg/mL + Dexametasona 1 mg/mL) Otológico - OMC",
+    "slug": "otologicos",
+    "form": "Solução otológica",
+    "application": "Uso tópico",
+    "description": "Medicamento da categoria Otológicos - Antibiótico + corticoide para otite média crônica",
+    "alerts": ["Perfuração timpânica"],
+    "commonBrandNames": "Biamotil",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "7-10 dias",
+      "administrationNotes": "Uso tópico auricular"
+    },
+    "calculationParams": {
+      "type": "biamotil-ciprofloxacino-3-mgml-dexametasona-1-mgml-otologico-omc",
+      "logica_js": "\"Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.\""
+    }
+  },
+  {
+    "name": "Cerumin (Solução Otológica)",
+    "slug": "otologicos",
+    "form": "Solução otológica",
+    "application": "Uso tópico",
+    "description": "Medicamento da categoria Otológicos - Ceruminolítico para remoção de cerume",
+    "alerts": ["Não usar com perfuração timpânica"],
+    "commonBrandNames": "Cerumin",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "7-10 dias",
+      "administrationNotes": "Uso tópico auricular"
+    },
+    "calculationParams": {
+      "type": "cerumin-solucao-otologica",
+      "logica_js": "\"Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.\""
+    }
+  },
+  {
+    "name": "Otociriax (Ciprofloxacino 3 mg/mL + Hidrocortisona 1 mg/mL) Otológico - Otite Externa",
+    "slug": "otologicos",
+    "form": "Solução otológica",
+    "application": "Uso tópico",
+    "description": "Medicamento da categoria Otológicos - Antibiótico + corticoide para otite externa",
+    "alerts": ["Otite externa"],
+    "commonBrandNames": "Otociriax",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "7-10 dias",
+      "administrationNotes": "Uso tópico auricular"
+    },
+    "calculationParams": {
+      "type": "otociriax-ciprofloxacino-3-mgml-hidrocortisona-1-mgml-otologico-otite-externa",
+      "logica_js": "\"Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.\""
+    }
+  },
+  {
+    "name": "Otosporin (Hidrocortisona + Sulfato de Neomicina + Sulfato de Polimixina B)",
+    "slug": "otologicos",
+    "form": "Solução otológica",
+    "application": "Uso tópico",
+    "description": "Medicamento da categoria Otológicos - Combinação antibiótica + corticoide",
+    "alerts": ["Ototoxicidade potencial"],
+    "commonBrandNames": "Otosporin",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Pingar 2 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "7-10 dias",
+      "administrationNotes": "Uso tópico auricular"
+    },
+    "calculationParams": {
+      "type": "otosporin-hidrocortisona-sulfato-de-neomicina-polimixina-b",
+      "logica_js": "\"Pingar 2 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.\""
+    }
+  },
+  {
+    "name": "Oto-xilodase (Cloridrato de Lidocaína + Sulfato de Neomicina + Hialuronidase)",
+    "slug": "otologicos",
+    "form": "Solução otológica",
+    "application": "Uso tópico",
+    "description": "Medicamento da categoria Otológicos - Anestésico + antibiótico + enzima",
+    "alerts": ["Analgésico tópico"],
+    "commonBrandNames": "Oto-xilodase",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Pingar 4 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Até o desaparecimento da dor e da infecção.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "Até recuperação",
+      "administrationNotes": "Uso tópico auricular"
+    },
+    "calculationParams": {
+      "type": "oto-xilodase-cloridrato-de-lidocaina-sulfato-de-neomicina-hialuronidase",
+      "logica_js": "\"Pingar 4 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Até o desaparecimento da dor e da infecção.\""
+    }
+  },
+  {
+    "name": "Otomixyn ou Otosylase ou Elotin (Fluocinolona Acetonida + Polimixina B + Neomicina + Lidocaína)",
+    "slug": "otologicos",
+    "form": "Solução otológica",
+    "application": "Uso tópico",
+    "description": "Medicamento da categoria Otológicos - Corticoide + antibióticos + anestésico",
+    "alerts": ["Combinação múltipla"],
+    "commonBrandNames": "Otomixyn, Otosylase, Elotin",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Pingar 2 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "7-10 dias",
+      "administrationNotes": "Uso tópico auricular"
+    },
+    "calculationParams": {
+      "type": "otomixyn-otosylase-elotin-fluocinolona-acetonida-polimixina-b-neomicina-lidocaina",
+      "logica_js": "\"Pingar 2 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 7 a 10 dias.\""
+    }
+  },
+  {
+    "name": "Miconazol 2% Loção (Manipulado)",
+    "slug": "otologicos",
+    "form": "Loção otológica",
+    "application": "Uso tópico",
+    "description": "Medicamento da categoria Otológicos - Antifúngico para otomicose",
+    "alerts": ["Antifúngico"],
+    "commonBrandNames": "Miconazol (manipulado)",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 21 dias.",
+      "doseInterval": "8 horas",
+      "treatmentDuration": "21 dias",
+      "administrationNotes": "Uso tópico auricular"
+    },
+    "calculationParams": {
+      "type": "miconazol-2-por-cento-locao-manipulado",
+      "logica_js": "\"Pingar 3 gotas de 8/8 horas no(s) ouvido(s) comprometido(s). Por 21 dias.\""
+    }
+  }
+]

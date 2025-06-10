@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Ketamina 50 mg/ml (EV)",
+    "slug": "sedativos",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria Sedativos - Anestésico dissociativo",
+    "alerts": ["Mantém reflexos protetivos", "Alucinações"],
+    "commonBrandNames": "Ketalar",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,4 mL diluído em 10 mL de SF 0,9%. Fazer bem lento. Usar uma vez ao dia.(2mg/kg).",
+      "doseInterval": "Dose única para procedimento",
+      "treatmentDuration": "Efeito de 10-20 minutos",
+      "administrationNotes": "Administração lenta"
+    },
+    "calculationParams": {
+      "type": "ketamina-50-mgml-ev",
+      "logica_js": "\"Administrar \" + Math.round(Math.min(peso*2, peso*4)/50, 1) + \" mL diluído em 10 mL de SF 0,9%. Fazer bem lento. Usar uma vez ao dia.(2mg/kg).\""
+    }
+  },
+  {
+    "name": "Midazolam 15 mg/3ml (IM ou EV)",
+    "slug": "sedativos",
+    "form": "Solução injetável",
+    "application": "IM/EV",
+    "description": "Medicamento da categoria Sedativos - Benzodiazepínico de ação rápida",
+    "alerts": ["Depressão respiratória", "Amnésia"],
+    "commonBrandNames": "Dormium",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,4 mL por via IM ou EV.",
+      "doseInterval": "Dose única para procedimento",
+      "treatmentDuration": "Efeito de 30-60 minutos",
+      "administrationNotes": "Monitorar via aérea"
+    },
+    "calculationParams": {
+      "type": "midazolam-15-mg3ml-imev",
+      "logica_js": "\"Administrar \" + Math.round(Math.min(peso*0.2, 10)/5, 1) + \" mL por via IM ou EV.\""
+    }
+  },
+  {
+    "name": "Propofol 10 mg/ml (EV)",
+    "slug": "sedativos",
+    "form": "Emulsão injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria Sedativos - Anestésico geral de indução rápida",
+    "alerts": ["Apneia", "Hipotensão", "Não diluir"],
+    "commonBrandNames": "Diprivan",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 2 mL por via EV puro sem diluição. Fazer bem lento.(2mg/kg).",
+      "doseInterval": "Dose única para indução",
+      "treatmentDuration": "Efeito de 5-10 minutos",
+      "administrationNotes": "Não diluir, administração lenta"
+    },
+    "calculationParams": {
+      "type": "propofol-10-mgml-ev",
+      "logica_js": "\"Administrar \" + Math.round(Math.min(peso*2, peso*4)/10, 1) + \" mL por via EV puro sem diluição. Fazer bem lento.(2mg/kg).\""
+    }
+  },
+  {
+    "name": "Etomidato 2 mg/ml (EV)",
+    "slug": "sedativos",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria Sedativos - Anestésico de indução com estabilidade hemodinâmica",
+    "alerts": ["Mioclonia", "Supressão adrenal"],
+    "commonBrandNames": "Etomidato",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 1,5 mL diluído em 10 mL de SF 0,9%. Fazer lentamente por via EV.(0,3mg/kg).",
+      "doseInterval": "Dose única para indução",
+      "treatmentDuration": "Efeito de 5-10 minutos",
+      "administrationNotes": "Administração lenta"
+    },
+    "calculationParams": {
+      "type": "etomidato-2-mgml-ev",
+      "logica_js": "\"Administrar \" + Math.round(Math.min(peso*0.3, 20)/2, 1) + \" mL diluído em 10 mL de SF 0,9%. Fazer lentamente por via EV.(0,3mg/kg).\""
+    }
+  },
+  {
+    "name": "Fentanil 50 mcg/ml (EV)",
+    "slug": "sedativos",
+    "form": "Solução injetável",
+    "application": "EV",
+    "description": "Medicamento da categoria Sedativos - Opioide sintético potente",
+    "alerts": ["Depressão respiratória", "Rigidez torácica"],
+    "commonBrandNames": "Fentanest",
+    "dosageInformation": {
+      "concentration": "Ver fórmula",
+      "usualDose": "Administrar 0,4 mL diluído em 10 mL de SF 0,9%. Fazer lentamente por via EV.",
+      "doseInterval": "Dose única ou repetida",
+      "treatmentDuration": "Efeito de 30-60 minutos",
+      "administrationNotes": "Administração lenta, monitorar respiração"
+    },
+    "calculationParams": {
+      "type": "fentanil-50mcgml-ev",
+      "logica_js": "\"Administrar \" + Math.round(Math.min(peso*2, 50)/50, 1) + \" mL diluído em 10 mL de SF 0,9%. Fazer lentamente por via EV.\""
+    }
+  }
+]
