@@ -1,4 +1,3 @@
-
 import React from 'react'; // Added explicit React import
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -16,6 +15,7 @@ import MedicationCategoryPage from "./pages/platform/MedicationCategoryPage";
 import MedicationCalculatorPage from "./pages/platform/MedicationCalculatorPage";
 import InsulinCalculatorPage from "./pages/platform/InsulinCalculatorPage";
 import FlowsAndTipsPage from "./pages/platform/FlowsAndTipsPage";
+import ProtocolDetailPage from "./pages/platform/ProtocolDetailPage";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +42,7 @@ const App = () => (
             <Route path="insulin" element={<InsulinCalculatorPage />} />
             <Route path="edit-profile" element={<UserEditPage />} />
             <Route path="tips" element={<FlowsAndTipsPage />} />
+            <Route path="protocols/:protocolId" element={<ProtocolDetailPage />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />
@@ -52,4 +53,3 @@ const App = () => (
 );
 
 export default App;
-

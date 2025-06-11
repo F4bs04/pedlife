@@ -4,7 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 // Abaixo, MessageSquareQuestion foi substituído por MessageSquareQuoteIcon
-import { BookOpenText, Route, MessageSquareQuoteIcon, Lightbulb, Search } from 'lucide-react';
+import { BookOpenText, Route, MessageSquareQuoteIcon, Lightbulb, Search, Brain } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface TipCardProps {
   title: string;
@@ -28,7 +29,11 @@ const TipCard: React.FC<TipCardProps> = ({ title, description, icon: Icon, categ
       <p className="text-sm text-muted-foreground mb-4">{description}</p>
       {link && (
         <Button variant="outline" size="sm" asChild>
-          <a href={link} target="_blank" rel="noopener noreferrer">Ver mais</a>
+          {link.startsWith('/') ? (
+            <Link to={link}>Ver mais</Link>
+          ) : (
+            <a href={link} target="_blank" rel="noopener noreferrer">Ver mais</a>
+          )}
         </Button>
       )}
     </CardContent>
@@ -36,16 +41,84 @@ const TipCard: React.FC<TipCardProps> = ({ title, description, icon: Icon, categ
 );
 
 const FlowsAndTipsPage: React.FC = () => {
-  // Dados de exemplo
-  const tipsAndFlows = [
+  // Protocolos clínicos disponíveis
+  const protocolCards = [
     {
-      title: "Fluxograma de Crise Convulsiva",
-      description: "Protocolo de atendimento para crianças em crise convulsiva na emergência.",
-      icon: Route,
-      category: "Fluxograma",
-      iconColorClass: "text-orange-500",
-      link: "#"
+      title: "Traumatismo Cranioencefálico (TCE)",
+      description: "Protocolo clínico para avaliação e manejo de TCE em pediatria.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/tce"
     },
+    {
+      title: "Celulite",
+      description: "Protocolo para diagnóstico e tratamento de celulite em pacientes pediátricos.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/celulite"
+    },
+    {
+      title: "Erisipela",
+      description: "Protocolo para diagnóstico e tratamento de erisipela em pacientes pediátricos.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/erisipela"
+    },
+    {
+      title: "Cetoacidose Diabética",
+      description: "Protocolo para manejo de cetoacidose diabética em crianças e adolescentes.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/cetoacidose"
+    },
+    {
+      title: "Asma",
+      description: "Protocolo para avaliação e tratamento de crises asmáticas em pediatria.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/asma"
+    },
+    {
+      title: "Anafilaxia",
+      description: "Protocolo para reconhecimento e manejo de anafilaxia em pacientes pediátricos.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/anafilaxia"
+    },
+    {
+      title: "Desidratação",
+      description: "Protocolo para avaliação e tratamento da desidratação em pediatria.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/desidratacao"
+    },
+    {
+      title: "Crise Convulsiva",
+      description: "Protocolo para manejo de crises convulsivas em crianças e adolescentes.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/crise-convulsiva"
+    },
+    {
+      title: "Choque Séptico",
+      description: "Protocolo para reconhecimento e tratamento de choque séptico em pediatria.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/choque-septico"
+    },
+  ];
+  
+  // Outros fluxos e dicas (exemplos)
+  const otherTipsAndFlows = [
     {
       title: "Manejo da Febre em Pediatria",
       description: "Dicas práticas para avaliação e tratamento da febre em crianças.",
@@ -55,23 +128,17 @@ const FlowsAndTipsPage: React.FC = () => {
       link: "#"
     },
     {
-      title: "Protocolo de Sepse Pediátrica",
-      description: "Abordagem inicial e tratamento da sepse em pacientes pediátricos.",
-      icon: Route,
-      category: "Fluxograma",
-      iconColorClass: "text-red-500",
-      link: "#"
-    },
-    {
       title: "Alergia à Proteína do Leite de Vaca (APLV)",
       description: "Principais pontos no diagnóstico e manejo da APLV.",
-      // Abaixo, MessageSquareQuestion foi substituído por MessageSquareQuoteIcon
       icon: MessageSquareQuoteIcon,
       category: "Guia Prático",
       iconColorClass: "text-blue-500",
       link: "#"
     },
   ];
+  
+  // Combinando todos os cards
+  const tipsAndFlows = [...protocolCards, ...otherTipsAndFlows];
 
   return (
     <div className="container mx-auto py-8 px-4">
@@ -94,11 +161,25 @@ const FlowsAndTipsPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {tipsAndFlows.map((item, index) => (
-          <TipCard key={index} {...item} />
-        ))}
-      </div>
+      {/* Seção de Protocolos Clínicos */}
+      <section className="mb-10">
+        <h2 className="text-2xl font-semibold text-gray-700 mb-6">Protocolos Clínicos</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {protocolCards.map((item, index) => (
+            <TipCard key={`protocol-${index}`} {...item} />
+          ))}
+        </div>
+      </section>
+      
+      {/* Seção de Outras Dicas e Fluxos */}
+      <section>
+        <h2 className="text-2xl font-semibold text-gray-700 mb-6">Dicas e Fluxogramas</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {otherTipsAndFlows.map((item, index) => (
+            <TipCard key={`tip-${index}`} {...item} />
+          ))}
+        </div>
+      </section>
 
       <section className="mt-12 text-center">
         <h2 className="text-2xl font-semibold text-gray-700 mb-4">Não encontrou o que precisava?</h2>
