@@ -1,10 +1,10 @@
 [
   {
-    "name": "Penicilina cristalina (benzilpenicilina potássica) 5.000.000 UI - Reconstituir em 10 mL de AD",
+    "name": "Penicilina cristalina (benzilpenicilina potássica)",
     "slug": "antibioticos-im",
     "form": "Pó para reconstituição",
     "application": "EV",
-    "description": "Medicamento da categoria Antibióticos IM/EV (Cálculo: 50.000 UI/kg/dose de 8/8 horas)",
+    "description": "5.000.000 UI - Reconstituir em 10 mL de AD - Medicamento da categoria Antibióticos IM/EV (Cálculo: 50.000 UI/kg/dose de 8/8 horas)",
     "alerts": ["Observar reações alérgicas", "Administração EV deve ser lenta"],
     "commonBrandNames": "Penicilina G Cristalina",
     "dosageInformation": {
@@ -20,11 +20,11 @@
     }
   },
   {
-    "name": "Sulfato de polimixina B - 500.000 UI/Pó - Reconstituir em 10 mL de AD",
+    "name": "Sulfato de polimixina B - 500.000 UI/Pó",
     "slug": "antibioticos-im",
     "form": "Pó para reconstituição",
     "application": "EV",
-    "description": "Medicamento da categoria Antibióticos EV (Cálculo: 25.000 UI/kg/dia dividido em 2 doses)",
+    "description": "Reconstituir em 10 mL de AD - Medicamento da categoria Antibióticos EV (Cálculo: 25.000 UI/kg/dia dividido em 2 doses)",
     "alerts": ["Monitorar função renal", "Neurotoxicidade"],
     "commonBrandNames": "Polimixina B",
     "dosageInformation": {
