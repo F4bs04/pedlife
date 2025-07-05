@@ -1,22 +1,63 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ChevronLeft, Copy, Printer, Check } from 'lucide-react';
+import { ChevronLeft, Copy, Printer, Check, AlertCircle, Info, Calculator } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
+// @ts-ignore
 import { toast } from 'sonner';
+// @ts-ignore
 import ReactMarkdown from 'react-markdown';
+// @ts-ignore
 import remarkGfm from 'remark-gfm';
+// Importar estilos CSS para o markdown
+import '@/styles/markdown.css';
 import { loadProtocolContent, getProtocolTitle } from '@/utils/protocolLoader';
+import { validateInputs, prepareInputs, calculateWithErrorHandling } from '@/utils/calculatorUtils';
+
+// Componente para renderizar uma seção do protocolo
+const ProtocolSection = ({ title, children }: { title: string, children: React.ReactNode }) => (
+  <div className="mb-6">
+    <h3 className="text-xl font-semibold mb-3">{title}</h3>
+    <div className="pl-4 border-l-2 border-primary">
+      {children}
+    </div>
+  </div>
+);
+
+// Componente para renderizar uma lista de critérios
+const CriteriosList = ({ criterios }: { criterios: string[] }) => (
+  <ul className="list-disc pl-5 space-y-1">
+    {criterios.map((criterio, index) => (
+      <li key={index} className="text-gray-700">{criterio}</li>
+    ))}
+  </ul>
+);
+
+// Componente para renderizar um alerta ou informação importante
+const InfoAlert = ({ children, type = 'info' }: { children: React.ReactNode, type?: 'info' | 'warning' }) => (
+  <div className={`p-4 rounded-md my-4 flex items-start gap-3 ${type === 'info' ? 'bg-blue-50' : 'bg-amber-50'}`}>
+    {type === 'info' ? 
+      <Info className="h-5 w-5 text-blue-500 mt-0.5" /> : 
+      <AlertCircle className="h-5 w-5 text-amber-500 mt-0.5" />
+    }
+    <div className="text-sm">{children}</div>
+  </div>
+);
 
 const ProtocolDetailPage: React.FC = () => {
   const { protocolId } = useParams<{ protocolId: string }>();
   const navigate = useNavigate();
-  const [markdownContent, setMarkdownContent] = useState<string>('');
+  const [protocolData, setProtocolData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [title, setTitle] = useState<string>('Protocolo');
   const [isCopying, setIsCopying] = useState<boolean>(false);
+  const [calculatorInputs, setCalculatorInputs] = useState<Record<string, any>>({});
+  const [calculatorResults, setCalculatorResults] = useState<any>(null);
 
   useEffect(() => {
     const fetchProtocol = async () => {
@@ -27,9 +68,9 @@ const ProtocolDetailPage: React.FC = () => {
       }
 
       try {
-        // Usar a função de utilitário para carregar o conteúdo
-        const content = await loadProtocolContent(protocolId);
-        setMarkdownContent(content);
+        // Usar a função de utilitário para carregar os dados do protocolo
+        const data = await loadProtocolContent(protocolId);
+        setProtocolData(data);
         
         // Definir o título do protocolo
         setTitle(getProtocolTitle(protocolId));
@@ -44,8 +85,86 @@ const ProtocolDetailPage: React.FC = () => {
     fetchProtocol();
   }, [protocolId]);
 
+  // Função para calcular a idade total em meses
+  const calcularIdadeMeses = (anos, mesesAdicionais) => {
+    const anosNum = parseInt(anos) || 0;
+    const mesesNum = parseInt(mesesAdicionais) || 0;
+    return (anosNum * 12) + mesesNum;
+  };
+
+  // Função para lidar com o cálculo do protocolo
+  const handleCalculate = () => {
+    if (!protocolData?.controller) {
+      toast.error('Controlador não encontrado para este protocolo');
+      return;
+    }
+    
+    try {
+      // Processamento específico para cada protocolo
+      if (protocolId === 'tce') {
+        const idadeMeses = calcularIdadeMeses(
+          calculatorInputs.idade_anos, 
+          calculatorInputs.idade_meses_adicionais
+        );
+        
+        const dadosCalculados = {
+          ...calculatorInputs,
+          idade_meses: idadeMeses
+        };
+        
+        const result = protocolData.controller.calcular(dadosCalculados);
+        setCalculatorResults(result);
+        toast.success('Cálculo realizado com sucesso!');
+      } 
+      // Processamento específico para o protocolo de Asma
+      else if (protocolId === 'asma') {
+        const idadeMeses = calcularIdadeMeses(
+          calculatorInputs.idade_anos, 
+          calculatorInputs.idade_meses
+        );
+        
+        const dadosCalculados = {
+          ...calculatorInputs,
+          idade_meses: idadeMeses
+        };
+        
+        const result = protocolData.controller.calcular(dadosCalculados);
+        setCalculatorResults(result);
+        toast.success('Cálculo realizado com sucesso!');
+      } 
+      // Para outros protocolos, usar o cálculo padrão
+      else {
+        const result = protocolData.controller.calcular(calculatorInputs);
+        setCalculatorResults(result);
+        toast.success('Cálculo realizado com sucesso!');
+      }
+    } catch (error: any) {
+      console.error('Erro ao calcular:', error);
+      toast.error(`Erro ao calcular: ${error.message || 'Verifique os dados inseridos.'}`);
+      setCalculatorResults(null);
+    }
+  };
+
   const handleCopyContent = () => {
-    navigator.clipboard.writeText(markdownContent);
+    // Criar um texto formatado com as informações do protocolo
+    const controller = protocolData?.controller;
+    let textContent = `${title}\n\n`;
+    
+    // Adicionar informações específicas do protocolo
+    if (controller) {
+      // Adicionar critérios se disponíveis
+      if (controller.getCriteriosTcGerais) {
+        textContent += '\nCritérios Gerais:\n';
+        controller.getCriteriosTcGerais().forEach((criterio: string, index: number) => {
+          textContent += `${index + 1}. ${criterio}\n`;
+        });
+      }
+      
+      // Adicionar outras informações específicas do protocolo
+      // Isso varia de acordo com o tipo de protocolo
+    }
+    
+    navigator.clipboard.writeText(textContent);
     toast.success('Conteúdo copiado para a área de transferência');
     
     // Feedback visual com ícone de check
@@ -63,21 +182,7 @@ const ProtocolDetailPage: React.FC = () => {
     navigate(-1);
   };
 
-  // Componente personalizado para renderizar tabelas com estilo adequado
-  const MarkdownTable = ({ children }: { children: React.ReactNode }) => (
-    <div className="overflow-x-auto my-4">
-      <table className="min-w-full divide-y divide-gray-200 border">
-        {children}
-      </table>
-    </div>
-  );
-
-  // Componente personalizado para renderizar blocos de código
-  const CodeBlock = ({ children }: { children: React.ReactNode }) => (
-    <div className="bg-gray-50 p-4 rounded-md my-4 overflow-x-auto">
-      <pre className="text-sm">{children}</pre>
-    </div>
-  );
+  /* Componentes auxiliares agora definidos fora do componente principal */
 
   return (
     <div className="container mx-auto py-8 px-4">
@@ -138,34 +243,1135 @@ const ProtocolDetailPage: React.FC = () => {
             <Button 
               variant="outline" 
               className="mt-4" 
-              onClick={() => navigate('/platform/tips')}
+              onClick={() => navigate('/platform/protocols')}
             >
-              Voltar para Fluxos e Dicas
+              Voltar para Protocolos
             </Button>
           </div>
         ) : (
           <article className="prose prose-slate max-w-none">
-            <ReactMarkdown 
-              remarkPlugins={[remarkGfm]}
-              components={{
-                table: MarkdownTable,
-                code: CodeBlock,
-                // Skip h1 since we're already showing the title
-                h1: () => null,
-                h2: ({node, ...props}) => <h2 className="text-2xl font-bold mt-8 mb-4" {...props} />,
-                h3: ({node, ...props}) => <h3 className="text-xl font-semibold mt-6 mb-3" {...props} />,
-                blockquote: ({node, ...props}) => (
-                  <blockquote className="border-l-4 border-primary pl-4 italic my-4" {...props} />
-                ),
-              }}
-            >
-              {markdownContent}
-            </ReactMarkdown>
-          </article>
-        )}
-      </Card>
-    </div>
-  );
-};
+            {protocolData && (
+              <div className="space-y-8">
+                {/* Aviso quando não há calculadora disponível */}
+                {!protocolData.controller && (
+                  <InfoAlert>
+                    Este protocolo fornece apenas orientações informativas e não possui uma calculadora associada.
+                  </InfoAlert>
+                )}
+                
+                {/* Seção de Calculadora - sempre visível e no topo */}
+                {protocolData.controller && (
+                <div className="p-6 bg-gray-50 rounded-lg mb-8">
+                  <div className="mb-4">
+                    <h3 className="text-xl font-semibold">Calculadora de {title}</h3>
+                  </div>
+                  
+                  <div className="border rounded-md p-4">
+                    <h4 className="font-medium text-lg mb-4">Dados do Paciente</h4>
+                    
+                    {/* Formulário dinâmico baseado no tipo de protocolo */}
+                    {protocolId === 'cad' && (
+                      <div className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="peso">Peso (kg)</Label>
+                            <Input 
+                              id="peso" 
+                              type="number" 
+                              placeholder="Ex: 25"
+                              value={calculatorInputs.peso || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, peso: e.target.value }))} 
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="idade">Idade (anos)</Label>
+                            <Input 
+                              id="idade" 
+                              type="number" 
+                              placeholder="Ex: 10"
+                              value={calculatorInputs.idade || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, idade: e.target.value }))} 
+                            />
+                          </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="glicemia">Glicemia (mg/dL)</Label>
+                            <Input 
+                              id="glicemia" 
+                              type="number" 
+                              placeholder="Ex: 350"
+                              value={calculatorInputs.glicemia || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, glicemia: e.target.value }))} 
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="ph">pH</Label>
+                            <Input 
+                              id="ph" 
+                              type="number" 
+                              step="0.01"
+                              placeholder="Ex: 7.25"
+                              value={calculatorInputs.ph || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, ph: e.target.value }))} 
+                            />
+                          </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="bicarbonato">Bicarbonato (mEq/L)</Label>
+                            <Input 
+                              id="bicarbonato" 
+                              type="number" 
+                              placeholder="Ex: 12"
+                              value={calculatorInputs.bicarbonato || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, bicarbonato: e.target.value }))} 
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="potassio">Potássio (mEq/L)</Label>
+                            <Input 
+                              id="potassio" 
+                              type="number" 
+                              step="0.1"
+                              placeholder="Ex: 4.5"
+                              value={calculatorInputs.potassio || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, potassio: e.target.value }))} 
+                            />
+                          </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="deficit_estimado">Déficit Estimado (%)</Label>
+                            <Input 
+                              id="deficit_estimado" 
+                              type="number" 
+                              placeholder="Ex: 7"
+                              value={calculatorInputs.deficit_estimado || '7'}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, deficit_estimado: e.target.value }))} 
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="nivel_consciencia">Nível de Consciência</Label>
+                            <select 
+                              id="nivel_consciencia" 
+                              className="w-full mt-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                              value={calculatorInputs.nivel_consciencia || 'alerta'}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, nivel_consciencia: e.target.value }))}
+                            >
+                              <option value="alerta">Alerta</option>
+                              <option value="sonolento">Sonolento</option>
+                              <option value="confuso">Confuso</option>
+                              <option value="estupor">Estupor</option>
+                              <option value="coma">Coma</option>
+                            </select>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-center space-x-2 mt-4">
+                          <Checkbox 
+                            id="bicarbonato_indicado" 
+                            checked={calculatorInputs.bicarbonato_indicado || false}
+                            onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, bicarbonato_indicado: checked }))} 
+                          />
+                          <Label htmlFor="bicarbonato_indicado" className="text-sm font-normal">Indicação de uso de bicarbonato</Label>
+                        </div>
+                        
+                        <div className="flex justify-between mt-6">
+                          <Button 
+                            variant="outline" 
+                            onClick={() => setCalculatorInputs({})}
+                          >
+                            Limpar
+                          </Button>
+                          <Button 
+                            onClick={handleCalculate}
+                          >
+                            Calcular
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {protocolId === 'asma' && (
+                      <div className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="idade_anos">Idade (anos)</Label>
+                            <Input 
+                              id="idade_anos" 
+                              type="number" 
+                              placeholder="Ex: 5"
+                              value={calculatorInputs.idade_anos || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, idade_anos: e.target.value }))} 
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="idade_meses">Idade (meses adicionais)</Label>
+                            <Input 
+                              id="idade_meses" 
+                              type="number" 
+                              placeholder="Ex: 6"
+                              value={calculatorInputs.idade_meses || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, idade_meses: e.target.value }))} 
+                            />
+                          </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="peso">Peso (kg)</Label>
+                            <Input 
+                              id="peso" 
+                              type="number" 
+                              step="0.1"
+                              placeholder="Ex: 20"
+                              value={calculatorInputs.peso || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, peso: e.target.value }))} 
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="frequencia_respiratoria">Frequência Respiratória (irpm)</Label>
+                            <Input 
+                              id="frequencia_respiratoria" 
+                              type="number" 
+                              placeholder="Ex: 40"
+                              value={calculatorInputs.frequencia_respiratoria || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, frequencia_respiratoria: e.target.value }))} 
+                            />
+                          </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="saturacao_o2">Saturação de O₂ (%)</Label>
+                            <Input 
+                              id="saturacao_o2" 
+                              type="number" 
+                              placeholder="Ex: 94"
+                              value={calculatorInputs.saturacao_o2 || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, saturacao_o2: e.target.value }))} 
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="retracao">Retrações/Tiragem</Label>
+                            <select 
+                              id="retracao" 
+                              className="w-full mt-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                              value={calculatorInputs.retracao || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, retracao: e.target.value }))}
+                            >
+                              <option value="">Selecione</option>
+                              <option value="ausente">Ausente</option>
+                              <option value="leve">Leve</option>
+                              <option value="moderada">Moderada</option>
+                              <option value="grave">Grave</option>
+                            </select>
+                          </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="sibilancia">Sibilância</Label>
+                            <select 
+                              id="sibilancia" 
+                              className="w-full mt-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                              value={calculatorInputs.sibilancia || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, sibilancia: e.target.value }))}
+                            >
+                              <option value="">Selecione</option>
+                              <option value="ausente">Ausente</option>
+                              <option value="leves">Leves</option>
+                              <option value="moderados">Moderados</option>
+                              <option value="intensos">Intensos</option>
+                              <option value="ausente_torax_mudo">Ausente (tórax mudo)</option>
+                            </select>
+                          </div>
+                          <div>
+                            <Label htmlFor="nivel_consciencia">Nível de Consciência</Label>
+                            <select 
+                              id="nivel_consciencia" 
+                              className="w-full mt-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                              value={calculatorInputs.nivel_consciencia || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, nivel_consciencia: e.target.value }))}
+                            >
+                              <option value="">Selecione</option>
+                              <option value="alerta">Alerta</option>
+                              <option value="agitado">Agitado</option>
+                              <option value="sonolento">Sonolento</option>
+                            </select>
+                          </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="fala">Fala</Label>
+                            <select 
+                              id="fala" 
+                              className="w-full mt-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                              value={calculatorInputs.fala || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, fala: e.target.value }))}
+                            >
+                              <option value="">Selecione</option>
+                              <option value="frases_completas">Frases completas</option>
+                              <option value="frases_incompletas">Frases incompletas</option>
+                              <option value="palavras">Palavras</option>
+                            </select>
+                          </div>
+                          <div className="flex flex-col justify-end">
+                            <div className="flex items-center space-x-2 mt-4">
+                              <Checkbox 
+                                id="cianose" 
+                                checked={calculatorInputs.cianose || false}
+                                onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, cianose: checked }))} 
+                              />
+                              <Label htmlFor="cianose" className="text-sm font-normal">Cianose</Label>
+                            </div>
+                            
+                            <div className="flex items-center space-x-2 mt-2">
+                              <Checkbox 
+                                id="comorbidades" 
+                                checked={calculatorInputs.comorbidades || false}
+                                onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, comorbidades: checked }))} 
+                              />
+                              <Label htmlFor="comorbidades" className="text-sm font-normal">Comorbidades (cardiopatia, pneumopatia, prematuridade)</Label>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex justify-between mt-6">
+                          <Button 
+                            variant="outline" 
+                            onClick={() => setCalculatorInputs({})}
+                          >
+                            Limpar
+                          </Button>
+                          <Button 
+                            onClick={handleCalculate}
+                          >
+                            Calcular
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {protocolId === 'tce' && (
+                      <div className="space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div>
+                            <Label htmlFor="idade_anos">Idade (anos)</Label>
+                            <Input 
+                              id="idade_anos" 
+                              type="number" 
+                              placeholder="Ex: 5"
+                              value={calculatorInputs.idade_anos || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, idade_anos: e.target.value }))} 
+                            />
+                          </div>
+                          <div>
+                            <Label htmlFor="idade_meses">Idade (meses adicionais)</Label>
+                            <Input 
+                              id="idade_meses" 
+                              type="number" 
+                              placeholder="Ex: 6"
+                              value={calculatorInputs.idade_meses_adicionais || ''}
+                              onChange={(e) => setCalculatorInputs(prev => ({ ...prev, idade_meses_adicionais: e.target.value }))} 
+                            />
+                          </div>
+                        </div>
+                        
+                        <div className="mt-6">
+                          <h4 className="font-medium text-lg mb-3">Avaliação Neurológica (Escala de Glasgow)</h4>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                              <Label htmlFor="abertura_olhos">Abertura Ocular</Label>
+                              <select 
+                                id="abertura_olhos" 
+                                className="w-full mt-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                                value={calculatorInputs.abertura_olhos || '4'}
+                                onChange={(e) => setCalculatorInputs(prev => ({ ...prev, abertura_olhos: e.target.value }))}
+                              >
+                                <option value="4">4 - Espontânea</option>
+                                <option value="3">3 - Ao comando</option>
+                                <option value="2">2 - À dor</option>
+                                <option value="1">1 - Nenhuma resposta</option>
+                              </select>
+                            </div>
+                            
+                            <div>
+                              <Label htmlFor="resposta_verbal">Resposta Verbal</Label>
+                              <select 
+                                id="resposta_verbal" 
+                                className="w-full mt-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                                value={calculatorInputs.resposta_verbal || '5'}
+                                onChange={(e) => setCalculatorInputs(prev => ({ ...prev, resposta_verbal: e.target.value }))}
+                              >
+                                <option value="5">5 - Orientada / Sorri, balbucia</option>
+                                <option value="4">4 - Desorientada / Choro consolável</option>
+                                <option value="3">3 - Palavras inapropriadas / Choro persistente</option>
+                                <option value="2">2 - Sons incompreensíveis / Agitada</option>
+                                <option value="1">1 - Nenhuma resposta</option>
+                              </select>
+                            </div>
+                            
+                            <div>
+                              <Label htmlFor="resposta_motora">Resposta Motora</Label>
+                              <select 
+                                id="resposta_motora" 
+                                className="w-full mt-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                                value={calculatorInputs.resposta_motora || '6'}
+                                onChange={(e) => setCalculatorInputs(prev => ({ ...prev, resposta_motora: e.target.value }))}
+                              >
+                                <option value="6">6 - Obedece comandos / Movimentos normais</option>
+                                <option value="5">5 - Localiza a dor</option>
+                                <option value="4">4 - Flexão à dor</option>
+                                <option value="3">3 - Flexão anormal à dor</option>
+                                <option value="2">2 - Extensão anormal à dor</option>
+                                <option value="1">1 - Nenhuma resposta</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="mt-6">
+                          <h4 className="font-medium text-lg mb-3">Critérios de avaliação</h4>
+                          
+                          <div className="mb-4">
+                            <h5 className="font-medium mb-2">Critérios principais</h5>
+                            <div className="space-y-2">
+                              <div className="flex items-center space-x-2">
+                                <Checkbox 
+                                  id="glasgow_alterado" 
+                                  checked={calculatorInputs.glasgow_alterado || false}
+                                  onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, glasgow_alterado: checked }))} 
+                                />
+                                <Label htmlFor="glasgow_alterado" className="text-sm font-normal">Escala de Coma de Glasgow &lt; 14</Label>
+                              </div>
+                              
+                              <div className="flex items-center space-x-2">
+                                <Checkbox 
+                                  id="alteracao_mental" 
+                                  checked={calculatorInputs.alteracao_mental || false}
+                                  onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, alteracao_mental: checked }))} 
+                                />
+                                <Label htmlFor="alteracao_mental" className="text-sm font-normal">Alterações do estado mental</Label>
+                              </div>
+                              
+                              <div className="flex items-center space-x-2">
+                                <Checkbox 
+                                  id="perda_consciencia" 
+                                  checked={calculatorInputs.perda_consciencia || false}
+                                  onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, perda_consciencia: checked }))} 
+                                />
+                                <Label htmlFor="perda_consciencia" className="text-sm font-normal">Perda da consciência (independente da duração)</Label>
+                              </div>
+                              
+                              <div className="flex items-center space-x-2">
+                                <Checkbox 
+                                  id="sinais_fratura" 
+                                  checked={calculatorInputs.sinais_fratura || false}
+                                  onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, sinais_fratura: checked }))} 
+                                />
+                                <Label htmlFor="sinais_fratura" className="text-sm font-normal">Sinais de fratura de base de crânio (ou, em menores de 2 anos, qualquer fratura craniana)</Label>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <h5 className="font-medium mb-2">Critérios adicionais (≤2 anos)</h5>
+                            <div className="space-y-2">
+                              <div className="flex items-center space-x-2">
+                                <Checkbox 
+                                  id="hematoma_cabeca" 
+                                  checked={calculatorInputs.hematoma_cabeca || false}
+                                  onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, hematoma_cabeca: checked }))} 
+                                />
+                                <Label htmlFor="hematoma_cabeca" className="text-sm font-normal">Hematoma occipital, parietal ou temporal</Label>
+                              </div>
+                              
+                              <div className="flex items-center space-x-2">
+                                <Checkbox 
+                                  id="trauma_grave" 
+                                  checked={calculatorInputs.trauma_grave || false}
+                                  onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, trauma_grave: checked }))} 
+                                />
+                                <Label htmlFor="trauma_grave" className="text-sm font-normal">Mecanismo de trauma grave</Label>
+                              </div>
+                              
+                              <div className="flex items-center space-x-2">
+                                <Checkbox 
+                                  id="comportamento_anormal" 
+                                  checked={calculatorInputs.comportamento_anormal || false}
+                                  onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, comportamento_anormal: checked }))} 
+                                />
+                                <Label htmlFor="comportamento_anormal" className="text-sm font-normal">Se a criança não estiver reagindo normalmente, segundo os pais</Label>
+                              </div>
+                              
+                              <div className="flex items-center space-x-2">
+                                <Checkbox 
+                                  id="vomitos_persistentes" 
+                                  checked={calculatorInputs.vomitos_persistentes || false}
+                                  onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, vomitos_persistentes: checked }))} 
+                                />
+                                <Label htmlFor="vomitos_persistentes" className="text-sm font-normal">Vômitos persistentes</Label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex gap-3 mt-4">
+                          <Button 
+                            variant="secondary" 
+                            onClick={() => setCalculatorInputs({})}
+                            className="w-24"
+                          >
+                            Limpar
+                          </Button>
+                          <Button 
+                            onClick={handleCalculate}
+                            className="w-24"
+                          >
+                            Calcular
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* Outros formulários específicos para cada protocolo */}
+                    {protocolId !== 'tce' && (
+                      <div className="space-y-4">
+                        <div>
+                          <Label htmlFor="idade">Idade (anos)</Label>
+                          <Input 
+                            id="idade" 
+                            type="number" 
+                            placeholder="Ex: 5"
+                            value={calculatorInputs.idade || ''}
+                            onChange={(e) => setCalculatorInputs(prev => ({ ...prev, idade: e.target.value }))} 
+                          />
+                        </div>
+                        
+                        <div>
+                          <Label htmlFor="peso">Peso (kg)</Label>
+                          <Input 
+                            id="peso" 
+                            type="number" 
+                            placeholder="Ex: 20"
+                            step="0.1"
+                            value={calculatorInputs.peso || ''}
+                            onChange={(e) => setCalculatorInputs(prev => ({ ...prev, peso: e.target.value }))} 
+                          />
+                        </div>
+                        
+                        <Button onClick={handleCalculate}>Calcular</Button>
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Resultados do cálculo */}
+                  {calculatorResults && (
+                    <div className="mt-6 border rounded-md p-4 bg-white">
+                      <h4 className="font-medium text-lg mb-4">Resultados</h4>
+                      
+                      {/* Resultados do cálculo para CAD (Cetoacidose Diabética) */}
+                      {protocolId === 'cad' && (
+                        <div className="space-y-4">
+                          {/* Diagnóstico e Gravidade */}
+                          <div className={`p-3 rounded border ${calculatorResults.diagnostico_cad ? 'bg-red-50 border-red-200' : 'bg-yellow-50 border-yellow-200'}`}>
+                            <h5 className="font-medium mb-2">Diagnóstico</h5>
+                            <p className="text-sm font-medium">
+                              {calculatorResults.diagnostico_cad 
+                                ? 'Critérios para Cetoacidose Diabética presentes' 
+                                : 'Critérios para Cetoacidose Diabética não preenchidos'}
+                            </p>
+                            {calculatorResults.diagnostico_cad && (
+                              <div className="mt-2">
+                                <p className="text-sm">Gravidade: <span className="font-medium">{calculatorResults.gravidade}</span></p>
+                              </div>
+                            )}
+                          </div>
+                          
+                          {/* Hidratação */}
+                          {calculatorResults.hidratacao && (
+                            <div className="p-3 bg-white rounded border">
+                              <h5 className="font-medium mb-2">Hidratação</h5>
+                              <div className="grid grid-cols-2 gap-2 text-sm">
+                                <div>Expansão inicial:</div>
+                                <div className="font-medium">{calculatorResults.hidratacao.expansao_inicial} mL</div>
+                                
+                                <div>Reparação residual:</div>
+                                <div className="font-medium">{calculatorResults.hidratacao.reparacao_residual} mL</div>
+                                
+                                <div>Manutenção 24h:</div>
+                                <div className="font-medium">{calculatorResults.hidratacao.manutencao_24h} mL</div>
+                                
+                                <div>Volume total 24h:</div>
+                                <div className="font-medium">{calculatorResults.hidratacao.volume_total_24h} mL</div>
+                                
+                                <div>Volume por fase (2h):</div>
+                                <div className="font-medium">{calculatorResults.hidratacao.volume_por_fase} mL</div>
+                                
+                                <div>Fluxo horário:</div>
+                                <div className="font-medium">{calculatorResults.hidratacao.fluxo_horario} mL/h</div>
+                              </div>
+                            </div>
+                          )}
+                          
+                          {/* Insulinoterapia */}
+                          {calculatorResults.insulinoterapia && (
+                            <div className="p-3 bg-white rounded border">
+                              <h5 className="font-medium mb-2">Insulinoterapia</h5>
+                              <div className="grid grid-cols-2 gap-2 text-sm">
+                                <div>Dose IV:</div>
+                                <div className="font-medium">{calculatorResults.insulinoterapia.dose_minima_iv} - {calculatorResults.insulinoterapia.dose_maxima_iv} U/h</div>
+                                
+                                <div>Volume IV (diluição):</div>
+                                <div className="font-medium">{calculatorResults.insulinoterapia.volume_minimo_iv} - {calculatorResults.insulinoterapia.volume_maximo_iv} mL/h</div>
+                                
+                                <div>Dose SC (transição):</div>
+                                <div className="font-medium">{calculatorResults.insulinoterapia.dose_baixa_sc} - {calculatorResults.insulinoterapia.dose_alta_sc} U</div>
+                                
+                                <div>Dose NPH (manhã):</div>
+                                <div className="font-medium">{calculatorResults.insulinoterapia.dose_nph} U</div>
+                              </div>
+                              
+                              <div className="mt-3 p-2 bg-gray-50 rounded">
+                                <h6 className="text-sm font-medium mb-1">Esquema por glicemia:</h6>
+                                <div className="grid grid-cols-2 gap-1 text-xs">
+                                  <div>160-200 mg/dL:</div>
+                                  <div>{calculatorResults.insulinoterapia.doses_esquema['160-200']} U</div>
+                                  
+                                  <div>200-300 mg/dL:</div>
+                                  <div>{calculatorResults.insulinoterapia.doses_esquema['200-300']} U</div>
+                                  
+                                  <div>300-500 mg/dL:</div>
+                                  <div>{calculatorResults.insulinoterapia.doses_esquema['300-500']} U</div>
+                                  
+                                  <div>&gt;500 mg/dL:</div>
+                                  <div>{calculatorResults.insulinoterapia.doses_esquema['>500']} U</div>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                          
+                          {/* Eletrolitoterapia */}
+                          {calculatorResults.eletrolitoterapia && (
+                            <div className="p-3 bg-white rounded border">
+                              <h5 className="font-medium mb-2">Eletrolitoterapia</h5>
+                              <div className="text-sm">
+                                <p className="font-medium mb-1">Reposição de potássio:</p>
+                                <p>{calculatorResults.eletrolitoterapia.k_recomendacao}</p>
+                                
+                                {calculatorResults.eletrolitoterapia.k_dose_min > 0 && (
+                                  <p className="mt-1">Dose: {calculatorResults.eletrolitoterapia.k_dose_min} - {calculatorResults.eletrolitoterapia.k_dose_max} mEq/kg/h</p>
+                                )}
+                              </div>
+                            </div>
+                          )}
+                          
+                          {/* Bicarbonato */}
+                          {calculatorResults.calculo_bicarbonato && (
+                            <div className={`p-3 rounded border ${calculatorResults.calculo_bicarbonato.bicarbonato_indicado ? 'bg-yellow-50 border-yellow-200' : 'bg-green-50 border-green-200'}`}>
+                              <h5 className="font-medium mb-2">Bicarbonato</h5>
+                              <p className="text-sm">{calculatorResults.calculo_bicarbonato.recomendacao}</p>
+                              
+                              {calculatorResults.calculo_bicarbonato.bicarbonato_indicado && calculatorResults.calculo_bicarbonato.bicarbonato_dose > 0 && (
+                                <p className="text-sm font-medium mt-1">Dose: {calculatorResults.calculo_bicarbonato.bicarbonato_dose} mEq</p>
+                              )}
+                            </div>
+                          )}
+                          
+                          {/* Recomendações */}
+                          {calculatorResults.recomendacoes && calculatorResults.recomendacoes.length > 0 && (
+                            <div className="p-3 bg-white rounded border">
+                              <h5 className="font-medium mb-2">Recomendações</h5>
+                              <ul className="list-disc pl-5 text-sm space-y-1">
+                                {calculatorResults.recomendacoes.map((rec, index) => (
+                                  <li key={index}>{rec}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                        
+                        {/* Fatores de risco e complicações */}
+                        <div>
+                          <h4 className="font-medium mb-2">Fatores de Risco e Complicações</h4>
+                          <div className="grid grid-cols-2 gap-3">
+                            <div className="flex items-center space-x-2">
+                              <Checkbox 
+                                id="prematuro" 
+                                checked={calculatorInputs.prematuro || false}
+                                onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, prematuro: checked }))} 
+                              />
+                              <Label htmlFor="prematuro" className="text-sm font-normal">Prematuro &lt;35 semanas</Label>
+                            </div>
+                            
+                            <div className="flex items-center space-x-2">
+                              <Checkbox 
+                                id="comorbidades" 
+                                checked={calculatorInputs.comorbidades || false}
+                                onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, comorbidades: checked }))} 
+                              />
+                              <Label htmlFor="comorbidades" className="text-sm font-normal">Comorbidades</Label>
+                            </div>
+                            
+                            <div className="flex items-center space-x-2">
+                              <Checkbox 
+                                id="derrame_pleural" 
+                                checked={calculatorInputs.derrame_pleural || false}
+                                onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, derrame_pleural: checked }))} 
+                              />
+                              <Label htmlFor="derrame_pleural" className="text-sm font-normal">Derrame Pleural</Label>
+                            </div>
+                            
+                            <div className="flex items-center space-x-2">
+                              <Checkbox 
+                                id="pneumonia_complicada" 
+                                checked={calculatorInputs.pneumonia_complicada || false}
+                                onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, pneumonia_complicada: checked }))} 
+                              />
+                              <Label htmlFor="pneumonia_complicada" className="text-sm font-normal">Pneumonia Complicada</Label>
+                            </div>
+                            
+                            <div className="flex items-center space-x-2">
+                              <Checkbox 
+                                id="suspeita_atipicos" 
+                                checked={calculatorInputs.suspeita_atipicos || false}
+                                onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, suspeita_atipicos: checked }))} 
+                              />
+                              <Label htmlFor="suspeita_atipicos" className="text-sm font-normal">Suspeita de Atípicos</Label>
+                            </div>
+                            
+                            <div className="flex items-center space-x-2">
+                              <Checkbox 
+                                id="suspeita_aspiracao" 
+                                checked={calculatorInputs.suspeita_aspiracao || false}
+                                onCheckedChange={(checked) => setCalculatorInputs(prev => ({ ...prev, suspeita_aspiracao: checked }))} 
+                              />
+                              <Label htmlFor="suspeita_aspiracao" className="text-sm font-normal">Suspeita de Aspiração</Label>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex gap-3 mt-4">
+                          <Button 
+                            variant="secondary" 
+                            onClick={() => setCalculatorInputs({})}
+                            className="w-24"
+                          >
+                            Limpar
+                          </Button>
+                          <Button 
+                            onClick={handleCalculate}
+                            className="w-24"
+                          >
+                            Calcular
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* Formulário específico para Asma */}
+                    {protocolId === 'asma' && (
+                        <div className="space-y-4">
+                          {/* Classificação de Gravidade */}
+                          <div className={`p-3 rounded border ${calculatorResults.avaliacao_gravidade?.gravidade === 'Leve' ? 'bg-green-50 border-green-200' : 
+                            calculatorResults.avaliacao_gravidade?.gravidade === 'Moderada' ? 'bg-yellow-50 border-yellow-200' : 
+                            calculatorResults.avaliacao_gravidade?.gravidade === 'Grave' ? 'bg-orange-50 border-orange-200' : 
+                            'bg-red-50 border-red-200'}`}>
+                            <h5 className="font-medium mb-2">Classificação de Gravidade</h5>
+                            <div className="grid grid-cols-2 gap-2">
+                              <div className="text-sm">Pontuação:</div>
+                              <div className="text-sm font-medium">{calculatorResults.avaliacao_gravidade?.pontuacao || '-'}</div>
+                              
+                              <div className="text-sm">Gravidade:</div>
+                              <div className="text-sm font-medium">{calculatorResults.avaliacao_gravidade?.gravidade || '-'}</div>
+                            </div>
+                          </div>
+                          
+                          {/* Características da Gravidade */}
+                          <div className="p-3 bg-white rounded border">
+                            <h5 className="font-medium mb-2">Características Clínicas</h5>
+                            <ul className="list-disc pl-5 text-sm space-y-1">
+                              {calculatorResults.tratamento?.caracteristicas?.map((caracteristica, index) => (
+                                <li key={index}>{caracteristica}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          
+                          {/* Medicações Calculadas */}
+                          <div className="p-3 bg-white rounded border">
+                            <h5 className="font-medium mb-2">Medicações</h5>
+                            <div className="grid grid-cols-2 gap-2 text-sm">
+                              <div>Salbutamol nebulização:</div>
+                              <div className="font-medium">{calculatorResults.medicacoes?.salbutamol_neb || '-'}</div>
+                              
+                              <div>Salbutamol spray:</div>
+                              <div className="font-medium">{calculatorResults.medicacoes?.salbutamol_spray || '-'}</div>
+                              
+                              <div>Prednisona/Prednisolona:</div>
+                              <div className="font-medium">{calculatorResults.medicacoes?.prednisona || '-'}</div>
+                            </div>
+                          </div>
+                          
+                          {/* Recomendações de Tratamento */}
+                          <div className="p-3 bg-white rounded border">
+                            <h5 className="font-medium mb-2">Recomendações de Tratamento</h5>
+                            <ul className="list-disc pl-5 text-sm space-y-1">
+                              {calculatorResults.recomendacoes?.map((recomendacao, index) => (
+                                <li key={index}>{recomendacao}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          
+                          {/* Necessidade de Internação */}
+                          <div className={`p-3 rounded border ${calculatorResults.necessidade_internacao ? 'bg-red-50 border-red-200' : 'bg-green-50 border-green-200'}`}>
+                            <h5 className="font-medium mb-2">Avaliação de Internação</h5>
+                            <p className="text-sm font-medium">
+                              {calculatorResults.necessidade_internacao 
+                                ? 'Paciente com indicação de internação hospitalar' 
+                                : 'Paciente sem indicação imediata de internação hospitalar'}
+                            </p>
+                            
+                            {calculatorResults.criterios_internacao_presentes && calculatorResults.criterios_internacao_presentes.length > 0 && (
+                              <div className="mt-2">
+                                <p className="text-sm font-medium">Critérios de internação presentes:</p>
+                                <ul className="list-disc pl-5 text-sm space-y-1 mt-1">
+                                  {calculatorResults.criterios_internacao_presentes.map((criterio, index) => (
+                                    <li key={index}>{criterio}</li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
+                          
+                          {/* Orientações de Alta */}
+                          {calculatorResults.orientacoes_alta && calculatorResults.orientacoes_alta.length > 0 && (
+                            <div className="p-3 bg-white rounded border">
+                              <h5 className="font-medium mb-2">Orientações de Alta</h5>
+                              <ul className="list-disc pl-5 text-sm space-y-1">
+                                {calculatorResults.orientacoes_alta.map((orientacao, index) => (
+                                  <li key={index}>{orientacao}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      
+                      {/* Resultados do cálculo para TCE */}
+                      {protocolId === 'tce' && (
+                        <div className="space-y-4">
+                          {/* Escala de Glasgow */}
+                          <div className="p-3 bg-white rounded border">
+                            <h5 className="font-medium mb-2">Escala de Glasgow</h5>
+                            <div className="grid grid-cols-2 gap-2">
+                              <div className="text-sm">Pontuação total:</div>
+                              <div className="text-sm font-medium">{calculatorResults.glasgow?.score_total || '-'}</div>
+                              
+                              <div className="text-sm">Avaliação:</div>
+                              <div className="text-sm font-medium">{calculatorResults.glasgow?.avaliacao || '-'}</div>
+                              
+                              <div className="text-sm">Valor normal para idade:</div>
+                              <div className="text-sm font-medium">{calculatorResults.glasgow?.valor_normal || '-'}</div>
+                            </div>
+                          </div>
+                          
+                          {/* Recomendação de TC */}
+                          <div className={`p-3 rounded border ${calculatorResults.recomendacao_tc === 'TC crânio recomendada' ? 'bg-red-50 border-red-200' : calculatorResults.recomendacao_tc === 'TC ou Observação conforme experiência clínica, piora clínica, achados múltiplos' ? 'bg-yellow-50 border-yellow-200' : 'bg-green-50 border-green-200'}`}>
+                            <h5 className="font-medium mb-2">Recomendação de Tomografia</h5>
+                            <p className="text-sm font-medium">{calculatorResults.recomendacao_tc || '-'}</p>
+                          </div>
+                          
+                          {/* Recomendações */}
+                          <div className="p-3 bg-white rounded border">
+                            <h5 className="font-medium mb-2">Recomendações</h5>
+                            {calculatorResults.recomendacoes && calculatorResults.recomendacoes.length > 0 ? (
+                              <ul className="list-disc pl-5 text-sm space-y-1">
+                                {calculatorResults.recomendacoes.map((rec, index) => (
+                                  <li key={index}>{rec}</li>
+                                ))}
+                              </ul>
+                            ) : (
+                              <p className="text-sm">Nenhuma recomendação específica.</p>
+                            )}
+                          </div>
+                          
+                          {/* Critérios de internação */}
+                          <div className={`p-3 rounded border ${calculatorResults.criterios_internacao ? 'bg-red-50 border-red-200' : 'bg-green-50 border-green-200'}`}>
+                            <h5 className="font-medium mb-2">Critérios de Internação</h5>
+                            {calculatorResults.criterios_internacao ? (
+                              <>
+                                <p className="text-sm font-medium mb-2">Internação recomendada</p>
+                                <p className="text-sm">Motivos:</p>
+                                <ul className="list-disc pl-5 text-sm space-y-1">
+                                  {calculatorResults.motivos_internacao && calculatorResults.motivos_internacao.map((motivo, index) => (
+                                    <li key={index}>{motivo}</li>
+                                  ))}
+                                </ul>
+                              </>
+                            ) : (
+                              <p className="text-sm">Internação não necessária.</p>
+                            )}
+                          </div>
+                          
+                          {/* Orientações de alta */}
+                          {!calculatorResults.criterios_internacao && calculatorResults.orientacoes_alta && calculatorResults.orientacoes_alta.length > 0 && (
+                            <div className="p-3 bg-white rounded border">
+                              <h5 className="font-medium mb-2">Orientações de Alta</h5>
+                              <ul className="list-disc pl-5 text-sm space-y-1">
+                                {calculatorResults.orientacoes_alta.map((orientacao, index) => (
+                                  <li key={index}>{orientacao}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      
+                      {/* Resultados do cálculo para Pneumonia */}
+                       {protocolId === 'pneumonia' && calculatorResults && (
+                         <div className="space-y-4">
+                           {/* Classificação de Gravidade */}
+                           <div className={`p-3 rounded border ${calculatorResults.gravidade === 'Leve' ? 'bg-green-50 border-green-200' : calculatorResults.gravidade === 'Moderada' ? 'bg-yellow-50 border-yellow-200' : 'bg-red-50 border-red-200'}`}>
+                             <h5 className="font-medium mb-2">Classificação de Gravidade</h5>
+                             <div className="grid grid-cols-2 gap-2">
+                               <div className="text-sm">Gravidade:</div>
+                               <div className="text-sm font-medium">{calculatorResults.gravidade || '-'}</div>
+                               
+                               {calculatorResults.pontuacao !== undefined && (
+                                 <>
+                                   <div className="text-sm">Pontuação:</div>
+                                   <div className="text-sm font-medium">{calculatorResults.pontuacao}</div>
+                                 </>
+                               )}
+                             </div>
+                           </div>
+                           
+                           {/* Etiologia Provável */}
+                           {calculatorResults.etiologia_provavel && (
+                             <div className="p-3 bg-white rounded border">
+                               <h5 className="font-medium mb-2">Etiologia Provável</h5>
+                               <ul className="list-disc pl-5 text-sm space-y-1">
+                                 {calculatorResults.etiologia_provavel.map((etiologia, index) => (
+                                   <li key={index}>{etiologia}</li>
+                                 ))}
+                               </ul>
+                             </div>
+                           )}
+                           
+                           {/* Necessidade de Internação */}
+                           <div className={`p-3 rounded border ${calculatorResults.necessidade_internacao ? 'bg-red-50 border-red-200' : 'bg-green-50 border-green-200'}`}>
+                             <h5 className="font-medium mb-2">Necessidade de Internação</h5>
+                             <p className="text-sm font-medium">
+                               {calculatorResults.necessidade_internacao 
+                                 ? "Internação hospitalar indicada" 
+                                 : "Internação hospitalar não necessária"}
+                             </p>
+                             
+                             {calculatorResults.motivos_internacao && calculatorResults.motivos_internacao.length > 0 && (
+                               <div className="mt-2">
+                                 <p className="text-sm font-medium">Motivos:</p>
+                                 <ul className="list-disc pl-5 text-sm space-y-1 mt-1">
+                                   {calculatorResults.motivos_internacao.map((motivo, index) => (
+                                     <li key={index}>{motivo}</li>
+                                   ))}
+                                 </ul>
+                               </div>
+                             )}
+                           </div>
+                           
+                           {/* Tratamento Recomendado */}
+                           {calculatorResults.tratamento_recomendado && (
+                             <div className="p-3 bg-white rounded border">
+                               <h5 className="font-medium mb-2">Tratamento Recomendado</h5>
+                               <ul className="list-disc pl-5 text-sm space-y-1">
+                                 {calculatorResults.tratamento_recomendado.map((tratamento, index) => (
+                                   <li key={index}>{tratamento}</li>
+                                 ))}
+                               </ul>
+                             </div>
+                           )}
+                           
+                           {/* Exames Complementares */}
+                           {calculatorResults.exames_complementares && calculatorResults.exames_complementares.length > 0 && (
+                             <div className="p-3 bg-white rounded border">
+                               <h5 className="font-medium mb-2">Exames Complementares Recomendados</h5>
+                               <ul className="list-disc pl-5 text-sm space-y-1">
+                                 {calculatorResults.exames_complementares.map((exame, index) => (
+                                   <li key={index}>{exame}</li>
+                                 ))}
+                               </ul>
+                             </div>
+                           )}
+                           
+                           {/* Critérios para UTI */}
+                           {calculatorResults.criterios_uti && calculatorResults.criterios_uti.length > 0 && (
+                             <div className="p-3 bg-red-50 rounded border border-red-200">
+                               <h5 className="font-medium mb-2">Critérios para UTI</h5>
+                               <ul className="list-disc pl-5 text-sm space-y-1">
+                                 {calculatorResults.criterios_uti.map((criterio, index) => (
+                                   <li key={index}>{criterio}</li>
+                                 ))}
+                               </ul>
+                             </div>
+                           )}
+                           
+                           {/* Orientações de Alta */}
+                           {!calculatorResults.necessidade_internacao && calculatorResults.orientacoes_alta && calculatorResults.orientacoes_alta.length > 0 && (
+                             <div className="p-3 bg-blue-50 rounded border border-blue-200">
+                               <h5 className="font-medium mb-2">Orientações de Alta</h5>
+                               <ul className="list-disc pl-5 text-sm space-y-1">
+                                 {calculatorResults.orientacoes_alta.map((orientacao, index) => (
+                                   <li key={index}>{orientacao}</li>
+                                 ))}
+                               </ul>
+                             </div>
+                           )}
+                         </div>
+                       )}
+                       
+                       {/* Resultados genéricos para outros protocolos */}
+                      {protocolId !== 'tce' && protocolId !== 'pneumonia' && (
+                        <div>
+                          {Object.entries(calculatorResults).map(([key, value]) => (
+                            <div key={key} className="mb-2">
+                              <p className="font-medium">{key.replace(/_/g, ' ')}:</p>
+                              <p>{typeof value === 'object' ? JSON.stringify(value) : value}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+                )}
+                
+                {/* Seção de Introdução */}
+                <div className="mb-8">
+                  <p className="text-gray-700 mb-4">
+                    Este protocolo fornece orientações para avaliação e manejo de {title} em pacientes pediátricos.
+                  </p>
+                </div>
+                
+                {/* Critérios Gerais - se disponíveis */}
+                {protocolData.controller && protocolData.controller.getCriteriosTcGerais && (
+                  <ProtocolSection title="Critérios Gerais">
+                    <CriteriosList criterios={protocolData.controller.getCriteriosTcGerais()} />
+                  </ProtocolSection>
+                )}
+                
+                {/* Critérios Adicionais para maiores de 2 anos - se disponíveis */}
+                {protocolData.controller && protocolData.controller.getCriteriosAdicionaisMaior2Anos && (
+                  <ProtocolSection title="Critérios Adicionais (> 2 anos)">
+                    <CriteriosList criterios={protocolData.controller.getCriteriosAdicionaisMaior2Anos()} />
+                  </ProtocolSection>
+                )}
+                
+                {/* Critérios Adicionais para menores de 2 anos - se disponíveis */}
+                {protocolData.controller && protocolData.controller.getCriteriosAdicionaisMenor2Anos && (
+                  <ProtocolSection title="Critérios Adicionais (< 2 anos)">
+                    <CriteriosList criterios={protocolData.controller.getCriteriosAdicionaisMenor2Anos()} />
+                  </ProtocolSection>
+                )}
+                
+                {/* Escala de Glasgow - se disponível */}
+                {protocolData.controller && protocolData.controller.getEscalaGlasgow && (
+                  <ProtocolSection title="Escala de Glasgow">
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full divide-y divide-gray-200 border">
+                        <thead>
+                          <tr>
+                            <th className="px-4 py-2 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Parâmetro</th>
+                            <th className="px-4 py-2 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Escore</th>
+                            <th className="px-4 py-2 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Critério (&gt; 1 ano)</th>
+                            <th className="px-4 py-2 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Critério (&lt; 1 ano)</th>
+                          </tr>
+                        </thead>
+                        <tbody className="bg-white divide-y divide-gray-200">
+                          {protocolData.controller.getEscalaGlasgow().abertura_olhos?.map((item, index) => (
+                            <tr key={`olhos-${index}`}>
+                              {index === 0 && <td className="px-4 py-2 text-sm text-gray-900 align-top" rowSpan={protocolData.controller.getEscalaGlasgow().abertura_olhos.length}>Abertura Ocular</td>}
+                              <td className="px-4 py-2 text-sm text-gray-900">{item.escore}</td>
+                              <td className="px-4 py-2 text-sm text-gray-900">{item.criterio}</td>
+                              <td className="px-4 py-2 text-sm text-gray-900">{item.criterio_menor_1_ano}</td>
+                            </tr>
+                          ))}
+                          
+                          {protocolData.controller.getEscalaGlasgow().resposta_verbal?.map((item, index) => (
+                            <tr key={`verbal-${index}`}>
+                              {index === 0 && <td className="px-4 py-2 text-sm text-gray-900 align-top" rowSpan={protocolData.controller.getEscalaGlasgow().resposta_verbal.length}>Resposta Verbal</td>}
+                              <td className="px-4 py-2 text-sm text-gray-900">{item.escore}</td>
+                              <td className="px-4 py-2 text-sm text-gray-900">{item.criterio}</td>
+                              <td className="px-4 py-2 text-sm text-gray-900">{item.criterio_menor_1_ano}</td>
+                            </tr>
+                          ))}
+                          
+                          {protocolData.controller.getEscalaGlasgow().resposta_motora?.map((item, index) => (
+                            <tr key={`motora-${index}`}>
+                              {index === 0 && <td className="px-4 py-2 text-sm text-gray-900 align-top" rowSpan={protocolData.controller.getEscalaGlasgow().resposta_motora.length}>Resposta Motora</td>}
+                              <td className="px-4 py-2 text-sm text-gray-900">{item.escore}</td>
+                              <td className="px-4 py-2 text-sm text-gray-900">{item.criterio}</td>
+                              <td className="px-4 py-2 text-sm text-gray-900">{item.criterio_menor_1_ano}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    
+                    {/* Escores normais por faixa etária */}
+                    {protocolData.controller.getEscoresNormais && (
+                      <div className="mt-4">
+                        <h4 className="text-lg font-medium mb-2">Escores Normais por Faixa Etária</h4>
+                        <div className="overflow-x-auto">
+                          <table className="min-w-full divide-y divide-gray-200 border">
+                            <thead>
+                              <tr>
+                                <th className="px-4 py-2 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Faixa Etária</th>
+                                <th className="px-4 py-2 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Escore Normal</th>
+                              </tr>
+                            </thead>
+                            <tbody className="bg-white divide-y divide-gray-200">
+                              {protocolData.controller.getEscoresNormais().map((item, index) => (
+                                <tr key={`escore-${index}`}>
+                                  <td className="px-4 py-2 text-sm text-gray-900">{item.faixa_etaria}</td>
+                                  <td className="px-4 py-2 text-sm text-gray-900">≥ {item.escore}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
+                  </ProtocolSection>
+                )}
+                
+                {/* Informações adicionais e alertas */}
+                <InfoAlert>
+                  Este protocolo serve como guia clínico. A avaliação individual do paciente e o julgamento clínico são essenciais para a tomada de decisão.
+                </InfoAlert>
+                
+                {/* Exibir conteúdo markdown se disponível */}
+                {protocolData.content && (
+                  <div className="mt-6">
+                    <h3 className="text-xl font-semibold mb-4">Informações do Protocolo</h3>
+                    <div className="markdown-content">
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {protocolData.content}
+                      </ReactMarkdown>
+                    </div>
+                  </div>
+                )}
+              </article>
+            )}
+          </Card>
+        </div>
+      );
+    }
 
 export default ProtocolDetailPage;
