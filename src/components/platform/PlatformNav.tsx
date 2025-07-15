@@ -32,7 +32,7 @@ export const PlatformNav: React.FC = () => {
   const navItems = [
     { to: "/platform/calculator", label: "Calculadora de Medicamentos" },
     { to: "/platform/insulin", label: "Referencial para Insulina" },
-    { to: "/platform/tips", label: "Fluxos e Dicas" },
+    { to: "/platform/protocols", label: "Protocolos" },
   ];
 
   const toggleTheme = () => {

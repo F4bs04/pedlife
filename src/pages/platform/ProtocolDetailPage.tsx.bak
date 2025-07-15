@@ -9,21 +9,10 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 // @ts-ignore
 import { toast } from 'sonner';
+// @ts-ignore
 import ReactMarkdown from 'react-markdown';
+// @ts-ignore
 import remarkGfm from 'remark-gfm';
-import type { Components } from 'react-markdown';
-
-// Tipagem estendida para o ReactMarkdown
-type MarkdownProps = {
-  children: string;
-  className?: string;
-  components?: Components;
-  remarkPlugins?: any[];
-};
-
-declare module 'react-markdown' {
-  interface ReactMarkdownProps extends MarkdownProps {}
-}
 // Importar estilos CSS para o markdown
 import '@/styles/markdown.css';
 import { loadProtocolContent, getProtocolTitle } from '@/utils/protocolLoader';
@@ -193,7 +182,7 @@ const ProtocolDetailPage: React.FC = () => {
     navigate(-1);
   };
 
-  /* Componentes auxiliares agora definidos fora do componente principal */
+  // Componentes auxiliares agora definidos fora do componente principal
 
   return (
     <div className="container mx-auto py-8 px-4">
@@ -260,32 +249,9 @@ const ProtocolDetailPage: React.FC = () => {
             </Button>
           </div>
         ) : (
-          <div className="prose prose-slate max-w-none">
+          <article className="prose prose-slate max-w-none">
             {protocolData && (
               <div className="space-y-8">
-                {/* Conteúdo Markdown do protocolo */}
-                {protocolData.content && (
-                  <div className="prose prose-slate max-w-none mb-8 markdown-content">
-                    <ReactMarkdown 
-                      remarkPlugins={[remarkGfm]}
-                      components={{
-                        // Adiciona suporte a links que abrem em nova aba
-                        a: ({node, ...props}) => (
-                          <a target="_blank" rel="noopener noreferrer" {...props} />
-                        ),
-                        // Adiciona suporte a tabelas via remark-gfm
-                        table: ({node, ...props}) => (
-                          <div className="overflow-x-auto">
-                            <table className="min-w-full divide-y divide-gray-200" {...props} />
-                          </div>
-                        ),
-                      }}
-                    >
-                      {String(protocolData.content)}
-                    </ReactMarkdown>
-                  </div>
-                )}
-
                 {/* Aviso quando não há calculadora disponível */}
                 {!protocolData.controller && (
                   <InfoAlert>
@@ -803,34 +769,15 @@ const ProtocolDetailPage: React.FC = () => {
                         <Button onClick={handleCalculate}>Calcular</Button>
                       </div>
                     )}
-                    
-                    {protocolData?.content && (
-                      <ReactMarkdown
-                        remarkPlugins={[remarkGfm]}
-                        className="prose prose-slate max-w-none"
-                      >
-                        {protocolData.content as string}
-                      </ReactMarkdown>
-                    )}
-                    
-                    {calculatorResults && (
-                      <div className="mt-6 border rounded-md p-4 bg-white">
-                        <h4 className="font-medium text-lg mb-4">Resultados</h4>
-                        
-                        {/* Resultados do cálculo para CAD (Cetoacidose Diabética) */}
-                        {protocolId === 'cad' && (
-                          <div className="space-y-4">
-                            {/* Diagnóstico e Gravidade */}
-                            <div className={`p-3 rounded border ${calculatorResults.diagnostico_cad ? 'bg-red-50 border-red-200' : 'bg-yellow-50 border-yellow-200'}`}>
-                              <h5 className="font-medium mb-2">Diagnóstico</h5>
-                              <p className="text-sm font-medium">
-                                {calculatorResults.diagnostico_cad 
-                                  ? 'Critérios para Cetoacidose Diabética presentes' 
-                                  : 'Critérios para Cetoacidose Diabética não preenchidos'}
-                              </p>
-                              {calculatorResults.diagnostico_cad && (
-                                <div className="mt-2">
-                                  <p className="text-sm">Gravidade: <span className="font-medium">{calculatorResults.gravidade}</span></p>
+                  </div>
+                  
+                  {/* Resultados do cálculo */}
+                  {calculatorResults && (
+                    <div className="mt-6 border rounded-md p-4 bg-white">
+                      <h4 className="font-medium text-lg mb-4">Resultados</h4>
+                      
+                      {/* Resultados do cálculo para CAD (Cetoacidose Diabética) */}
+                      {protocolId === 'cad' && (
                         <div className="space-y-4">
                           {/* Diagnóstico e Gravidade */}
                           <div className={`p-3 rounded border ${calculatorResults.diagnostico_cad ? 'bg-red-50 border-red-200' : 'bg-yellow-50 border-yellow-200'}`}>
@@ -949,7 +896,6 @@ const ProtocolDetailPage: React.FC = () => {
                             </div>
                           )}
                         </div>
-                      )}
                         
                         {/* Fatores de risco e complicações */}
                         <div>
@@ -1409,37 +1355,26 @@ const ProtocolDetailPage: React.FC = () => {
                   Este protocolo serve como guia clínico. A avaliação individual do paciente e o julgamento clínico são essenciais para a tomada de decisão.
                 </InfoAlert>
                 
-                {/* Conteúdo Markdown do protocolo */}
-                {protocolData?.content && (
-                  <div className="mt-8">
+                {/* Exibir conteúdo markdown se disponível */}
+                {protocolData.content && (
+                  <div className="mt-6">
+                    <h3 className="text-xl font-semibold mb-4">Informações do Protocolo</h3>
                     <div className="markdown-content">
-                      <ReactMarkdown 
-                        remarkPlugins={[remarkGfm]}
-                        components={{
-                          // Adiciona suporte a links que abrem em nova aba
-                          a: ({node, ...props}: any) => (
-                            <a target="_blank" rel="noopener noreferrer" {...props} />
-                          ),
-                          // Adiciona suporte a tabelas via remark-gfm
-                          table: ({node, ...props}: any) => (
-                            <div className="overflow-x-auto">
-                              <table className="min-w-full divide-y divide-gray-200" {...props} />
-                            </div>
-                          ),
-                        }}
-                      >
-                        {String(protocolData.content)}
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {protocolData.content}
                       </ReactMarkdown>
                     </div>
                   </div>
                 )}
               </div>
             )}
-          </div>
-        )}
-      </Card>
-    </div>
-  );
-}
+                </div>
+              </div>
+            </article>
+          )}
+        </Card>
+      </div>
+    );
+};
 
 export default ProtocolDetailPage;

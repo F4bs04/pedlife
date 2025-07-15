@@ -115,6 +115,87 @@ const FlowsAndTipsPage: React.FC = () => {
       iconColorClass: "text-purple-500",
       link: "/platform/protocols/choque-septico"
     },
+    // Novos protocolos adicionados
+    {
+      title: "Bronquiolite VSR",
+      description: "Protocolo para manejo de bronquiolite por vírus sincicial respiratório em pediatria.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/bronquiolite"
+    },
+    {
+      title: "Crise Álgica em Anemia Falciforme",
+      description: "Protocolo para manejo de crises álgicas em pacientes pediátricos com anemia falciforme.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/crise-algica"
+    },
+    {
+      title: "Doença Diarreica Aguda",
+      description: "Protocolo para avaliação e tratamento de doença diarreica aguda em pediatria.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/doenca-diarreica"
+    },
+    {
+      title: "Glomerulonefrite",
+      description: "Protocolo para diagnóstico e manejo de glomerulonefrite em pacientes pediátricos.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/glomerulonefrite"
+    },
+    {
+      title: "Parada Cardiorrespiratória",
+      description: "Protocolo para atendimento de parada cardiorrespiratória em pediatria.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/parada-cardiorrespiratoria"
+    },
+    {
+      title: "Pneumonia",
+      description: "Protocolo para diagnóstico e tratamento de pneumonia em pacientes pediátricos.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/pneumonia"
+    },
+    {
+      title: "Politraumatismo",
+      description: "Protocolo para avaliação e manejo de politraumatismo em pediatria.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/politraumatismo"
+    },
+    {
+      title: "Síndrome Inflamatória Multissistêmica Pediátrica (SIM-P)",
+      description: "Protocolo para diagnóstico e manejo da Síndrome Inflamatória Multissistêmica Pediátrica.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/simp"
+    },
+    {
+      title: "Síndrome Respiratória Aguda Grave (SRAG)",
+      description: "Protocolo para avaliação e manejo da Síndrome Respiratória Aguda Grave em pediatria.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/srag"
+    },
+    {
+      title: "Violência Sexual",
+      description: "Protocolo para atendimento de casos suspeitos ou confirmados de violência sexual em pediatria.",
+      icon: Brain,
+      category: "Protocolo Clínico",
+      iconColorClass: "text-purple-500",
+      link: "/platform/protocols/violencia-sexual"
+    },
   ];
   
   // Outros fluxos e dicas (exemplos)

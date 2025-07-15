@@ -14,7 +14,7 @@ import UserEditPage from "./pages/platform/UserEditPage";
 import MedicationCategoryPage from "./pages/platform/MedicationCategoryPage";
 import MedicationCalculatorPage from "./pages/platform/MedicationCalculatorPage";
 import InsulinCalculatorPage from "./pages/platform/InsulinCalculatorPage";
-import FlowsAndTipsPage from "./pages/platform/FlowsAndTipsPage";
+import ProtocolsPage from "./pages/platform/ProtocolsPage";
 import ProtocolDetailPage from "./pages/platform/ProtocolDetailPage";
 
 const queryClient = new QueryClient();
@@ -41,7 +41,7 @@ const App = () => (
             {/* Nova rota para a calculadora de insulina */}
             <Route path="insulin" element={<InsulinCalculatorPage />} />
             <Route path="edit-profile" element={<UserEditPage />} />
-            <Route path="tips" element={<FlowsAndTipsPage />} />
+            <Route path="protocols" element={<ProtocolsPage />} />
             <Route path="protocols/:protocolId" element={<ProtocolDetailPage />} />
           </Route>
 
