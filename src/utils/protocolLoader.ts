@@ -3,25 +3,25 @@
  */
 
 // Importando os controllers dos protocolos
-import traumaController from '../protocols/Atualizados/controllers/calculators/traumaCranioencefalico.controller';
-import celuliteController from '../protocols/Atualizados/controllers/calculators/celulite.controller';
-import erisipelaController from '../protocols/Atualizados/controllers/calculators/erisipela.controller';
-import cetoacidoseController from '../protocols/Atualizados/controllers/calculators/cetoacidoseDiabetica.controller';
-import asmaController from '../protocols/Atualizados/controllers/calculators/asma.controller';
-import anafilaxiaController from '../protocols/Atualizados/controllers/calculators/anafilaxia.controller';
-import desidratacaoController from '../protocols/Atualizados/controllers/calculators/desidratacao.controller';
-import criseConvulsivaController from '../protocols/Atualizados/controllers/calculators/criseConvulsiva.controller';
-import choqueSepticoController from '../protocols/Atualizados/controllers/calculators/choqueSeptico.controller';
-import bronquioliteVsrController from '../protocols/Atualizados/controllers/calculators/bronquioliteVsr.controller';
-import criseAlgicaController from '../protocols/Atualizados/controllers/calculators/criseAlgicaAnemiaFalciforme.controller';
-import doencaDiarreicaController from '../protocols/Atualizados/controllers/calculators/doencaDiarreica.controller';
-import glomerulonefriteController from '../protocols/Atualizados/controllers/calculators/glomerulonefrite.controller';
-import paradaCardiorrespiratoriaController from '../protocols/Atualizados/controllers/calculators/paradaCardiorrespiratoria.controller';
-import pneumoniaController from '../protocols/Atualizados/controllers/calculators/pneumonia.controller';
-import politraumatismoController from '../protocols/Atualizados/controllers/calculators/politraumatismo.controller';
-import simPController from '../protocols/Atualizados/controllers/calculators/simP.controller';
-import sragController from '../protocols/Atualizados/controllers/calculators/srag.controller';
-import violenciaSexualController from '../protocols/Atualizados/controllers/calculators/violenciaSexual.controller';
+import traumaController from '../protocols/Atualizados/controllers/calculators/traumaCranioencefalico.controller.ts';
+import celuliteController from '../protocols/Atualizados/controllers/calculators/celulite.controller.ts';
+import erisipelaController from '../protocols/Atualizados/controllers/calculators/erisipela.controller.ts';
+import cetoacidoseController from '../protocols/Atualizados/controllers/calculators/cetoacidoseDiabetica.controller.ts';
+import asmaController from '../protocols/Atualizados/controllers/calculators/asma.controller.ts';
+import anafilaxiaController from '../protocols/Atualizados/controllers/calculators/anafilaxia.controller.ts';
+import desidratacaoController from '../protocols/Atualizados/controllers/calculators/desidratacao.controller.ts';
+import criseConvulsivaController from '../protocols/Atualizados/controllers/calculators/criseConvulsiva.controller.ts';
+import choqueSepticoController from '../protocols/Atualizados/controllers/calculators/choqueSeptico.controller.ts';
+import bronquioliteVsrController from '../protocols/Atualizados/controllers/calculators/bronquioliteVsr.controller.ts';
+import criseAlgicaController from '../protocols/Atualizados/controllers/calculators/criseAlgicaAnemiaFalciforme.controller.ts';
+import doencaDiarreicaController from '../protocols/Atualizados/controllers/calculators/doencaDiarreica.controller.ts';
+import glomerulonefriteController from '../protocols/Atualizados/controllers/calculators/glomerulonefrite.controller.ts';
+import paradaCardiorrespiratoriaController from '../protocols/Atualizados/controllers/calculators/paradaCardiorrespiratoria.controller.ts';
+import pneumoniaController from '../protocols/Atualizados/controllers/calculators/pneumonia.controller.ts';
+import politraumatismoController from '../protocols/Atualizados/controllers/calculators/politraumatismo.controller.ts';
+import simPController from '../protocols/Atualizados/controllers/calculators/simP.controller.ts';
+import sragController from '../protocols/Atualizados/controllers/calculators/srag.controller.ts';
+import violenciaSexualController from '../protocols/Atualizados/controllers/calculators/violenciaSexual.controller.ts';
 
 // Mapeamento de IDs de protocolos para controllers
 export const protocolMap: Record<string, any> = {
@@ -50,13 +50,35 @@ export const protocolMap: Record<string, any> = {
 const extractControllerData = (controller: any) => {
   // Extrair dados genéricos e específicos de cada controller
   // Esta função transforma os dados dos controllers em um formato consistente
-  return {
-    // Dados extraídos do controller que serão usados na interface
-    controller,
-    criterios: controller.getCriteriosTcGerais ? controller.getCriteriosTcGerais() : [],
-    escalaGlasgow: controller.getEscalaGlasgow ? controller.getEscalaGlasgow() : null,
-    // Outros dados específicos que podem ser extraídos do controller
+  
+  // Verificar qual tipo de controller é e extrair dados apropriadamente
+  const data: any = {
+    controller
   };
+  
+  // Critérios TCE
+  if (controller.getCriteriosTcGerais) {
+    data.criterios = controller.getCriteriosTcGerais();
+  }
+  
+  // Escala Glasgow
+  if (controller.getEscalaGlasgow) {
+    data.escalaGlasgow = controller.getEscalaGlasgow();
+  }
+  
+  // Critérios diagnósticos (para anafilaxia e outros)
+  if (controller.getCriteriosDiagnosticos) {
+    data.criteriosDiagnosticos = controller.getCriteriosDiagnosticos();
+  }
+  
+  // Manifestações clínicas
+  if (controller.getManifestacoesClinias) {
+    data.manifestacoesClinias = controller.getManifestacoesClinias();
+  } else if (controller.getManifestacaoesClinicas) {
+    data.manifestacoesClinias = controller.getManifestacaoesClinicas();
+  }
+  
+  return data;
 };
 
 // Importação dinâmica dos arquivos markdown

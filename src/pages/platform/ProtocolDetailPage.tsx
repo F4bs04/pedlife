@@ -111,6 +111,8 @@ const ProtocolDetailPage: React.FC = () => {
     }
     
     try {
+      let result;
+      
       // Processamento específico para cada protocolo
       if (protocolId === 'tce') {
         const idadeMeses = calcularIdadeMeses(
@@ -123,9 +125,7 @@ const ProtocolDetailPage: React.FC = () => {
           idade_meses: idadeMeses
         };
         
-        const result = protocolData.controller.calcular(dadosCalculados);
-        setCalculatorResults(result);
-        toast.success('Cálculo realizado com sucesso!');
+        result = protocolData.controller.calcular(dadosCalculados);
       } 
       // Processamento específico para o protocolo de Asma
       else if (protocolId === 'asma') {
@@ -139,16 +139,22 @@ const ProtocolDetailPage: React.FC = () => {
           idade_meses: idadeMeses
         };
         
-        const result = protocolData.controller.calcular(dadosCalculados);
-        setCalculatorResults(result);
-        toast.success('Cálculo realizado com sucesso!');
+        result = protocolData.controller.calcular(dadosCalculados);
       } 
       // Para outros protocolos, usar o cálculo padrão
       else {
-        const result = protocolData.controller.calcular(calculatorInputs);
-        setCalculatorResults(result);
-        toast.success('Cálculo realizado com sucesso!');
+        result = protocolData.controller.calcular(calculatorInputs);
       }
+      
+      // Verificar se o resultado é válido
+      if (result === null || result === undefined) {
+        throw new Error('O cálculo não retornou um resultado válido');
+      }
+      
+      console.log('Resultado do cálculo:', result);
+      setCalculatorResults(result);
+      toast.success('Cálculo realizado com sucesso!');
+      
     } catch (error: any) {
       console.error('Erro ao calcular:', error);
       toast.error(`Erro ao calcular: ${error.message || 'Verifique os dados inseridos.'}`);
