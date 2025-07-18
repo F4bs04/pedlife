@@ -3,25 +3,25 @@
  */
 
 // Importando os controllers dos protocolos
-import traumaController from '../protocols/Atualizados/controllers/calculators/traumaCranioencefalico.controller.js';
-import celuliteController from '../protocols/Atualizados/controllers/calculators/celulite.controller.js';
-import erisipelaController from '../protocols/Atualizados/controllers/calculators/erisipela.controller.js';
-import cetoacidoseController from '../protocols/Atualizados/controllers/calculators/cetoacidoseDiabetica.controller.js';
-import asmaController from '../protocols/Atualizados/controllers/calculators/asma.controller.js';
-import anafilaxiaController from '../protocols/Atualizados/controllers/calculators/anafilaxia.controller.js';
-import desidratacaoController from '../protocols/Atualizados/controllers/calculators/desidratacao.controller.js';
-import criseConvulsivaController from '../protocols/Atualizados/controllers/calculators/criseConvulsiva.controller.js';
-import choqueSepticoController from '../protocols/Atualizados/controllers/calculators/choqueSeptico.controller.js';
-import bronquioliteVsrController from '../protocols/Atualizados/controllers/calculators/bronquioliteVsr.controller.js';
-import criseAlgicaController from '../protocols/Atualizados/controllers/calculators/criseAlgicaAnemiaFalciforme.controller.js';
-import doencaDiarreicaController from '../protocols/Atualizados/controllers/calculators/doencaDiarreica.controller.js';
-import glomerulonefriteController from '../protocols/Atualizados/controllers/calculators/glomerulonefrite.controller.js';
-import paradaCardiorrespiratoriaController from '../protocols/Atualizados/controllers/calculators/paradaCardiorrespiratoria.controller.js';
-import pneumoniaController from '../protocols/Atualizados/controllers/calculators/pneumonia.controller.js';
-import politraumatismoController from '../protocols/Atualizados/controllers/calculators/politraumatismo.controller.js';
-import simPController from '../protocols/Atualizados/controllers/calculators/simP.controller.js';
-import sragController from '../protocols/Atualizados/controllers/calculators/srag.controller.js';
-import violenciaSexualController from '../protocols/Atualizados/controllers/calculators/violenciaSexual.controller.js';
+import traumaController from '../protocols/Atualizados/controllers/calculators/traumaCranioencefalico.controller';
+import celuliteController from '../protocols/Atualizados/controllers/calculators/celulite.controller';
+import erisipelaController from '../protocols/Atualizados/controllers/calculators/erisipela.controller';
+import cetoacidoseController from '../protocols/Atualizados/controllers/calculators/cetoacidoseDiabetica.controller';
+import asmaController from '../protocols/Atualizados/controllers/calculators/asma.controller';
+import anafilaxiaController from '../protocols/Atualizados/controllers/calculators/anafilaxia.controller';
+import desidratacaoController from '../protocols/Atualizados/controllers/calculators/desidratacao.controller';
+import criseConvulsivaController from '../protocols/Atualizados/controllers/calculators/criseConvulsiva.controller';
+import choqueSepticoController from '../protocols/Atualizados/controllers/calculators/choqueSeptico.controller';
+import bronquioliteVsrController from '../protocols/Atualizados/controllers/calculators/bronquioliteVsr.controller';
+import criseAlgicaController from '../protocols/Atualizados/controllers/calculators/criseAlgicaAnemiaFalciforme.controller';
+import doencaDiarreicaController from '../protocols/Atualizados/controllers/calculators/doencaDiarreica.controller';
+import glomerulonefriteController from '../protocols/Atualizados/controllers/calculators/glomerulonefrite.controller';
+import paradaCardiorrespiratoriaController from '../protocols/Atualizados/controllers/calculators/paradaCardiorrespiratoria.controller';
+import pneumoniaController from '../protocols/Atualizados/controllers/calculators/pneumonia.controller';
+import politraumatismoController from '../protocols/Atualizados/controllers/calculators/politraumatismo.controller';
+import simPController from '../protocols/Atualizados/controllers/calculators/simP.controller';
+import sragController from '../protocols/Atualizados/controllers/calculators/srag.controller';
+import violenciaSexualController from '../protocols/Atualizados/controllers/calculators/violenciaSexual.controller';
 
 // Mapeamento de IDs de protocolos para controllers
 export const protocolMap: Record<string, any> = {

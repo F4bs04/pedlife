@@ -10,7 +10,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
       <App />
-      <Toaster position="top-right" richColors closeButton />
+      <Toaster position="top-center" richColors closeButton expand={true} />
     </ThemeProvider>
   </StrictMode>,
 );
