@@ -12,7 +12,8 @@ import {
   Stethoscope,
   Droplets,
   Wind,
-  Thermometer 
+  Thermometer,
+  Calculator
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -22,9 +23,19 @@ interface ProtocolCardProps {
   icon: React.ElementType;
   link: string;
   iconColorClass?: string;
+  hasCalculator?: boolean;
+  calculatorLink?: string;
 }
 
-const ProtocolCard: React.FC<ProtocolCardProps> = ({ title, description, icon: Icon, link, iconColorClass = "text-primary" }) => (
+const ProtocolCard: React.FC<ProtocolCardProps> = ({ 
+  title, 
+  description, 
+  icon: Icon, 
+  link, 
+  iconColorClass = "text-primary",
+  hasCalculator = false,
+  calculatorLink
+}) => (
   <Card className="hover:shadow-lg transition-shadow">
     <CardHeader>
       <div className="flex items-center gap-3 mb-2">
@@ -34,11 +45,20 @@ const ProtocolCard: React.FC<ProtocolCardProps> = ({ title, description, icon: I
     </CardHeader>
     <CardContent>
       <p className="text-sm text-muted-foreground mb-4">{description}</p>
-      {link && (
-        <Button variant="outline" size="sm" asChild>
-          <Link to={link}>Ver mais</Link>
-        </Button>
-      )}
+      <div className="flex gap-2">
+        {hasCalculator && calculatorLink ? (
+          <Button variant="default" size="sm" asChild className="w-full">
+            <Link to={calculatorLink}>
+              <Calculator className="h-3 w-3 mr-1" />
+              Calculadora
+            </Link>
+          </Button>
+        ) : link ? (
+          <Button variant="outline" size="sm" asChild className="w-full">
+            <Link to={link}>Ver Protocolo</Link>
+          </Button>
+        ) : null}
+      </div>
     </CardContent>
   </Card>
 );
@@ -53,6 +73,8 @@ interface CategorySectionProps {
     icon: React.ElementType;
     link: string;
     iconColorClass?: string;
+    hasCalculator?: boolean;
+    calculatorLink?: string;
   }>;
 }
 
@@ -78,28 +100,36 @@ const ProtocolsPage: React.FC = () => {
       description: "Avaliação e manejo de trauma craniano em crianças.",
       icon: Brain,
       iconColorClass: "text-red-500",
-      link: "/platform/protocols/tce"
+      link: "/platform/protocols/tce",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/tce"
     },
     {
       title: "Politraumatismo",
       description: "Abordagem da criança politraumatizada.",
       icon: Ambulance,
       iconColorClass: "text-red-500",
-      link: "/platform/protocols/politraumatismo"
+      link: "/platform/protocols/politraumatismo",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/politraumatismo"
     },
     {
       title: "Parada Cardiorrespiratória",
       description: "Manejo da PCR em pediatria.",
       icon: Ambulance,
       iconColorClass: "text-red-500",
-      link: "/platform/protocols/parada-cardiorrespiratoria"
+      link: "/platform/protocols/parada-cardiorrespiratoria",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/parada_cardiorrespiratoria"
     },
     {
       title: "Choque Séptico",
       description: "Avaliação e tratamento do choque séptico.",
       icon: Ambulance,
       iconColorClass: "text-red-500",
-      link: "/platform/protocols/choque-septico"
+      link: "/platform/protocols/choque-septico",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/choque_septico"
     }
   ];
 
@@ -110,28 +140,36 @@ const ProtocolsPage: React.FC = () => {
       description: "Diagnóstico e tratamento de celulite em pediatria.",
       icon: Stethoscope,
       iconColorClass: "text-purple-500",
-      link: "/platform/protocols/celulite"
+      link: "/platform/protocols/celulite",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/celulite"
     },
     {
       title: "Erisipela",
       description: "Manejo da erisipela em crianças.",
       icon: Stethoscope,
       iconColorClass: "text-purple-500",
-      link: "/platform/protocols/erisipela"
+      link: "/platform/protocols/erisipela",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/erisipela"
     },
     {
       title: "Pneumonia",
       description: "Diagnóstico e tratamento da pneumonia em pediatria.",
       icon: Stethoscope,
       iconColorClass: "text-purple-500",
-      link: "/platform/protocols/pneumonia"
+      link: "/platform/protocols/pneumonia",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/pneumonia"
     },
     {
       title: "Doença Diarreica",
       description: "Manejo da doença diarreica aguda na infância.",
       icon: Stethoscope,
       iconColorClass: "text-purple-500",
-      link: "/platform/protocols/doenca-diarreica"
+      link: "/platform/protocols/doenca-diarreica",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/doenca_diarreica"
     }
   ];
 
@@ -142,21 +180,27 @@ const ProtocolsPage: React.FC = () => {
       description: "Avaliação e tratamento da crise asmática.",
       icon: Wind,
       iconColorClass: "text-blue-500",
-      link: "/platform/protocols/asma"
+      link: "/platform/protocols/asma",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/asma"
     },
     {
       title: "Bronquiolite VSR",
       description: "Manejo da bronquiolite viral pelo VSR.",
       icon: Wind,
       iconColorClass: "text-blue-500",
-      link: "/platform/protocols/bronquiolite"
+      link: "/platform/protocols/bronquiolite",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/bronquiolite_vsr"
     },
     {
       title: "SRAG",
       description: "Síndrome Respiratória Aguda Grave em pediatria.",
       icon: Wind,
       iconColorClass: "text-blue-500",
-      link: "/platform/protocols/srag"
+      link: "/platform/protocols/srag",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/srag"
     }
   ];
 
@@ -167,14 +211,18 @@ const ProtocolsPage: React.FC = () => {
       description: "Avaliação e manejo da cetoacidose diabética.",
       icon: Thermometer,
       iconColorClass: "text-orange-500",
-      link: "/platform/protocols/cetoacidose"
+      link: "/platform/protocols/cetoacidose",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/cetoacidose_diabetica"
     },
     {
       title: "Desidratação",
       description: "Avaliação e tratamento da desidratação em pediatria.",
       icon: Thermometer,
       iconColorClass: "text-orange-500",
-      link: "/platform/protocols/desidratacao"
+      link: "/platform/protocols/desidratacao",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/desidratacao"
     }
   ];
 
@@ -185,7 +233,9 @@ const ProtocolsPage: React.FC = () => {
       description: "Manejo da crise convulsiva e estado de mal epiléptico.",
       icon: Zap,
       iconColorClass: "text-purple-500",
-      link: "/platform/protocols/crise-convulsiva"
+      link: "/platform/protocols/crise-convulsiva",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/crise_convulsiva"
     }
   ];
 
@@ -196,28 +246,36 @@ const ProtocolsPage: React.FC = () => {
       description: "Manejo da dor na anemia falciforme.",
       icon: Droplets,
       iconColorClass: "text-teal-500",
-      link: "/platform/protocols/crise-algica"
+      link: "/platform/protocols/crise-algica",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/crise_algica_anemia_falciforme"
     },
     {
       title: "Glomerulonefrite",
       description: "Avaliação e tratamento da glomerulonefrite difusa aguda.",
       icon: Droplets,
       iconColorClass: "text-teal-500",
-      link: "/platform/protocols/glomerulonefrite"
+      link: "/platform/protocols/glomerulonefrite",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/glomerulonefrite"
     },
     {
       title: "SIM-P",
       description: "Síndrome Inflamatória Multissistêmica Pediátrica.",
       icon: Droplets,
       iconColorClass: "text-teal-500",
-      link: "/platform/protocols/simp"
+      link: "/platform/protocols/simp",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/sim_p"
     },
     {
       title: "Anafilaxia",
       description: "Manejo da anafilaxia na criança.",
       icon: Droplets,
       iconColorClass: "text-teal-500",
-      link: "/platform/protocols/anafilaxia"
+      link: "/platform/protocols/anafilaxia",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/anafilaxia"
     }
   ];
 
@@ -228,7 +286,9 @@ const ProtocolsPage: React.FC = () => {
       description: "Atendimento a casos suspeitos de violência sexual.",
       icon: ShieldAlert,
       iconColorClass: "text-orange-500",
-      link: "/platform/protocols/violencia-sexual"
+      link: "/platform/protocols/violencia-sexual",
+      hasCalculator: true,
+      calculatorLink: "/platform/protocol-calculator/violencia_sexual"
     }
   ];
 

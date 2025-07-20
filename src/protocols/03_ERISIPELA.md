@@ -135,6 +135,37 @@ A escolha do tratamento depende da gravidade do quadro e da presença de comorbi
     └─────────────────────┘          └────────────────────────────────────────────┘
 ```
 
+## 2.8 CALCULADORA DE ERISIPELA
+
+Para auxiliar na tomada de decisão clínica, utilize nossa **Calculadora de Erisipela** que permite:
+
+### Funcionalidades da Calculadora
+
+- **Avaliação de critérios de internação**: Análise automatizada dos fatores que indicam necessidade de hospitalização
+- **Cálculo de dosagens**: Determinação precisa das doses medicamentosas baseadas no peso corporal
+- **Seleção de antibióticos**: Recomendações de primeira e segunda linha conforme gravidade
+- **Identificação de complicações**: Detecção de fatores de risco e complicações associadas
+- **Plano terapêutico**: Orientações completas para manejo ambulatorial ou hospitalar
+
+### Como usar a calculadora
+
+1. Insira o peso do paciente
+2. Marque os critérios de internação presentes
+3. Identifique possíveis complicações
+4. Obtenha recomendações personalizadas de tratamento
+
+**[📱 Acessar Calculadora de Erisipela](calculator:erisipela)**
+
+### Critérios avaliados pela calculadora
+
+- Extensão das lesões
+- Presença de sintomas sistêmicos
+- Comorbidades significativas
+- Sinais de sepse
+- Complicações (celulite extensa, abscessos, imunossupressão)
+
+A calculadora fornece orientações baseadas em evidências científicas e protocolos pediátricos atualizados.
+
 ## 3. APLICABILIDADE
 
 - Pronto-socorro

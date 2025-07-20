@@ -21,6 +21,16 @@ Padronizar a conduta clínica para casos de celulite em pacientes pediátricos, 
 
 Celulite é uma infecção da derme e do tecido subcutâneo caracterizada por calor, edema, hiperemia e dor, geralmente sem delimitação precisa.
 
+<div style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); padding: 20px; border-radius: 10px; margin: 20px 0; text-align: center;">
+  <h3 style="color: white; margin: 0 0 15px 0;">🦠 Calculadora de Celulite</h3>
+  <p style="color: #fef3f0; margin: 0 0 15px 0; font-size: 14px;">
+    Avalie a gravidade da celulite e determine o tratamento adequado de forma rápida e precisa
+  </p>
+  <a href="/platform/protocol-calculator/celulite" style="background: white; color: #f97316; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block; transition: all 0.3s;">
+    ✨ Acessar Calculadora de Celulite
+  </a>
+</div>
+
 ## 2.1 CARACTERÍSTICAS CLÍNICAS
 
 O quadro clínico pode incluir:

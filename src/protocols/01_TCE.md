@@ -25,6 +25,16 @@ Muitos dos achados tomográficos não impõem qualquer intervenção no tratamen
 
 Este protocolo visa otimizar a solicitação de tomografia computadorizada (TC) em pacientes pediátricos com TCE, reduzir a exposição desnecessária à radiação, orientar sobre a necessidade de avaliação neurocirúrgica e internação, além de fornecer diretrizes claras de alta hospitalar.
 
+<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; margin: 20px 0; text-align: center;">
+  <h3 style="color: white; margin: 0 0 15px 0;">🧠 Calculadora de Trauma Cranioencefálico</h3>
+  <p style="color: #f0f0f0; margin: 0 0 15px 0; font-size: 14px;">
+    Avalie o Glasgow, critérios para TC e indicações de internação de forma rápida e precisa
+  </p>
+  <a href="/platform/protocol-calculator/tce" style="background: white; color: #667eea; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block; transition: all 0.3s;">
+    ✨ Acessar Calculadora TCE
+  </a>
+</div>
+
 ## 2.1 CARACTERÍSTICAS CLÍNICAS
 
 O diagnóstico é obtido por meio de história clínica e exame físico, no qual se deve avaliar e registrar:

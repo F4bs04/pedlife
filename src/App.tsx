@@ -14,6 +14,7 @@ import MedicationCalculatorPage from "./pages/platform/MedicationCalculatorPage"
 import InsulinCalculatorPage from "./pages/platform/InsulinCalculatorPage";
 import ProtocolsPage from "./pages/platform/ProtocolsPage";
 import ProtocolDetailPage from "./pages/platform/ProtocolDetailPage";
+import ProtocolCalculatorPage from "./pages/platform/ProtocolCalculatorPage";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
             <Route path="edit-profile" element={<UserEditPage />} />
             <Route path="protocols" element={<ProtocolsPage />} />
             <Route path="protocols/:protocolId" element={<ProtocolDetailPage />} />
+            <Route path="protocol-calculator/:protocolId" element={<ProtocolCalculatorPage />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />
