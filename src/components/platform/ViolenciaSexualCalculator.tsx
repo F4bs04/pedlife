@@ -18,7 +18,9 @@ const ViolenciaSexualCalculatorComponent: React.FC = () => {
     altura: 0,
     tempoDesdeOcorrido: 0,
     riscoHIV: false,
-    menarca: false
+    menarca: false,
+    sinais_fisicos: [],
+    sinais_comportamentais: []
   });
 
   const [result, setResult] = useState<ViolenciaSexualResult | null>(null);
@@ -26,17 +28,15 @@ const ViolenciaSexualCalculatorComponent: React.FC = () => {
 
   const validateInput = (): boolean => {
     const newErrors: string[] = [];
-
     if (input.idade <= 0) {
       newErrors.push("Idade deve ser maior que 0");
     }
     if (input.peso <= 0) {
       newErrors.push("Peso deve ser maior que 0");
     }
-    if (input.tempo_desde_ocorrido < 0) {
+    if (input.tempoDesdeOcorrido < 0) {
       newErrors.push("Tempo desde o ocorrido deve ser maior ou igual a 0");
     }
-
     setErrors(newErrors);
     return newErrors.length === 0;
   };
@@ -116,8 +116,8 @@ const ViolenciaSexualCalculatorComponent: React.FC = () => {
                 id="tempo"
                 type="number"
                 placeholder="Ex: 24"
-                value={input.tempo_desde_ocorrido || ""}
-                onChange={(e) => setInput({...input, tempo_desde_ocorrido: parseFloat(e.target.value) || 0})}
+                value={input.tempoDesdeOcorrido || ""}
+                onChange={(e) => setInput({...input, tempoDesdeOcorrido: parseFloat(e.target.value) || 0})}
               />
             </div>
             <div className="space-y-2">
@@ -126,8 +126,8 @@ const ViolenciaSexualCalculatorComponent: React.FC = () => {
                 <div className="flex items-center space-x-2">
                   <Checkbox 
                     id="risco_hiv"
-                    checked={input.risco_hiv}
-                    onCheckedChange={(checked) => setInput({...input, risco_hiv: checked as boolean})}
+                    checked={input.riscoHIV}
+                    onCheckedChange={(checked) => setInput({...input, riscoHIV: checked as boolean})}
                   />
                   <Label htmlFor="risco_hiv" className="text-sm">Risco para HIV</Label>
                 </div>
@@ -152,7 +152,7 @@ const ViolenciaSexualCalculatorComponent: React.FC = () => {
               Sinais Físicos
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              {calculator.getSinaisFisicos().map((sinal, index) => (
+              {violenciaSexualCalculator['sinaisFisicos'].map((sinal, index) => (
                 <div key={index} className="flex items-center space-x-2">
                   <Checkbox 
                     id={`sinal_fisico_${index}`}
@@ -176,7 +176,7 @@ const ViolenciaSexualCalculatorComponent: React.FC = () => {
               Sinais Comportamentais
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              {calculator.getSinaisComportamentais().map((sinal, index) => (
+              {violenciaSexualCalculator['sinaisComportamentais'].map((sinal, index) => (
                 <div key={index} className="flex items-center space-x-2">
                   <Checkbox 
                     id={`sinal_comportamental_${index}`}
@@ -382,3 +382,4 @@ const ViolenciaSexualCalculatorComponent: React.FC = () => {
 };
 
 export default ViolenciaSexualCalculatorComponent;
+export const ViolenciaSexualCalculator = ViolenciaSexualCalculatorComponent;

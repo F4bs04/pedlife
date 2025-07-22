@@ -177,6 +177,13 @@ const ProtocolCalculatorPage: React.FC = () => {
       icon: <Wind className="h-6 w-6" />,
       color: 'text-blue-600',
       bgColor: 'bg-blue-50'
+    },
+    violencia_sexual: {
+      title: 'Calculadora de Violência Sexual',
+      description: 'Avaliação e manejo de casos de violência sexual em pediatria',
+      icon: <AlertTriangle className="h-6 w-6" />,
+      color: 'text-orange-600',
+      bgColor: 'bg-orange-50'
     }
   };
 

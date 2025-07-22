@@ -1212,6 +1212,8 @@ export interface ViolenciaSexualInput {
   tempoDesdeOcorrido: number; // horas
   riscoHIV: boolean;
   menarca: boolean;
+  sinais_fisicos?: number[];
+  sinais_comportamentais?: number[];
 }
 
 export interface ViolenciaSexualProfilaxiaIST {
@@ -1240,9 +1242,21 @@ export interface ViolenciaSexualResult {
   idade: number;
   peso: number;
   casoAgudo: boolean;
+  caso_agudo?: boolean; // alias para compatibilidade
   tempoDesdeOcorrido: number;
   sinaisFisicos: string[];
   sinaisComportamentais: string[];
+  sinais_fisicos_presentes?: string[];
+  sinais_comportamentais_presentes?: string[];
+  nivel_gravidade?: string;
+  eh_adolescente?: boolean;
+  recomendacoes_notificacao?: string[];
+  recomendacoes_medicamentos?: string[];
+  recomendacoes?: string[];
+  encaminhamentos?: string[];
+  indicacao_profilaxia_ist?: boolean;
+  indicacao_profilaxia_hiv?: boolean;
+  indicacao_contracepcao?: boolean;
   indicacoes: {
     profilaxiaIST: boolean;
     profilaxiaHIV: boolean;
