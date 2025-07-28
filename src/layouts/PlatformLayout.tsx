@@ -2,6 +2,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { PlatformNav } from '@/components/platform/PlatformNav';
+import ChatBot from '@/components/chatbot/ChatBot';
 
 const PlatformLayout: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const PlatformLayout: React.FC = () => {
       <footer className="py-4 text-center text-sm text-muted-foreground border-t border-border bg-card">
         © {new Date().getFullYear()} PedLife. Todos os direitos reservados.
       </footer>
+      <ChatBot />
     </div>
   );
 };
