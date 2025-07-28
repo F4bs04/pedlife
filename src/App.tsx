@@ -25,6 +25,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/auth" element={<AuthPage />} />
+          {/* Redirect old routes to new auth page */}
+          <Route path="/login" element={<AuthPage />} />
+          <Route path="/register" element={<AuthPage />} />
           
           <Route path="/platform" element={<AuthGuard><PlatformLayout /></AuthGuard>}>
             <Route index element={<CalculatorPage />} />
