@@ -64,8 +64,8 @@ export const ParadaCardiorrespiratoriaCalculator: React.FC<ParadaCardiorrespirat
       const input: ParadaCardiorrespiratoriaInput = {
         peso: pesoNum,
         idadeAnos: idadeNum,
-        ritmo: ritmo || undefined,
-        socorristas,
+        ritmo: ritmo as 'Assistolia' | 'AESP' | 'Fibrilacao_Ventricular' | 'Taquicardia_Ventricular' | undefined,
+        socorristas: socorristas as 1 | 2,
         viaAereaAvancada
       };
 

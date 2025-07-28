@@ -128,17 +128,17 @@ export class ViolenciaSexualCalculator {
   }
 
   public calcular(input: ViolenciaSexualInput): ViolenciaSexualResult {
-    const { idade, peso, tempo_desde_ocorrido, risco_hiv, menarca, sinais_fisicos, sinais_comportamentais } = input;
+    const { idade, peso, tempoDesdeOcorrido, riscoHIV, menarca, sinais_fisicos, sinais_comportamentais } = input;
 
     // Classificar como agudo (<72h) ou não agudo
-    const caso_agudo = tempo_desde_ocorrido <= 72;
+    const caso_agudo = tempoDesdeOcorrido <= 72;
 
     // Determinar se é criança ou adolescente para fins de medicação
     const eh_adolescente = idade >= 12;
 
     // Verificar indicações de profilaxias
     const indicacao_profilaxia_ist = caso_agudo;
-    const indicacao_profilaxia_hiv = caso_agudo && risco_hiv;
+    const indicacao_profilaxia_hiv = caso_agudo && riscoHIV;
     const indicacao_contracepcao = caso_agudo && eh_adolescente && menarca;
 
     // Verificar sinais físicos e comportamentais assinalados
@@ -163,7 +163,7 @@ export class ViolenciaSexualCalculator {
     if (caso_agudo) {
       recomendacoes.push("Realizar anamnese e exame físico detalhados");
 
-      if (tempo_desde_ocorrido <= 24) {
+      if (tempoDesdeOcorrido <= 24) {
         recomendacoes.push("Preservar evidências (não dar banho, manter mesmas roupas quando possível)");
       }
 
@@ -236,19 +236,36 @@ export class ViolenciaSexualCalculator {
     }
 
     return {
-      caso_agudo,
-      tempo_desde_ocorrido,
+      idade,
+      peso,
+      casoAgudo: caso_agudo,
+      caso_agudo, // alias para compatibilidade
+      tempoDesdeOcorrido,
+      sinaisFisicos: sinais_fisicos_presentes,
+      sinaisComportamentais: sinais_comportamentais_presentes,
+      sinais_fisicos_presentes, // alias para compatibilidade
+      sinais_comportamentais_presentes, // alias para compatibilidade
       eh_adolescente,
       nivel_gravidade,
-      sinais_fisicos_presentes,
-      sinais_comportamentais_presentes,
       recomendacoes,
       recomendacoes_notificacao,
       recomendacoes_medicamentos,
       encaminhamentos,
       indicacao_profilaxia_ist,
       indicacao_profilaxia_hiv,
-      indicacao_contracepcao
+      indicacao_contracepcao,
+      indicacoes: {
+        profilaxiaIST: indicacao_profilaxia_ist,
+        profilaxiaHIV: indicacao_profilaxia_hiv,
+        contracepcaoEmergencia: indicacao_contracepcao
+      },
+      profilaxias: {
+        ists: [],
+        contracepcao: []
+      },
+      imunizacoes: [],
+      condutas: recomendacoes,
+      observacoes: []
     };
   }
 }
