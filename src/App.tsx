@@ -4,8 +4,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
+import AuthPage from "./pages/AuthPage";
+import AuthGuard from "./components/auth/AuthGuard";
 import PlatformLayout from "./layouts/PlatformLayout";
 import CalculatorPage from "./pages/platform/CalculatorPage";
 import UserEditPage from "./pages/platform/UserEditPage";
@@ -24,10 +24,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/auth" element={<AuthPage />} />
           
-          <Route path="/platform" element={<PlatformLayout />}>
+          <Route path="/platform" element={<AuthGuard><PlatformLayout /></AuthGuard>}>
             <Route index element={<CalculatorPage />} />
             <Route path="calculator" element={<Outlet />}>
               <Route index element={<CalculatorPage />} />

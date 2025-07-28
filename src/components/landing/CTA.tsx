@@ -18,7 +18,7 @@ export const CTA: React.FC = () => {
             </p>
           </div>
           <Button asChild variant="secondary" size="lg" className="rounded-full shadow-[0px_4px_6px_rgba(0,0,0,0.1)] mt-8">
-            <Link to="/register">
+            <Link to="/auth">
               Criar conta gratuita
             </Link>
           </Button>

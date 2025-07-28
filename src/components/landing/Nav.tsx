@@ -51,7 +51,7 @@ export const Nav: React.FC = () => {
                 ))}
                 <SheetClose asChild>
                   <Button asChild size="default" className="rounded-full px-6 w-full mt-4">
-                    <Link to="/register">
+                    <Link to="/auth">
                       Acesse Grátis
                     </Link>
                   </Button>
@@ -63,7 +63,7 @@ export const Nav: React.FC = () => {
           <div className="flex items-center gap-[34px] flex-wrap">
             {navLinks}
             <Button asChild size="default" className="rounded-full px-6">
-              <Link to="/register">
+              <Link to="/auth">
                 Acesse Grátis
               </Link>
             </Button>
