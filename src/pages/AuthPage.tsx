@@ -119,11 +119,15 @@ const AuthPage: React.FC = () => {
 
       toast({
         title: "Conta criada com sucesso!",
-        description: "Verifique seu email para confirmar a conta.",
+        description: "Verifique seu email para confirmar a conta antes de fazer login.",
       });
 
       // Clear form
       registerForm.reset();
+      
+      // Switch to login tab after successful registration
+      const loginTab = document.querySelector('[value="login"]') as HTMLElement;
+      if (loginTab) loginTab.click();
     } catch (error) {
       console.error('Register error:', error);
       toast({
@@ -203,11 +207,11 @@ const AuthPage: React.FC = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="register-crm">CRM</Label>
+                  <Label htmlFor="register-crm">CRM (opcional)</Label>
                   <Input
                     id="register-crm"
                     placeholder="123456"
-                    {...registerForm.register('crm', { required: true })}
+                    {...registerForm.register('crm', { required: false })}
                   />
                 </div>
                 <div className="space-y-2">
