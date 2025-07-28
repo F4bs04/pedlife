@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Bell, UserCircle, Settings, Menu, Moon, Sun } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -19,15 +19,57 @@ import {
 } from "@/components/ui/sheet";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useTheme } from 'next-themes';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 export const PlatformNav: React.FC = () => {
   const isMobile = useIsMobile();
   const { theme, setTheme } = useTheme();
+  const navigate = useNavigate();
+  const { toast } = useToast();
 
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
     `text-sm font-medium transition-colors hover:text-primary ${
       isActive ? 'text-primary' : 'text-muted-foreground'
     }`;
+
+  const handleLogout = async () => {
+    try {
+      console.log('Attempting to logout...');
+      
+      // Clear local storage to ensure no session data persists
+      localStorage.removeItem('supabase.auth.token');
+      sessionStorage.clear();
+      
+      const { error } = await supabase.auth.signOut();
+      
+      if (error) {
+        console.error('Logout error:', error);
+        toast({
+          variant: "destructive",
+          title: "Erro ao sair",
+          description: "Não foi possível fazer logout. Tente novamente.",
+        });
+        return;
+      }
+
+      console.log('Logout successful, redirecting to home...');
+      toast({
+        title: "Logout realizado",
+        description: "Você foi desconectado com sucesso.",
+      });
+      
+      // Force page reload to clear any cached state
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Unexpected logout error:', error);
+      toast({
+        variant: "destructive",
+        title: "Erro inesperado",
+        description: "Tente novamente em alguns instantes.",
+      });
+    }
+  };
 
   const navItems = [
     { to: "/platform/calculator", label: "Calculadora de Medicamentos" },
@@ -109,10 +151,8 @@ export const PlatformNav: React.FC = () => {
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem asChild>
-                <Link to="/" className="w-full">
-                  Sair
-                </Link>
+              <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
+                Sair
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
