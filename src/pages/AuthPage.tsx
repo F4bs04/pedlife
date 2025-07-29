@@ -221,15 +221,25 @@ const AuthPage: React.FC = () => {
     if (data.password !== data.confirmPassword) {
       toast({
         variant: "destructive",
-        title: "Erro",
+        title: "❌ Erro",
         description: "As senhas não coincidem",
       });
       return;
     }
 
     setIsLoading(true);
+    
+    // Notificação inicial
+    toast({
+      title: "🔄 Criando conta...",
+      description: "Registrando usuário no sistema",
+    });
+    
     try {
-      const { error } = await supabase.auth.signUp({
+      console.log('👤 Tentando criar conta para:', { email: data.email, fullName: data.fullName });
+      console.log('📡 Enviando requisição de cadastro para Supabase...');
+      
+      const { data: authData, error } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
         options: {
@@ -241,38 +251,58 @@ const AuthPage: React.FC = () => {
           }
         }
       });
+      
+      console.log('📥 Resposta do cadastro Supabase:', { authData, error });
 
       if (error) {
+        console.error('❌ Erro no cadastro:', error);
+        
         // Melhores mensagens de erro em português
         let errorMessage = "Erro desconhecido";
+        let errorDetails = "";
         
         switch (error.message) {
           case "User already registered":
             errorMessage = "Este email já está cadastrado";
+            errorDetails = "Tente fazer login ou use outro email";
             break;
           case "Password should be at least 6 characters":
-            errorMessage = "A senha deve ter pelo menos 6 caracteres";
+            errorMessage = "Senha muito curta";
+            errorDetails = "A senha deve ter pelo menos 6 caracteres";
             break;
           case "Invalid email format":
-            errorMessage = "Formato de email inválido";
+            errorMessage = "Email inválido";
+            errorDetails = "Verifique o formato do email";
             break;
           case "Password should contain at least one uppercase letter":
-            errorMessage = "A senha deve conter pelo menos uma letra maiúscula";
+            errorMessage = "Senha fraca";
+            errorDetails = "A senha deve conter pelo menos uma letra maiúscula";
             break;
           default:
             errorMessage = error.message;
+            errorDetails = `Código: ${error.status || 'N/A'}`;
         }
         
         toast({
           variant: "destructive",
-          title: "Erro ao criar conta",
-          description: errorMessage,
+          title: `❌ ${errorMessage}`,
+          description: errorDetails,
         });
+        
+        // Log detalhado para debug
+        console.group('🔍 Detalhes do erro de cadastro:');
+        console.log('Mensagem:', error.message);
+        console.log('Status:', error.status);
+        console.log('Código:', error.code);
+        console.log('Detalhes completos:', error);
+        console.groupEnd();
+        
         return;
       }
 
+      console.log('✅ Cadastro bem-sucedido!');
       toast({
-        title: "Conta criada com sucesso!",
+        title: "✅ Conta criada com sucesso!",
         description: "Verifique seu email para confirmar a conta antes de fazer login.",
       });
 

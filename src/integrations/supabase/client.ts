@@ -31,9 +31,11 @@ export const supabase = createClient(supabaseUrl, supabaseKey, {
 
 // Funções de debug disponíveis globalmente
 if (typeof window !== 'undefined') {
-  console.log(' PedLife - Funções de debug disponíveis:');
+  console.log('🚀 PedLife - Funções de debug disponíveis:');
   console.log('   • window.clearSupabaseAuth() - Limpa todos os dados de auth');
   console.log('   • window.diagnoseAuth() - Diagnostica problemas de auth');
+  console.log('   • window.createTestUser() - Cria usuário de teste (teste@pedlife.com)');
+  console.log('   • window.testLogin() - Testa login com usuário de teste');
   
   (window as any).clearSupabaseAuth = () => {
     // Limpar localStorage
@@ -57,18 +59,83 @@ if (typeof window !== 'undefined') {
   };
   
   (window as any).diagnoseAuth = async () => {
-    console.log(' Diagnosticando autenticação...');
+    console.log('🔍 Diagnosticando autenticação...');
     console.log('URL do Supabase:', supabaseUrl);
-    console.log('API Key presente:', supabaseKey ? '' : '');
+    console.log('API Key presente:', supabaseKey ? '✅' : '❌');
     
     try {
       const { data: { session }, error } = await supabase.auth.getSession();
-      console.log('Sessão atual:', session ? ' Válida' : ' Nenhuma sessão válida encontrada');
+      console.log('Sessão atual:', session ? '✅ Válida' : '⚠️ Nenhuma sessão válida encontrada');
       if (error) {
         console.error('Erro na sessão:', error);
       }
     } catch (error) {
       console.error('Erro ao verificar sessão:', error);
+    }
+  };
+  
+  (window as any).createTestUser = async () => {
+    console.log('👤 Criando usuário de teste...');
+    
+    const testUser = {
+      email: 'teste@pedlife.com',
+      password: 'Teste123!',
+      fullName: 'Usuário Teste',
+      crm: '123456',
+      phone: '11999999999'
+    };
+    
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email: testUser.email,
+        password: testUser.password,
+        options: {
+          data: {
+            full_name: testUser.fullName,
+            crm: testUser.crm,
+            phone: testUser.phone,
+          }
+        }
+      });
+      
+      if (error) {
+        console.error('❌ Erro ao criar usuário de teste:', error);
+        if (error.message.includes('User already registered')) {
+          console.log('✅ Usuário de teste já existe! Credenciais:');
+          console.log('Email:', testUser.email);
+          console.log('Senha:', testUser.password);
+        }
+      } else {
+        console.log('✅ Usuário de teste criado com sucesso!');
+        console.log('📧 Email:', testUser.email);
+        console.log('🔑 Senha:', testUser.password);
+        console.log('⚠️ Confirme o email se necessário');
+      }
+    } catch (error) {
+      console.error('💥 Erro inesperado ao criar usuário de teste:', error);
+    }
+  };
+  
+  (window as any).testLogin = async () => {
+    console.log('🔐 Testando login com usuário de teste...');
+    
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: 'teste@pedlife.com',
+        password: 'Teste123!'
+      });
+      
+      if (error) {
+        console.error('❌ Erro no login de teste:', error);
+        if (error.message.includes('Invalid login credentials')) {
+          console.log('💡 Dica: Execute window.createTestUser() primeiro');
+        }
+      } else {
+        console.log('✅ Login de teste bem-sucedido!');
+        console.log('👤 Usuário:', data.user?.email);
+      }
+    } catch (error) {
+      console.error('💥 Erro inesperado no teste de login:', error);
     }
   };
 }
