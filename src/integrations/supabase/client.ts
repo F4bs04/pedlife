@@ -36,6 +36,8 @@ if (typeof window !== 'undefined') {
   console.log('   • window.diagnoseAuth() - Diagnostica problemas de auth');
   console.log('   • window.createTestUser() - Cria usuário de teste (teste@pedlife.com)');
   console.log('   • window.testLogin() - Testa login com usuário de teste');
+  console.log('   • window.debugSupabaseConfig() - Diagnóstico completo do Supabase');
+  console.log('   • window.forceCreateUser() - Criação forçada de usuário');
   
   (window as any).clearSupabaseAuth = () => {
     // Limpar localStorage
@@ -136,6 +138,115 @@ if (typeof window !== 'undefined') {
       }
     } catch (error) {
       console.error('💥 Erro inesperado no teste de login:', error);
+    }
+  };
+  
+  (window as any).debugSupabaseConfig = async () => {
+    console.log('🔍 Diagnosticando configuração completa do Supabase...');
+    console.log('URL:', supabaseUrl);
+    console.log('API Key (primeiros 20 chars):', supabaseKey?.substring(0, 20) + '...');
+    
+    try {
+      // Testar conexão básica
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      console.log('📊 Status da sessão:', session ? '✅ Ativa' : '❌ Nenhuma');
+      if (sessionError) console.error('Erro na sessão:', sessionError);
+      
+      // Testar configurações do projeto
+      console.log('🔧 Testando configurações do projeto...');
+      
+      // Tentar um cadastro de teste para ver o erro específico
+      console.log('🧪 Testando cadastro para identificar bloqueios...');
+      const testEmail = `teste-${Date.now()}@pedlife.com`;
+      const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+        email: testEmail,
+        password: 'TesteSenha123!',
+        options: {
+          data: {
+            full_name: 'Teste Debug',
+            test: true
+          }
+        }
+      });
+      
+      if (signUpError) {
+        console.error('❌ Erro no cadastro de teste:', signUpError);
+        console.log('📋 Detalhes do erro:');
+        console.log('  - Mensagem:', signUpError.message);
+        console.log('  - Status:', signUpError.status);
+        console.log('  - Código:', signUpError.code);
+        
+        // Verificar tipos específicos de erro
+        if (signUpError.message.includes('Signup is disabled')) {
+          console.log('🚫 PROBLEMA IDENTIFICADO: Cadastro está desabilitado no Supabase');
+          console.log('💡 SOLUÇÃO: Habilitar cadastro nas configurações do projeto Supabase');
+        } else if (signUpError.message.includes('Email rate limit')) {
+          console.log('⏰ PROBLEMA: Limite de rate de emails atingido');
+          console.log('💡 SOLUÇÃO: Aguardar ou configurar provedor de email');
+        } else if (signUpError.message.includes('Invalid email')) {
+          console.log('📧 PROBLEMA: Configuração de email inválida');
+        }
+      } else {
+        console.log('✅ Cadastro de teste funcionou!');
+        console.log('👤 Usuário criado:', signUpData.user?.email);
+        console.log('📧 Confirmação necessária:', !signUpData.user?.email_confirmed_at);
+      }
+      
+    } catch (error) {
+      console.error('💥 Erro na análise:', error);
+    }
+  };
+  
+  (window as any).forceCreateUser = async (email = 'admin@pedlife.com', password = 'Admin123!') => {
+    console.log('🚀 Tentativa de criação forçada de usuário...');
+    console.log('📧 Email:', email);
+    
+    try {
+      // Tentar diferentes abordagens de cadastro
+      const approaches = [
+        {
+          name: 'Cadastro padrão',
+          method: () => supabase.auth.signUp({
+            email,
+            password,
+            options: {
+              emailRedirectTo: window.location.origin + '/auth?confirmed=true'
+            }
+          })
+        },
+        {
+          name: 'Cadastro sem confirmação de email',
+          method: () => supabase.auth.signUp({
+            email,
+            password,
+            options: {
+              emailRedirectTo: window.location.origin + '/auth?confirmed=true',
+              data: {
+                email_confirm: false
+              }
+            }
+          })
+        }
+      ];
+      
+      for (const approach of approaches) {
+        console.log(`🔄 Tentando: ${approach.name}`);
+        const { data, error } = await approach.method();
+        
+        if (error) {
+          console.error(`❌ ${approach.name} falhou:`, error.message);
+        } else {
+          console.log(`✅ ${approach.name} funcionou!`);
+          console.log('👤 Usuário:', data.user?.email);
+          console.log('🔑 ID:', data.user?.id);
+          return data;
+        }
+      }
+      
+      console.log('❌ Todas as abordagens falharam');
+      
+    } catch (error) {
+      console.error('💥 Erro na criação forçada:', error);
     }
   };
 }
