@@ -273,7 +273,7 @@ const AuthPage: React.FC = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url(/lovable-uploads/64143.jpg)',
-          filter: 'blur(20px)',
+          filter: 'blur(5px)',
           transform: 'scale(1.1)' // Prevent blur edge artifacts
         }}
       />
