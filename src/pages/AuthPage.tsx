@@ -100,54 +100,118 @@ const AuthPage: React.FC = () => {
 
   const onLogin = async (data: LoginForm) => {
     setIsLoading(true);
+    
+    // Notificação inicial
+    toast({
+      title: "🔄 Iniciando login...",
+      description: "Conectando com o servidor de autenticação",
+    });
+    
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      console.log('🔐 Tentando fazer login com:', { email: data.email });
+      console.log('📡 Enviando requisição para Supabase...');
+      
+      const { data: authData, error } = await supabase.auth.signInWithPassword({
         email: data.email,
         password: data.password,
       });
 
+      console.log('📥 Resposta do Supabase:', { authData, error });
+
       if (error) {
+        console.error('❌ Erro de autenticação:', error);
+        
         // Melhores mensagens de erro em português
         let errorMessage = "Erro desconhecido";
+        let errorDetails = "";
         
-        switch (error.message) {
-          case "Invalid login credentials":
-            errorMessage = "Email ou senha incorretos";
-            break;
-          case "Email not confirmed":
-            errorMessage = "Por favor, confirme seu email antes de fazer login";
-            break;
-          case "Too many requests":
-            errorMessage = "Muitas tentativas. Tente novamente em alguns minutos";
-            break;
-          case "User not found":
-            errorMessage = "Usuário não encontrado";
-            break;
-          default:
-            errorMessage = error.message;
+        // Verificar se é o erro 400 específico que estamos enfrentando
+        if (error.status === 400 || error.message.includes('400')) {
+          errorMessage = "Erro de configuração do servidor";
+          errorDetails = "Problema com a API do Supabase. Tente usar window.clearSupabaseAuth() no console";
+          
+          // Sugerir limpeza automática
+          toast({
+            title: "🔧 Sugestão de correção",
+            description: "Abra o console (F12) e execute: window.clearSupabaseAuth()",
+          });
+        } else {
+          switch (error.message) {
+            case "Invalid login credentials":
+              errorMessage = "Email ou senha incorretos";
+              errorDetails = "Verifique suas credenciais e tente novamente";
+              break;
+            case "Email not confirmed":
+              errorMessage = "Email não confirmado";
+              errorDetails = "Verifique sua caixa de entrada e confirme seu email";
+              break;
+            case "Too many requests":
+              errorMessage = "Muitas tentativas";
+              errorDetails = "Aguarde alguns minutos antes de tentar novamente";
+              break;
+            case "User not found":
+              errorMessage = "Usuário não encontrado";
+              errorDetails = "Verifique o email ou crie uma nova conta";
+              break;
+            default:
+              errorMessage = error.message;
+              errorDetails = `Código: ${error.status || 'N/A'}`;
+          }
         }
         
         toast({
           variant: "destructive",
-          title: "Erro ao fazer login",
-          description: errorMessage,
+          title: `❌ ${errorMessage}`,
+          description: errorDetails,
         });
+        
+        // Log detalhado para debug
+        console.group('🔍 Detalhes do erro de login:');
+        console.log('Mensagem:', error.message);
+        console.log('Status:', error.status);
+        console.log('Código:', error.code);
+        console.log('Detalhes completos:', error);
+        console.groupEnd();
+        
         return;
       }
 
+      console.log('✅ Login bem-sucedido!');
       toast({
-        title: "Login realizado com sucesso!",
-        description: "Bem-vindo de volta.",
+        title: "✅ Login realizado com sucesso!",
+        description: "Redirecionando para a plataforma...",
       });
 
-      navigate('/platform/calculator');
+      // Pequeno delay para mostrar a notificação de sucesso
+      setTimeout(() => {
+        navigate('/platform/calculator');
+      }, 1000);
+      
     } catch (error) {
-      console.error('Login error:', error);
+      console.error('💥 Erro inesperado no login:', error);
+      
+      let errorMessage = "Erro de conexão";
+      let errorDetails = "Verifique sua conexão com a internet";
+      
+      if (error instanceof Error) {
+        errorMessage = "Erro inesperado";
+        errorDetails = error.message;
+      }
+      
       toast({
         variant: "destructive",
-        title: "Erro inesperado",
-        description: "Tente novamente em alguns instantes.",
+        title: `💥 ${errorMessage}`,
+        description: errorDetails,
       });
+      
+      // Log detalhado para debug
+      console.group('🔍 Detalhes do erro inesperado:');
+      console.log('Tipo:', typeof error);
+      console.log('Mensagem:', error instanceof Error ? error.message : String(error));
+      console.log('Stack:', error instanceof Error ? error.stack : 'N/A');
+      console.log('Objeto completo:', error);
+      console.groupEnd();
+      
     } finally {
       setIsLoading(false);
     }
@@ -394,7 +458,7 @@ const AuthPage: React.FC = () => {
                   disabled={isLoading}
                 >
                   {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                  Entrar
+                  {isLoading ? "Conectando..." : "Entrar"}
                 </Button>
               </form>
             </TabsContent>
