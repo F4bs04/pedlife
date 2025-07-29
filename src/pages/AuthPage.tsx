@@ -267,8 +267,22 @@ const AuthPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted p-4">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center relative p-4 overflow-hidden">
+      {/* Background with blur effect */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/lovable-uploads/64143.jpg)',
+          filter: 'blur(20px)',
+          transform: 'scale(1.1)' // Prevent blur edge artifacts
+        }}
+      />
+      
+      {/* Overlay for better contrast */}
+      <div className="absolute inset-0 bg-black/30" />
+      
+      {/* Main content with fade animation */}
+      <Card className="w-full max-w-md relative z-10 backdrop-blur-sm bg-white/95 shadow-2xl animate-in fade-in duration-700 slide-in-from-bottom-4">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold text-primary">PedLife</CardTitle>
           <CardDescription>
