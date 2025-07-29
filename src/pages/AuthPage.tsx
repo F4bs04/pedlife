@@ -127,35 +127,113 @@ const AuthPage: React.FC = () => {
         
         // Verificar se é o erro 400 específico que estamos enfrentando
         if (error.status === 400 || error.message.includes('400')) {
-          errorMessage = "Erro de configuração do servidor";
-          errorDetails = "Problema com a API do Supabase. Tente usar window.clearSupabaseAuth() no console";
-          
-          // Sugerir limpeza automática
-          toast({
-            title: "🔧 Sugestão de correção",
-            description: "Abra o console (F12) e execute: window.clearSupabaseAuth()",
-          });
+          // Verificar se é erro de credenciais inválidas
+          if (error.message.includes('Invalid login credentials') || error.code === 'invalid_credentials') {
+            errorMessage = "Credenciais inválidas";
+            errorDetails = "Email ou senha incorretos. Verifique seus dados ou crie uma conta";
+            
+            // Notificação adicional para sugerir cadastro
+            setTimeout(() => {
+              toast({
+                title: "💡 Primeira vez aqui?",
+                description: "Se você não tem conta, use a aba 'Cadastrar' para criar uma nova conta",
+              });
+            }, 2000);
+          } else {
+            errorMessage = "Erro de configuração do servidor";
+            errorDetails = "Problema com a API do Supabase. Tente usar window.clearSupabaseAuth() no console";
+            
+            // Sugerir limpeza automática
+            toast({
+              title: "🔧 Sugestão de correção",
+              description: "Abra o console (F12) e execute: window.clearSupabaseAuth()",
+            });
+          }
         } else {
           switch (error.message) {
             case "Invalid login credentials":
-              errorMessage = "Email ou senha incorretos";
-              errorDetails = "Verifique suas credenciais e tente novamente";
+              errorMessage = "Login inválido";
+              errorDetails = "Email ou senha incorretos. Verifique seus dados";
+              
+              // Sugestão para cadastro se usuário não existe
+              setTimeout(() => {
+                toast({
+                  title: "🤔 Não consegue entrar?",
+                  description: "Verifique se você já tem uma conta ou crie uma nova na aba 'Cadastrar'",
+                });
+              }, 3000);
               break;
+              
             case "Email not confirmed":
               errorMessage = "Email não confirmado";
-              errorDetails = "Verifique sua caixa de entrada e confirme seu email";
+              errorDetails = "Verifique sua caixa de entrada e clique no link de confirmação";
+              
+              // Notificação adicional sobre confirmação
+              setTimeout(() => {
+                toast({
+                  title: "📧 Não recebeu o email?",
+                  description: "Verifique a pasta de spam ou solicite um novo email de confirmação",
+                });
+              }, 2000);
               break;
+              
+            case "Email confirmation required":
+              errorMessage = "Confirmação de email necessária";
+              errorDetails = "Sua conta foi criada, mas você precisa confirmar o email";
+              break;
+              
             case "Too many requests":
-              errorMessage = "Muitas tentativas";
-              errorDetails = "Aguarde alguns minutos antes de tentar novamente";
+              errorMessage = "Muitas tentativas de login";
+              errorDetails = "Aguarde 5-10 minutos antes de tentar novamente";
+              
+              // Sugestão de recuperação de senha
+              setTimeout(() => {
+                toast({
+                  title: "🔑 Esqueceu a senha?",
+                  description: "Use o link 'Esqueci minha senha' para redefinir sua senha",
+                });
+              }, 2000);
               break;
+              
             case "User not found":
               errorMessage = "Usuário não encontrado";
-              errorDetails = "Verifique o email ou crie uma nova conta";
+              errorDetails = "Este email não está cadastrado no sistema";
+              
+              // Sugestão para cadastro
+              setTimeout(() => {
+                toast({
+                  title: "👤 Primeira vez aqui?",
+                  description: "Clique na aba 'Cadastrar' para criar sua conta gratuita",
+                });
+              }, 1500);
               break;
+              
+            case "Invalid email":
+              errorMessage = "Email inválido";
+              errorDetails = "Verifique o formato do seu email (exemplo@dominio.com)";
+              break;
+              
+            case "Weak password":
+              errorMessage = "Senha muito fraca";
+              errorDetails = "Use uma senha com pelo menos 6 caracteres, incluindo letras e números";
+              break;
+              
+            case "Network error":
+              errorMessage = "Erro de conexão";
+              errorDetails = "Verifique sua conexão com a internet e tente novamente";
+              break;
+              
             default:
-              errorMessage = error.message;
-              errorDetails = `Código: ${error.status || 'N/A'}`;
+              errorMessage = error.message || "Erro desconhecido";
+              errorDetails = `Código: ${error.status || error.code || 'N/A'}`;
+              
+              // Para erros desconhecidos, sugerir limpeza
+              setTimeout(() => {
+                toast({
+                  title: "🔧 Erro técnico?",
+                  description: "Tente limpar os dados: window.clearSupabaseAuth() no console (F12)",
+                });
+              }, 2000);
           }
         }
         
@@ -263,24 +341,77 @@ const AuthPage: React.FC = () => {
         
         switch (error.message) {
           case "User already registered":
-            errorMessage = "Este email já está cadastrado";
-            errorDetails = "Tente fazer login ou use outro email";
+            errorMessage = "Email já cadastrado";
+            errorDetails = "Este email já possui uma conta ativa";
+            
+            // Sugestão para fazer login
+            setTimeout(() => {
+              toast({
+                title: "🔑 Já tem conta?",
+                description: "Use a aba 'Entrar' para fazer login com suas credenciais",
+              });
+            }, 2000);
             break;
+            
           case "Password should be at least 6 characters":
             errorMessage = "Senha muito curta";
             errorDetails = "A senha deve ter pelo menos 6 caracteres";
+            
+            // Dica de senha segura
+            setTimeout(() => {
+              toast({
+                title: "🔒 Dica de segurança",
+                description: "Use uma combinação de letras, números e símbolos",
+              });
+            }, 1500);
             break;
+            
           case "Invalid email format":
-            errorMessage = "Email inválido";
-            errorDetails = "Verifique o formato do email";
+            errorMessage = "Formato de email inválido";
+            errorDetails = "Use o formato: exemplo@dominio.com";
             break;
+            
           case "Password should contain at least one uppercase letter":
-            errorMessage = "Senha fraca";
-            errorDetails = "A senha deve conter pelo menos uma letra maiúscula";
+            errorMessage = "Senha não atende aos requisitos";
+            errorDetails = "Inclua pelo menos uma letra maiúscula (A-Z)";
             break;
+            
+          case "Password should contain at least one lowercase letter":
+            errorMessage = "Senha não atende aos requisitos";
+            errorDetails = "Inclua pelo menos uma letra minúscula (a-z)";
+            break;
+            
+          case "Password should contain at least one number":
+            errorMessage = "Senha não atende aos requisitos";
+            errorDetails = "Inclua pelo menos um número (0-9)";
+            break;
+            
+          case "Email rate limit exceeded":
+            errorMessage = "Limite de emails atingido";
+            errorDetails = "Aguarde alguns minutos antes de tentar novamente";
+            break;
+            
+          case "Signup disabled":
+            errorMessage = "Cadastro temporariamente indisponível";
+            errorDetails = "Tente novamente mais tarde ou entre em contato conosco";
+            break;
+            
+          case "Invalid phone number":
+            errorMessage = "Número de telefone inválido";
+            errorDetails = "Use o formato: (11) 99999-9999";
+            break;
+            
           default:
-            errorMessage = error.message;
-            errorDetails = `Código: ${error.status || 'N/A'}`;
+            errorMessage = error.message || "Erro no cadastro";
+            errorDetails = `Código: ${error.status || error.code || 'N/A'}`;
+            
+            // Para erros desconhecidos no cadastro
+            setTimeout(() => {
+              toast({
+                title: "🔧 Problema técnico?",
+                description: "Tente recarregar a página ou entre em contato conosco",
+              });
+            }, 2000);
         }
         
         toast({
@@ -303,15 +434,39 @@ const AuthPage: React.FC = () => {
       console.log('✅ Cadastro bem-sucedido!');
       toast({
         title: "✅ Conta criada com sucesso!",
-        description: "Verifique seu email para confirmar a conta antes de fazer login.",
+        description: "Um email de confirmação foi enviado para sua caixa de entrada",
       });
+      
+      // Notificação adicional com instruções detalhadas
+      setTimeout(() => {
+        toast({
+          title: "📧 Próximo passo: Confirme seu email",
+          description: "Clique no link do email para ativar sua conta e fazer login",
+        });
+      }, 2000);
+      
+      // Notificação sobre verificar spam
+      setTimeout(() => {
+        toast({
+          title: "📬 Não encontrou o email?",
+          description: "Verifique a pasta de spam/lixo eletrônico",
+        });
+      }, 5000);
 
       // Clear form
       registerForm.reset();
       
       // Switch to login tab after successful registration
-      const loginTab = document.querySelector('[value="login"]') as HTMLElement;
-      if (loginTab) loginTab.click();
+      setTimeout(() => {
+        const loginTab = document.querySelector('[value="login"]') as HTMLElement;
+        if (loginTab) {
+          loginTab.click();
+          toast({
+            title: "🔄 Pronto para fazer login",
+            description: "Após confirmar o email, use suas credenciais para entrar",
+          });
+        }
+      }, 3000);
     } catch (error) {
       console.error('Register error:', error);
       toast({
@@ -326,24 +481,83 @@ const AuthPage: React.FC = () => {
 
   const onForgotPassword = async (data: ForgotPasswordForm) => {
     setIsResetLoading(true);
+    
+    // Notificação inicial
+    toast({
+      title: "📧 Enviando email de recuperação...",
+      description: "Processando sua solicitação",
+    });
+    
     try {
+      console.log('🔑 Solicitando recuperação de senha para:', data.email);
+      
       const { error } = await supabase.auth.resetPasswordForEmail(data.email, {
         redirectTo: `${window.location.origin}/auth?reset=true`,
       });
 
       if (error) {
+        console.error('❌ Erro na recuperação de senha:', error);
+        
+        let errorMessage = "Erro ao enviar email";
+        let errorDetails = "";
+        
+        switch (error.message) {
+          case "User not found":
+            errorMessage = "Email não encontrado";
+            errorDetails = "Este email não está cadastrado no sistema";
+            
+            // Sugestão para cadastro
+            setTimeout(() => {
+              toast({
+                title: "👤 Primeira vez aqui?",
+                description: "Clique em 'Cadastrar' para criar sua conta",
+              });
+            }, 2000);
+            break;
+            
+          case "Email rate limit exceeded":
+            errorMessage = "Muitas solicitações";
+            errorDetails = "Aguarde alguns minutos antes de tentar novamente";
+            break;
+            
+          case "Invalid email":
+            errorMessage = "Email inválido";
+            errorDetails = "Verifique o formato do email";
+            break;
+            
+          default:
+            errorMessage = "Erro no envio";
+            errorDetails = error.message || "Tente novamente em alguns instantes";
+        }
+        
         toast({
           variant: "destructive",
-          title: "Erro ao enviar email",
-          description: error.message,
+          title: `❌ ${errorMessage}`,
+          description: errorDetails,
         });
         return;
       }
 
+      console.log('✅ Email de recuperação enviado!');
       toast({
-        title: "Email enviado!",
-        description: "Verifique seu email para redefinir sua senha.",
+        title: "✅ Email de recuperação enviado!",
+        description: "Verifique sua caixa de entrada para redefinir sua senha",
       });
+      
+      // Notificações adicionais com instruções
+      setTimeout(() => {
+        toast({
+          title: "📬 Instruções enviadas",
+          description: "Clique no link do email para criar uma nova senha",
+        });
+      }, 2000);
+      
+      setTimeout(() => {
+        toast({
+          title: "🕒 Não recebeu o email?",
+          description: "Verifique a pasta de spam ou tente novamente em 5 minutos",
+        });
+      }, 5000);
 
       // Clear form and close dialog
       forgotPasswordForm.reset();
