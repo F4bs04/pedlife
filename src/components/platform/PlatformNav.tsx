@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Bell, UserCircle, Settings, Menu, Moon, Sun } from 'lucide-react';
+import { Bell, UserCircle, Settings, Menu, Moon, Sun, LogOut } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -19,12 +19,15 @@ import {
 } from "@/components/ui/sheet";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useTheme } from 'next-themes';
+import { useUser } from '@/hooks/use-user';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { forceLogout } from '@/utils/auth-utils';
 
 export const PlatformNav: React.FC = () => {
   const isMobile = useIsMobile();
   const { theme, setTheme } = useTheme();
+  const { user, profile, loading } = useUser();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -37,37 +40,24 @@ export const PlatformNav: React.FC = () => {
     try {
       console.log('Attempting to logout...');
       
-      // Clear local storage to ensure no session data persists
-      localStorage.removeItem('supabase.auth.token');
-      sessionStorage.clear();
-      
-      const { error } = await supabase.auth.signOut();
-      
-      if (error) {
-        console.error('Logout error:', error);
-        toast({
-          variant: "destructive",
-          title: "Erro ao sair",
-          description: "Não foi possível fazer logout. Tente novamente.",
-        });
-        return;
-      }
-
-      console.log('Logout successful, redirecting to home...');
       toast({
-        title: "Logout realizado",
-        description: "Você foi desconectado com sucesso.",
+        title: "Saindo...",
+        description: "Desconectando sua sessão.",
       });
       
-      // Force page reload to clear any cached state
-      window.location.href = '/';
+      // Use the improved force logout function
+      await forceLogout();
+      
     } catch (error) {
-      console.error('Unexpected logout error:', error);
+      console.error('Logout error:', error);
       toast({
         variant: "destructive",
-        title: "Erro inesperado",
-        description: "Tente novamente em alguns instantes.",
+        title: "Erro ao sair",
+        description: "Forçando logout...",
       });
+      
+      // Force logout even if there's an error
+      await forceLogout();
     }
   };
 
@@ -79,6 +69,28 @@ export const PlatformNav: React.FC = () => {
 
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  // Get user display information
+  const getUserDisplayName = () => {
+    if (loading) return "Carregando...";
+    return profile?.full_name || user?.email?.split('@')[0] || "Usuário";
+  };
+
+  const getUserEmail = () => {
+    if (loading) return "Carregando...";
+    return profile?.email || user?.email || "email@exemplo.com";
+  };
+
+  const getUserInitials = () => {
+    const name = getUserDisplayName();
+    if (name === "Carregando..." || name === "Usuário") return "U";
+    
+    const parts = name.split(' ');
+    if (parts.length >= 2) {
+      return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
+    return name.substring(0, 2).toUpperCase();
   };
 
   return (
@@ -127,9 +139,9 @@ export const PlatformNav: React.FC = () => {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                 <Avatar className="h-8 w-8">
-                  <AvatarImage src="/placeholder-user.jpg" alt="Usuário" />
-                  <AvatarFallback>
-                    <UserCircle className="h-6 w-6 text-muted-foreground" />
+                  <AvatarImage src="/placeholder-user.jpg" alt={getUserDisplayName()} />
+                  <AvatarFallback className="bg-primary text-primary-foreground">
+                    {getUserInitials()}
                   </AvatarFallback>
                 </Avatar>
               </Button>
@@ -137,10 +149,15 @@ export const PlatformNav: React.FC = () => {
             <DropdownMenuContent className="w-56" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">Usuário</p>
+                  <p className="text-sm font-medium leading-none">{getUserDisplayName()}</p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    usuario@example.com
+                    {getUserEmail()}
                   </p>
+                  {profile?.crm && (
+                    <p className="text-xs leading-none text-muted-foreground">
+                      CRM: {profile.crm}
+                    </p>
+                  )}
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
@@ -151,7 +168,8 @@ export const PlatformNav: React.FC = () => {
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
+              <DropdownMenuItem onClick={handleLogout} className="cursor-pointer text-red-600 focus:text-red-600">
+                <LogOut className="mr-2 h-4 w-4" />
                 Sair
               </DropdownMenuItem>
             </DropdownMenuContent>

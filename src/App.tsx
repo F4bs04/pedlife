@@ -13,6 +13,9 @@ import MedicationCategoryPage from "./pages/platform/MedicationCategoryPage";
 import MedicationCalculatorPage from "./pages/platform/MedicationCalculatorPage";
 import InsulinCalculatorPage from "./pages/platform/InsulinCalculatorPage";
 import ProtocolsPage from "./pages/platform/ProtocolsPage";
+
+// Import test file for development debugging
+import "./test-supabase";
 import ProtocolDetailPage from "./pages/platform/ProtocolDetailPage";
 import ProtocolCalculatorPage from "./pages/platform/ProtocolCalculatorPage";
 

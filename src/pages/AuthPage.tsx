@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
+import { checkAndCleanCorruptedTokens, clearAuthData } from '@/utils/auth-utils';
 
 interface LoginForm {
   email: string;
@@ -41,11 +42,37 @@ const AuthPage: React.FC = () => {
   const forgotPasswordForm = useForm<ForgotPasswordForm>();
 
   useEffect(() => {
-    // Check if user is already logged in
+    // Check if user is already logged in with error handling
     const checkUser = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        navigate('/platform/calculator');
+      try {
+        // First check and clean any corrupted tokens
+        const hasValidSession = await checkAndCleanCorruptedTokens();
+        
+        if (!hasValidSession) {
+          return;
+        }
+
+        const { data: { session }, error } = await supabase.auth.getSession();
+        
+        if (error) {
+          console.error('AuthPage session error:', error);
+          // If there's an auth error, clean the data
+          if (error.message.includes('Invalid Refresh Token') || error.message.includes('refresh_token_not_found')) {
+            clearAuthData();
+            toast({
+              title: "Sessão expirada",
+              description: "Por favor, faça login novamente.",
+            });
+            return;
+          }
+        }
+        
+        if (session) {
+          navigate('/platform/calculator');
+        }
+      } catch (error) {
+        console.error('AuthPage unexpected error:', error);
+        clearAuthData();
       }
     };
     

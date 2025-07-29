@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Session } from '@supabase/supabase-js';
+import { checkAndCleanCorruptedTokens, clearAuthData } from '@/utils/auth-utils';
 
 interface AuthGuardProps {
   children: React.ReactNode;
@@ -13,18 +14,47 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
   const location = useLocation();
 
   useEffect(() => {
-    // Get initial session
+    // Get initial session with error handling
     const getSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      setSession(session);
-      setLoading(false);
+      try {
+        // First check and clean any corrupted tokens
+        const hasValidSession = await checkAndCleanCorruptedTokens();
+        
+        if (!hasValidSession) {
+          setSession(null);
+          setLoading(false);
+          return;
+        }
+
+        const { data: { session }, error } = await supabase.auth.getSession();
+        
+        if (error) {
+          console.error('AuthGuard session error:', error);
+          // If there's an auth error related to refresh tokens, clean everything
+          if (error.message.includes('Invalid Refresh Token') || error.message.includes('refresh_token_not_found')) {
+            clearAuthData();
+            setSession(null);
+            setLoading(false);
+            return;
+          }
+        }
+        
+        setSession(session);
+        setLoading(false);
+      } catch (error) {
+        console.error('AuthGuard unexpected error:', error);
+        clearAuthData();
+        setSession(null);
+        setLoading(false);
+      }
     };
 
     getSession();
 
-    // Listen for auth state changes
+    // Listen for auth state changes with error handling
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, session) => {
+        console.log('AuthGuard auth state change:', event, session?.user?.email);
         setSession(session);
         setLoading(false);
       }
