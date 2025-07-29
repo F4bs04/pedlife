@@ -36,6 +36,8 @@ const AuthPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
   const [isResetLoading, setIsResetLoading] = useState(false);
+  const [showEmailConfirmationHelp, setShowEmailConfirmationHelp] = useState(false);
+  const [justRegistered, setJustRegistered] = useState(false);
 
   const loginForm = useForm<LoginForm>();
   const registerForm = useForm<RegisterForm>();
@@ -130,15 +132,26 @@ const AuthPage: React.FC = () => {
           // Verificar se é erro de credenciais inválidas
           if (error.message.includes('Invalid login credentials') || error.code === 'invalid_credentials') {
             errorMessage = "Credenciais inválidas";
-            errorDetails = "Email ou senha incorretos. Verifique seus dados ou crie uma conta";
+            errorDetails = "Email ou senha incorretos, ou email não confirmado";
             
-            // Notificação adicional para sugerir cadastro
+            // Mostrar banner de ajuda sobre confirmação de email
+            setShowEmailConfirmationHelp(true);
+            
+            // Notificação específica sobre confirmação de email
             setTimeout(() => {
               toast({
-                title: "💡 Primeira vez aqui?",
-                description: "Se você não tem conta, use a aba 'Cadastrar' para criar uma nova conta",
+                title: "📧 Email confirmado?",
+                description: "Se você se cadastrou recentemente, confirme seu email primeiro",
               });
             }, 2000);
+            
+            // Notificação adicional para novos usuários
+            setTimeout(() => {
+              toast({
+                title: "👤 Novo usuário?",
+                description: "Use a aba 'Cadastrar' para criar sua conta gratuita",
+              });
+            }, 4000);
           } else {
             errorMessage = "Erro de configuração do servidor";
             errorDetails = "Problema com a API do Supabase. Tente usar window.clearSupabaseAuth() no console";
@@ -437,11 +450,11 @@ const AuthPage: React.FC = () => {
         description: "Um email de confirmação foi enviado para sua caixa de entrada",
       });
       
-      // Notificação adicional com instruções detalhadas
+      // Notificação com instruções passo-a-passo
       setTimeout(() => {
         toast({
-          title: "📧 Próximo passo: Confirme seu email",
-          description: "Clique no link do email para ativar sua conta e fazer login",
+          title: "📧 IMPORTANTE: Confirme seu email",
+          description: "1️⃣ Abra seu email → 2️⃣ Clique no link → 3️⃣ Volte aqui para fazer login",
         });
       }, 2000);
       
@@ -449,10 +462,21 @@ const AuthPage: React.FC = () => {
       setTimeout(() => {
         toast({
           title: "📬 Não encontrou o email?",
-          description: "Verifique a pasta de spam/lixo eletrônico",
+          description: "Verifique spam/lixo eletrônico. O email pode demorar alguns minutos",
         });
       }, 5000);
+      
+      // Notificação final com lembrete
+      setTimeout(() => {
+        toast({
+          title: "⚠️ Lembrete importante",
+          description: "Sem confirmação de email, você não conseguirá fazer login!",
+        });
+      }, 8000);
 
+      // Marcar que o usuário acabou de se registrar
+      setJustRegistered(true);
+      
       // Clear form
       registerForm.reset();
       
@@ -597,6 +621,59 @@ const AuthPage: React.FC = () => {
             Acesse sua conta ou crie uma nova
           </CardDescription>
         </CardHeader>
+        
+        {/* Banner de ajuda para confirmação de email */}
+        {showEmailConfirmationHelp && (
+          <div className="mx-6 mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="flex items-start space-x-3">
+              <div className="text-blue-500 text-xl">📧</div>
+              <div className="flex-1">
+                <h4 className="font-semibold text-blue-800 mb-1">Problema no login?</h4>
+                <p className="text-sm text-blue-700 mb-2">
+                  Se você se cadastrou recentemente, precisa <strong>confirmar seu email</strong> antes de fazer login.
+                </p>
+                <div className="text-xs text-blue-600 space-y-1">
+                  <p>• Verifique sua caixa de entrada</p>
+                  <p>• Procure também na pasta de spam</p>
+                  <p>• Clique no link de confirmação</p>
+                </div>
+                <button 
+                  onClick={() => setShowEmailConfirmationHelp(false)}
+                  className="mt-2 text-xs text-blue-500 hover:text-blue-700 underline"
+                >
+                  Entendi, fechar
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+        
+        {/* Banner de sucesso após cadastro */}
+        {justRegistered && (
+          <div className="mx-6 mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+            <div className="flex items-start space-x-3">
+              <div className="text-green-500 text-xl">✅</div>
+              <div className="flex-1">
+                <h4 className="font-semibold text-green-800 mb-1">Conta criada com sucesso!</h4>
+                <p className="text-sm text-green-700 mb-2">
+                  Agora você precisa <strong>confirmar seu email</strong> para fazer login.
+                </p>
+                <div className="text-xs text-green-600 bg-green-100 p-2 rounded mb-2">
+                  <strong>Próximos passos:</strong><br/>
+                  1️⃣ Abra seu email<br/>
+                  2️⃣ Clique no link de confirmação<br/>
+                  3️⃣ Volte aqui e faça login
+                </div>
+                <button 
+                  onClick={() => setJustRegistered(false)}
+                  className="text-xs text-green-500 hover:text-green-700 underline"
+                >
+                  Ok, entendi
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
         <CardContent>
           <Tabs defaultValue="login" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
