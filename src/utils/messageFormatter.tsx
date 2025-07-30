@@ -51,6 +51,41 @@ export const formatMessageText = (text: string): string => {
 };
 
 /**
+ * Parse markdown-like formatting in text
+ */
+export const parseMarkdown = (text: string): React.ReactNode[] => {
+  const parts: React.ReactNode[] = [];
+  let currentIndex = 0;
+  
+  // Find all **bold** patterns
+  const boldRegex = /\*\*(.*?)\*\*/g;
+  let match;
+  
+  while ((match = boldRegex.exec(text)) !== null) {
+    // Add text before the bold part
+    if (match.index > currentIndex) {
+      parts.push(text.slice(currentIndex, match.index));
+    }
+    
+    // Add the bold part
+    parts.push(
+      <strong key={`bold-${match.index}`} className="font-bold">
+        {match[1]}
+      </strong>
+    );
+    
+    currentIndex = match.index + match[0].length;
+  }
+  
+  // Add remaining text
+  if (currentIndex < text.length) {
+    parts.push(text.slice(currentIndex));
+  }
+  
+  return parts.length > 0 ? parts : [text];
+};
+
+/**
  * Component to render formatted message text
  */
 export const FormattedMessage: React.FC<FormattedMessageProps> = ({ text, className = '' }) => {
@@ -140,7 +175,7 @@ export const MedicalFormattedMessage: React.FC<FormattedMessageProps> = ({ text,
         if (/dose|dosagem|mg\/kg|ml\/kg|gotas|comprimido|ml|mg/i.test(trimmedPart)) {
           return (
             <div key={index} className="bg-current bg-opacity-10 border-l-2 border-current border-opacity-30 pl-3 py-1 rounded-r-md my-2">
-              <p className="font-medium text-current">{trimmedPart}</p>
+              <p className="font-medium text-current">{parseMarkdown(trimmedPart)}</p>
             </div>
           );
         }
@@ -149,7 +184,7 @@ export const MedicalFormattedMessage: React.FC<FormattedMessageProps> = ({ text,
         if (/atenção|importante|cuidado|alerta|contraindicação|emergência|urgente/i.test(trimmedPart)) {
           return (
             <div key={index} className="bg-red-100 border-l-2 border-red-400 pl-3 py-1 rounded-r-md my-2">
-              <p className="font-medium text-red-800">{trimmedPart}</p>
+              <p className="font-medium text-red-800">{parseMarkdown(trimmedPart)}</p>
             </div>
           );
         }
@@ -162,7 +197,7 @@ export const MedicalFormattedMessage: React.FC<FormattedMessageProps> = ({ text,
                 {trimmedPart.match(/^\d+\./)?.[0]}
               </span>
               <span className="text-current opacity-90 leading-relaxed">
-                {trimmedPart.replace(/^\d+\.\s/, '')}
+                {parseMarkdown(trimmedPart.replace(/^\d+\.\s/, ''))}
               </span>
             </div>
           );
@@ -173,15 +208,15 @@ export const MedicalFormattedMessage: React.FC<FormattedMessageProps> = ({ text,
           return (
             <div key={index} className="ml-3 mb-1 flex items-start">
               <span className="text-current opacity-70 mr-2 mt-1 font-bold">•</span>
-              <span className="text-current opacity-90 leading-relaxed">{trimmedPart.replace(/^[•\-\*]\s/, '')}</span>
+              <span className="text-current opacity-90 leading-relaxed">{parseMarkdown(trimmedPart.replace(/^[•\-\*]\s/, ''))}</span>
             </div>
           );
         }
         
-        // Regular paragraphs
+        // Regular paragraphs with markdown support
         return (
           <p key={index} className="leading-relaxed text-current opacity-95 mb-2">
-            {trimmedPart}
+            {parseMarkdown(trimmedPart)}
           </p>
         );
       })}

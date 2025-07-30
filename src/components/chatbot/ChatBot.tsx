@@ -30,6 +30,7 @@ const ChatBot: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [conversationHistory, setConversationHistory] = useState<AIMessage[]>([]);
   const [aiConnectionStatus, setAiConnectionStatus] = useState<'connected' | 'disconnected' | 'checking'>('checking');
+  const [streamingMessageId, setStreamingMessageId] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
@@ -64,11 +65,14 @@ const ChatBot: React.FC = () => {
     }
   };
 
-  const getBotResponse = async (userMessage: string): Promise<string> => {
+  const getBotResponse = async (userMessage: string, messageId: string): Promise<string> => {
     try {
       const response = await AIService.sendMessage(userMessage, conversationHistory);
       
       if (response.success) {
+        // Simulate streaming effect by showing response in parts
+        await simulateStreamingResponse(response.message, messageId);
+        
         // Update conversation history for context
         setConversationHistory(prev => [
           ...prev,
@@ -98,6 +102,30 @@ const ChatBot: React.FC = () => {
     }
   };
 
+  const simulateStreamingResponse = async (fullResponse: string, messageId: string): Promise<void> => {
+    setStreamingMessageId(messageId);
+    
+    // Split response into words for streaming effect
+    const words = fullResponse.split(' ');
+    let currentText = '';
+    
+    for (let i = 0; i < words.length; i++) {
+      currentText += (i > 0 ? ' ' : '') + words[i];
+      
+      // Update the message with current text
+      setMessages(prev => prev.map(msg => 
+        msg.id === messageId 
+          ? { ...msg, text: currentText }
+          : msg
+      ));
+      
+      // Add delay between words for streaming effect
+      await new Promise(resolve => setTimeout(resolve, 50));
+    }
+    
+    setStreamingMessageId(null);
+  };
+
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
 
@@ -114,17 +142,19 @@ const ChatBot: React.FC = () => {
     setIsTyping(true);
 
     try {
-      // Get response from AI service
-      const botResponseText = await getBotResponse(currentMessage);
-      
+      // Create initial bot message for streaming
+      const botMessageId = (Date.now() + 1).toString();
       const botResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        text: botResponseText,
+        id: botMessageId,
+        text: '',
         sender: 'bot',
         timestamp: new Date()
       };
 
       setMessages(prev => [...prev, botResponse]);
+      
+      // Get response from AI service with streaming
+      await getBotResponse(currentMessage, botMessageId);
     } catch (error) {
       console.error('Error in handleSendMessage:', error);
       
@@ -233,7 +263,9 @@ const ChatBot: React.FC = () => {
                     ) : (
                       <p>{message.text}</p>
                     )}
-                    <p className={`text-xs mt-2 opacity-70 border-t border-opacity-20 pt-1`}>
+                    <p className={`text-xs mt-2 opacity-70 ${
+                      message.sender === 'bot' ? 'border-t border-opacity-20 pt-1' : ''
+                    }`}>
                       {formatTime(message.timestamp)}
                     </p>
                   </div>
