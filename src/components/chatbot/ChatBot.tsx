@@ -218,12 +218,12 @@ const ChatBot: React.FC = () => {
 
         <DialogContent className="sm:max-w-md h-[600px] flex flex-col p-0 border-0 shadow-lg">
           <DialogHeader className="p-4 border-b bg-primary text-primary-foreground">
-            <DialogTitle className="flex items-center justify-between">
+            <DialogTitle className="flex items-center justify-between pr-8">
               <div className="flex items-center gap-2">
                 <Bot className="h-5 w-5" />
                 Assistente PedLife
               </div>
-              <div className="flex items-center gap-1 text-xs">
+              <div className="flex items-center gap-1 text-xs mr-2">
                 <div className={`w-2 h-2 rounded-full ${
                   aiConnectionStatus === 'connected' ? 'bg-green-400' :
                   aiConnectionStatus === 'disconnected' ? 'bg-red-400' :
