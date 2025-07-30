@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { MessageCircle, Send, Bot, User, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { AIService, AIMessage } from '@/services/aiService';
+import { MedicalFormattedMessage } from '@/utils/messageFormatter';
 
 interface Message {
   id: string;
@@ -224,8 +225,15 @@ const ChatBot: React.FC = () => {
                         : 'bg-muted'
                     }`}
                   >
-                    <p>{message.text}</p>
-                    <p className={`text-xs mt-1 opacity-70`}>
+                    {message.sender === 'bot' ? (
+                      <MedicalFormattedMessage 
+                        text={message.text} 
+                        className="text-inherit"
+                      />
+                    ) : (
+                      <p>{message.text}</p>
+                    )}
+                    <p className={`text-xs mt-2 opacity-70 border-t border-opacity-20 pt-1`}>
                       {formatTime(message.timestamp)}
                     </p>
                   </div>
