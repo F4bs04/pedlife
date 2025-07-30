@@ -127,31 +127,60 @@ const AuthPage: React.FC = () => {
         let errorMessage = "Erro desconhecido";
         let errorDetails = "";
         
-        // Verificar se é o erro 400 específico que estamos enfrentando
+        // Sistema inteligente de identificação de erros baseado em boas práticas
         if (error.status === 400 || error.message.includes('400')) {
           // Verificar se é erro de credenciais inválidas
           if (error.message.includes('Invalid login credentials') || error.code === 'invalid_credentials') {
-            errorMessage = "Credenciais inválidas";
-            errorDetails = "Email ou senha incorretos, ou email não confirmado";
+            // Tentar identificar o tipo específico de problema
+            const email = loginForm.getValues('email');
+            const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
             
-            // Mostrar banner de ajuda sobre confirmação de email
-            setShowEmailConfirmationHelp(true);
-            
-            // Notificação específica sobre confirmação de email
-            setTimeout(() => {
+            if (!isValidEmail) {
+              // Email com formato inválido
+              errorMessage = "Formato de email inválido";
+              errorDetails = "Verifique se o email está no formato correto (exemplo@dominio.com)";
+              
               toast({
-                title: "📧 Email confirmado?",
-                description: "Se você se cadastrou recentemente, confirme seu email primeiro",
+                title: "📧 Email inválido",
+                description: "Use o formato: seuemail@provedor.com",
               });
-            }, 2000);
-            
-            // Notificação adicional para novos usuários
-            setTimeout(() => {
-              toast({
-                title: "👤 Novo usuário?",
-                description: "Use a aba 'Cadastrar' para criar sua conta gratuita",
-              });
-            }, 4000);
+            } else {
+              // Email válido, mas credenciais incorretas
+              errorMessage = "Credenciais incorretas";
+              errorDetails = "Email não encontrado, senha incorreta ou email não confirmado";
+              
+              // Mostrar banner de ajuda
+              setShowEmailConfirmationHelp(true);
+              
+              // Notificações escalonadas com base em probabilidade
+              setTimeout(() => {
+                toast({
+                  title: "🔑 Possíveis causas",
+                  description: "1️⃣ Email não confirmado | 2️⃣ Senha incorreta | 3️⃣ Email não cadastrado",
+                });
+              }, 1500);
+              
+              setTimeout(() => {
+                toast({
+                  title: "📧 Email não confirmado?",
+                  description: "Causa mais comum: Verifique sua caixa de entrada e confirme o email",
+                });
+              }, 3500);
+              
+              setTimeout(() => {
+                toast({
+                  title: "🔒 Esqueceu a senha?",
+                  description: "Use 'Esqueci minha senha' para redefinir sua senha",
+                });
+              }, 5500);
+              
+              setTimeout(() => {
+                toast({
+                  title: "👤 Primeira vez aqui?",
+                  description: "Se não tem conta, use a aba 'Cadastrar' para criar uma",
+                });
+              }, 7500);
+            }
           } else {
             errorMessage = "Erro de configuração do servidor";
             errorDetails = "Problema com a API do Supabase. Tente usar window.clearSupabaseAuth() no console";
@@ -179,15 +208,29 @@ const AuthPage: React.FC = () => {
               
             case "Email not confirmed":
               errorMessage = "Email não confirmado";
-              errorDetails = "Verifique sua caixa de entrada e clique no link de confirmação";
+              errorDetails = "Você precisa confirmar seu email antes de fazer login";
               
-              // Notificação adicional sobre confirmação
+              // Mostrar banner específico para email não confirmado
+              setShowEmailConfirmationHelp(true);
+              
+              toast({
+                title: "📧 Email não confirmado",
+                description: "Você precisa confirmar seu email antes de fazer login",
+              });
+              
               setTimeout(() => {
                 toast({
-                  title: "📧 Não recebeu o email?",
-                  description: "Verifique a pasta de spam ou solicite um novo email de confirmação",
+                  title: "📬 Como confirmar?",
+                  description: "1️⃣ Abra seu email | 2️⃣ Procure também no spam | 3️⃣ Clique no link",
                 });
-              }, 2000);
+              }, 2500);
+              
+              setTimeout(() => {
+                toast({
+                  title: "🔄 Não recebeu?",
+                  description: "Use 'Esqueci minha senha' para receber um novo email",
+                });
+              }, 5000);
               break;
               
             case "Email confirmation required":
@@ -348,83 +391,90 @@ const AuthPage: React.FC = () => {
       if (error) {
         console.error('❌ Erro no cadastro:', error);
         
-        // Melhores mensagens de erro em português
+        // Sistema inteligente de tratamento de erros no cadastro
         let errorMessage = "Erro desconhecido";
         let errorDetails = "";
         
-        switch (error.message) {
-          case "User already registered":
-            errorMessage = "Email já cadastrado";
-            errorDetails = "Este email já possui uma conta ativa";
-            
-            // Sugestão para fazer login
-            setTimeout(() => {
-              toast({
-                title: "🔑 Já tem conta?",
-                description: "Use a aba 'Entrar' para fazer login com suas credenciais",
-              });
-            }, 2000);
-            break;
-            
-          case "Password should be at least 6 characters":
-            errorMessage = "Senha muito curta";
-            errorDetails = "A senha deve ter pelo menos 6 caracteres";
-            
-            // Dica de senha segura
-            setTimeout(() => {
-              toast({
-                title: "🔒 Dica de segurança",
-                description: "Use uma combinação de letras, números e símbolos",
-              });
-            }, 1500);
-            break;
-            
-          case "Invalid email format":
-            errorMessage = "Formato de email inválido";
-            errorDetails = "Use o formato: exemplo@dominio.com";
-            break;
-            
-          case "Password should contain at least one uppercase letter":
-            errorMessage = "Senha não atende aos requisitos";
-            errorDetails = "Inclua pelo menos uma letra maiúscula (A-Z)";
-            break;
-            
-          case "Password should contain at least one lowercase letter":
-            errorMessage = "Senha não atende aos requisitos";
-            errorDetails = "Inclua pelo menos uma letra minúscula (a-z)";
-            break;
-            
-          case "Password should contain at least one number":
-            errorMessage = "Senha não atende aos requisitos";
-            errorDetails = "Inclua pelo menos um número (0-9)";
-            break;
-            
-          case "Email rate limit exceeded":
-            errorMessage = "Limite de emails atingido";
-            errorDetails = "Aguarde alguns minutos antes de tentar novamente";
-            break;
-            
-          case "Signup disabled":
-            errorMessage = "Cadastro temporariamente indisponível";
-            errorDetails = "Tente novamente mais tarde ou entre em contato conosco";
-            break;
-            
-          case "Invalid phone number":
-            errorMessage = "Número de telefone inválido";
-            errorDetails = "Use o formato: (11) 99999-9999";
-            break;
-            
-          default:
-            errorMessage = error.message || "Erro no cadastro";
-            errorDetails = `Código: ${error.status || error.code || 'N/A'}`;
-            
-            // Para erros desconhecidos no cadastro
-            setTimeout(() => {
-              toast({
-                title: "🔧 Problema técnico?",
-                description: "Tente recarregar a página ou entre em contato conosco",
-              });
-            }, 2000);
+        // Sistema inteligente de tratamento de erros no cadastro
+        if (error.message.includes('User already registered') || error.message.includes('already been registered')) {
+          errorMessage = "Email já cadastrado";
+          errorDetails = "Este email já possui uma conta ativa.";
+          
+          toast({
+            title: "📧 Email já existe",
+            description: "Este email já tem uma conta cadastrada",
+          });
+          
+          // Orientações específicas para usuário existente
+          setTimeout(() => {
+            toast({
+              title: "🔑 Opções disponíveis",
+              description: "1️⃣ Fazer login | 2️⃣ Recuperar senha | 3️⃣ Usar outro email",
+            });
+          }, 2000);
+          
+          setTimeout(() => {
+            toast({
+              title: "🔄 Quer fazer login?",
+              description: "Clique na aba 'Login' para acessar sua conta",
+            });
+          }, 4000);
+        } else if (error.message.includes('Password should be at least 6 characters')) {
+          errorMessage = "Senha muito curta";
+          errorDetails = "A senha deve ter pelo menos 6 caracteres";
+          
+          toast({
+            title: "🔒 Senha muito curta",
+            description: "Use pelo menos 6 caracteres",
+          });
+          
+          // Dica de senha segura
+          setTimeout(() => {
+            toast({
+              title: "💡 Dica de segurança",
+              description: "Use uma combinação de letras, números e símbolos",
+            });
+          }, 1500);
+        } else if (error.message.includes('Invalid email format')) {
+          errorMessage = "Formato de email inválido";
+          errorDetails = "Use o formato: exemplo@dominio.com";
+          
+          toast({
+            title: "📧 Email inválido",
+            description: "Use o formato: seuemail@provedor.com",
+          });
+        } else if (error.message.includes('Email rate limit exceeded')) {
+          errorMessage = "Limite de emails atingido";
+          errorDetails = "Aguarde alguns minutos antes de tentar novamente";
+          
+          toast({
+            title: "⏰ Muitas tentativas",
+            description: "Aguarde alguns minutos e tente novamente",
+          });
+        } else if (error.message.includes('Signup disabled')) {
+          errorMessage = "Cadastro temporariamente indisponível";
+          errorDetails = "Tente novamente mais tarde ou entre em contato conosco";
+          
+          toast({
+            title: "🚫 Cadastro indisponível",
+            description: "Tente novamente mais tarde",
+          });
+        } else {
+          errorMessage = error.message || "Erro no cadastro";
+          errorDetails = `Código: ${error.status || error.code || 'N/A'}`;
+          
+          toast({
+            title: "❌ Erro no cadastro",
+            description: errorMessage,
+          });
+          
+          // Para erros desconhecidos no cadastro
+          setTimeout(() => {
+            toast({
+              title: "🔧 Problema técnico?",
+              description: "Tente recarregar a página ou entre em contato conosco",
+            });
+          }, 2000);
         }
         
         toast({
