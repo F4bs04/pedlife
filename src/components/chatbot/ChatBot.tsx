@@ -4,8 +4,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { MessageCircle, Send, Bot, User } from 'lucide-react';
+import { MessageCircle, Send, Bot, User, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { AIService, AIMessage } from '@/services/aiService';
 
 interface Message {
   id: string;
@@ -19,13 +20,15 @@ const ChatBot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Olá! Sou o assistente do PedLife. Como posso ajudá-lo hoje?',
+      text: 'Olá! Sou o assistente do PedLife com IA integrada. Como posso ajudá-lo hoje?',
       sender: 'bot',
       timestamp: new Date()
     }
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [conversationHistory, setConversationHistory] = useState<AIMessage[]>([]);
+  const [aiConnectionStatus, setAiConnectionStatus] = useState<'connected' | 'disconnected' | 'checking'>('checking');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
@@ -37,38 +40,70 @@ const ChatBot: React.FC = () => {
     scrollToBottom();
   }, [messages]);
 
-  const simulateBotResponse = (userMessage: string): string => {
-    const lowercaseMessage = userMessage.toLowerCase();
-    
-    if (lowercaseMessage.includes('dose') || lowercaseMessage.includes('dosagem')) {
-      return 'Para cálculos de dosagem, use nossa calculadora de medicamentos. Informe o peso e idade do paciente para obter as doses corretas.';
+  useEffect(() => {
+    // Test AI connection on component mount
+    checkAIConnection();
+  }, []);
+
+  const checkAIConnection = async () => {
+    setAiConnectionStatus('checking');
+    try {
+      const isConnected = await AIService.testConnection();
+      setAiConnectionStatus(isConnected ? 'connected' : 'disconnected');
+      
+      if (!isConnected) {
+        toast({
+          title: "IA Externa Indisponível",
+          description: "Usando respostas offline. Configure a API para melhor experiência.",
+          variant: "destructive"
+        });
+      }
+    } catch (error) {
+      setAiConnectionStatus('disconnected');
     }
-    
-    if (lowercaseMessage.includes('emergência') || lowercaseMessage.includes('urgência')) {
-      return 'Em situações de emergência, consulte nossos protocolos de atendimento. Temos protocolos para anafilaxia, parada cardiorrespiratória, convulsões e muito mais.';
+  };
+
+  const getBotResponse = async (userMessage: string): Promise<string> => {
+    try {
+      const response = await AIService.sendMessage(userMessage, conversationHistory);
+      
+      if (response.success) {
+        // Update conversation history for context
+        setConversationHistory(prev => [
+          ...prev,
+          { role: 'user', content: userMessage },
+          { role: 'assistant', content: response.message }
+        ]);
+        
+        return response.message;
+      } else {
+        // Show error toast if AI service failed
+        if (response.error && aiConnectionStatus === 'connected') {
+          toast({
+            title: "Erro na IA",
+            description: "Usando resposta offline temporariamente.",
+            variant: "destructive"
+          });
+          setAiConnectionStatus('disconnected');
+        }
+        
+        return response.message; // Fallback response
+      }
+    } catch (error) {
+      console.error('Error getting bot response:', error);
+      setAiConnectionStatus('disconnected');
+      
+      return 'Desculpe, ocorreu um erro. Por favor, tente novamente ou verifique sua conexão.';
     }
-    
-    if (lowercaseMessage.includes('protocolo')) {
-      return 'Nossos protocolos incluem: Anafilaxia, Asma, TCE, Celulite, Convulsões, e muitos outros. Navegue pela seção de protocolos para mais informações.';
-    }
-    
-    if (lowercaseMessage.includes('insulin') || lowercaseMessage.includes('diabetes')) {
-      return 'Para cálculos de insulina, use nossa calculadora específica. Ela considera o peso, glicemia e outros fatores importantes.';
-    }
-    
-    if (lowercaseMessage.includes('obrigado') || lowercaseMessage.includes('valeu')) {
-      return 'De nada! Estou aqui para ajudar sempre que precisar. Boa prática clínica! 👨‍⚕️';
-    }
-    
-    return 'Entendo sua pergunta. Para melhor atendê-lo, recomendo explorar nossas calculadoras de medicamentos e protocolos clínicos. Se tiver dúvidas específicas sobre dosagens ou procedimentos, posso orientá-lo para a ferramenta adequada.';
   };
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return;
 
+    const currentMessage = inputMessage;
     const userMessage: Message = {
       id: Date.now().toString(),
-      text: inputMessage,
+      text: currentMessage,
       sender: 'user',
       timestamp: new Date()
     };
@@ -77,18 +112,38 @@ const ChatBot: React.FC = () => {
     setInputMessage('');
     setIsTyping(true);
 
-    // Simulate bot thinking time
-    setTimeout(() => {
+    try {
+      // Get response from AI service
+      const botResponseText = await getBotResponse(currentMessage);
+      
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: simulateBotResponse(inputMessage),
+        text: botResponseText,
         sender: 'bot',
         timestamp: new Date()
       };
 
       setMessages(prev => [...prev, botResponse]);
+    } catch (error) {
+      console.error('Error in handleSendMessage:', error);
+      
+      const errorResponse: Message = {
+        id: (Date.now() + 1).toString(),
+        text: 'Desculpe, ocorreu um erro ao processar sua mensagem. Tente novamente.',
+        sender: 'bot',
+        timestamp: new Date()
+      };
+
+      setMessages(prev => [...prev, errorResponse]);
+      
+      toast({
+        title: "Erro de Comunicação",
+        description: "Não foi possível obter resposta da IA.",
+        variant: "destructive"
+      });
+    } finally {
       setIsTyping(false);
-    }, 1500);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -121,9 +176,26 @@ const ChatBot: React.FC = () => {
 
         <DialogContent className="sm:max-w-md h-[600px] flex flex-col p-0">
           <DialogHeader className="p-4 border-b bg-primary text-primary-foreground">
-            <DialogTitle className="flex items-center gap-2">
-              <Bot className="h-5 w-5" />
-              Assistente PedLife
+            <DialogTitle className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Bot className="h-5 w-5" />
+                Assistente PedLife
+              </div>
+              <div className="flex items-center gap-1 text-xs">
+                <div className={`w-2 h-2 rounded-full ${
+                  aiConnectionStatus === 'connected' ? 'bg-green-400' :
+                  aiConnectionStatus === 'disconnected' ? 'bg-red-400' :
+                  'bg-yellow-400 animate-pulse'
+                }`} />
+                <span className="opacity-80">
+                  {aiConnectionStatus === 'connected' ? 'IA Online' :
+                   aiConnectionStatus === 'disconnected' ? 'Modo Offline' :
+                   'Conectando...'}
+                </span>
+                {aiConnectionStatus === 'disconnected' && (
+                  <AlertCircle className="h-3 w-3 ml-1" />
+                )}
+              </div>
             </DialogTitle>
           </DialogHeader>
 
