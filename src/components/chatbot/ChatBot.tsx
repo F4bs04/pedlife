@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { MessageCircle, Send, Bot, User, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { AIService, AIMessage } from '@/services/aiService';
@@ -216,7 +216,7 @@ const ChatBot: React.FC = () => {
           </Button>
         </DialogTrigger>
 
-        <DialogContent className="sm:max-w-md h-[600px] flex flex-col p-0">
+        <DialogContent className="sm:max-w-md h-[600px] flex flex-col p-0 border-0 shadow-lg">
           <DialogHeader className="p-4 border-b bg-primary text-primary-foreground">
             <DialogTitle className="flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -253,6 +253,13 @@ const ChatBot: React.FC = () => {
                 >
                   {message.sender === 'bot' && (
                     <Avatar className="h-8 w-8">
+                      {aiConnectionStatus === 'connected' ? (
+                        <AvatarImage 
+                          src="/lovable-uploads/PedroAvatar.jpg" 
+                          alt="Pedro - Assistente Clínico Pediátrico"
+                          className="object-cover"
+                        />
+                      ) : null}
                       <AvatarFallback className="bg-primary text-primary-foreground">
                         <Bot className="h-4 w-4" />
                       </AvatarFallback>
@@ -294,6 +301,13 @@ const ChatBot: React.FC = () => {
               {isTyping && (
                 <div className="flex gap-3 justify-start">
                   <Avatar className="h-8 w-8">
+                    {aiConnectionStatus === 'connected' ? (
+                      <AvatarImage 
+                        src="/lovable-uploads/PedroAvatar.jpg" 
+                        alt="Pedro - Assistente Clínico Pediátrico"
+                        className="object-cover"
+                      />
+                    ) : null}
                     <AvatarFallback className="bg-primary text-primary-foreground">
                       <Bot className="h-4 w-4" />
                     </AvatarFallback>
