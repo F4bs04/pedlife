@@ -65,52 +65,30 @@ const ChatBot: React.FC = () => {
     }
   };
 
-  const getBotResponse = async (userMessage: string, messageId: string): Promise<string> => {
-    try {
-      const response = await AIService.sendMessage(userMessage, conversationHistory);
-      
-      if (response.success) {
-        // Simulate streaming effect by showing response in parts
-        await simulateStreamingResponse(response.message, messageId);
-        
-        // Update conversation history for context
-        setConversationHistory(prev => [
-          ...prev,
-          { role: 'user', content: userMessage },
-          { role: 'assistant', content: response.message }
-        ]);
-        
-        return response.message;
-      } else {
-        // Show error toast if AI service failed
-        if (response.error && aiConnectionStatus === 'connected') {
-          toast({
-            title: "Erro na IA",
-            description: "Usando resposta offline temporariamente.",
-            variant: "destructive"
-          });
-          setAiConnectionStatus('disconnected');
-        }
-        
-        return response.message; // Fallback response
-      }
-    } catch (error) {
-      console.error('Error getting bot response:', error);
-      setAiConnectionStatus('disconnected');
-      
-      return 'Desculpe, ocorreu um erro. Por favor, tente novamente ou verifique sua conexão.';
-    }
-  };
+
 
   const simulateStreamingResponse = async (fullResponse: string, messageId: string): Promise<void> => {
+    // Don't stream if response is empty
+    if (!fullResponse || fullResponse.trim() === '') {
+      setStreamingMessageId(null);
+      return;
+    }
+
     setStreamingMessageId(messageId);
     
-    // Split response into words for streaming effect
-    const words = fullResponse.split(' ');
+    // Split response into sentences for better streaming (respecting punctuation)
+    const sentences = fullResponse.split(/([.!?])\s+/).filter(part => part.trim());
     let currentText = '';
     
-    for (let i = 0; i < words.length; i++) {
-      currentText += (i > 0 ? ' ' : '') + words[i];
+    for (let i = 0; i < sentences.length; i++) {
+      const part = sentences[i];
+      
+      // Add the sentence part
+      if (part.match(/[.!?]/)) {
+        currentText += part;
+      } else {
+        currentText += (currentText ? ' ' : '') + part;
+      }
       
       // Update the message with current text
       setMessages(prev => prev.map(msg => 
@@ -119,8 +97,8 @@ const ChatBot: React.FC = () => {
           : msg
       ));
       
-      // Add delay between words for streaming effect
-      await new Promise(resolve => setTimeout(resolve, 50));
+      // Add delay between sentences for better reading flow
+      await new Promise(resolve => setTimeout(resolve, part.match(/[.!?]/) ? 200 : 100));
     }
     
     setStreamingMessageId(null);
@@ -142,19 +120,52 @@ const ChatBot: React.FC = () => {
     setIsTyping(true);
 
     try {
-      // Create initial bot message for streaming
-      const botMessageId = (Date.now() + 1).toString();
-      const botResponse: Message = {
-        id: botMessageId,
-        text: '',
-        sender: 'bot',
-        timestamp: new Date()
-      };
-
-      setMessages(prev => [...prev, botResponse]);
+      // Get response from AI service first
+      const response = await AIService.sendMessage(currentMessage, conversationHistory);
       
-      // Get response from AI service with streaming
-      await getBotResponse(currentMessage, botMessageId);
+      if (response.success && response.message && response.message.trim()) {
+        // Create bot message for streaming only if we have a valid response
+        const botMessageId = (Date.now() + 1).toString();
+        const botResponse: Message = {
+          id: botMessageId,
+          text: '',
+          sender: 'bot',
+          timestamp: new Date()
+        };
+
+        setMessages(prev => [...prev, botResponse]);
+        
+        // Simulate streaming effect
+        await simulateStreamingResponse(response.message, botMessageId);
+        
+        // Update conversation history for context
+        setConversationHistory(prev => [
+          ...prev,
+          { role: 'user', content: currentMessage },
+          { role: 'assistant', content: response.message }
+        ]);
+      } else {
+        // Handle error or empty response
+        const errorMessage = response.message || 'Desculpe, não consegui gerar uma resposta.';
+        
+        const botResponse: Message = {
+          id: (Date.now() + 1).toString(),
+          text: errorMessage,
+          sender: 'bot',
+          timestamp: new Date()
+        };
+
+        setMessages(prev => [...prev, botResponse]);
+        
+        if (response.error && aiConnectionStatus === 'connected') {
+          toast({
+            title: "Erro na IA",
+            description: "Usando resposta offline temporariamente.",
+            variant: "destructive"
+          });
+          setAiConnectionStatus('disconnected');
+        }
+      }
     } catch (error) {
       console.error('Error in handleSendMessage:', error);
       

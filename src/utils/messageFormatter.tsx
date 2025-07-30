@@ -13,23 +13,23 @@ export interface FormattedMessageProps {
  * Format text with proper line breaks, lists, and structure
  */
 export const formatMessageText = (text: string): string => {
-  if (!text) return '';
+  if (!text || text.trim() === '') return '';
 
-  let formatted = text;
+  let formatted = text.trim();
 
   // Normalize line breaks
   formatted = formatted.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
 
-  // Add proper spacing after periods followed by capital letters (new sentences)
-  formatted = formatted.replace(/\.([A-ZÁÊÇÕ])/g, '. $1');
+  // Respect sentence structure - only break after periods followed by capital letters if there's a clear new topic
+  // Remove aggressive sentence breaking that was causing unwanted line breaks
+  
+  // Add line breaks only before clear numbered lists (with space after number)
+  formatted = formatted.replace(/(\n|^)(\d+\.\s+)/g, '\n$2');
 
-  // Add line breaks before numbered lists
-  formatted = formatted.replace(/(\d+\.\s)/g, '\n$1');
+  // Add line breaks only before clear bullet points (with space after bullet)
+  formatted = formatted.replace(/(\n|^)([•\-\*]\s+)/g, '\n$2');
 
-  // Add line breaks before bullet points
-  formatted = formatted.replace(/([•\-\*]\s)/g, '\n$1');
-
-  // Add line breaks before common medical section headers
+  // Add line breaks before common medical section headers only when they appear at start of line or after punctuation
   const headers = [
     'Diagnóstico', 'Tratamento', 'Dosagem', 'Posologia', 'Indicações',
     'Contraindicações', 'Efeitos', 'Observações', 'Importante', 'Atenção',
@@ -37,14 +37,17 @@ export const formatMessageText = (text: string): string => {
   ];
   
   headers.forEach(header => {
-    const regex = new RegExp(`(${header}:?)`, 'gi');
-    formatted = formatted.replace(regex, '\n**$1**');
+    const regex = new RegExp(`(\\.|\\n|^)\\s*(${header}:?)`, 'gi');
+    formatted = formatted.replace(regex, '$1\n**$2**');
   });
 
   // Clean up multiple consecutive line breaks
   formatted = formatted.replace(/\n{3,}/g, '\n\n');
+  
+  // Remove leading line breaks
+  formatted = formatted.replace(/^\n+/, '');
 
-  // Trim leading/trailing whitespace
+  // Trim final whitespace
   formatted = formatted.trim();
 
   return formatted;
@@ -151,71 +154,87 @@ export const FormattedMessage: React.FC<FormattedMessageProps> = ({ text, classN
  * Enhanced formatter for medical content with specific styling optimized for chatbot
  */
 export const MedicalFormattedMessage: React.FC<FormattedMessageProps> = ({ text, className = '' }) => {
+  // Don't render anything if text is empty or just whitespace
+  if (!text || text.trim() === '') {
+    return null;
+  }
+
   const formattedText = formatMessageText(text);
+  
+  // Don't render if formatted text is empty
+  if (!formattedText) {
+    return null;
+  }
+  
   const parts = formattedText.split('\n').filter(part => part.trim());
   
+  // Don't render if no valid parts
+  if (parts.length === 0) {
+    return null;
+  }
+  
   return (
-    <div className={`space-y-2 text-sm ${className}`}>
+    <div className={`space-y-1.5 text-sm ${className}`}>
       {parts.map((part, index) => {
         const trimmedPart = part.trim();
         
         if (!trimmedPart) return null;
         
-        // Medical headers with special styling
+        // Medical headers with subtle styling (no border)
         if (trimmedPart.startsWith('**') && trimmedPart.endsWith('**')) {
           const headerText = trimmedPart.slice(2, -2);
           return (
-            <div key={index} className="font-bold text-current opacity-90 mt-3 mb-1 pb-1 border-b border-current border-opacity-20">
+            <div key={index} className="font-semibold text-current mt-2 mb-1 text-blue-600">
               {headerText}
             </div>
           );
         }
         
-        // Dosage information with highlight
+        // Dosage information with subtle highlight
         if (/dose|dosagem|mg\/kg|ml\/kg|gotas|comprimido|ml|mg/i.test(trimmedPart)) {
           return (
-            <div key={index} className="bg-current bg-opacity-10 border-l-2 border-current border-opacity-30 pl-3 py-1 rounded-r-md my-2">
-              <p className="font-medium text-current">{parseMarkdown(trimmedPart)}</p>
+            <div key={index} className="bg-blue-50 px-2 py-1 rounded text-blue-800 my-1">
+              <span className="font-medium">{parseMarkdown(trimmedPart)}</span>
             </div>
           );
         }
         
-        // Warning or important information
+        // Warning or important information with subtle styling
         if (/atenção|importante|cuidado|alerta|contraindicação|emergência|urgente/i.test(trimmedPart)) {
           return (
-            <div key={index} className="bg-red-100 border-l-2 border-red-400 pl-3 py-1 rounded-r-md my-2">
-              <p className="font-medium text-red-800">{parseMarkdown(trimmedPart)}</p>
+            <div key={index} className="bg-orange-50 px-2 py-1 rounded text-orange-800 my-1">
+              <span className="font-medium">{parseMarkdown(trimmedPart)}</span>
             </div>
           );
         }
         
-        // Numbered lists with medical styling
+        // Numbered lists with clean styling
         if (/^\d+\.\s/.test(trimmedPart)) {
           return (
-            <div key={index} className="ml-3 mb-2 flex items-start">
-              <span className="font-bold text-current opacity-80 mr-2 mt-0.5 min-w-[1.5rem]">
+            <div key={index} className="ml-2 mb-1 flex items-start">
+              <span className="font-semibold text-blue-600 mr-2 mt-0.5 min-w-[1.2rem] text-xs">
                 {trimmedPart.match(/^\d+\./)?.[0]}
               </span>
-              <span className="text-current opacity-90 leading-relaxed">
+              <span className="text-current leading-relaxed">
                 {parseMarkdown(trimmedPart.replace(/^\d+\.\s/, ''))}
               </span>
             </div>
           );
         }
         
-        // Bullet points
+        // Bullet points with clean styling
         if (/^[•\-\*]\s/.test(trimmedPart)) {
           return (
-            <div key={index} className="ml-3 mb-1 flex items-start">
-              <span className="text-current opacity-70 mr-2 mt-1 font-bold">•</span>
-              <span className="text-current opacity-90 leading-relaxed">{parseMarkdown(trimmedPart.replace(/^[•\-\*]\s/, ''))}</span>
+            <div key={index} className="ml-2 mb-1 flex items-start">
+              <span className="text-blue-600 mr-2 mt-1.5 text-xs">•</span>
+              <span className="text-current leading-relaxed">{parseMarkdown(trimmedPart.replace(/^[•\-\*]\s/, ''))}</span>
             </div>
           );
         }
         
         // Regular paragraphs with markdown support
         return (
-          <p key={index} className="leading-relaxed text-current opacity-95 mb-2">
+          <p key={index} className="leading-relaxed text-current mb-1.5">
             {parseMarkdown(trimmedPart)}
           </p>
         );
