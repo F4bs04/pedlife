@@ -5,14 +5,6 @@
 > - **Versão:** 1.0
 > - **Data de Criação:** Abril 2025
 
-| **Etapa**  | **Nome**                      | **Cargo**                 | **Data**   | **Visto** |
-|------------|-------------------------------|---------------------------|------------|-----------|
-| Elaboração | Arthur Wanderley Alves Vieira | Pós-graduado em Pediatria | Abril 2025 |           |
-| Revisão    | Carlos Henrick dos Santos     | Pós-graduado em Pediatria | Abril 2025 |           |
-| Revisão    |                               |                           |            |           |
-| Aprovação  |                               |                           |            |           |
-| Aprovação  |                               |                           |            |           |
-
 ## 1. OBJETIVO
 
 Padronizar a abordagem diagnóstica e terapêutica da cetoacidose diabética em pacientes pediátricos, estabelecendo diretrizes para o diagnóstico precoce e manejo adequado desta condição metabólica grave que requer intervenção imediata.

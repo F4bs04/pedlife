@@ -5,14 +5,6 @@
 > - **Versão:** 1.0
 > - **Data de Criação:** Abril 2025
 
-| **Etapa**  | **Nome**                      | **Cargo**                 | **Data**   | **Visto** |
-|------------|-------------------------------|---------------------------|------------|-----------|
-| Elaboração | Arthur Wanderley Alves Vieira | Pós-graduado em Pediatria | Abril 2025 |           |
-| Revisão    | Carlos Henrick dos Santos     | Pós-graduado em Pediatria | Abril 2025 |           |
-| Revisão    |                               |                           |            |           |
-| Aprovação  |                               |                           |            |           |
-| Aprovação  |                               |                           |            |           |
-
 ## 1. OBJETIVO
 
 Estabelecer diretrizes claras para diagnóstico, tratamento e acompanhamento de pacientes com erisipela, garantindo conduta padronizada e segura em todos os níveis de atendimento.

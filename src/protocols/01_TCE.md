@@ -5,14 +5,6 @@
 > - **Versão:** 1.0
 > - **Data de Criação:** Abril 2025
 
-| **Etapa**  | **Nome**                      | **Cargo**                 | **Data**   | **Visto** |
-|------------|-------------------------------|---------------------------|------------|-----------|
-| Elaboração | Arthur Wanderley Alves Vieira | Pós-graduado em Pediatria | Abril 2025 |           |
-| Revisão    | Carlos Henrick dos Santos     | Pós-graduado em Pediatria | Abril 2025 |           |
-| Revisão    |                               |                           |            |           |
-| Aprovação  |                               |                           |            |           |
-| Aprovação  |                               |                           |            |           |
-
 ## 1. OBJETIVO  
 
 Padronizar a abordagem clínica e orientar a conduta diagnóstica e terapêutica frente aos casos de traumatismo cranioencefálico em pacientes pediátricos, garantindo atendimento seguro, eficaz e baseado em evidências.

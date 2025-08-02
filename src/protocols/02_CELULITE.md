@@ -5,14 +5,6 @@
 > - **Versão:** 1.0
 > - **Data de Criação:** Abril 2025
 
-| **Etapa**  | **Nome**                      | **Cargo**                 | **Data**   | **Visto** |
-|------------|-------------------------------|---------------------------|------------|-----------|
-| Elaboração | Arthur Wanderley Alves Vieira | Pós-graduado em Pediatria | Abril 2025 |           |
-| Revisão    | Carlos Henrick dos Santos     | Pós-graduado em Pediatria | Abril 2025 |           |
-| Revisão    |                               |                           |            |           |
-| Aprovação  |                               |                           |            |           |
-| Aprovação  |                               |                           |            |           |
-
 ## 1. OBJETIVO
 
 Padronizar a conduta clínica para casos de celulite em pacientes pediátricos, visando segurança, eficácia terapêutica e alinhamento com boas práticas assistenciais.
