@@ -11,9 +11,9 @@ export interface AIResponse {
 }
 
 export class AIService {
-  private static readonly API_URL = process.env.VITE_AI_API_URL || 'https://pedro-production.up.railway.app/ask';
-  private static readonly API_KEY = process.env.VITE_AI_API_KEY || 'pedroapikey';
-  private static readonly MODEL = process.env.VITE_AI_MODEL || 'pedro-v1';
+  private static readonly API_URL = import.meta.env.VITE_AI_API_URL || 'https://pedro-production.up.railway.app/ask';
+  private static readonly API_KEY = import.meta.env.VITE_AI_API_KEY || 'pedroapikey';
+  private static readonly MODEL = import.meta.env.VITE_AI_MODEL || 'pedro-v1';
 
   /**
    * Send message to external AI agent

@@ -3,9 +3,7 @@ import { LucideIcon, Pill, Syringe, ShieldAlert, Package, Brain, Microscope, Hea
 import { slugify } from '@/lib/utils';
 
 // Importar todos os arquivos de categoria estáticos
-import antibioticosEv from '@/medications/Categorias/antibioticos_ev_fixed.json';
-import antibioticosIm from '@/medications/Categorias/antibioticos_im_fixed.json';
-import antibioticosVo from '@/medications/Categorias/antibioticos_vo_fixed.json';
+import antibioticos from '@/medications/Categorias/antibioticos_fixed.json';
 import anticonvulsivantes from '@/medications/Categorias/anticonvulsivantes_fixed.json';
 import antiemeticos from '@/medications/Categorias/antiemeticos_fixed.json';
 import antimicrobianos from '@/medications/Categorias/antimicrobianos_fixed.json';
@@ -24,9 +22,7 @@ import xaropesTosse from '@/medications/Categorias/xaropes_tosse_fixed.json';
 
 // Arquivo estático de cada categoria
 const categoryFiles: Record<string, Medication[]> = {
-  'antibioticos-ev': antibioticosEv,
-  'antibioticos-im': antibioticosIm,
-  'antibioticos-vo': antibioticosVo,
+  'antibioticos': antibioticos,
   'anticonvulsivantes': anticonvulsivantes,
   'antiemeticos': antiemeticos,
   'antimicrobianos': antimicrobianos,
@@ -43,9 +39,7 @@ const categoryFiles: Record<string, Medication[]> = {
 };
 
 const categoryIconMap: Record<string, { icon: LucideIcon; iconColorClass: string; bgColorClass: string }> = {
-  'antibioticos-vo': { icon: Pill, iconColorClass: 'text-blue-500', bgColorClass: 'bg-blue-100' },
-  'antibioticos-ev': { icon: Syringe, iconColorClass: 'text-blue-600', bgColorClass: 'bg-blue-100' },
-  'antibioticos-im': { icon: Syringe, iconColorClass: 'text-blue-700', bgColorClass: 'bg-blue-200' },
+  'antibioticos': { icon: Pill, iconColorClass: 'text-blue-500', bgColorClass: 'bg-blue-100' },
   'antivirais': { icon: ShieldAlert, iconColorClass: 'text-green-500', bgColorClass: 'bg-green-100' },
   'antiemeticos': { icon: Package, iconColorClass: 'text-purple-500', bgColorClass: 'bg-purple-100' },
   'anticonvulsivantes': { icon: Brain, iconColorClass: 'text-indigo-600', bgColorClass: 'bg-indigo-100' },
@@ -76,6 +70,42 @@ function extractBaseName(fullName: string): string {
   return cleaned;
 }
 
+function groupMedicationsByApplication(medications: Medication[]): MedicationGroup[] {
+  // Agrupar medicamentos por via de administração
+  const applicationGroups: Record<string, Medication[]> = {};
+  
+  medications.forEach(med => {
+    const app = med.application || 'Outros';
+    if (!applicationGroups[app]) applicationGroups[app] = [];
+    applicationGroups[app].push(med);
+  });
+  
+  const groups: MedicationGroup[] = [];
+  
+  // Criar grupos por aplicação
+  Object.entries(applicationGroups).forEach(([app, meds]) => {
+    // Dentro de cada aplicação, agrupar por nome base
+    const baseNameGroups: Record<string, Medication[]> = {};
+    
+    meds.forEach(med => {
+      const baseName = extractBaseName(med.name);
+      if (!baseNameGroups[baseName]) baseNameGroups[baseName] = [];
+      baseNameGroups[baseName].push(med);
+    });
+    
+    // Criar grupos para cada nome base
+    Object.entries(baseNameGroups).forEach(([baseName, variants]) => {
+      groups.push({
+        baseName: `${baseName} (${app})`,
+        baseSlug: `${baseName.replace(/\s+/g, '-').toLowerCase()}-${app.toLowerCase()}`,
+        variants
+      });
+    });
+  });
+  
+  return groups;
+}
+
 export function loadMedicationData(): MockMedicationData {
   const data: MockMedicationData = {};
   const seen = new Set<string>();
@@ -98,16 +128,23 @@ export function loadMedicationData(): MockMedicationData {
       };
     });
 
-    // Agrupar variantes
+    // Agrupar variantes - tratamento especial para antibióticos
     const groups: MedicationGroup[] = [];
-    const map: Record<string, Medication[]> = {};
-    unique.forEach(m => {
-      const base = extractBaseName(m.name);
-      map[base] = map[base] || [];
-      map[base].push(m);
-    });
-    for (const base in map) {
-      groups.push({ baseName: base, baseSlug: base.replace(/\s+/g, '-').toLowerCase(), variants: map[base] });
+    
+    if (slug === 'antibioticos') {
+      // Para antibióticos, agrupar primeiro por via de administração, depois por variantes
+      groups.push(...groupMedicationsByApplication(unique));
+    } else {
+      // Para outras categorias, usar o agrupamento padrão
+      const map: Record<string, Medication[]> = {};
+      unique.forEach(m => {
+        const base = extractBaseName(m.name);
+        map[base] = map[base] || [];
+        map[base].push(m);
+      });
+      for (const base in map) {
+        groups.push({ baseName: base, baseSlug: base.replace(/\s+/g, '-').toLowerCase(), variants: map[base] });
+      }
     }
 
     data[slug] = {
