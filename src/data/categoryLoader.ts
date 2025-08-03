@@ -1,5 +1,6 @@
 import type { MockMedicationData, MedicationCategoryData, CategoryInfo, Medication, MedicationGroup } from '@/types/medication';
 import { LucideIcon, Pill, Syringe, ShieldAlert, Package, Brain, Microscope, HeartPulse, Eye } from 'lucide-react';
+import { slugify } from '@/lib/utils';
 
 // Importar todos os arquivos de categoria estáticos
 import antibioticosEv from '@/medications/Categorias/antibioticos_ev_fixed.json';
@@ -82,12 +83,19 @@ export function loadMedicationData(): MockMedicationData {
   for (const [slug, meds] of Object.entries(categoryFiles)) {
     const iconInfo = categoryIconMap[slug] || { icon: Pill, iconColorClass: 'text-gray-500', bgColorClass: 'bg-gray-100' };
 
-    // Remover duplicatas
+    // Remover duplicatas e gerar slugs únicos
     const unique = meds.filter(m => {
       const key = `${m.name}-${m.form||''}`;
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
+    }).map(m => {
+      // Gerar slug único baseado no nome do medicamento
+      const uniqueSlug = slugify(m.name);
+      return {
+        ...m,
+        slug: uniqueSlug
+      };
     });
 
     // Agrupar variantes

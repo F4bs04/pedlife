@@ -5,6 +5,7 @@ import MedicationListItem from './MedicationListItem';
 import { ChevronDown, ChevronUp, Package, PlusCircle, MinusCircle, Pill } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { slugify } from '@/lib/utils';
 
 interface MedicationGroupItemProps {
   group: MedicationGroup;
@@ -78,15 +79,18 @@ const MedicationGroupItem: React.FC<MedicationGroupItemProps> = ({ group, catego
                   {form}
                 </div>
                 <div>
-                  {variantsByForm[form].map((medication) => (
-                    <Link 
-                      key={medication.slug} 
-                      to={`/platform/calculator/${categorySlug}/${medication.slug}`}
-                      className="block hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors"
-                    >
-                      <MedicationListItem medication={medication} />
-                    </Link>
-                  ))}
+                  {variantsByForm[form].map((medication) => {
+                    const medSlug = medication.slug || slugify(medication.name);
+                    return (
+                      <Link 
+                        key={medSlug} 
+                        to={`/platform/calculator/${categorySlug}/${medSlug}`}
+                        className="block hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors"
+                      >
+                        <MedicationListItem medication={medication} />
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             ))}
@@ -94,8 +98,8 @@ const MedicationGroupItem: React.FC<MedicationGroupItemProps> = ({ group, catego
         ) : (
           <>
             <Link 
-              key={group.variants[0].slug} 
-              to={`/platform/calculator/${categorySlug}/${group.variants[0].slug}`}
+              key={group.variants[0].slug || slugify(group.variants[0].name)} 
+              to={`/platform/calculator/${categorySlug}/${group.variants[0].slug || slugify(group.variants[0].name)}`}
               className="block hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
             >
               <MedicationListItem medication={group.variants[0]} />

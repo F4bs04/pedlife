@@ -178,7 +178,10 @@ const MedicationCalculatorPage: React.FC = () => {
   const navigate = useNavigate();
 
   const categoryData = categorySlug ? mockMedicationsData[categorySlug] : undefined;
-  const medication = categoryData?.medications.find(m => m.slug === medicationSlug);
+  const medication = categoryData?.medications.find(m => {
+    const medSlug = m.slug || slugify(m.name);
+    return medSlug === medicationSlug;
+  });
   const categoryDisplayInfo = allCategories.find(c => c.slug === categorySlug);
   
   // Use the explicit FormValues type to ensure type consistency
