@@ -332,7 +332,7 @@ class GlomerulonefriteCalculator {
 
     // Calcular dose de anti-hipertensivo se necessário
     let antiHipertensivo: GlomerulonefriteAntiHipertensivo | undefined;
-    if (necessitaAntiHipertensivo && dados.antiHipertensivoEscolhido) {
+    if (necessitaAntiHipertensivo && dados.antiHipertensivoEscolhido && dados.antiHipertensivoEscolhido !== "none") {
       const resultado = this.calcularDoseAntiHipertensivo(dados.antiHipertensivoEscolhido, dados.peso);
       if (resultado) {
         antiHipertensivo = resultado;

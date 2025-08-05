@@ -44,7 +44,7 @@ const GlomerulonefriteCalculator: React.FC = () => {
     },
     examesAlterados: [],
     antibioticoEscolhido: "Penicilina Benzatina",
-    antiHipertensivoEscolhido: ""
+      antiHipertensivoEscolhido: "none"
   });
 
   const [resultado, setResultado] = useState<GlomerulonefriteResult | null>(null);
@@ -134,7 +134,7 @@ const GlomerulonefriteCalculator: React.FC = () => {
       },
       examesAlterados: [],
       antibioticoEscolhido: "Penicilina Benzatina",
-      antiHipertensivoEscolhido: ""
+      antiHipertensivoEscolhido: "none"
     });
     setResultado(null);
     setShowResult(false);
@@ -349,7 +349,7 @@ const GlomerulonefriteCalculator: React.FC = () => {
                   <SelectValue placeholder="Selecione o anti-hipertensivo" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Nenhum</SelectItem>
+                  <SelectItem value="none">Nenhum</SelectItem>
                   {antiHipertensivosOptions.map((medicamento) => (
                     <SelectItem key={medicamento} value={medicamento}>
                       {medicamento}
